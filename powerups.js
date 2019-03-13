@@ -1,12 +1,12 @@
 const powerUps = function () {
-    return {
+	return {
 
-    }
-}
-const doubler = new powerUps()
+	};
+};
+const doubler = new powerUps();
 doubler.effect = (paddle) => {
-    paddle.width *= 2
-}
+	paddle.width *= 2;
+};
 doubler.loseDoubler = (paddle) =>(
-    paddle.width = 84
-)
+	paddle.width = 84
+);

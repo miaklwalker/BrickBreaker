@@ -1,7 +1,9 @@
-let brick, player, ball,LevelNumber;
-let balls = []
-LevelNumber = 1
 
+/* eslint-disable no-undef */
+// eslint-disable-next-line no-unused-vars
+let brick, player, ball,LevelNumber;
+LevelNumber = 1;
+// eslint-disable-next-line no-unused-vars
 function setup() {
 	createCanvas(485, 480);
 	level.makeBricks();
@@ -10,18 +12,18 @@ function setup() {
 }
 
 
-
+// eslint-disable-next-line no-unused-vars
 function draw() {
-	colorMode(RGB)
+	colorMode(RGB);
 	background(205);
-	text("lives: " + game.lives, 100, 20)
+	text("lives: " + game.lives, 100, 20);
 	level.show();
 	level.win(ball);
-	ball.show()
+	ball.show();
 	ball.start();
 	player.show();
 	player.move();
 	ball.move();
-	ball.contact(player)
+	ball.contact(player);
 	gameOver();
 }
