@@ -3,7 +3,7 @@ class Ball {
         this.position = createVector(x, y);
         this.direction = createVector(1, 1);
         this.radius = 15;
-        this.sforce = 6
+        this.speedMultiplier = 6
         this.speed = createVector(0, 0);
     }
     contact(Paddle) {
@@ -46,6 +46,6 @@ class Ball {
     }
     start() {
         let start = false;
-        keyIsDown(ENTER) ? this.speed.y = 1 * this.sforce : false
+        keyIsDown(ENTER) ? this.speed.y = 1 * this.speedMultiplier : false
     }
 }

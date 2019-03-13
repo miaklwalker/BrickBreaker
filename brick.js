@@ -4,7 +4,7 @@ class Brick {
         this.width = 48.5;
         this.height = 19.2;
         this.health = health;
-        this.SHealth = health;
+        this.StartingHealth = health;
         this.effect = false;
     }
     hit() {

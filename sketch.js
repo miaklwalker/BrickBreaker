@@ -1,6 +1,6 @@
-let brick, player, ball, hc, lvNum;
+let brick, player, ball,LevelNumber;
 let balls = []
-lvNum = 1
+LevelNumber = 1
 
 function setup() {
 	createCanvas(485, 480);
