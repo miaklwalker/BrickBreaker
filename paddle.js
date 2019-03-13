@@ -7,6 +7,7 @@ class Paddle {
         this.speed = 0;
     }
     show() {
+        
         fill(0)
         rect(this.position.x, this.position.y, this.width, this.height);
     }

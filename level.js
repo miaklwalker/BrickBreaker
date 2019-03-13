@@ -8,7 +8,7 @@ const level = {
     duration: 1800,
 
     makeEffect() {
-        if (level.numOfPowers > 0 && Math.random() > .49) {
+        if (level.numOfPowers > 0 && Math.random() > .7) {
             console.log(level.numOfPowers -= 1);
             return true
         } else {
@@ -42,7 +42,9 @@ const level = {
             if (level.bricks[i].health <= 0) {
                 let broke = level.bricks.splice(i, 1)
                 if (broke[0].effect) {
-                    doubler.effect(player)
+                    game.powerActive = true;
+                    getPower();
+                    console.log(game.powerActive)
                 }
                 level.score += broke[0].SHealth * 500
             }

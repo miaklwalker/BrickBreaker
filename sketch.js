@@ -14,6 +14,7 @@ function setup() {
 function draw() {
 	colorMode(RGB)
 	background(205);
+	text("lives: " + game.lives, 100, 20)
 	level.show();
 	level.win(ball);
 	ball.show()
@@ -22,4 +23,5 @@ function draw() {
 	player.move();
 	ball.move();
 	ball.contact(player)
+	gameOver();
 }

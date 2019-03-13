@@ -12,14 +12,12 @@ class Brick {
     }
     show() {
         if (this.health > 0) {
-            if (this.effect) {
                 stroke(255);
                 colorMode(RGB);
+            if (this.effect) {
                 fill((this.health) * 51, 0, 0, 255);
                 rect(this.position.x, this.position.y, this.width, this.height);
             } else {
-                stroke(255);
-                colorMode(RGB);
                 fill(52, (this.health) * 51, (this.health + 15) * 51, 255);
                 rect(this.position.x, this.position.y, this.width, this.height);
             }
