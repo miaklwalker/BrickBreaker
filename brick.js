@@ -5,17 +5,24 @@ class Brick {
         this.height = 19.2;
         this.health = health;
         this.SHealth = health;
-        this.hurt = false
+        this.effect = false;
     }
     hit() {
         this.health -= 1;
     }
     show() {
         if (this.health > 0) {
-            stroke(255);
-            colorMode(RGB);
-            fill(52, (this.health) * 51, (this.health + 15) * 51, 255);
-            rect(this.position.x, this.position.y, this.width, this.height);
+            if (this.effect) {
+                stroke(255);
+                colorMode(RGB);
+                fill((this.health) * 51, 0, 0, 255);
+                rect(this.position.x, this.position.y, this.width, this.height);
+            } else {
+                stroke(255);
+                colorMode(RGB);
+                fill(52, (this.health) * 51, (this.health + 15) * 51, 255);
+                rect(this.position.x, this.position.y, this.width, this.height);
+            }
         }
     }
     collision(ball) {
@@ -51,7 +58,6 @@ class Brick {
         let distY = cy - testY;
         let distance = sqrt((distX * distX) + (distY * distY));
         if (distance <= radius / 2) {
-           // console.log(`${lr}+${tb}`)
             if (tb) {
                 this.hit()
                 ball.speed.y *= -1;

@@ -2,8 +2,8 @@ class Paddle {
     constructor(x, y) {
         this.acceleration = createVector();
         this.width = 84;
-        this.height = 12 ;
-        this.position = createVector(x,y);
+        this.height = 12;
+        this.position = createVector(x, y);
         this.speed = 0;
     }
     show() {
@@ -24,6 +24,3 @@ class Paddle {
         }
     }
 }
-// (paddle.x + width / 2); 0
-//  >  1 
-//  < -1

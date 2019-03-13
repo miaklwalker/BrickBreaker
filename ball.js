@@ -1,6 +1,6 @@
 class Ball {
-    constructor(x,y) {
-        this.position = createVector(x,y);
+    constructor(x, y) {
+        this.position = createVector(x, y);
         this.direction = createVector(1, 1);
         this.radius = 15;
         this.sforce = 6
@@ -18,7 +18,7 @@ class Ball {
                 ball.speed.x += round * (abs(round) * 3);
             }
         } else false
-     	    
+
     }
     move() {
         this.position.x += this.direction.x * this.speed.x;
@@ -35,14 +35,6 @@ class Ball {
         colorMode(HSB)
         fill(col, col, col)
         ellipse(this.position.x, this.position.y, this.radius)
-    }
-    test() {
-        let mx = mouseX;
-        let my = mouseY;
-        this.position.x = mx;
-        this.position.y = my;
-        ellipse(mx, my, this.radius)
-
     }
     start() {
         let start = false;

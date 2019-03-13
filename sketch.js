@@ -1,14 +1,12 @@
-let brick, player, ball, hc,lvNum;
+let brick, player, ball, hc, lvNum;
 let balls = []
 lvNum = 1
+
 function setup() {
 	createCanvas(485, 480);
-	level.test();
-    //level.makeBricks();
+	level.makeBricks();
 	ball = new Ball(width / 2, height / 2);
-	player = new Paddle(width/2.45, 450);
-	doubler.effect(player)
-	//multiball.effect(random(24,60));
+	player = new Paddle(width / 2.45, 450);
 }
 
 
@@ -18,16 +16,10 @@ function draw() {
 	background(205);
 	level.show();
 	level.win(ball);
-	// balls.forEach(pball=>{
-	// 	pball.show();
-	// 	pball.start();
-	// 	pball.move();
-	// 	pball.contact(player);
-	// });
 	ball.show()
 	ball.start();
 	player.show();
 	player.move();
 	ball.move();
-    ball.contact(player)
+	ball.contact(player)
 }
