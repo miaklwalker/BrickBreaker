@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 const level = {
 	levelNum: 1,
 	numOfPowers: 1,
@@ -10,6 +9,7 @@ const level = {
 
 	makeEffect() {
 		if (level.numOfPowers > 0 && Math.random() > .7) {
+			console.log(level.numOfPowers -= 1);
 			return true;
 		} else {
 			false;
@@ -34,8 +34,8 @@ const level = {
 	},
 
 	show() {
-		text("Level: " + level.levelNum, 10, 20);
-		text("score: " + level.score, 10, 40);
+		let LevText = text("Level: " + level.levelNum, 10, 20);
+		let lScore = text("score: " + level.score, 10, 40);
 		for (let i = 0; i < level.bricks.length; i++) {
 			level.bricks[i].show();
 			level.bricks[i].collision(ball);
@@ -44,8 +44,9 @@ const level = {
 				if (broke[0].effect) {
 					game.powerActive = true;
 					getPower();
+					console.log(game.powerActive);
 				}
-				level.score += broke[0].SHealth * 500;
+				level.score += broke[0].startingHealth * 500;
 			}
 		}
 	},
