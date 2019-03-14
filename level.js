@@ -46,7 +46,7 @@ const level = {
 		text("score: " + level.score, 10, 40);
 		for (let i = 0; i < level.bricks.length; i++) {
 			level.bricks[i].show();
-			level.bricks[i].collision(ball);
+			collision(ball,level.bricks[i]);
 			if (level.bricks[i].health <= 0) {
 				let broke = level.bricks.splice(i, 1);
 				if (broke[0].effect) {

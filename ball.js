@@ -46,11 +46,12 @@ class Ball {
 	}
 	start() {
 		if (!game.active) {
-			if (keyIsDown(ENTER)) {
-				this.speed.y = 1 * this.speedMultiplier
-				game.active = true;
+			if (!game.over) {
+				if (keyIsDown(ENTER)) {
+					this.speed.y = 1 * this.speedMultiplier
+					game.active = true;
+				}
 			}
-
 		}
 	}
 }
