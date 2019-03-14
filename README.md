@@ -11,8 +11,8 @@
  - slow-ball
  - strong-ball
  # Known issues or issues in progress
- - game over does not reset game
- - paddle can grow infinitly
- - hit detection is still wierd
+ - # fixed # game over does not reset game
+ - # fixed # paddle can grow infinitly
+ - # much better # hit detection is still wierd
  - sometimes ball can have wierd interactions with paddle
  - ball can be pushed out of screen by paddle
