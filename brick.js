@@ -1,10 +1,8 @@
-/* eslint-disable no-undef */
-// eslint-disable-next-line no-unused-vars
 class Brick {
 	constructor(x, y, health) {
 		this.position = createVector(x, y);
-		this.width = 48.5;
-		this.height = 19.2;
+		this.width = 47;
+		this.height = 22;
 		this.health = health;
 		this.StartingHealth = health;
 		this.effect = false;
@@ -39,10 +37,10 @@ class Brick {
 		let testX = cx;
 		let testY = cy;
 		if (cx < rx) { // left
-			testX = rx;
+			testX = rx +.02;
 			lr = true;
 		} else if (cx > rx + rw) { // right
-			testX = rx + rw;
+			testX = rx + rw +.02;
 			lr = true;
 		} else false;
 
@@ -50,10 +48,10 @@ class Brick {
 			testY = ry;
 			tb = true;
 		} else if (cy > ry + rh) { // bottom
-			testY = ry + rh;
+			testY = ry + rh+.01;
 			tb = true;
 		} else false;
-
+		line(testX,testY,cx,cy)
 		let distX = cx - testX;
 		let distY = cy - testY;
 		let distance = sqrt((distX * distX) + (distY * distY));
@@ -65,6 +63,10 @@ class Brick {
 			if (lr) {
 				this.hit();
 				ball.speed.x *= -1;
+			}
+			if(tb&&lr){
+				ball.speed.x *= -1;
+				ball.speed.y *= -1;
 			}
 		}
 	}

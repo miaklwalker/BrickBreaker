@@ -5,7 +5,7 @@ const level = {
 	weakestBrick: 1,
 	score: 0,
 	bricks: [],
-	duration: 1800,
+	fortifier: 0,
 
 	makeEffect() {
 		if (level.numOfPowers > 0 && Math.random() > .7) {
@@ -15,9 +15,16 @@ const level = {
 			false;
 		}
 	},
+	fortifyBricks() {
+		if (level.levelNum % 5 === 0) {
+			this.fortifier + 1;
+		}
+
+	},
 
 	makeBricks() {
 		let h = (level.numOfRows * 24 + 24);
+		level.weakestBrick = 1 + this.fortifier;
 		for (h; h > 24; h -= 24) {
 			for (let i = 10 - 1; i > -1; i--) {
 				if (this.makeEffect()) {
@@ -30,12 +37,13 @@ const level = {
 			}
 			level.weakestBrick += 1;
 		}
+		this.fortifyBricks();
 		return level.bricks;
 	},
 
 	show() {
-		let LevText = text("Level: " + level.levelNum, 10, 20);
-		let lScore = text("score: " + level.score, 10, 40);
+		text("Level: " + level.levelNum, 10, 20);
+		text("score: " + level.score, 10, 40);
 		for (let i = 0; i < level.bricks.length; i++) {
 			level.bricks[i].show();
 			level.bricks[i].collision(ball);
@@ -46,7 +54,7 @@ const level = {
 					getPower();
 					console.log(game.powerActive);
 				}
-				level.score += broke[0].startingHealth * 500;
+				level.score += broke[0].StartingHealth * 500;
 			}
 		}
 	},
@@ -61,6 +69,7 @@ const level = {
 			ball.position.y = height / 2;
 			ball.speed.x = 0;
 			ball.speed.y = 0;
+			game.active = false;
 			level.makeBricks();
 			//level.test();
 		}
