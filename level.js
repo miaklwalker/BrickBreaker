@@ -5,6 +5,7 @@ const level = {
 	weakestBrick: 1,
 	score: 0,
 	bricks: [],
+	Balls: [],
 	fortifier: 0,
 
 	makeEffect() {
@@ -42,17 +43,14 @@ const level = {
 	},
 
 	show() {
-		text("Level: " + level.levelNum, 10, 20);
-		text("score: " + level.score, 10, 40);
 		for (let i = 0; i < level.bricks.length; i++) {
 			level.bricks[i].show();
-			collision(ball,level.bricks[i]);
+			collisionDetect(level.bricks[i]);
 			if (level.bricks[i].health <= 0) {
 				let broke = level.bricks.splice(i, 1);
 				if (broke[0].effect) {
 					game.powerActive = true;
 					getPower();
-					console.log(game.powerActive);
 				}
 				level.score += broke[0].StartingHealth * 500;
 			}

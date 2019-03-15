@@ -23,3 +23,14 @@ function gameOver() {
 		}
 	}
 }
+
+function loseLife() {
+	ball.position.x = width / 2;
+	ball.position.y = height / 2;
+	ball.speed.x = 0;
+	ball.speed.y = 0;
+	game.lives -= 1;
+	game.powerActive = false;
+	game.active = false;
+	getPower();
+}

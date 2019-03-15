@@ -28,14 +28,9 @@ class Ball {
 		} else if (this.position.x >= width || this.position.x <= 0) {
 			this.speed.x *= -1;
 		} else if (this.position.y >= height) {
-			ball.position.x = width / 2;
-			ball.position.y = height / 2;
-			ball.speed.x = 0;
-			ball.speed.y = 0;
-			game.lives -= 1;
-			game.powerActive = false;
-			game.active = false;
-			getPower();
+			if(level.Balls.length = 1){
+		    loseLife();
+			}
 		}
 	}
 	show() {

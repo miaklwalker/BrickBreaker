@@ -1,11 +1,11 @@
-
-let brick, player, ball,LevelNumber;
+let brick, player, ball, LevelNumber;
 LevelNumber = 1;
+let balls = level.Balls;
 
 function setup() {
 	let canvas = createCanvas(485, 480);
 	level.makeBricks();
-	ball = new Ball(width / 2, height / 2);
+	level.Balls.push(ball = new Ball(width / 2, height / 2));
 	player = new Paddle(width / 2.45, 450);
 }
 
@@ -14,16 +14,21 @@ function setup() {
 function draw() {
 	colorMode(RGB);
 	background(205);
+	text("Level: " + level.levelNum, 10, 20);
+	text("score: " + level.score, 10, 40);
 	text("lives: " + game.lives, 100, 20);
+	balls.forEach(ball => {
+		ball.show();
+		ball.start();
+		ball.move();
+		ball.contact(player);
+	})
 	level.show();
 	level.win(ball);
-	ball.show();
-	ball.start();
 	player.show();
 	player.move();
-	ball.move();
-	ball.contact(player);
-	if(game.lives === 0 ){
-	gameOver();
+
+	if (game.lives === 0) {
+		gameOver();
 	}
 }

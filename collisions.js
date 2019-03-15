@@ -49,3 +49,8 @@ function collision(circle, rectangle) {
         }
     }
 }
+
+
+function collisionDetect(tempBrick){
+    level.Balls.forEach( ball => collision(ball,tempBrick))
+ }
