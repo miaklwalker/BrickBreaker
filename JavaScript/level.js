@@ -57,19 +57,19 @@ const level = {
 		}
 	},
 
-	win(ball) {
-		if (level.bricks.length === 0) {
+	win() {
+			level.Balls.splice(0,balls.length-1);
 			level.levelNum += 1;
 			level.numOfPowers += 1;
 			level.numOfRows += 1;
 			level.weakestBrick += 1;
+			balls.forEach(ball =>{
 			ball.position.x = width / 2;
 			ball.position.y = height / 2;
 			ball.speed.x = 0;
 			ball.speed.y = 0;
+			})
 			game.active = false;
 			level.makeBricks();
-			//level.test();
-		}
 	},
 };

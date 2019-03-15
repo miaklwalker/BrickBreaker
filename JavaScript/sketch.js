@@ -22,7 +22,7 @@ function draw() {
 	text("Ball : " + balls.length, 100, 40)
 	if (keyIsDown(ENTER)) {
 		game.active = true;
-		//multiBall.effect()
+		multiBall.effect()
 	}
 	balls.forEach(orb => {
 		orb.start();
@@ -38,9 +38,11 @@ function draw() {
 	})
 	
 	level.show();
-	level.win(ball);
 	player.show();
 	player.move();
+	if (level.bricks.length === 0) {
+	level.win();
+	}
 	if (balls.length < 1) {
 		loseLife();
 	}
