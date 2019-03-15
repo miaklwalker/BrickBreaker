@@ -29,7 +29,6 @@ function draw() {
 		orb.show();
 		orb.contact(player)
 		orb.move();
-		TestBalls(orb)
 		for (let i = balls.length; i > 0; i--) {
 			if (balls[i - 1].ballLost) {
 				balls.splice(i - 1, 1)
