@@ -6,6 +6,7 @@ let game = {
 	active: false,
 	over: false,
 };
+//const getPower = () => game.powerActive ? multiBall.effect() : false;
 const getPower = () => game.powerActive ? doubler.effect(player) : doubler.loseDoubler(player);
 
 function gameOver() {
@@ -25,10 +26,7 @@ function gameOver() {
 }
 
 function loseLife() {
-	ball.position.x = width / 2;
-	ball.position.y = height / 2;
-	ball.speed.x = 0;
-	ball.speed.y = 0;
+    balls.push(new Ball(width/2,height/2))
 	game.lives -= 1;
 	game.powerActive = false;
 	game.active = false;
