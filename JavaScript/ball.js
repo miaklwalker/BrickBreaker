@@ -17,7 +17,7 @@ class Ball {
 
 				this.direction.y *= -1;
 				this.speed.x = (this.speed.x == 0) ? this.speed.x + 1 : this.speed.x;
-				this.direction.x += roundBallX * (abs(roundBallX) * 3);
+				this.direction.x += roundBallX * (abs(roundBallX) * 2.5);
 
 			}
 		}else false

@@ -32,13 +32,17 @@ function getPower() {
 function gameOver() {
 	if (!game.active) {
 		game.active = false;
+		game.powerActive = false;
 		game.over = true;
 		text("GAME OVER", width / 2 - 30, height / 2 - 40);
 		text("Click anywhere to continue", width / 2 - 30, height / 2)
 		if (mouseIsPressed) {
-			game.lives += 3;
+			level.numOfPowers = 1;
+			level.bricks = [];
+			level.makeBricks();
 			level.score = 0;
-			level.levelNum = 1
+			level.levelNum = 1;
+			game.lives += 3;
 			game.over = false;
 			player.position.x = width / 2 - player.width / 2;
 		}
