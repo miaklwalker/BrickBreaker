@@ -20,7 +20,7 @@ class Ball {
 				this.direction.x += roundBallX * (abs(roundBallX) * 2.5);
 
 			}
-		}else false
+		}
 
 	}
 	move() {

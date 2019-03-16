@@ -17,11 +17,12 @@ const level = {
 	},
 	fortifyBricks() {
 		if (level.levelNum % 5 === 0) {
-			this.fortifier + 1;
+			this.fortifier += 1;
 		}
 	},
 
 	makeBricks() {
+		this.fortifyBricks();
 		let h = (level.numOfRows * 24 + 24);
 		level.weakestBrick = 1 + this.fortifier;
 		for (h; h > 24; h -= 24) {
@@ -37,7 +38,6 @@ const level = {
 			}
 			level.weakestBrick += 1;
 		}
-		this.fortifyBricks();
 		return level.bricks;
 	},
 

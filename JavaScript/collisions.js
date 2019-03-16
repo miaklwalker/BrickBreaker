@@ -22,7 +22,7 @@ function collision(circle, rectangle) {
     else if (circleX > rectangleX + rectangleWidth) {
         testX = rectangleX + rectangleWidth + .02;
         leftRight = true;
-    } else false;
+    } else leftRight = false;
     // top
     if (circleY < rectangleY) {
         testY = rectangleY;
@@ -31,7 +31,7 @@ function collision(circle, rectangle) {
     else if (circleY > rectangleY + rectangleHieght) {
         testY = rectangleY + rectangleHieght + .01;
         topBottom = true;
-    } else false;
+    } else topBottom = false;
 
     let distX = circleX - testX;
     let distY = circleY - testY;
