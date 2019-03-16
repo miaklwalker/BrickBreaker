@@ -1,5 +1,4 @@
 function collision(circle, rectangle) {
-
     let circleX = circle.position.x;
     let circleY = circle.position.y;
     let radius = circle.radius;
@@ -20,16 +19,16 @@ function collision(circle, rectangle) {
         leftRight = true;
     }
     // right
-     else if (circleX > rectangleX + rectangleWidth) { 
+    else if (circleX > rectangleX + rectangleWidth) {
         testX = rectangleX + rectangleWidth + .02;
         leftRight = true;
     } else false;
     // top
-    if (circleY < rectangleY) { 
+    if (circleY < rectangleY) {
         testY = rectangleY;
         topBottom = true;
-    }// bottom
-     else if (circleY > rectangleY + rectangleHieght) { 
+    } // bottom
+    else if (circleY > rectangleY + rectangleHieght) {
         testY = rectangleY + rectangleHieght + .01;
         topBottom = true;
     } else false;
@@ -41,11 +40,17 @@ function collision(circle, rectangle) {
     if (distance <= radius) {
         if (topBottom) {
             rectangle.hit();
-            circle.speed.y *= -1;
+            circle.direction.y *= -1;
         }
         if (leftRight) {
             rectangle.hit();
-            circle.speed.x *= -1;
+            circle.direction.x *= -1;
         }
     }
+
+}
+
+
+function collisionDetect(tempBrick, type = false) {
+    level.Balls.forEach(ball => collision(ball, tempBrick))
 }
