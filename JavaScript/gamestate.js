@@ -7,7 +7,27 @@ let game = {
 	over: false,
 };
 //const getPower = () => game.powerActive ? multiBall.effect() : false;
-const getPower = () => game.powerActive ? doubler.effect(player) : doubler.loseDoubler(player);
+function getPower() {
+	let random = Math.random();
+	let randomNumber = random >= .49 ? 1 : 0;
+	console.log(random)
+	console.log(randomNumber)
+	let powers = [doubler, multiBall];
+	let ranPower = powers[randomNumber];
+	if (game.powerActive) {
+		switch (ranPower) {
+			case powers[0]:
+				doubler.effect(player);
+				break;
+			case powers[1]:
+				multiBall.effect();
+				break;
+		}
+	}
+	if (!game.powerActive) {
+		doubler.loseDoubler(player);
+	}
+}
 
 function gameOver() {
 	if (!game.active) {
@@ -26,7 +46,7 @@ function gameOver() {
 }
 
 function loseLife() {
-    balls.push(new Ball(width/2,height/2))
+	balls.push(new Ball(width / 2, height / 2))
 	game.lives -= 1;
 	game.powerActive = false;
 	game.active = false;

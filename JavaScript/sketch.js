@@ -22,7 +22,7 @@ function draw() {
 	text("Ball : " + balls.length, 100, 40)
 	if (keyIsDown(ENTER)) {
 		game.active = true;
-		multiBall.effect()
+		//multiBall.effect()
 	}
 	balls.forEach(orb => {
 		orb.start();

@@ -10,7 +10,6 @@ const level = {
 
 	makeEffect() {
 		if (level.numOfPowers > 0 && Math.random() > .7) {
-			console.log(level.numOfPowers -= 1);
 			return true;
 		} else {
 			false;
@@ -20,7 +19,6 @@ const level = {
 		if (level.levelNum % 5 === 0) {
 			this.fortifier + 1;
 		}
-
 	},
 
 	makeBricks() {
@@ -30,6 +28,7 @@ const level = {
 			for (let i = 10 - 1; i > -1; i--) {
 				if (this.makeEffect()) {
 					brick = new Brick(i * 48, h, level.weakestBrick);
+					level.numOfPowers--
 					brick.effect = true;
 					level.bricks.push(brick);
 				} else {
@@ -58,18 +57,19 @@ const level = {
 	},
 
 	win() {
-			level.Balls.splice(0,balls.length-1);
-			level.levelNum += 1;
-			level.numOfPowers += 1;
-			level.numOfRows += 1;
-			level.weakestBrick += 1;
-			balls.forEach(ball =>{
+		level.Balls.splice(0, balls.length - 1);
+		level.levelNum += 1;
+		level.numOfPowers += 1;
+		level.numOfRows += 1;
+		level.weakestBrick += 1;
+		balls.forEach(ball => {
 			ball.position.x = width / 2;
 			ball.position.y = height / 2;
 			ball.speed.x = 0;
 			ball.speed.y = 0;
-			})
-			game.active = false;
-			level.makeBricks();
+		})
+		level.numOfPowers = level.levelNum
+		game.active = false;
+		level.makeBricks();
 	},
 };
