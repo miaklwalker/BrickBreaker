@@ -1,4 +1,6 @@
 # BrickBreak
+This Game / Library is my way of learning code and will eventually become a full featured Library to help other beginners,
+Learn by making a simple game like brick breaker!
 --Game Rules--
  - You start with 3 lives
  - if ball reaches the bottom of the screen you lose a life
