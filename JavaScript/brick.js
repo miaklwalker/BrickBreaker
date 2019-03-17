@@ -1,3 +1,6 @@
+// This is the Brick Class it contains all of the functions possible for the bricks of the game.
+// e.g health , whether is has an effect e.t.c.
+
 class Brick {
 	constructor(x, y, health) {
 		this.position = createVector(x, y);

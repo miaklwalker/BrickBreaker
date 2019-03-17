@@ -1,4 +1,4 @@
-/* eslint-disable no-undef */
+// Game State is a collection of different properties and functions for determining the "State" of the game.
 let game = {
 	lives: 3,
 	balls: 1,
@@ -6,7 +6,7 @@ let game = {
 	active: false,
 	over: false,
 };
-//const getPower = () => game.powerActive ? multiBall.effect() : false;
+// chooses and adds a power up to a brick
 function getPower() {
 	let random = Math.random();
 	let randomNumber = random >= .49 ? 1 : 0;

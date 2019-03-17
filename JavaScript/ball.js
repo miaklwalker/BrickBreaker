@@ -1,3 +1,5 @@
+// The Ball Class contains all the components of the Game Ball
+
 class Ball {
 	constructor(x, y) {
 		this.position = createVector(x, y);
@@ -43,7 +45,7 @@ class Ball {
 	start() {
 		if (game.active) {
 			if (!game.over) {
-				this.speed.y = 1 * this.speedMultiplier
+				this.speed.y = this.speedMultiplier
 			}
 		}
 	}

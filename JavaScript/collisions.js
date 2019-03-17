@@ -1,3 +1,5 @@
+// This is a basic collision detection system that allows you to check if the ball is touching a brick and where it was collided with.
+
 function collision(circle, rectangle) {
     let circleX = circle.position.x;
     let circleY = circle.position.y;

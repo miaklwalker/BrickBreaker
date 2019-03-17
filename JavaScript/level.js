@@ -1,4 +1,8 @@
+// This is the level object
+// this is used to store all the information for the level of the game 
+
 const level = {
+	// level properties
 	levelNum: 1,
 	numOfPowers: 1,
 	numOfRows: 3,
