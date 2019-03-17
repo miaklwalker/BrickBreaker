@@ -4,8 +4,6 @@ class Ai {
         this.control = true;
     }
     logic(ball){
-        console.log("is this thing on ")
         this.position.x = ball.position.x
-        console.log(this.position.x)
     }
 }

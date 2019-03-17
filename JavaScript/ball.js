@@ -4,7 +4,7 @@ class Ball {
 	constructor(x, y) {
 		this.position = createVector(x, y);
 		this.direction = createVector(1, 1);
-		this.radius = 15;
+		this.radius = (width*height)*.00003443;
 		this.speedMultiplier = 6;
 		this.speed = createVector(0, 0);
 		this.ballLost = false
@@ -18,7 +18,7 @@ class Ball {
 				let roundBallX = Number(Math.round(ballMap + "e" + 2) + "e-" + 2);
 
 				this.direction.y *= -1;
-				this.speed.x = (this.speed.x == 0) ? this.speed.x + 1 : this.speed.x;
+				this.speed.x = (this.speed.x === 0) ? this.speed.x + 1 : this.speed.x;
 				this.direction.x += roundBallX * (abs(roundBallX) * 2.5);
 
 			}

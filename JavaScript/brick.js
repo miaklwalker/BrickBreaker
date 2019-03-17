@@ -4,8 +4,8 @@
 class Brick {
 	constructor(x, y, health) {
 		this.position = createVector(x, y);
-		this.width = 48.5;
-		this.height = 21;
+		this.width = width/10;
+		this.height = height/20;
 		this.health = health;
 		this.StartingHealth = health;
 		this.effect = false;

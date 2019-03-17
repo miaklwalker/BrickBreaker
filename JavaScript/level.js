@@ -12,6 +12,12 @@ const level = {
 	Balls: [],
 	fortifier: 0,
 
+	scoreboard() {
+		text("Level: " + level.levelNum, 10, 20);
+		text("score: " + level.score, 10, 40);
+		text("lives: " + game.lives, 100, 20);
+		text("Ball : " + balls.length, 100, 40)
+	},
 	makeEffect() {
 		if (level.numOfPowers > 0 && Math.random() > .7) {
 			return true;
@@ -27,17 +33,17 @@ const level = {
 
 	makeBricks() {
 		this.fortifyBricks();
-		let h = (level.numOfRows * 24 + 24);
+		let h = (level.numOfRows * height / 20 + height / 20);
 		level.weakestBrick = 1 + this.fortifier;
-		for (h; h > 24; h -= 24) {
+		for (h; h > height / 20; h -= height / 20) {
 			for (let i = 10 - 1; i > -1; i--) {
 				if (this.makeEffect()) {
-					brick = new Brick(i * 48, h, level.weakestBrick);
+					brick = new Brick(i * width / 10, h, level.weakestBrick);
 					level.numOfPowers--
 					brick.effect = true;
 					level.bricks.push(brick);
 				} else {
-					level.bricks.push(new Brick(i * 48, h, level.weakestBrick));
+					level.bricks.push(new Brick(i * width / 10, h, level.weakestBrick));
 				}
 			}
 			level.weakestBrick += 1;
@@ -60,60 +66,19 @@ const level = {
 		}
 	},
 
-	win() {
+	reset() {
+		level.bricks = []
+		game.powerActive = false;
+		getPower();
 		level.Balls.splice(0, balls.length - 1);
-		level.levelNum += 1;
-		level.numOfPowers += 1;
-		level.numOfRows += 1;
-		level.weakestBrick += 1;
 		balls.forEach(ball => {
 			ball.position.x = width / 2;
 			ball.position.y = height / 2;
 			ball.speed.x = 0;
 			ball.speed.y = 0;
 		})
-		level.numOfPowers = level.levelNum
+		player.position.x = width / 2 - player.width / 2;
 		game.active = false;
 		level.makeBricks();
-	},
-	ballLoop(){
-			// The Ball loop , This checks , draws, and can Delete any and every ball
-			balls.forEach(orb => {
-				orb.start();
-				orb.show();
-				orb.contact(player)
-				orb.move();
-				ai.logic(orb);
-				for (let i = balls.length; i > 0; i--) {
-					if (balls[i - 1].ballLost) {
-						balls.splice(i - 1, 1)
-						console.log(balls.length)
-					}
-				}
-			})
-	},
-	logic(){
-		// These are level and life end conditions
-		if (level.bricks.length === 0) {
-			level.win();
-		}
-		if (balls.length < 1) {
-			loseLife();
-		}
-		if (game.lives === 0) {
-			gameOver();
-		}
-	},
-	reset(){
-		level.bricks = []
-			level.Balls.splice(0, balls.length - 1);
-			balls.forEach(ball => {
-				ball.position.x = width / 2;
-				ball.position.y = height / 2;
-				ball.speed.x = 0;
-				ball.speed.y = 0;
-			})
-			game.active = false;
-			level.makeBricks();
 	}
 };

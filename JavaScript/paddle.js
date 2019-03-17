@@ -2,7 +2,7 @@
 class Paddle {
 	constructor(x, y) {
 		this.acceleration = createVector();
-		this.width = width*.175;
+		this.width = width/5;
 		this.height = height*.02474;
 		this.position = createVector(x, y);
 	}
