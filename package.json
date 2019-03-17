@@ -4,7 +4,8 @@
   "description": "",
   "main": "sketch.js",
   "dependencies": {
-    "collisions": "^2.0.13"
+    "collisions": "^2.0.13",
+    "p5": "latest"
   },
   "devDependencies": {},
   "scripts": {

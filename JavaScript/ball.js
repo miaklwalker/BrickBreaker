@@ -1,5 +1,7 @@
 // The Ball Class contains all the components of the Game Ball
 
+
+
 class Ball {
 	constructor(x, y) {
 		this.position = createVector(x, y);

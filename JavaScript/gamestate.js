@@ -10,8 +10,8 @@ let game = {
 function getPower() {
 	let random = Math.random();
 	let randomNumber = random >= .49 ? 1 : 0;
-	console.log(random)
-	console.log(randomNumber)
+	console.log(random);
+	console.log(randomNumber);
 	let powers = [doubler, multiBall];
 	let ranPower = powers[randomNumber];
 	if (ai.control) {
@@ -41,7 +41,7 @@ function gameOver() {
 		game.powerActive = false;
 		game.over = true;
 		text("GAME OVER", width / 2 - 30, height / 2 - 40);
-		text("Click anywhere to continue", width / 2 - 30, height / 2)
+		text("Click anywhere to continue", width / 2 - 30, height / 2);
 		if (mouseIsPressed) {
 			level.numOfPowers = 1;
 			level.bricks = [];
@@ -50,13 +50,14 @@ function gameOver() {
 			level.levelNum = 1;
 			game.lives += 3;
 			game.over = false;
-			player.position.x = width / 2 - player.width / 2;
+			// noinspection ES6ModulesDependencies
+            player.position.x = width / 2 - player.width / 2;
 		}
 	}
 }
 
 function loseLife() {
-	balls.push(new Ball(width / 2, height / 2))
+	balls.push(new Ball(width / 2, height / 2));
 	game.lives -= 1;
 	game.powerActive = false;
 	game.active = false;

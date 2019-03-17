@@ -22,7 +22,7 @@ const level = {
 		if (level.numOfPowers > 0 && Math.random() > .7) {
 			return true;
 		} else {
-			false;
+			return false;
 		}
 	},
 	fortifyBricks() {
@@ -39,7 +39,7 @@ const level = {
 			for (let i = 10 - 1; i > -1; i--) {
 				if (this.makeEffect()) {
 					brick = new Brick(i * width / 10, h, level.weakestBrick);
-					level.numOfPowers--
+					level.numOfPowers--;
 					brick.effect = true;
 					level.bricks.push(brick);
 				} else {
@@ -67,7 +67,7 @@ const level = {
 	},
 
 	reset() {
-		level.bricks = []
+		level.bricks = [];
 		game.powerActive = false;
 		getPower();
 		level.Balls.splice(0, balls.length - 1);
@@ -76,9 +76,10 @@ const level = {
 			ball.position.y = height / 2;
 			ball.speed.x = 0;
 			ball.speed.y = 0;
-		})
+		});
 		player.position.x = width / 2 - player.width / 2;
 		game.active = false;
+		level.numOfPowers = 1;
 		level.makeBricks();
 	}
 };

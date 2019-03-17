@@ -1,5 +1,6 @@
 // This is a basic collision detection system that allows you to check if the ball is touching a brick and where it was collided with.
 
+
 function collision(circle, rectangle) {
     let circleX = circle.position.x;
     let circleY = circle.position.y;
@@ -8,7 +9,7 @@ function collision(circle, rectangle) {
     let rectangleX = rectangle.position.x;
     let rectangleY = rectangle.position.y;
     let rectangleWidth = rectangle.width;
-    let rectangleHieght = rectangle.height;
+    let rectangleHeight = rectangle.height;
 
     let leftRight;
     let topBottom;
@@ -30,8 +31,8 @@ function collision(circle, rectangle) {
         testY = rectangleY;
         topBottom = true;
     } // bottom
-    else if (circleY > rectangleY + rectangleHieght) {
-        testY = rectangleY + rectangleHieght + .01;
+    else if (circleY > rectangleY + rectangleHeight) {
+        testY = rectangleY + rectangleHeight + .01;
         topBottom = true;
     } else topBottom = false;
 
@@ -53,6 +54,6 @@ function collision(circle, rectangle) {
 }
 
 
-function collisionDetect(tempBrick, type = false) {
+function collisionDetect(tempBrick) {
     level.Balls.forEach(ball => collision(ball, tempBrick))
 }
