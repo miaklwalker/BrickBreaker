@@ -1,4 +1,7 @@
 # BrickBreak
+
+[![DeepScan grade](https://deepscan.io/api/teams/3138/projects/4621/branches/37143/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=3138&pid=4621&bid=37143)
+
 This Game / Library is my way of learning code and will eventually become a full featured Library to help other beginners,
 Learn by making a simple game like brick breaker!
 --Game Rules--
