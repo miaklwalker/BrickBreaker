@@ -1,13 +1,10 @@
 // The Ball Class contains all the components of the Game Ball
-
-
-
 class Ball {
 	constructor(x, y) {
 		this.position = createVector(x, y);
 		this.direction = createVector(1, 1);
-		this.radius = (width*height)*.00003443;
-		this.speedMultiplier = 6;
+		this.radius = (width * height) * .00002443;
+		this.speedMultiplier = (width * height) * .0000062577;
 		this.speed = createVector(0, 0);
 		this.ballLost = false
 	}
@@ -17,15 +14,11 @@ class Ball {
 			this.position.x < Paddle.position.x + Paddle.width + this.radius) {
 			if (this.direction.y > 0) {
 				let ballMap = map(this.position.x, Paddle.position.x, Paddle.position.x + Paddle.width, -1, 1);
-				let roundBallX = Number(Math.round(ballMap + "e" + 2) + "e-" + 2);
-
 				this.direction.y *= -1;
 				this.speed.x = (this.speed.x === 0) ? this.speed.x + 1 : this.speed.x;
-				this.direction.x += roundBallX * (abs(roundBallX) * 2.5);
-
+				this.direction.x += ballMap * (abs(ballMap) * 4.5);
 			}
 		}
-
 	}
 	move() {
 		this.position.x += this.direction.x * this.speed.x;
@@ -35,8 +28,8 @@ class Ball {
 		} else if (this.position.x >= width || this.position.x <= 0) {
 			this.direction.x *= -1;
 		} else if (this.position.y >= height) {
-				this.ballLost = true
-			}
+			this.ballLost = true
+		}
 	}
 	show() {
 		let col = frameCount % 255;

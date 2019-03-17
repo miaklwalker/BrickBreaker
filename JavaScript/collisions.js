@@ -23,7 +23,7 @@ function collision(circle, rectangle) {
     }
     // right
     else if (circleX > rectangleX + rectangleWidth) {
-        testX = rectangleX + rectangleWidth + .02;
+        testX = rectangleX + rectangleWidth ;
         leftRight = true;
     } else leftRight = false;
     // top
@@ -32,7 +32,7 @@ function collision(circle, rectangle) {
         topBottom = true;
     } // bottom
     else if (circleY > rectangleY + rectangleHeight) {
-        testY = rectangleY + rectangleHeight + .01;
+        testY = rectangleY + rectangleHeight ;
         topBottom = true;
     } else topBottom = false;
 

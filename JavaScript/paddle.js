@@ -12,10 +12,10 @@ class Paddle {
 	}
 	move() {
 			if (keyIsDown(LEFT_ARROW)) {
-				this.position.x -= 5;
+				this.position.x -= width*.01041667;
 			}
 			if (keyIsDown(RIGHT_ARROW)) {
-				this.position.x += 5;
+				this.position.x += width * .01041667;
 			}
 			if (this.position.x <= 0) {
 				this.position.x = 0;

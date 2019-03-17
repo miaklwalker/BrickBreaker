@@ -4,6 +4,7 @@ const gameLogic = {
 		balls.forEach(orb => {
 			orb.start();
 			orb.show();
+			console.log(orb.position.x)
 			orb.contact(player);
 			orb.move();
 			ai.logic(orb);
@@ -51,6 +52,7 @@ const gameLogic = {
 		// While demo is running controls demo elements
 		// allows players to start game
 		if (ai.control) {
+			fill(255)
 			text("Start Game", width / 2, height / 2);
 			game.active = true;
 			player.demo(ai)
