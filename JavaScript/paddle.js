@@ -2,8 +2,8 @@
 class Paddle {
 	constructor(x, y) {
 		this.acceleration = createVector();
-		this.width = 84;
-		this.height = 12;
+		this.width = width*.175;
+		this.height = height*.02474;
 		this.position = createVector(x, y);
 	}
 	show() {
@@ -11,16 +11,24 @@ class Paddle {
 		rect(this.position.x, this.position.y, this.width, this.height);
 	}
 	move() {
-		if (keyIsDown(LEFT_ARROW)) {
-			player.position.x -= 5;
+			if (keyIsDown(LEFT_ARROW)) {
+				this.position.x -= 5;
+			}
+			if (keyIsDown(RIGHT_ARROW)) {
+				this.position.x += 5;
+			}
+			if (this.position.x <= 0) {
+				this.position.x = 0;
+			} else if (this.position.x + this.width >= width) {
+				this.position.x = width - this.width;
+			}
 		}
-		if (keyIsDown(RIGHT_ARROW)) {
-			player.position.x += 5;
-		}
-		if (player.position.x <= 0) {
-			player.position.x = 0;
-		} else if (player.position.x + player.width >= width) {
-			player.position.x = width - player.width;
+	demo(ai){ 
+		this.position.x = ai.position.x - this.width/2;
+		if (this.position.x <= 0) {
+			this.position.x = 0;
+		} else if (this.position.x + this.width >= width) {
+			this.position.x = width - this.width;
 		}
 	}
 }

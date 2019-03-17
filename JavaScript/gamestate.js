@@ -14,18 +14,24 @@ function getPower() {
 	console.log(randomNumber)
 	let powers = [doubler, multiBall];
 	let ranPower = powers[randomNumber];
-	if (game.powerActive) {
-		switch (ranPower) {
-			case powers[0]:
-				doubler.effect(player);
-				break;
-			case powers[1]:
-				multiBall.effect();
-				break;
+	if (ai.control) {
+		if (game.powerActive) {
+			doubler.effect(player);
 		}
-	}
-	if (!game.powerActive) {
-		doubler.loseDoubler(player);
+	} else {
+		if (game.powerActive) {
+			switch (ranPower) {
+				case powers[0]:
+					doubler.effect(player);
+					break;
+				case powers[1]:
+					multiBall.effect();
+					break;
+			}
+		}
+		if (!game.powerActive) {
+			doubler.loseDoubler(player);
+		}
 	}
 }
 

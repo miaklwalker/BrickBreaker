@@ -76,4 +76,44 @@ const level = {
 		game.active = false;
 		level.makeBricks();
 	},
+	ballLoop(){
+			// The Ball loop , This checks , draws, and can Delete any and every ball
+			balls.forEach(orb => {
+				orb.start();
+				orb.show();
+				orb.contact(player)
+				orb.move();
+				ai.logic(orb);
+				for (let i = balls.length; i > 0; i--) {
+					if (balls[i - 1].ballLost) {
+						balls.splice(i - 1, 1)
+						console.log(balls.length)
+					}
+				}
+			})
+	},
+	logic(){
+		// These are level and life end conditions
+		if (level.bricks.length === 0) {
+			level.win();
+		}
+		if (balls.length < 1) {
+			loseLife();
+		}
+		if (game.lives === 0) {
+			gameOver();
+		}
+	},
+	reset(){
+		level.bricks = []
+			level.Balls.splice(0, balls.length - 1);
+			balls.forEach(ball => {
+				ball.position.x = width / 2;
+				ball.position.y = height / 2;
+				ball.speed.x = 0;
+				ball.speed.y = 0;
+			})
+			game.active = false;
+			level.makeBricks();
+	}
 };

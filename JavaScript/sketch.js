@@ -1,7 +1,7 @@
 // A Working Demo Of The Library
 
 // Global Scope Varibles
-let brick, player, ball, LevelNumber;
+let brick, player, ball, LevelNumber, ai;
 LevelNumber = 1;
 let balls = level.Balls;
 
@@ -12,7 +12,10 @@ function setup() {
 	balls.push(new Ball(width / 2, height / 2));
 	console.log(balls);
 	player = new Paddle(width / 2.45, 450);
+	ai = new Ai();
 	game.active = false
+	ai.control = true
+
 }
 
 
@@ -29,35 +32,27 @@ function draw() {
 	text("lives: " + game.lives, 100, 20);
 	text("Ball : " + balls.length, 100, 40)
 	// Starts The Game for the player
+	// Starts the players Game
+	if (mouseIsPressed) {
+		if(ai.control){
+		ai.control = false;
+		level.reset()
+		}
+	}
 	if (keyIsDown(ENTER)) {
 		game.active = true;
 	}
-	// The Ball loop , This checks , draws, and can Delete any and every ball
-	balls.forEach(orb => {
-		orb.start();
-		orb.show();
-		orb.contact(player)
-		orb.move();
-		for (let i = balls.length; i > 0; i--) {
-			if (balls[i - 1].ballLost) {
-				balls.splice(i - 1, 1)
-				console.log(balls.length)
-			}
-		}
-	})
-	
+	if(ai.control === true) {
+		text("Start Game", width / 2, height / 2)
+		game.active = true;
+        player.demo(ai)
+	}else{
+     player.move();
+	}
+    level.ballLoop()
 	level.show();
 	player.show();
-	player.move();
-
-	// These are level and life end conditions
-	if (level.bricks.length === 0) {
-	level.win();
-	}
-	if (balls.length < 1) {
-		loseLife();
-	}
-	if (game.lives === 0) {
-		gameOver();
-	}
+	
+    level.logic()
+	
 }
