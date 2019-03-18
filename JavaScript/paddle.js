@@ -1,7 +1,6 @@
 // This is the Paddle Class , This contains all of the paddle functions and properties
 class Paddle {
 	constructor(x, y) {
-		this.acceleration = createVector();
 		this.width = width/5;
 		this.height = height*.02474;
 		this.position = createVector(x, y);

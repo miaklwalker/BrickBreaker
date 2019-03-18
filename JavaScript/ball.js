@@ -1,11 +1,11 @@
 // The Ball Class contains all the components of the Game Ball
 class Ball {
 	constructor(x, y) {
-		this.position = createVector(x, y);
-		this.direction = createVector(1, 1);
+		this.position = createVector(x, y);  // stores the balls current position
+		this.direction = createVector(0, 1); // is the arrow that points Where the ball is headed
+		this.speed = createVector(1, 1);     // is the direction component of velocity
 		this.radius = (width * height) * .00002443;
 		this.speedMultiplier = (width * height) * .0000062577;
-		this.speed = createVector(0, 0);
 		this.ballLost = false
 	}
 	contact(Paddle) {
@@ -13,23 +13,28 @@ class Ball {
 			this.position.x > Paddle.position.x - this.radius / 2 &&
 			this.position.x < Paddle.position.x + Paddle.width + this.radius) {
 			if (this.direction.y > 0) {
-				let ballMap = map(this.position.x, Paddle.position.x, Paddle.position.x + Paddle.width, -1, 1);
+				let ballMap = map(this.position.x, Paddle.position.x, Paddle.position.x + Paddle.width, 1, -1);
 				this.direction.y *= -1;
-				this.speed.x = (this.speed.x === 0) ? this.speed.x + 1 : this.speed.x;
-				this.direction.x += ballMap * (abs(ballMap) * 4.5);
+				this.direction.x += 1
+				// this.speed.x *= ballMap * abs(ballMap)*3;
+				this.direction.x *= abs(ballMap) * 3;
 			}
 		}
 	}
+	hitsWall(){
+			if (this.position.y <= 0) {
+				this.direction.y *= -1;
+			} else if (this.position.x >= width || this.position.x <= 0) {
+				this.direction.x *= -1;
+			} else if (this.position.y >= height) {
+				this.ballLost = true
+			}
+	}
 	move() {
+		this.speed.mult(this.speedMultiplier/3)
 		this.position.x += this.direction.x * this.speed.x;
 		this.position.y += this.direction.y * this.speed.y;
-		if (this.position.y <= 0) {
-			this.direction.y *= -1;
-		} else if (this.position.x >= width || this.position.x <= 0) {
-			this.direction.x *= -1;
-		} else if (this.position.y >= height) {
-			this.ballLost = true
-		}
+		this.hitsWall();
 	}
 	show() {
 		let col = frameCount % 255;

@@ -4,14 +4,12 @@ const gameLogic = {
 		balls.forEach(orb => {
 			orb.start();
 			orb.show();
-			console.log(orb.position.x)
 			orb.contact(player);
 			orb.move();
 			ai.logic(orb);
 			for (let i = balls.length; i > 0; i--) {
 				if (balls[i - 1].ballLost) {
 					balls.splice(i - 1, 1);
-					console.log(balls.length)
 				}
 			}
 		})

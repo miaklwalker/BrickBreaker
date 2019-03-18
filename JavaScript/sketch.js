@@ -12,7 +12,7 @@ function setup() {
 	createCanvas(windowWidth,windowHeight);
 	level.makeBricks();
 	balls.push(new Ball(width / 2, height / 2));
-	player = new Paddle(width / 2.45, height - height*.2);
+	player = new Paddle(width / 2, height - height*.2);
 	ai = new Ai();
 	game.active = false;
 	ai.control = true;

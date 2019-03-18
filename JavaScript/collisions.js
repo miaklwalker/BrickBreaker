@@ -24,7 +24,7 @@ function collision(circle, rectangle) {
     // right
     else if (circleX > rectangleX + rectangleWidth) {
         testX = rectangleX + rectangleWidth ;
-        leftRight = true;
+        leftRight = false;
     } else leftRight = false;
     // top
     if (circleY < rectangleY) {
