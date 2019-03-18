@@ -70,12 +70,13 @@ const level = {
 		level.bricks = [];
 		game.powerActive = false;
 		getPower();
-		level.Balls.splice(0, balls.length - 1);
+		level.Balls.splice(0, balls.length);
 		balls.forEach(ball => {
 			ball.position.x = width / 2;
 			ball.position.y = height / 2;
 			ball.speed.x = 0;
 			ball.speed.y = 0;
+			ball.direction.y = 1
 		});
 		player.position.x = width / 2 - player.width / 2;
 		game.active = false;

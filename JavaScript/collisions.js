@@ -23,7 +23,7 @@ function collision(circle, rectangle) {
     }
     // right
     else if (circleX > rectangleX + rectangleWidth) {
-        testX = rectangleX + rectangleWidth ;
+        testX = rectangleX + rectangleWidth;
         leftRight = false;
     } else leftRight = false;
     // top
@@ -32,25 +32,31 @@ function collision(circle, rectangle) {
         topBottom = true;
     } // bottom
     else if (circleY > rectangleY + rectangleHeight) {
-        testY = rectangleY + rectangleHeight ;
+        testY = rectangleY + rectangleHeight;
         topBottom = true;
     } else topBottom = false;
-
+line(circleX,circleY,testX,testY)
     let distX = circleX - testX;
     let distY = circleY - testY;
     let distance = sqrt((distX * distX) + (distY * distY));
 
-    if (distance <= radius) {
-        if (topBottom) {
+    if (distance <= radius / 2) {
+        debugger
+        if (topBottom && leftRight) {
+            circle.direction.x *= -1
+            circle.direction.y *= -1
             rectangle.hit();
-            circle.direction.y *= -1;
-        }
-        if (leftRight) {
-            rectangle.hit();
-            circle.direction.x *= -1;
+        } else {
+            if (topBottom) {
+                rectangle.hit();
+                circle.direction.y *= -1;
+            }
+            if (leftRight) {
+                rectangle.hit();
+                circle.direction.x *= -1;
+            }
         }
     }
-
 }
 
 

@@ -6,6 +6,7 @@ const gameLogic = {
 			orb.show();
 			orb.contact(player);
 			orb.move();
+			orb.hitWall();
 			ai.logic(orb);
 			for (let i = balls.length; i > 0; i--) {
 				if (balls[i - 1].ballLost) {
@@ -18,7 +19,7 @@ const gameLogic = {
     ends() {
 		// These are level and life end conditions
 		if (level.bricks.length === 0) {
-			level.win();
+			gameLogic.win();
 		}
 		if (balls.length < 1) {
 			loseLife();
@@ -51,7 +52,7 @@ const gameLogic = {
 		// allows players to start game
 		if (ai.control) {
 			fill(255)
-			text("Start Game", width / 2, height / 2);
+			text("Start Game", width / 2, height / 2)
 			game.active = true;
 			player.demo(ai)
 		} else {

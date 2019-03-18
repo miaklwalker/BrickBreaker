@@ -4,6 +4,6 @@ class Ai {
         this.control = true;
     }
     logic(ball){
-        this.position.x = ball.position.x
+        this.position.x = ball.position.x +15
     }
 }

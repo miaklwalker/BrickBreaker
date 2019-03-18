@@ -19,10 +19,10 @@ class Brick {
 			colorMode(RGB);
 			if (this.effect) {
 				fill((this.health) * 51, 0, 0, 255);
-				rect(this.position.x, this.position.y, this.width, this.height);
+				rect(this.position.x, this.position.y, this.width, this.height,20);
 			} else {
 				fill(52, (this.health) * 51, (this.health + 15) * 51, 255);
-				rect(this.position.x, this.position.y, this.width, this.height);
+				rect(this.position.x, this.position.y, this.width, this.height,20);
 			}
 		}
 	}

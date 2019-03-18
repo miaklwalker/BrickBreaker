@@ -31,6 +31,8 @@ function draw() {
 	player.show();
     gameLogic.ends()
 }
+
+
 function resizeWindow(){
 	createCanvas(windowWidth,windowHeight);
 }

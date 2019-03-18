@@ -1,7 +1,6 @@
 /*
 This file contains The Powerups functions These will probably be converted to a Parent/Child classes in a later Version
 */
-
 const doubler = {
 	effect(paddle) {
 		if (paddle.width < width / 4) {
