@@ -41,7 +41,6 @@ line(circleX,circleY,testX,testY)
     let distance = sqrt((distX * distX) + (distY * distY));
 
     if (distance <= radius / 2) {
-        debugger
         if (topBottom && leftRight) {
             circle.direction.x *= -1
             circle.direction.y *= -1
