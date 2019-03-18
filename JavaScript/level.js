@@ -13,6 +13,7 @@ const level = {
 	fortifier: 0,
 
 	scoreboard() {
+		textSize(14);
 		text("Level: " + level.levelNum, 10, 20);
 		text("score: " + level.score, 10, 40);
 		text("lives: " + game.lives, 100, 20);

@@ -51,8 +51,11 @@ const gameLogic = {
 		// While demo is running controls demo elements
 		// allows players to start game
 		if (ai.control) {
-			fill(255)
-			text("Start Game", width / 2, height / 2)
+			fill(052)
+			textAlign(CENTER,CENTER)
+			textSize(24)
+			text("Start Game", width / 2, height / 2);
+			text("Click Anywhere!", width / 2, height / 2+24)
 			game.active = true;
 			player.demo(ai)
 		} else {

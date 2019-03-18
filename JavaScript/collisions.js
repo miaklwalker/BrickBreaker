@@ -35,7 +35,7 @@ function collision(circle, rectangle) {
         testY = rectangleY + rectangleHeight;
         topBottom = true;
     } else topBottom = false;
-line(circleX,circleY,testX,testY)
+//line(circleX,circleY,testX,testY)
     let distX = circleX - testX;
     let distY = circleY - testY;
     let distance = sqrt((distX * distX) + (distY * distY));

@@ -40,6 +40,7 @@ function gameOver() {
 		game.active = false;
 		game.powerActive = false;
 		game.over = true;
+		textSize(24);
 		text("GAME OVER", width / 2 - 30, height / 2 - 40);
 		text("Click anywhere to continue", width / 2 - 30, height / 2);
 		if (mouseIsPressed) {
@@ -50,7 +51,6 @@ function gameOver() {
 			level.levelNum = 1;
 			game.lives += 3;
 			game.over = false;
-			// noinspection ES6ModulesDependencies
             player.position.x = width / 2 - player.width / 2;
 		}
 	}
