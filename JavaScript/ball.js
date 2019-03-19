@@ -4,7 +4,7 @@ class Ball {
 		this.position = createVector(x, y); // stores the balls current position
 		this.direction = createVector(0, 3); // is the arrow that points Where the ball is headed
 		this.speed = createVector(2, 2); // is the direction component of velocity
-		this.radius = (width * height) * .00004443;
+		this.radius = (width/1.3 * height) * .00004443;
 		this.speedMultiplier = (width * height) * .000052577;
 		this.velocity = this.direction.mult(this.speed);
 		this.speedLimit = 6

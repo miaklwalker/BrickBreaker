@@ -1,14 +1,14 @@
 power ups
 ---------------
-multiBall (for loop making balls)
-{done} Big Board (change this.width of paddle)
-Slow ball ( changing this.speed of ball)
-extra lives ( life++)
+{DONE}multiBall (for loop making balls)
+{DONE} Big Board (change this.width of paddle)
+StickyBall( changing this.speed of ball)
+{DONE}extra lives ( life++)
 ---------------
 
 lives
 --------------
-start with three lose one when ball hit bottom of screen ( life--)
+{DONE}start with three lose one when ball hit bottom of screen ( life--)
 --------------
 
 game start
@@ -18,7 +18,7 @@ game start
 
 game over
 --------------
-no more lives ball hits bottom (life = 0 && ball hits bottom)
+{DONE}no more lives ball hits bottom (life = 0 && ball hits bottom)
 --------------
 
 level
@@ -33,5 +33,12 @@ win
 
 score
 -----------------
-bricks orignal health * 500
+{DONE}bricks orignal health * 500
 ------------------
+
+
+
+
+sticky paddle 
+if ball touches paddle this.speed = 0 
+ball.position.x 

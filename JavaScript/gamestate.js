@@ -9,10 +9,10 @@ let game = {
 // chooses and adds a power up to a brick
 function getPower() {
 	let random = Math.random();
-	let randomNumber = random >= .49 ? 1 : 0;
-	console.log(random);
-	console.log(randomNumber);
-	let powers = [doubler, multiBall];
+	let randomNumber1 = random >= .49 ? 1 : 0;
+	let randomNumber2 = random % 2 === 0 ? 1 : 0;
+	let randomNumber = (randomNumber1 === 0 ? (random >= .73 ? 0 : 2) :(randomNumber1+randomNumber2));
+	let powers = [doubler, multiBall,extraLife];
 	let ranPower = powers[randomNumber];
 	if (ai.control) {
 		if (game.powerActive) {
@@ -27,6 +27,10 @@ function getPower() {
 				case powers[1]:
 					multiBall.effect();
 					break;
+					case powers[2]:
+					extraLife.effect();
+					break;
+					
 			}
 		}
 		if (!game.powerActive) {
