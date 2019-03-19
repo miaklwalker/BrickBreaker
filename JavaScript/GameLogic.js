@@ -43,7 +43,9 @@ const gameLogic = {
 		});
 		level.numOfPowers = level.levelNum;
 		game.active = false;
+	
 		level.makeBricks();
+
     },
     
 

@@ -12,12 +12,21 @@ const level = {
 	Balls: [],
 	fortifier: 0,
 
+
 	scoreboard() {
 		textSize(14);
-		text("Level: " + level.levelNum, 10, 20);
-		text("score: " + level.score, 10, 40);
-		text("lives: " + game.lives, 100, 20);
-		text("Ball : " + balls.length, 100, 40)
+		textAlign();
+		textSize(14)
+		text("Level: " + level.levelNum, 50, 20);
+		text("score: " + level.score, 50, 40);
+		text("lives: " + game.lives, 130, 20);
+		text("Ball : " + balls.length, 130, 40)
+		if (!game.active) {
+			textSize(20)
+			text("LEVEL:" + this.levelNum, width / 2, height / 2-60)
+			text("Press Enter To Start!", width/2,height/2 -30);
+		};
+
 	},
 	makeEffect() {
 		if (level.numOfPowers > 0 && Math.random() > .7) {
@@ -83,5 +92,6 @@ const level = {
 		game.active = false;
 		level.numOfPowers = 1;
 		level.makeBricks();
+
 	}
 };
