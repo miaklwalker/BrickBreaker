@@ -12,11 +12,27 @@ const level = {
 	Balls: [],
 	fortifier: 0,
 
+
+	scoreboard() {
+		textSize(14);
+		textAlign();
+		textSize(14)
+		text("Level: " + level.levelNum, 50, 20);
+		text("score: " + level.score, 50, 40);
+		text("lives: " + game.lives, 130, 20);
+		text("Ball : " + balls.length, 130, 40)
+		if (!game.active) {
+			textSize(20)
+			text("LEVEL:" + this.levelNum, width / 2, height / 2-60)
+			text("Press Enter To Start!", width/2,height/2 -30);
+		};
+
+	},
 	makeEffect() {
 		if (level.numOfPowers > 0 && Math.random() > .7) {
 			return true;
 		} else {
-			false;
+			return false;
 		}
 	},
 	fortifyBricks() {
@@ -27,17 +43,17 @@ const level = {
 
 	makeBricks() {
 		this.fortifyBricks();
-		let h = (level.numOfRows * 24 + 24);
+		let h = (level.numOfRows * height / 20 + height / 20);
 		level.weakestBrick = 1 + this.fortifier;
-		for (h; h > 24; h -= 24) {
+		for (h; h > height / 20; h -= height / 20) {
 			for (let i = 10 - 1; i > -1; i--) {
 				if (this.makeEffect()) {
-					brick = new Brick(i * 48, h, level.weakestBrick);
-					level.numOfPowers--
+					brick = new Brick(i * width / 10, h, level.weakestBrick);
+					level.numOfPowers--;
 					brick.effect = true;
 					level.bricks.push(brick);
 				} else {
-					level.bricks.push(new Brick(i * 48, h, level.weakestBrick));
+					level.bricks.push(new Brick(i * width / 10, h, level.weakestBrick));
 				}
 			}
 			level.weakestBrick += 1;
@@ -60,20 +76,22 @@ const level = {
 		}
 	},
 
-	win() {
-		level.Balls.splice(0, balls.length - 1);
-		level.levelNum += 1;
-		level.numOfPowers += 1;
-		level.numOfRows += 1;
-		level.weakestBrick += 1;
+	reset() {
+		level.bricks = [];
+		game.powerActive = false;
+		getPower();
+		level.Balls.splice(0, balls.length);
 		balls.forEach(ball => {
 			ball.position.x = width / 2;
 			ball.position.y = height / 2;
 			ball.speed.x = 0;
 			ball.speed.y = 0;
-		})
-		level.numOfPowers = level.levelNum
+			ball.direction.y = 1
+		});
+		player.position.x = width / 2 - player.width / 2;
 		game.active = false;
+		level.numOfPowers = 1;
 		level.makeBricks();
-	},
+
+	}
 };
