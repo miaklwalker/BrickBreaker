@@ -46,11 +46,11 @@ function collision(circle, rectangle) {
             circle.direction.y *= -1
             rectangle.hit();
         } else {
-            if (topBottom) {
+            if (topBottom&& !leftRight) {
                 rectangle.hit();
                 circle.direction.y *= -1;
             }
-            if (leftRight) {
+            if (leftRight && !topBottom) {
                 rectangle.hit();
                 circle.direction.x *= -1;
             }
