@@ -34,3 +34,10 @@ const extraLife = {
 		game.lives += 1;
 	},
 }
+// const stickyPaddle = {
+// 	sticky:true,
+// 	effect(){
+//     sticky = true;
+// 	}
+
+//}
