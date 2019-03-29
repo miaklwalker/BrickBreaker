@@ -1,9 +1,6 @@
 // Global Variables 
 let canvas:HTMLCanvasElement,ctx:CanvasRenderingContext2D,ball:Ball,brick:Brick,player:Paddle,clicked:number,keyPressed:string,ai:Ai;
 
-// Game Loop
-
-
 // Classes
 /**
  * @class Vector
@@ -31,7 +28,6 @@ class Vector {
         }
     }
 }
-
 
 /**
  * @class Brick
