@@ -62,7 +62,13 @@ declare class Paddle {
     height: number;
     position: Vector;
     constructor(x: number, y: number);
+    /**
+     *
+     */
     show(): void;
+    /**
+     *
+     */
     move(): void;
 }
 /**
@@ -73,6 +79,9 @@ declare class Ai {
     position: Vector;
     control: boolean;
     constructor();
+    /**
+     *
+     */
     logic(): void;
 }
 /**
@@ -90,6 +99,10 @@ declare function makeCanvas(name: string, width?: string, height?: string): HTML
  * method.
  */
 declare function getPowers(): void;
+/**
+ *
+ * @param tempBrick
+ */
 declare function collisionsDetect(tempBrick: Brick): void;
 declare function collisions(circle: Ball, rectangle: Brick): void;
 declare function gameLoop(name: FrameRequestCallback): void;

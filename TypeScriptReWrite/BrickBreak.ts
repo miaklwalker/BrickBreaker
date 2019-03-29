@@ -46,7 +46,7 @@ class Brick{
     height:number;
     health:number;
     startingHealth:number;
-    effect:boolean
+    effect:boolean;
 
     constructor(x:number,y:number,health:number){
     this.position = new Vector(x,y);
@@ -63,7 +63,7 @@ class Brick{
     show(){
         let myGradient = ctx.createLinearGradient(this.position.x, this.position.y, this.position.x, this.position.y + this.height);
         myGradient.addColorStop(0, "white");
-        myGradient.addColorStop(.6, "blue")
+        myGradient.addColorStop(.6, "blue");
         myGradient.addColorStop(1, "darkBlue");
         ctx.fillStyle = myGradient;
         ctx.fillRect(this.position.x,this.position.y,this.width,this.height);
@@ -104,20 +104,19 @@ class Ball{
         this.position.add(this.speed);
     }
     hitWall(){
-    if(this.position.y >= canvas.height-this.radius || this.position.y <= 0+this.radius){
+    if(this.position.y >= canvas.height-this.radius || this.position.y <= this.radius){
         this.speed.y *= -1;
     } 
-     if (this.position.x >= canvas.width - this.radius || this.position.x <= 0 + this.radius) {
+     if (this.position.x >= canvas.width - this.radius || this.position.x <= this.radius) {
         this.speed.x *= -1;
     }
     }
     show(){
-        console.log(this.radius)
-        let myGradient = ctx.createRadialGradient(this.position.x, this.position.y, this.radius *.14, this.position.x, this.position.y, this.radius)
+        let myGradient = ctx.createRadialGradient(this.position.x, this.position.y, this.radius *.14, this.position.x, this.position.y, this.radius);
         myGradient.addColorStop(0,"white");
         myGradient.addColorStop(1,"red");
         ctx.fillStyle = myGradient;
-        ctx.beginPath() 
+        ctx.beginPath();
         ctx.arc(this.position.x,this.position.y,this.radius,0,Math.PI*2);       
         ctx.fill();
     }
@@ -137,30 +136,32 @@ class Paddle {
     width: number;
     height: number;
     position: Vector;
-    constructor(x:number,y:number){
-    this.width  = canvas.width/5
-    this.height = canvas.height*.02474;
-    this.position = new Vector(x,y)
+
+    constructor(x: number, y: number) {
+        this.width = canvas.width / 5;
+        this.height = canvas.height * .02474;
+        this.position = new Vector(x, y)
     }
-    show(){
-        let myGradient = ctx.createLinearGradient(this.position.x,this.position.y,this.position.x,this.position.y+this.height);
-        myGradient.addColorStop(0,"lightgrey");
-        myGradient.addColorStop(.6,"black")
-        myGradient.addColorStop(1,"black");
+
+    /**
+     *
+     */
+    show() {
+        let myGradient = ctx.createLinearGradient(this.position.x, this.position.y, this.position.x, this.position.y + this.height);
+        myGradient.addColorStop(0, "lightgrey");
+        myGradient.addColorStop(.6, "black");
+        myGradient.addColorStop(1, "black");
         ctx.fillStyle = myGradient;
         ctx.fillRect(this.position.x, this.position.y, this.width, this.height);
     }
-    move(){
-        let input = (key: EventListenerObject) => {
-           
-        }
-        
+
+    /**
+     *
+     */
+    move() {
 
     }
-
 }
-
-
 /**
  * @class Ai
  * @classdesc Controls the Paddle for the Game Demo Screen
@@ -172,6 +173,10 @@ class Ai{
         this.position = new Vector();
         this.control = true;
     }
+
+    /**
+     *
+     */
     logic(){
 
     }
@@ -214,6 +219,10 @@ function getPowers(){
 
 }
 
+/**
+ *
+ * @param tempBrick
+ */
 function collisionsDetect(tempBrick:Brick){
 level.balls.forEach((orb:Ball) => collisions(orb,tempBrick));
 }
@@ -255,17 +264,17 @@ let distY:number = circleY-testY;
 let distance = Math.sqrt((distX*distX)+(distY*distY));
 if(distance <= radius / 2){
     if(topBottom && leftRight){
-        circle.direction.x *= -1;
-        circle.direction.y *= -1;
+        circle.speed.x *= -1;
+        circle.speed.y *= -1;
         rectangle.hit();
     }else{
         if(topBottom && !leftRight){
             rectangle.hit();
-            circle.direction.y *= -1;
+            circle.speed.y *= -1;
         }
         if(leftRight && !topBottom){
             rectangle.hit();
-            circle.direction.x *= -1;
+            circle.speed.x *= -1;
         }
     }
 }
@@ -278,9 +287,10 @@ function gameLoop(name:FrameRequestCallback){
 
 function drawBackground(color:string){
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = "grey";
+    ctx.fillStyle = color;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 }
+
 
 
 
@@ -368,7 +378,7 @@ const level:level ={
     reset(){
 
     },
-}
+};
 
     interface game {
         lives:number;
@@ -385,7 +395,7 @@ const level:level ={
     balls:1,
     powerActive:false,
     over:false,
-    }
+    };
 
 
 /**
@@ -417,7 +427,7 @@ const gameLogic:gameLogic ={
 
     },
 
-}
+};
 
 // Power-Ups 
 
@@ -451,10 +461,21 @@ extraLife:<object>{
 
 
 // Game Setup..
-(function initialize(){
+(() => {
     makeCanvas("canvas");
-    setup();
-})()
+         window.onload = function () {
+             document.addEventListener('keydown', (event) => {
+                let keyPressed = event.key;
+                 alert(keyPressed);
+                 }, false);
+
+             document.addEventListener('mousedown', function (mEvent) {
+                 let clicked = mEvent.button;
+                 alert(clicked);
+                 }, false);
+            };
+         setup();
+})();
 
 function setup(){
     level.makeBricks();
@@ -470,8 +491,8 @@ function draw() {
     level.showBricks();
     gameLogic.ballLoop();
     player.show();
+    player.move();
     gameLoop(draw);
-    
-}
+ }
 
 

@@ -87,7 +87,6 @@ class Ball {
         }
     }
     show() {
-        console.log(this.radius);
         let myGradient = ctx.createRadialGradient(this.position.x, this.position.y, this.radius * .14, this.position.x, this.position.y, this.radius);
         myGradient.addColorStop(0, "white");
         myGradient.addColorStop(1, "red");
@@ -111,6 +110,9 @@ class Paddle {
         this.height = canvas.height * .02474;
         this.position = new Vector(x, y);
     }
+    /**
+     *
+     */
     show() {
         let myGradient = ctx.createLinearGradient(this.position.x, this.position.y, this.position.x, this.position.y + this.height);
         myGradient.addColorStop(0, "lightgrey");
@@ -119,9 +121,10 @@ class Paddle {
         ctx.fillStyle = myGradient;
         ctx.fillRect(this.position.x, this.position.y, this.width, this.height);
     }
+    /**
+     *
+     */
     move() {
-        let input = (key) => {
-        };
     }
 }
 /**
@@ -133,6 +136,9 @@ class Ai {
         this.position = new Vector();
         this.control = true;
     }
+    /**
+     *
+     */
     logic() {
     }
 }
@@ -165,6 +171,10 @@ function getPowers() {
     let powerUpList = Object.keys(PowerUps);
     let chosenPowerUp = powerUpList[Random % powerUpList.length];
 }
+/**
+ *
+ * @param tempBrick
+ */
 function collisionsDetect(tempBrick) {
     level.balls.forEach((orb) => collisions(orb, tempBrick));
 }
@@ -203,18 +213,18 @@ function collisions(circle, rectangle) {
     let distance = Math.sqrt((distX * distX) + (distY * distY));
     if (distance <= radius / 2) {
         if (topBottom && leftRight) {
-            circle.direction.x *= -1;
-            circle.direction.y *= -1;
+            circle.speed.x *= -1;
+            circle.speed.y *= -1;
             rectangle.hit();
         }
         else {
             if (topBottom && !leftRight) {
                 rectangle.hit();
-                circle.direction.y *= -1;
+                circle.speed.y *= -1;
             }
             if (leftRight && !topBottom) {
                 rectangle.hit();
-                circle.direction.x *= -1;
+                circle.speed.x *= -1;
             }
         }
     }
@@ -322,8 +332,18 @@ const PowerUps = {
     extraLife: {}
 };
 // Game Setup..
-(function initialize() {
+(() => {
     makeCanvas("canvas");
+    window.onload = function () {
+        document.addEventListener('keydown', (event) => {
+            let keyPressed = event.key;
+            alert(keyPressed);
+        }, false);
+        document.addEventListener('mousedown', function (mEvent) {
+            let clicked = mEvent.button;
+            alert(clicked);
+        }, false);
+    };
     setup();
 })();
 function setup() {
@@ -338,5 +358,6 @@ function draw() {
     level.showBricks();
     gameLogic.ballLoop();
     player.show();
+    player.move();
     gameLoop(draw);
 }
