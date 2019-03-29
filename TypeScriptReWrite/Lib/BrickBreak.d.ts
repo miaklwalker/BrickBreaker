@@ -1,4 +1,4 @@
-declare let canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D, ball: Ball, brick: Brick, player: Paddle;
+declare let canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D, ball: Ball, brick: Brick, player: Paddle, clicked: number, keyPressed: string, ai: Ai;
 /**
  * @class Vector
  * @param x - Contains the x Value for the vector
@@ -62,14 +62,9 @@ declare class Paddle {
     height: number;
     position: Vector;
     constructor(x: number, y: number);
-    /**
-     *
-     */
     show(): void;
-    /**
-     *
-     */
-    move(): void;
+    move(direction: string): void;
+    demo(ai: Ai): void;
 }
 /**
  * @class Ai
@@ -78,11 +73,10 @@ declare class Paddle {
 declare class Ai {
     position: Vector;
     control: boolean;
+    offset: number;
     constructor();
-    /**
-     *
-     */
-    logic(): void;
+    logic(ball: Ball): void;
+    choose(choice: string): void;
 }
 /**
  *
@@ -106,7 +100,7 @@ declare function getPowers(): void;
 declare function collisionsDetect(tempBrick: Brick): void;
 declare function collisions(circle: Ball, rectangle: Brick): void;
 declare function gameLoop(name: FrameRequestCallback): void;
-declare function drawBackground(color: string): void;
+declare function drawBackground(): void;
 /**
  * @name level
  * @description - The Level Object contains Methods and Properties for defining the level.

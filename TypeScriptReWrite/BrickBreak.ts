@@ -1,5 +1,5 @@
 // Global Variables 
-let canvas:HTMLCanvasElement,ctx:CanvasRenderingContext2D,ball:Ball,brick:Brick,player:Paddle;
+let canvas:HTMLCanvasElement,ctx:CanvasRenderingContext2D,ball:Ball,brick:Brick,player:Paddle,clicked:number,keyPressed:string,ai:Ai;
 
 // Game Loop
 
@@ -50,7 +50,7 @@ class Brick{
 
     constructor(x:number,y:number,health:number){
     this.position = new Vector(x,y);
-    this.width = (canvas.width/10)-3;
+    this.width = (canvas.width/10)-2.5;
     this.height = (canvas.height/20)-4;
     this.health = health;
     this.startingHealth = health;
@@ -142,10 +142,6 @@ class Paddle {
         this.height = canvas.height * .02474;
         this.position = new Vector(x, y)
     }
-
-    /**
-     *
-     */
     show() {
         let myGradient = ctx.createLinearGradient(this.position.x, this.position.y, this.position.x, this.position.y + this.height);
         myGradient.addColorStop(0, "lightgrey");
@@ -155,10 +151,14 @@ class Paddle {
         ctx.fillRect(this.position.x, this.position.y, this.width, this.height);
     }
 
-    /**
-     *
-     */
-    move() {
+    move(direction:string) {
+      if (direction === "ArrowLeft") this.position.x -= canvas.width * .01041667;
+      else if (direction === "ArrowRight") this.position.x += canvas.width * .01041667;
+    }
+    demo(ai:Ai){
+        this.position.x = ai.position.x - this.width/2;
+        if (this.position.x <= 0) this.position.x = 0;
+        else if (this.position.x + this.width >= canvas.width) this.position.x = canvas.width - this.width;
 
     }
 }
@@ -169,16 +169,43 @@ class Paddle {
 class Ai{
     position: Vector;
     control: boolean;
+    offset:number;
     constructor(){
         this.position = new Vector();
         this.control = true;
+        this.offset=0;
     }
 
-    /**
-     *
-     */
-    logic(){
+    logic(ball:Ball){
+        let right:number = 0;
+        let left:number  = 0;
+        level.bricks.forEach((brick:Brick) => brick.position.x > canvas.width / 2 ? right++ : left++);
+        if(right > left) {
+            this.choose("left")
+          }else if(left > right){
+              this.choose("right")
+          }else{
+              this.choose("middle")
+          }
+    this.position.x = ball.position.x;
+     }
 
+    choose(choice:string){
+        let offset = 0
+        switch(choice){
+            case "left":
+            for(offset; offset >=-30 ; offset-=.1){
+            this.position.x += ball.position.x + offset}
+             break;
+
+            case "right":
+            for(offset; offset <= 30 ; offset+=.1){
+            this.position.x += ball.position.x + offset}
+            break;
+            default:
+            this.offset = 0;
+            this.position.x += ball.position.x + offset;
+        }
     }
 }
 
@@ -285,9 +312,9 @@ function gameLoop(name:FrameRequestCallback){
     requestAnimationFrame(name);
 }
 
-function drawBackground(color:string){
+function drawBackground(){
+    ctx.fillStyle = "darkGrey";
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = color;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 }
 
@@ -415,6 +442,7 @@ const gameLogic:gameLogic ={
         orb.show();
         orb.move();
         orb.hitWall();
+        ai.logic(orb);
     })
     },
     endConditions(){
@@ -463,22 +491,25 @@ extraLife:<object>{
 // Game Setup..
 (() => {
     makeCanvas("canvas");
+
          window.onload = function () {
-             document.addEventListener('keydown', (event) => {
+             document.addEventListener("keydown", (event) => {
                 let keyPressed = event.key;
-                 alert(keyPressed);
+                 player.move(keyPressed);
                  }, false);
 
-             document.addEventListener('mousedown', function (mEvent) {
-                 let clicked = mEvent.button;
-                 alert(clicked);
+             document.addEventListener("click", function (mEvent) {
+                let clicked: number = mEvent.button;
                  }, false);
             };
+
          setup();
 })();
 
 function setup(){
+    
     level.makeBricks();
+    ai = new Ai();
     ball = new Ball(240,240);
     level.balls.push(ball);
     player = new Paddle(canvas.width / 2 ,canvas.height - canvas.height *.2 );
@@ -487,12 +518,11 @@ function setup(){
 
 
 function draw() {
-    drawBackground("light-grey");
+    drawBackground();
     level.showBricks();
     gameLogic.ballLoop();
-    player.show();
-    player.move();
     gameLoop(draw);
+    player.demo(ai);
+    player.show();
+
  }
-
-
