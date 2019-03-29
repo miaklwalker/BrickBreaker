@@ -1,0 +1,14 @@
+{
+  "name": "brickbreaklibrary",
+  "version": "0.0.1",
+  "description": "A typescript library file",
+  "main": "brickbreak.js",
+  "dependencies": {},
+  "devDependencies": {
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "michael walker",
+  "license": "ISC"
+}
