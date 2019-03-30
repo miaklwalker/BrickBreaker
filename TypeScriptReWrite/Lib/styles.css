@@ -18,17 +18,20 @@ span {
     0% {
       color: #ea2222;
     }
-    25% {
+    20% {
       color: #b22cff;
     }
-    50% {
+    40% {
       color: #19dcea;
     }
-    75% {
+    60% {
       color: #f5be10;
     }
-    100% {
+    80%{
       color: #3bd80d;
+    }
+    100% {
+      color: #ea2222;
     }
   }
   @keyframes brickHit {
@@ -51,4 +54,42 @@ span {
   
 #gameName{
     animation: color 2s infinite; 
+}
+.ScoreBoard {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-content: center;
+  align-items: flex-start;
+}
+
+#score:nth-child(1) {
+  order: 1;
+  flex: 0 1 auto;
+  align-self: auto;
+}
+
+#level:nth-child(2) {
+  order: 2;
+  flex: 0 1 auto;
+
+}
+
+#gameName:nth-child(3) {
+  order: 3;
+  flex: 0 1 auto;
+
+}
+
+#lives:nth-child(4) {
+  order: 4;
+  flex: 0 1 auto;
+
+}
+
+#balls:nth-child(5) {
+  order: 4;
+  flex: 0 1 auto;
+
 }

@@ -1,7 +1,7 @@
 "use strict";
 // Global Variables 
 let canvas, ctx, ball, brick, player, clicked, keyPressed, ai, keyRel, PaddleSpeed = 6, hit = false, title, timer;
-let pfx = ["webkit", "moz", "MS", "o", ""];
+let clickHandler = () => canvas.addEventListener("click", () => true, false);
 // Classes
 /**
  * @class Vector
@@ -98,7 +98,6 @@ class Ball {
         this.velocity = new Vector(0, 0);
         this.acceleration = new Vector(1, 7);
         this.radius = (canvas.width / 1.3 * canvas.height) * .00003443;
-        this.speedMultiplier = (canvas.width * canvas.height) * .000052577;
         this.speedLimit = 6;
         this.ballLost = false;
     }
@@ -108,7 +107,6 @@ class Ball {
                 this.position.x > paddle.position.x - this.radius &&
                 this.position.x < paddle.position.x + paddle.width + this.radius) {
                 if (this.velocity.y > 0) {
-                    let map = 1;
                     let ballMap = (this.position.x - paddle.position.x) / ((paddle.position.x + paddle.width) - paddle.position.x) * (1 - (-1)) - 1;
                     this.acceleration.x += ballMap;
                     this.velocity.y *= -1;
@@ -117,13 +115,18 @@ class Ball {
         }
     }
     move() {
-        this.velocity.add(this.acceleration);
-        this.position.add(this.velocity);
-        this.velocity.limit(6);
-        this.acceleration.mult(0);
+        if (game.active) {
+            this.velocity.add(this.acceleration);
+            this.position.add(this.velocity);
+            this.velocity.limit(6);
+            this.acceleration.mult(0);
+        }
     }
     hitWall() {
-        if (this.position.y >= canvas.height - this.radius || this.position.y <= this.radius) {
+        if (this.position.y >= canvas.height - this.radius) {
+            this.ballLost = true;
+        }
+        if (this.position.y <= this.radius) {
             this.velocity.y *= -1;
         }
         if (this.position.x >= canvas.width - this.radius || this.position.x <= this.radius) {
@@ -138,8 +141,6 @@ class Ball {
         ctx.beginPath();
         ctx.arc(this.position.x, this.position.y, this.radius, 0, Math.PI * 2);
         ctx.fill();
-    }
-    start() {
     }
 }
 /**
@@ -164,22 +165,27 @@ class Paddle {
         ctx.fillRect(this.position.x, this.position.y, this.width, this.height);
     }
     move() {
-        if (keyBoard.ArrowLeft) {
-            this.velocity.x = -PaddleSpeed;
-        }
-        else if (keyBoard.ArrowRight) {
-            this.velocity.x = PaddleSpeed;
+        if (!ai.control) {
+            if (keyBoard.ArrowLeft) {
+                this.velocity.x = -PaddleSpeed;
+            }
+            else if (keyBoard.ArrowRight) {
+                this.velocity.x = PaddleSpeed;
+            }
+            else {
+                this.velocity.x = 0;
+            }
+            this.velocity.limit(4);
+            this.position.add(this.velocity);
+            if (this.position.x <= 0) {
+                this.position.x = 0;
+            }
+            else if (this.position.x + this.width >= canvas.width) {
+                this.position.x = canvas.width - this.width;
+            }
         }
         else {
-            this.velocity.x = 0;
-        }
-        this.velocity.limit(4);
-        this.position.add(this.velocity);
-        if (this.position.x <= 0) {
-            this.position.x = 0;
-        }
-        else if (this.position.x + this.width >= canvas.width) {
-            this.position.x = canvas.width - this.width;
+            this.demo(ai);
         }
     }
     demo(ai) {
@@ -262,8 +268,12 @@ function getPowers() {
     let Random = (Math.floor(Math.random() * 100));
     let powerUpList = Object.keys(PowerUps);
     let chosenPowerUp = powerUpList[Random % powerUpList.length];
-    game.powerActive = true;
-    PowerUps[chosenPowerUp].effect();
+    if (game.powerActive) {
+        PowerUps[chosenPowerUp].effect();
+    }
+    else if (!game.powerActive) {
+        PowerUps.doubler.loseEffect();
+    }
 }
 /**
  *
@@ -351,20 +361,18 @@ const level = {
         let ScoreBoard = document.getElementById("ScoreBoard");
         let span = ScoreBoard.children;
         span[0].innerHTML = `score : ${level.score}  `;
-        span[1].innerHTML = `lives : ${level.levelNum}`;
+        span[1].innerHTML = `Level : ${level.levelNum}`;
         span[2].innerHTML = `----BRICK BREAKER!----`;
-        span[3].innerHTML = `score : ${game.lives}`;
+        span[3].innerHTML = `Lives : ${game.lives}`;
         span[4].innerHTML = `balls : ${level.balls.length}`;
         if (hit) {
             function hitAnimate() {
                 let title = document.getElementById("gameName");
                 title.style.animation = "brickHit .3s 5";
                 let timer = setTimeout(reload, 600);
-                console.log(timer);
             }
             hitAnimate();
             function reload() {
-                console.log("I'm Running");
                 let title = document.getElementById("gameName");
                 let child = title.cloneNode(false);
                 ScoreBoard.replaceChild(child, title);
@@ -414,6 +422,18 @@ const level = {
         }
     },
     reset() {
+        level.bricks = [];
+        game.powerActive = false;
+        getPowers();
+        level.balls.splice(0, level.balls.length - 1);
+        level.balls.forEach(ball => {
+            ball.position.x = canvas.width / 2;
+            ball.position.y = canvas.height / 2;
+        });
+        player.position.x = canvas.width / 2 - player.width / 2;
+        game.active = false;
+        level.numOfPowers = 1;
+        level.makeBricks();
     },
 };
 /**
@@ -423,6 +443,7 @@ const level = {
 const game = {
     lives: 3,
     balls: 1,
+    active: false,
     powerActive: false,
     over: false,
 };
@@ -430,17 +451,81 @@ const gameLogic = {
     ballLoop() {
         level.balls.forEach((orb) => {
             orb.show();
+            orb.contact(player);
             orb.move();
             orb.hitWall();
-            orb.contact(player);
             ai.logic(orb);
+            for (let i = level.balls.length; i > 0; i--) {
+                if (level.balls[i - 1].ballLost)
+                    level.balls.splice(i - 1, 1);
+            }
         });
     },
-    endConditions() {
+    ends() {
+        if (level.bricks.length === 0) {
+            this.win();
+        }
+        if (level.balls.length < 1) {
+            this.loseLife();
+        }
+        if (game.lives === 0) {
+            this.gameOver();
+        }
     },
-    wins() {
+    win() {
+        level.balls.splice(0, level.balls.length - 1);
+        level.levelNum += 1;
+        level.numOfPowers += 1;
+        level.numOfRows += 1;
+        level.weakestBrick += 1;
+        level.balls.forEach((ball) => {
+            ball.position.x = canvas.width / 2;
+            ball.position.y = canvas.height / 2;
+            ai.control ? ball.velocity.x = 1 : ball.velocity.x = 0;
+            ai.control ? ball.velocity.y = 7 : ball.velocity.y = 0;
+        });
+        level.numOfPowers = level.levelNum;
+        if (!ai.control)
+            game.active = false;
+        level.makeBricks();
+    },
+    gameOver() {
+        if (!game.active) {
+            game.active = false;
+            game.powerActive = false;
+            game.over = true;
+            if (clickHandler) {
+                level.numOfPowers = 1;
+                level.bricks = [];
+                level.makeBricks();
+                level.score = 0;
+                level.levelNum = 1;
+                game.lives += 3;
+                game.over = false;
+                player.position.x = canvas.width / 2 - player.width / 2;
+            }
+        }
     },
     demo() {
+        // While demo is running controls demo elements
+        // allows players to start game
+        if (ai.control) {
+            //ctx.fillStyle = "black";
+            //ctx.fillText("Start Game", canvas.width / 2, canvas.height / 2);
+            //ctx.fillText("Click Anywhere!", canvas.width / 2, canvas.height / 2 + 24)
+            game.active = true;
+            player.demo(ai);
+        }
+        else {
+            player.move();
+        }
+    },
+    loseLife() {
+        level.balls.push(new Ball(canvas.width / 2, canvas.height / 2));
+        game.lives--;
+        game.powerActive = false;
+        game.active = false;
+        getPowers();
     },
 };
 /**
@@ -451,6 +536,7 @@ const gameLogic = {
  * @description - Adds Multiple Balls to the GameScreen
  * @property extraLife
  * @description - Gives the player a extra life
+ *
  */
 const PowerUps = {
     doubler: {
@@ -465,7 +551,7 @@ const PowerUps = {
                 PowerUps.multiBall.effect();
             }
         },
-        loseDoubler(paddle) {
+        loseEffect(paddle = player) {
             paddle.width = canvas.width / 5;
         }
     },
@@ -480,10 +566,16 @@ const PowerUps = {
             }
             this.counter = 0;
         },
+        loseEffect() {
+            game.powerActive = false;
+        },
     },
     extraLife: {
         effect() {
             game.lives += 1;
+        },
+        loseEffect() {
+            game.powerActive = false;
         },
     }
 };
@@ -497,6 +589,15 @@ const PowerUps = {
                 keyBoard.ArrowLeft = true;
             if (keyPressed === "ArrowRight")
                 keyBoard.ArrowRight = true;
+            if (keyPressed === "Enter" && !ai.control) {
+                if (!game.active) {
+                    game.active = true;
+                }
+                else {
+                    game.active = true;
+                }
+            }
+            ;
             if ([32, 37, 38, 39, 40].indexOf(event.keyCode) > -1) {
                 event.preventDefault();
             }
@@ -508,19 +609,26 @@ const PowerUps = {
             if (keyRel === "ArrowRight")
                 keyBoard.ArrowRight = false;
         }, false);
-        document.addEventListener("click", function (mEvent) {
-            let clicked = mEvent.button;
-            console.log(clicked);
-        }, false);
+        let clicked = () => {
+            if (ai.control) {
+                ai.control = false;
+                level.reset();
+            }
+        };
+        canvas.addEventListener("click", clicked, {
+            once: true
+        });
     };
     setup();
 })();
 function setup() {
-    level.makeBricks();
     ai = new Ai();
     ball = new Ball(240, 240);
-    level.balls.push(ball);
     player = new Paddle(canvas.width / 2, canvas.height - canvas.height * .2);
+    level.makeBricks();
+    level.balls.push(ball);
+    ai.control = true;
+    game.active = false;
     draw();
 }
 function draw() {
@@ -528,8 +636,9 @@ function draw() {
     level.scoreboard();
     level.showBricks();
     gameLogic.ballLoop();
-    gameLoop(draw);
+    gameLogic.ends();
+    gameLogic.demo();
     player.move();
-    player.demo(ai);
     player.show();
+    gameLoop(draw);
 }

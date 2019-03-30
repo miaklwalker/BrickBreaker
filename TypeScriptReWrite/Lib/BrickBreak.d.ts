@@ -1,5 +1,5 @@
 declare let canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D, ball: Ball, brick: Brick, player: Paddle, clicked: number, keyPressed: string, ai: Ai, keyRel: string, PaddleSpeed: number, hit: boolean, title: HTMLSpanElement, timer: () => any;
-declare let pfx: string[];
+declare let clickHandler: () => void;
 /**
  * @class Vector
  * @param x - Contains the x Value for the vector
@@ -43,7 +43,6 @@ declare class Ball {
     velocity: Vector;
     acceleration: Vector;
     radius: number;
-    speedMultiplier: number;
     speedLimit: number;
     ballLost: boolean;
     constructor(x: number, y: number);
@@ -51,7 +50,6 @@ declare class Ball {
     move(): void;
     hitWall(): void;
     show(): void;
-    start(): void;
 }
 /**
  * @class Ball
@@ -145,6 +143,7 @@ declare const level: level;
 interface game {
     lives: number;
     balls: number;
+    active: boolean;
     powerActive: boolean;
     over: boolean;
 }
@@ -159,9 +158,11 @@ declare const game: game;
  */
 interface gameLogic {
     ballLoop: () => any;
-    endConditions: () => any;
-    wins: () => any;
+    ends: () => any;
+    win: () => any;
     demo: () => any;
+    gameOver: () => any;
+    loseLife: () => any;
 }
 declare const gameLogic: gameLogic;
 interface PowerUps {
@@ -175,15 +176,17 @@ interface multiBall {
     counter: number;
     maxBall: number;
     effect: () => any;
+    loseEffect: () => any;
 }
 interface doubler {
     [index: string]: any;
     effect: () => any;
-    loseDoubler: () => any;
+    loseEffect: () => any;
 }
 interface extraLife {
     [index: string]: any;
     effect: () => any;
+    loseEffect: () => any;
 }
 /**
  * @name PowerUps
@@ -193,6 +196,7 @@ interface extraLife {
  * @description - Adds Multiple Balls to the GameScreen
  * @property extraLife
  * @description - Gives the player a extra life
+ *
  */
 declare const PowerUps: PowerUps;
 declare function setup(): void;
