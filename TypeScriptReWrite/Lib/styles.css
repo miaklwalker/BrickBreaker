@@ -16,13 +16,13 @@ span {
 }
   @keyframes color {
     0% {
-      color: #19dcea;
+      color: #ea2222;
     }
     25% {
       color: #b22cff;
     }
     50% {
-      color: #ea2222;
+      color: #19dcea;
     }
     75% {
       color: #f5be10;

@@ -10,8 +10,8 @@ ai: Ai,
 keyRel:string,
 PaddleSpeed:number = 6,
 hit:boolean=false,
-title:HTMLSpanElement
-
+title:HTMLSpanElement,
+timer:()=>any
 ;
 
 
@@ -283,11 +283,9 @@ class Ai {
 }
 
 // Functions
-function hitAnimate(){
-    let title =<HTMLSpanElement> document.getElementById("gameName");
-    title.style.animation = "brickHit .3s 3";
-    Timer()
-     }
+
+
+
 
 /**
  * 
@@ -457,15 +455,24 @@ const level: level = {
         span[2].innerHTML = `----BRICK BREAKER!----`;
         span[3].innerHTML = `score : ${game.lives}`;
         span[4].innerHTML = `balls : ${level.balls.length}`;
+        
          if(hit){
-            hitAnimate();
-            let timer =()=> setTimeout(reload,500);
+            function hitAnimate(){
+                let title =<HTMLSpanElement> document.getElementById("gameName");
+                title.style.animation = "brickHit .3s 5";
+                let timer=setTimeout(reload,600);
+                console.log(timer);
+                 }
+                 hitAnimate();
             function reload(){
+                console.log("I'm Running")
+                let title =<HTMLSpanElement> document.getElementById("gameName");
                 let child = <HTMLSpanElement> title.cloneNode(false);
                 ScoreBoard.replaceChild(child,title);
-                title.style.animation = "color 2s infinite";
+                child.style.animation = "color 2s infinite";
                 hit = false;
             } 
+           
          }  
     },
     makeEffect() {

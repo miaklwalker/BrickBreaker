@@ -1,4 +1,4 @@
-declare let canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D, ball: Ball, brick: Brick, player: Paddle, clicked: number, keyPressed: string, ai: Ai, keyRel: string, PaddleSpeed: number, hit: boolean, title: HTMLSpanElement;
+declare let canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D, ball: Ball, brick: Brick, player: Paddle, clicked: number, keyPressed: string, ai: Ai, keyRel: string, PaddleSpeed: number, hit: boolean, title: HTMLSpanElement, timer: () => any;
 declare let pfx: string[];
 /**
  * @class Vector
@@ -81,7 +81,6 @@ declare class Ai {
     logic(ball: Ball): void;
     choose(choice: string): void;
 }
-declare function hitAnimate(): void;
 /**
  *
  * @param name   - This Value Becomes The id for the Canvas.

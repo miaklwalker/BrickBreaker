@@ -1,6 +1,6 @@
 "use strict";
 // Global Variables 
-let canvas, ctx, ball, brick, player, clicked, keyPressed, ai, keyRel, PaddleSpeed = 6, hit = false, title;
+let canvas, ctx, ball, brick, player, clicked, keyPressed, ai, keyRel, PaddleSpeed = 6, hit = false, title, timer;
 let pfx = ["webkit", "moz", "MS", "o", ""];
 // Classes
 /**
@@ -235,11 +235,6 @@ class Ai {
     }
 }
 // Functions
-function hitAnimate() {
-    let title = document.getElementById("gameName");
-    title.style.animation = "brickHit .3s 3";
-    Timer();
-}
 /**
  *
  * @param name   - This Value Becomes The id for the Canvas.
@@ -361,12 +356,19 @@ const level = {
         span[3].innerHTML = `score : ${game.lives}`;
         span[4].innerHTML = `balls : ${level.balls.length}`;
         if (hit) {
+            function hitAnimate() {
+                let title = document.getElementById("gameName");
+                title.style.animation = "brickHit .3s 5";
+                let timer = setTimeout(reload, 600);
+                console.log(timer);
+            }
             hitAnimate();
-            let timer = () => setTimeout(reload, 500);
             function reload() {
+                console.log("I'm Running");
+                let title = document.getElementById("gameName");
                 let child = title.cloneNode(false);
                 ScoreBoard.replaceChild(child, title);
-                title.style.animation = "color 2s infinite";
+                child.style.animation = "color 2s infinite";
                 hit = false;
             }
         }
