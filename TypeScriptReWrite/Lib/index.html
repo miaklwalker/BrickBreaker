@@ -9,7 +9,13 @@
     <title>Brick Breaker</title>
 </head>
 <body>
-    <div id="ScoreBoard">Score:  Level:  Lives:  Balls: </div>
+    <div id="ScoreBoard">
+    <span id="score"> Score:${this.score}</span>
+    <span id="level">Level:${this.levelNum}</span>
+    <span id="gameName">----BRICK BREAKER!----</span>
+    <span id="lives">Lives:${game.lives}</span>
+    <span id="balls">Balls:${this.balls.length}</span>
+</div>
  <canvas id="canvas"></canvas>
     <script src="BrickBreak.js"></script>
 </body>

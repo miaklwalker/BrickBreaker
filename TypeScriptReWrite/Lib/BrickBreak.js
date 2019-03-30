@@ -344,11 +344,8 @@ const level = {
     fortifier: 0,
     scoreboard() {
         let ScoreBoard = document.getElementById("ScoreBoard");
-        ScoreBoard.innerHTML = `<span id="score">Score:${this.score}</span>  
-        <span id="level" >Level:${this.levelNum}</span>
-        <span id="gameName">----BRICK BREAKER!----</span>     
-        <span id="lives" >Lives:${game.lives}</span>  
-        <span id ="balls">Balls:${this.balls.length}</span>`;
+        let span = ScoreBoard.children;
+        console.log(span[0]);
     },
     makeEffect() {
         return (level.numOfPowers > 0 && Math.random() > .7);
