@@ -1,4 +1,5 @@
-declare let canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D, ball: Ball, brick: Brick, player: Paddle, clicked: number, keyPressed: string, ai: Ai, keyRel: string, PaddleSpeed: number;
+declare let canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D, ball: Ball, brick: Brick, player: Paddle, clicked: number, keyPressed: string, ai: Ai, keyRel: string, PaddleSpeed: number, hit: boolean, title: HTMLSpanElement;
+declare let pfx: string[];
 /**
  * @class Vector
  * @param x - Contains the x Value for the vector
@@ -28,7 +29,7 @@ declare class Brick {
     startingHealth: number;
     effect: boolean;
     constructor(x: number, y: number, health: number);
-    hit(): void;
+    hit(): boolean;
     show(): void;
 }
 /**
@@ -80,6 +81,7 @@ declare class Ai {
     logic(ball: Ball): void;
     choose(choice: string): void;
 }
+declare function hitAnimate(): void;
 /**
  *
  * @param name   - This Value Becomes The id for the Canvas.

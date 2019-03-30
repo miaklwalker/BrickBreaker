@@ -1,10 +1,54 @@
-@font-face{
-font-family: 'Press Start 2P',cursive;
-src: local("Press Start 2P"),url("./Press_Start_2P/PressStart2P-Regular.ttf") format('truetype');
+body {
+    font-family: "Press Start 2P"
 }
-div{
-    font-family:"Press Start 2P"
+
+div {
+    color: Blue;
+    margin-left: auto;
+    margin-right: auto;
 }
-canvas{
-    font-family:"Press Start 2P"
+span {
+    color: black;
+    animation: drop 2s infinite;
+}
+#score {
+    color: black;
+}
+  @keyframes color {
+    0% {
+      color: #19dcea;
+    }
+    25% {
+      color: #b22cff;
+    }
+    50% {
+      color: #ea2222;
+    }
+    75% {
+      color: #f5be10;
+    }
+    100% {
+      color: #3bd80d;
+    }
+  }
+  @keyframes brickHit {
+      0% {
+          color:black;
+      }
+      25% {
+          color:blue;
+      }
+      50%{
+          color:black;
+      }
+      75%{
+          color:blue;
+      }
+      100%{
+         color:black;
+    }
+  }
+  
+#gameName{
+    animation: color 2s infinite; 
 }

@@ -8,8 +8,14 @@ clicked: number,
 keyPressed: string, 
 ai: Ai,
 keyRel:string,
-PaddleSpeed:number = 6
+PaddleSpeed:number = 6,
+hit:boolean=false,
+title:HTMLSpanElement
+
 ;
+
+
+let pfx = <string[]> ["webkit", "moz", "MS", "o", ""];
 
 // Classes
 /**
@@ -85,11 +91,11 @@ class Brick {
         this.effect = false
     }
     hit() {
-        this.health -= 1
-
+        this.health -= 1;
+        return true;
     }
     show() {
-        if (this.effect) {
+        if (this.effect) { 
             let myGradient = ctx.createLinearGradient(this.position.x, this.position.y, this.position.x, this.position.y + this.height);
             myGradient.addColorStop(0, "white");
             myGradient.addColorStop(.6, `rgb(${this.health * 85},50,50`);
@@ -277,6 +283,11 @@ class Ai {
 }
 
 // Functions
+function hitAnimate(){
+    let title =<HTMLSpanElement> document.getElementById("gameName");
+    title.style.animation = "brickHit .3s 3";
+    Timer()
+     }
 
 /**
  * 
@@ -355,18 +366,21 @@ function collisions(circle: Ball, rectangle: Brick) {
     let distX: number = circleX - testX;
     let distY: number = circleY - testY;
     let distance = Math.sqrt((distX * distX) + (distY * distY));
-    if (distance <= radius / 2 + .2) {
+    if (distance <= radius / 2 + .4) {
         if (topBottom && leftRight) {
             circle.velocity.x *= -1;
             circle.velocity.y *= -1;
             rectangle.hit();
+            hit = true
         } else {
             if (topBottom) {
                 rectangle.hit();
+                hit=true;
                 circle.velocity.y *= -1;
             }
             if (leftRight) {
                 rectangle.hit();
+                hit = true
                 circle.velocity.x *= -1;
             }
         }
@@ -437,9 +451,22 @@ const level: level = {
     fortifier: < number > 0,
     scoreboard() {
         let ScoreBoard =<HTMLDivElement>document.getElementById("ScoreBoard");
-        let span = ScoreBoard.children;
-        console.log(span[0]);
-
+        let span  = ScoreBoard.children;
+        span[0].innerHTML = `score : ${level.score}  `;
+        span[1].innerHTML = `lives : ${level.levelNum}`;
+        span[2].innerHTML = `----BRICK BREAKER!----`;
+        span[3].innerHTML = `score : ${game.lives}`;
+        span[4].innerHTML = `balls : ${level.balls.length}`;
+         if(hit){
+            hitAnimate();
+            let timer =()=> setTimeout(reload,500);
+            function reload(){
+                let child = <HTMLSpanElement> title.cloneNode(false);
+                ScoreBoard.replaceChild(child,title);
+                title.style.animation = "color 2s infinite";
+                hit = false;
+            } 
+         }  
     },
     makeEffect() {
         return (level.numOfPowers > 0 && Math.random() > .7)
@@ -648,11 +675,11 @@ function setup() {
 function draw() {
     drawBackground();
     level.scoreboard();
-    //level.showBricks();
-    //gameLogic.ballLoop();
+    level.showBricks();
+    gameLogic.ballLoop();
     gameLoop(draw);
-    //player.move();
- //player.demo(ai);
-    //player.show();
+    player.move();
+    player.demo(ai);
+    player.show();
 
 }
