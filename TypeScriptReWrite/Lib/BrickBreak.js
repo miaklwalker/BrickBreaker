@@ -1,7 +1,6 @@
 "use strict";
 // Global Variables 
-let canvas, ctx, ball, brick, player, clicked, keyPressed, ai;
-// Game Loop
+let canvas, ctx, ball, brick, player, clicked, keyPressed, ai, keyRel, PaddleSpeed = 6;
 // Classes
 /**
  * @class Vector
@@ -25,7 +24,26 @@ class Vector {
         else {
             this.x *= factor;
             this.y *= factor;
+            return this;
         }
+    }
+    div(divisor) {
+        if (divisor instanceof Vector) {
+            this.x /= divisor.x;
+            this.y /= divisor.y;
+        }
+        else {
+            this.x /= divisor;
+            this.y /= divisor;
+        }
+    }
+    limit(max) {
+        let mSq = (this.x * this.x) + (this.y * this.y);
+        if (mSq > max * max) {
+            this.div(Math.sqrt(mSq)); //normalize it
+            this.mult(max);
+        }
+        return this;
     }
 }
 /**
@@ -48,12 +66,22 @@ class Brick {
         this.health -= 1;
     }
     show() {
-        let myGradient = ctx.createLinearGradient(this.position.x, this.position.y, this.position.x, this.position.y + this.height);
-        myGradient.addColorStop(0, "white");
-        myGradient.addColorStop(.6, "blue");
-        myGradient.addColorStop(1, "darkBlue");
-        ctx.fillStyle = myGradient;
-        ctx.fillRect(this.position.x, this.position.y, this.width, this.height);
+        if (this.effect) {
+            let myGradient = ctx.createLinearGradient(this.position.x, this.position.y, this.position.x, this.position.y + this.height);
+            myGradient.addColorStop(0, "white");
+            myGradient.addColorStop(.6, `rgb(${this.health * 85},50,50`);
+            myGradient.addColorStop(1, `rgb(${this.health * 85},50,50`);
+            ctx.fillStyle = myGradient;
+            ctx.fillRect(this.position.x, this.position.y, this.width, this.height);
+        }
+        else {
+            let myGradient = ctx.createLinearGradient(this.position.x, this.position.y, this.position.x, this.position.y + this.height);
+            myGradient.addColorStop(0, "white");
+            myGradient.addColorStop(.6, `rgb(50, 50,${this.health * 85}`);
+            myGradient.addColorStop(1, `rgb(50, 50,${this.health * 85}`);
+            ctx.fillStyle = myGradient;
+            ctx.fillRect(this.position.x, this.position.y, this.width, this.height);
+        }
     }
 }
 /**
@@ -65,25 +93,39 @@ class Brick {
 class Ball {
     constructor(x, y) {
         this.position = new Vector(x, y);
-        this.direction = new Vector(0, 3);
-        this.speed = new Vector(2, 4);
-        this.radius = (canvas.width / 1.3 * canvas.height) * .00004443;
-        this.speedMultiplier = (canvas.width * canvas.height) * .000052577;
         this.velocity = new Vector(0, 0);
+        this.acceleration = new Vector(1, 7);
+        this.radius = (canvas.width / 1.3 * canvas.height) * .00003443;
+        this.speedMultiplier = (canvas.width * canvas.height) * .000052577;
         this.speedLimit = 6;
         this.ballLost = false;
     }
-    contact() {
+    contact(paddle) {
+        if (!(this.position.y > paddle.position.y + paddle.height)) {
+            if (this.position.y > paddle.position.y - this.radius &&
+                this.position.x > paddle.position.x - this.radius &&
+                this.position.x < paddle.position.x + paddle.width + this.radius) {
+                if (this.velocity.y > 0) {
+                    let map = 1;
+                    let ballMap = (this.position.x - paddle.position.x) / ((paddle.position.x + paddle.width) - paddle.position.x) * (1 - (-1)) - 1;
+                    this.acceleration.x += ballMap;
+                    this.velocity.y *= -1;
+                }
+            }
+        }
     }
     move() {
-        this.position.add(this.speed);
+        this.velocity.add(this.acceleration);
+        this.position.add(this.velocity);
+        this.velocity.limit(6);
+        this.acceleration.mult(0);
     }
     hitWall() {
         if (this.position.y >= canvas.height - this.radius || this.position.y <= this.radius) {
-            this.speed.y *= -1;
+            this.velocity.y *= -1;
         }
         if (this.position.x >= canvas.width - this.radius || this.position.x <= this.radius) {
-            this.speed.x *= -1;
+            this.velocity.x *= -1;
         }
     }
     show() {
@@ -109,6 +151,7 @@ class Paddle {
         this.width = canvas.width / 5;
         this.height = canvas.height * .02474;
         this.position = new Vector(x, y);
+        this.velocity = new Vector(0, 0);
     }
     show() {
         let myGradient = ctx.createLinearGradient(this.position.x, this.position.y, this.position.x, this.position.y + this.height);
@@ -118,11 +161,24 @@ class Paddle {
         ctx.fillStyle = myGradient;
         ctx.fillRect(this.position.x, this.position.y, this.width, this.height);
     }
-    move(direction) {
-        if (direction === "ArrowLeft")
-            this.position.x -= canvas.width * .01041667;
-        else if (direction === "ArrowRight")
-            this.position.x += canvas.width * .01041667;
+    move() {
+        if (keyBoard.ArrowLeft) {
+            this.velocity.x = -PaddleSpeed;
+        }
+        else if (keyBoard.ArrowRight) {
+            this.velocity.x = PaddleSpeed;
+        }
+        else {
+            this.velocity.x = 0;
+        }
+        this.velocity.limit(4);
+        this.position.add(this.velocity);
+        if (this.position.x <= 0) {
+            this.position.x = 0;
+        }
+        else if (this.position.x + this.width >= canvas.width) {
+            this.position.x = canvas.width - this.width;
+        }
     }
     demo(ai) {
         this.position.x = ai.position.x - this.width / 2;
@@ -201,9 +257,11 @@ function makeCanvas(name, width, height) {
  * method.
  */
 function getPowers() {
-    let Random = (Math.random() * 100);
+    let Random = (Math.floor(Math.random() * 100));
     let powerUpList = Object.keys(PowerUps);
     let chosenPowerUp = powerUpList[Random % powerUpList.length];
+    game.powerActive = true;
+    PowerUps[chosenPowerUp].effect();
 }
 /**
  *
@@ -245,20 +303,20 @@ function collisions(circle, rectangle) {
     let distX = circleX - testX;
     let distY = circleY - testY;
     let distance = Math.sqrt((distX * distX) + (distY * distY));
-    if (distance <= radius / 2) {
+    if (distance <= radius / 2 + .2) {
         if (topBottom && leftRight) {
-            circle.speed.x *= -1;
-            circle.speed.y *= -1;
+            circle.velocity.x *= -1;
+            circle.velocity.y *= -1;
             rectangle.hit();
         }
         else {
-            if (topBottom && !leftRight) {
+            if (topBottom) {
                 rectangle.hit();
-                circle.speed.y *= -1;
+                circle.velocity.y *= -1;
             }
-            if (leftRight && !topBottom) {
+            if (leftRight) {
                 rectangle.hit();
-                circle.speed.x *= -1;
+                circle.velocity.x *= -1;
             }
         }
     }
@@ -271,6 +329,10 @@ function drawBackground() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 }
+const keyBoard = {
+    ArrowLeft: false,
+    ArrowRight: false,
+};
 const level = {
     levelNum: 1,
     numOfPowers: 1,
@@ -281,30 +343,37 @@ const level = {
     balls: [],
     fortifier: 0,
     scoreboard() {
+        let ScoreBoard = document.getElementById("ScoreBoard");
+        ScoreBoard.innerHTML = `<span id="score">Score:${this.score}</span>  
+        <span id="level" >Level:${this.levelNum}</span>
+        <span id="gameName">----BRICK BREAKER!----</span>     
+        <span id="lives" >Lives:${game.lives}</span>  
+        <span id ="balls">Balls:${this.balls.length}</span>`;
     },
     makeEffect() {
         return (level.numOfPowers > 0 && Math.random() > .7);
     },
     fortifyBricks() {
-        if (level.levelNum % 5)
+        if (level.levelNum % 5 === 0)
             this.fortifier += 1;
     },
     makeBricks() {
         this.fortifyBricks();
-        let h = (level.numOfRows * canvas.height / 20 + canvas.height / 20);
+        let rowPosition = (level.numOfRows * canvas.height / 20 + canvas.height / 20);
         level.weakestBrick = 1 + this.fortifier;
-        for (h; h > canvas.height / 20; h -= canvas.height / 20) {
+        for (rowPosition; rowPosition > canvas.height / 20; rowPosition -= canvas.height / 20) {
             for (let i = 10 - 1; i > -1; i--) {
                 if (this.makeEffect()) {
-                    brick = new Brick(i * canvas.width / 10, h, level.weakestBrick);
+                    brick = new Brick(i * canvas.width / 10, rowPosition, level.weakestBrick);
                     level.numOfPowers--;
                     brick.effect = true;
                     level.bricks.push(brick);
                 }
                 else {
-                    level.bricks.push(new Brick(i * canvas.width / 10, h, level.weakestBrick));
+                    level.bricks.push(new Brick(i * canvas.width / 10, rowPosition, level.weakestBrick));
                 }
             }
+            level.weakestBrick++;
         }
     },
     showBricks() {
@@ -340,6 +409,7 @@ const gameLogic = {
             orb.show();
             orb.move();
             orb.hitWall();
+            orb.contact(player);
             ai.logic(orb);
         });
     },
@@ -350,7 +420,6 @@ const gameLogic = {
     demo() {
     },
 };
-// Power-Ups 
 /**
  * @name PowerUps
  * @property doubler
@@ -359,23 +428,66 @@ const gameLogic = {
  * @description - Adds Multiple Balls to the GameScreen
  * @property extraLife
  * @description - Gives the player a extra life
- *
  */
 const PowerUps = {
-    doubler: {},
-    multiBall: {},
-    extraLife: {}
+    doubler: {
+        effect(paddle = player) {
+            if (paddle.width < canvas.width / 4) {
+                paddle.width *= 2;
+            }
+            else if (paddle.width < canvas.width / 2) {
+                paddle.width *= 1.5;
+            }
+            else {
+                PowerUps.multiBall.effect();
+            }
+        },
+        loseDoubler(paddle) {
+            paddle.width = canvas.width / 5;
+        }
+    },
+    multiBall: {
+        counter: 0,
+        maxBall: 10,
+        effect(numOfBalls = 5) {
+            this.maxBall = numOfBalls;
+            for (this.counter; this.counter < this.maxBall; this.counter++) {
+                level.balls.push(new Ball(level.balls[0].position.x + this.counter * 3, level.balls[0].position.y));
+                level.balls.push(new Ball(level.balls[0].position.x - this.counter * 3, level.balls[0].position.y));
+            }
+            this.counter = 0;
+        },
+    },
+    extraLife: {
+        effect() {
+            game.lives += 1;
+        },
+    }
 };
 // Game Setup..
 (() => {
     makeCanvas("canvas");
     window.onload = function () {
         document.addEventListener("keydown", (event) => {
-            let keyPressed = event.key;
-            player.move(keyPressed);
+            keyPressed = event.key;
+            if (keyPressed === "ArrowLeft")
+                keyBoard.ArrowLeft = true;
+            if (keyPressed === "ArrowRight")
+                keyBoard.ArrowRight = true;
+            if ([32, 37, 38, 39, 40].indexOf(event.keyCode) > -1) {
+                event.preventDefault();
+            }
+        }, false);
+        document.addEventListener("keyup", (event) => {
+            keyRel = event.key;
+            if (keyRel === "ArrowLeft")
+                keyBoard.ArrowLeft = false;
+            if (keyRel === "ArrowRight")
+                keyBoard.ArrowRight = false;
         }, false);
         document.addEventListener("click", function (mEvent) {
             let clicked = mEvent.button;
+            console.log(clicked);
         }, false);
     };
     setup();
@@ -390,9 +502,11 @@ function setup() {
 }
 function draw() {
     drawBackground();
-    level.showBricks();
-    gameLogic.ballLoop();
+    level.scoreboard();
+    //level.showBricks();
+    //gameLogic.ballLoop();
     gameLoop(draw);
-    player.demo(ai);
-    player.show();
+    //player.move();
+    //player.demo(ai);
+    //player.show();
 }

@@ -1,4 +1,4 @@
-declare let canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D, ball: Ball, brick: Brick, player: Paddle, clicked: number, keyPressed: string, ai: Ai;
+declare let canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D, ball: Ball, brick: Brick, player: Paddle, clicked: number, keyPressed: string, ai: Ai, keyRel: string, PaddleSpeed: number;
 /**
  * @class Vector
  * @param x - Contains the x Value for the vector
@@ -9,7 +9,9 @@ declare class Vector {
     y: number;
     constructor(x?: number, y?: number);
     add(v: Vector): void;
-    mult(factor: Vector | number): void;
+    mult(factor: Vector | number): this | undefined;
+    div(divisor: Vector | number): void;
+    limit(max: number): this;
 }
 /**
  * @class Brick
@@ -37,15 +39,14 @@ declare class Brick {
  */
 declare class Ball {
     position: Vector;
-    direction: Vector;
-    speed: Vector;
+    velocity: Vector;
+    acceleration: Vector;
     radius: number;
     speedMultiplier: number;
-    velocity: Vector;
     speedLimit: number;
     ballLost: boolean;
     constructor(x: number, y: number);
-    contact(): void;
+    contact(paddle: Paddle): void;
     move(): void;
     hitWall(): void;
     show(): void;
@@ -61,9 +62,10 @@ declare class Paddle {
     width: number;
     height: number;
     position: Vector;
+    velocity: Vector;
     constructor(x: number, y: number);
     show(): void;
-    move(direction: string): void;
+    move(): void;
     demo(ai: Ai): void;
 }
 /**
@@ -101,6 +103,15 @@ declare function collisionsDetect(tempBrick: Brick): void;
 declare function collisions(circle: Ball, rectangle: Brick): void;
 declare function gameLoop(name: FrameRequestCallback): void;
 declare function drawBackground(): void;
+interface keyBoard {
+    [index: string]: boolean;
+    ArrowLeft: boolean;
+    ArrowRight: boolean;
+}
+declare const keyBoard: {
+    ArrowLeft: boolean;
+    ArrowRight: boolean;
+};
 /**
  * @name level
  * @description - The Level Object contains Methods and Properties for defining the level.
@@ -152,6 +163,27 @@ interface gameLogic {
     demo: () => any;
 }
 declare const gameLogic: gameLogic;
+interface PowerUps {
+    [index: string]: any;
+    doubler: doubler;
+    multiBall: multiBall;
+    extraLife: extraLife;
+}
+interface multiBall {
+    [index: string]: any;
+    counter: number;
+    maxBall: number;
+    effect: () => any;
+}
+interface doubler {
+    [index: string]: any;
+    effect: () => any;
+    loseDoubler: () => any;
+}
+interface extraLife {
+    [index: string]: any;
+    effect: () => any;
+}
 /**
  * @name PowerUps
  * @property doubler
@@ -160,12 +192,7 @@ declare const gameLogic: gameLogic;
  * @description - Adds Multiple Balls to the GameScreen
  * @property extraLife
  * @description - Gives the player a extra life
- *
  */
-declare const PowerUps: {
-    doubler: object;
-    multiBall: object;
-    extraLife: object;
-};
+declare const PowerUps: PowerUps;
 declare function setup(): void;
 declare function draw(): void;

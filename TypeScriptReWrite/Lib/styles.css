@@ -1,0 +1,10 @@
+@font-face{
+font-family: 'Press Start 2P',cursive;
+src: local("Press Start 2P"),url("./Press_Start_2P/PressStart2P-Regular.ttf") format('truetype');
+}
+div{
+    font-family:"Press Start 2P"
+}
+canvas{
+    font-family:"Press Start 2P"
+}
