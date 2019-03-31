@@ -1,16 +1,4 @@
-import { Ball } from './Ball';
-
-import { Brick } from './Brick';
-
-import { Paddle } from './Paddle';
-
-import { Ai } from './Ai';
-
-import { makeCanvas } from './Functions';
-
-import { game, level, gameLogic } from './Objects';
-
-declare let canvas: HTMLCanvasElement,
+ let canvas: HTMLCanvasElement,
     ctx: CanvasRenderingContext2D,
     ball: Ball,
     brick: Brick,

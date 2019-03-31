@@ -1,3 +1,4 @@
+"use strict";
 /**
  * @class Paddle
  * @classdesc Creates a Paddle Object{} That has a position
@@ -5,12 +6,7 @@
  * @param y - number - Represents position on the Y axis
  */
 class Paddle {
-    width: number;
-    height: number;
-    position: Vector;
-    velocity: Vector;
-
-    constructor(x: number, y: number) {
+    constructor(x, y) {
         this.width = canvas.width / 5;
         this.height = canvas.height * .02474;
         this.position = new Vector(x, y);
@@ -24,31 +20,35 @@ class Paddle {
         ctx.fillStyle = myGradient;
         ctx.fillRect(this.position.x, this.position.y, this.width, this.height);
     }
-
     move() {
         if (!ai.control) {
             if (keyBoard.ArrowLeft) {
                 this.velocity.x = -PaddleSpeed;
-            } else if (keyBoard.ArrowRight) {
-                this.velocity.x = PaddleSpeed
-            } else {
+            }
+            else if (keyBoard.ArrowRight) {
+                this.velocity.x = PaddleSpeed;
+            }
+            else {
                 this.velocity.x = 0;
             }
             this.velocity.limit(4);
             this.position.add(this.velocity);
             if (this.position.x <= 0) {
                 this.position.x = 0;
-            } else if (this.position.x + this.width >= canvas.width) {
+            }
+            else if (this.position.x + this.width >= canvas.width) {
                 this.position.x = canvas.width - this.width;
             }
-        } else {
+        }
+        else {
             this.demo(ai);
         }
     }
-    demo(ai: Ai) {
+    demo(ai) {
         this.position.x = ai.position.x - this.width / 2;
-        if (this.position.x <= 0) this.position.x = 0;
-        else if (this.position.x + this.width >= canvas.width) this.position.x = canvas.width - this.width;
-
+        if (this.position.x <= 0)
+            this.position.x = 0;
+        else if (this.position.x + this.width >= canvas.width)
+            this.position.x = canvas.width - this.width;
     }
 }

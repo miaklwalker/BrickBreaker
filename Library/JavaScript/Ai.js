@@ -1,44 +1,40 @@
-
+"use strict";
 /**
  * @class Ai
  * @classdesc Controls the Paddle for the Game Demo Screen
  */
 class Ai {
-    position: Vector;
-    control: boolean;
-    offset: number;
     constructor() {
         this.position = new Vector();
         this.control = true;
         this.offset = 0;
     }
-
-    logic(ball: Ball) {
-        let right: number = 0;
-        let left: number = 0;
-        level.bricks.forEach((brick: Brick) => brick.position.x > canvas.width / 2 ? right++ : left++);
+    logic(ball) {
+        let right = 0;
+        let left = 0;
+        level.bricks.forEach((brick) => brick.position.x > canvas.width / 2 ? right++ : left++);
         if (right > left) {
-            this.choose("left")
-        } else if (left > right) {
-            this.choose("right")
-        } else {
-            this.choose("middle")
+            this.choose("left");
+        }
+        else if (left > right) {
+            this.choose("right");
+        }
+        else {
+            this.choose("middle");
         }
         this.position.x = ball.position.x;
     }
-
-    choose(choice: string) {
+    choose(choice) {
         let offset = 0;
         switch (choice) {
             case "left":
                 for (offset; offset >= -30; offset -= .1) {
-                    this.position.x += ball.position.x + offset
+                    this.position.x += ball.position.x + offset;
                 }
                 break;
-
             case "right":
                 for (offset; offset <= 30; offset += .1) {
-                    this.position.x += ball.position.x + offset
+                    this.position.x += ball.position.x + offset;
                 }
                 break;
             default:

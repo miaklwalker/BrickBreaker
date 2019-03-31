@@ -4,8 +4,8 @@ interface level {
     numOfRows: number;
     weakestBrick: number;
     score: number;
-    bricks: Array < Brick > ;
-    balls: Array < Ball > ;
+    bricks: Array<Brick>;
+    balls: Array<Ball>;
     fortifier: number;
     scoreboard: () => any;
     makeEffect: () => any;
@@ -13,7 +13,6 @@ interface level {
     makeBricks: () => any;
     showBricks: () => any;
     reset: () => any;
-
 }
 interface game {
     lives: number;
