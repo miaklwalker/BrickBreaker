@@ -1,4 +1,6 @@
 declare let canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D, ball: Ball, brick: Brick, player: Paddle, clicked: number, keyPressed: string, ai: Ai, keyRel: string, PaddleSpeed: number, hit: boolean, title: HTMLSpanElement, color: number, iterator: number, chosenPowerUp: string, displayed: boolean;
+declare let styleSelect: HTMLSelectElement;
+declare const RetroColor: number[][];
 declare const modernColors: number[][];
 declare let clickHandler: () => void;
 /**

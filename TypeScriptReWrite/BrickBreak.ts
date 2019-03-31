@@ -16,6 +16,9 @@ let canvas: HTMLCanvasElement,
     chosenPowerUp:string,
     displayed:boolean
  ;
+ let styleSelect = <HTMLSelectElement>document.getElementById("colorSelect")
+
+const RetroColor:number[][]=   [[255, 255, 255], [0, 0, 0], [255, 255, 255], [0, 0, 0], [255, 255, 255], [0, 0, 0]]
 const modernColors: number[][]=[[218, 247, 166],[255, 195, 0 ],[255, 87, 51 ],[199, 0, 57],[133, 193, 233],[46, 204, 113]];
 let clickHandler = () => canvas.addEventListener("click", () => true, false);
 

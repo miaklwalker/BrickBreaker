@@ -1,6 +1,8 @@
 "use strict";
 // Global Variables
 let canvas, ctx, ball, brick, player, clicked, keyPressed, ai, keyRel, PaddleSpeed = 6, hit = false, title, color = 0, iterator = 0, chosenPowerUp, displayed;
+let styleSelect = document.getElementById("colorSelect");
+const RetroColor = [[255, 255, 255], [0, 0, 0], [255, 255, 255], [0, 0, 0], [255, 255, 255], [0, 0, 0]];
 const modernColors = [[218, 247, 166], [255, 195, 0], [255, 87, 51], [199, 0, 57], [133, 193, 233], [46, 204, 113]];
 let clickHandler = () => canvas.addEventListener("click", () => true, false);
 // Classes
