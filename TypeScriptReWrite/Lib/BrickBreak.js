@@ -367,7 +367,7 @@ const level = {
         span[3].innerHTML = `Lives : ${game.lives}`;
         span[4].innerHTML = `balls : ${level.balls.length}`;
         ctx.font = `24px 'Press Start 2P'`;
-        console.log(iterator++);
+        iterator++;
         if (iterator % 5 === 0)
             color++;
         ctx.fillStyle = `rgb(${modernColors[color % 6][0]},${modernColors[color % 6][1]},${modernColors[color % 6][2]})`;

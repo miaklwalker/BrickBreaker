@@ -1,0 +1,35 @@
+ {
+     "data": [{
+             "Game Title": "Brick Break",
+             "Lead Coder": "Michael Walker",
+             "Original Idea": "Steve Wozniak",
+             "This project": "is FREE to anyone"
+         },
+         {
+             "Classes": {
+                 "Ball": "Methods",
+                 "Paddle": "Methods",
+                 "Brick": "Methods",
+                 "Ai": "methods"
+             }
+         },
+         {
+             "Styles": {
+                 "Bricks": "a value",
+                 "Balls": "a value",
+                 "textFont": "a value",
+                 "textColor":{
+                     "modernColors": [
+                         [218, 247, 166],
+                         [255, 195, 0],
+                         [255, 87, 51],
+                         [199, 0, 57],
+                         [133, 193, 233],
+                         [46, 204, 113],
+                         "it works"
+                     ]
+                 }
+             }
+         }
+     ]
+ }
