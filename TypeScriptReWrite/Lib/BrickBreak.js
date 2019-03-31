@@ -1,6 +1,6 @@
 "use strict";
-// Global Variables 
-let canvas, ctx, ball, brick, player, clicked, keyPressed, ai, keyRel, PaddleSpeed = 6, hit = false, title, timer;
+// Global Variables
+let canvas, ctx, ball, brick, player, clicked, keyPressed, ai, keyRel, PaddleSpeed = 6, hit = false, title;
 let clickHandler = () => canvas.addEventListener("click", () => true, false);
 // Classes
 /**
@@ -365,11 +365,21 @@ const level = {
         span[2].innerHTML = `----BRICK BREAKER!----`;
         span[3].innerHTML = `Lives : ${game.lives}`;
         span[4].innerHTML = `balls : ${level.balls.length}`;
+        ctx.font = `24px 'Press Start 2P'`;
+        ctx.fillStyle = "black";
+        if (!game.active) {
+            ctx.fillText(`Welcome To Level ${level.levelNum}`, canvas.width / 2 - 100, canvas.height / 2);
+            ctx.fillText(`Press Enter To Begin `, canvas.width / 2 - 100, canvas.height / 2 + 24);
+        }
+        if (ai.control) {
+            ctx.fillText("Start Game", canvas.width / 2 - 100, canvas.height / 2);
+            ctx.fillText("Click Anywhere!", canvas.width / 2 - 100, canvas.height / 2 + 24);
+        }
         if (hit) {
             function hitAnimate() {
                 let title = document.getElementById("gameName");
                 title.style.animation = "brickHit .3s 5";
-                let timer = setTimeout(reload, 600);
+                setTimeout(reload, 600);
             }
             hitAnimate();
             function reload() {
@@ -597,8 +607,7 @@ const PowerUps = {
                     game.active = true;
                 }
             }
-            ;
-            if ([32, 37, 38, 39, 40].indexOf(event.keyCode) > -1) {
+            if (["Space", "ArrowLeft", "ArrowUp", "ArrowRight", "ArrowDown"].indexOf(event.code) > -1) {
                 event.preventDefault();
             }
         }, false);

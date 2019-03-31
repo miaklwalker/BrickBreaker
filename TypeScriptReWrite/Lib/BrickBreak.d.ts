@@ -1,4 +1,4 @@
-declare let canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D, ball: Ball, brick: Brick, player: Paddle, clicked: number, keyPressed: string, ai: Ai, keyRel: string, PaddleSpeed: number, hit: boolean, title: HTMLSpanElement, timer: () => any;
+declare let canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D, ball: Ball, brick: Brick, player: Paddle, clicked: number, keyPressed: string, ai: Ai, keyRel: string, PaddleSpeed: number, hit: boolean, title: HTMLSpanElement;
 declare let clickHandler: () => void;
 /**
  * @class Vector
@@ -107,10 +107,7 @@ interface keyBoard {
     ArrowLeft: boolean;
     ArrowRight: boolean;
 }
-declare const keyBoard: {
-    ArrowLeft: boolean;
-    ArrowRight: boolean;
-};
+declare const keyBoard: keyBoard;
 /**
  * @name level
  * @description - The Level Object contains Methods and Properties for defining the level.

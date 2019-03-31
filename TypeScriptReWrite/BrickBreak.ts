@@ -1,4 +1,4 @@
-// Global Variables 
+// Global Variables
 let canvas: HTMLCanvasElement,
     ctx: CanvasRenderingContext2D,
     ball: Ball,
@@ -10,8 +10,8 @@ let canvas: HTMLCanvasElement,
     keyRel: string,
     PaddleSpeed: number = 6,
     hit: boolean = false,
-    title: HTMLSpanElement,
-    timer: () => any;
+    title: HTMLSpanElement
+ ;
 
 let clickHandler = () => canvas.addEventListener("click", () => true, false);
 
@@ -56,7 +56,7 @@ class Vector {
     limit(max: number) {
         let mSq: number = (this.x * this.x) + (this.y * this.y);
         if (mSq > max * max) {
-            this.div(Math.sqrt(mSq)) //normalize it
+            this.div(Math.sqrt(mSq)); //normalize it
             this.mult(max);
         }
         return this
@@ -140,7 +140,7 @@ class Ball {
                 this.position.x < paddle.position.x + paddle.width + this.radius) {
                 if (this.velocity.y > 0) {
                     let ballMap: number = (this.position.x - paddle.position.x) / ((paddle.position.x + paddle.width) - paddle.position.x) * (1 - (-1)) - 1;
-                    this.acceleration.x += ballMap
+                    this.acceleration.x += ballMap;
                     this.velocity.y *= -1
                 }
             }
@@ -193,7 +193,7 @@ class Paddle {
     constructor(x: number, y: number) {
         this.width = canvas.width / 5;
         this.height = canvas.height * .02474;
-        this.position = new Vector(x, y)
+        this.position = new Vector(x, y);
         this.velocity = new Vector(0, 0);
     }
     show() {
@@ -261,7 +261,7 @@ class Ai {
     }
 
     choose(choice: string) {
-        let offset = 0
+        let offset = 0;
         switch (choice) {
             case "left":
                 for (offset; offset >= -30; offset -= .1) {
@@ -376,7 +376,7 @@ function collisions(circle: Ball, rectangle: Brick) {
             }
             if (leftRight) {
                 rectangle.hit();
-                hit = true
+                hit = true;
                 circle.velocity.x *= -1;
             }
         }
@@ -400,10 +400,10 @@ interface keyBoard {
     ArrowLeft: boolean;
     ArrowRight: boolean;
 }
-const keyBoard = {
+const keyBoard:keyBoard = {
     ArrowLeft: false,
     ArrowRight: false,
-}
+};
 
 /**
  * @name level
@@ -451,12 +451,24 @@ const level: level = {
         span[2].innerHTML = `----BRICK BREAKER!----`;
         span[3].innerHTML = `Lives : ${game.lives}`;
         span[4].innerHTML = `balls : ${level.balls.length}`;
+           ctx.font =`24px 'Press Start 2P'`;
+           ctx.fillStyle = "black";
+           if(!game.active) {
+               ctx.fillText(`Welcome To Level ${level.levelNum}`, canvas.width / 2 - 100, canvas.height / 2);
+               ctx.fillText(`Press Enter To Begin `, canvas.width / 2 - 100, canvas.height / 2+24);
+           }
+           if(ai.control) {
+               ctx.fillText("Start Game", canvas.width / 2-100, canvas.height / 2);
+               ctx.fillText("Click Anywhere!", canvas.width / 2-100, canvas.height / 2 + 24);
+           }
+
+
 
         if (hit) {
             function hitAnimate() {
                 let title = < HTMLSpanElement > document.getElementById("gameName");
                 title.style.animation = "brickHit .3s 5";
-                let timer = setTimeout(reload, 600);
+                setTimeout(reload, 600);
             }
             hitAnimate();
 
@@ -728,8 +740,8 @@ const PowerUps: PowerUps = {
                     } else {
                         game.active = true;
                     }
-                };
-                if ([32, 37, 38, 39, 40].indexOf(event.keyCode) > -1) {
+                }
+                if (["Space", "ArrowLeft", "ArrowUp", "ArrowRight", "ArrowDown"].indexOf(event.code) > -1) {
                     event.preventDefault();
                 }
             },
@@ -769,15 +781,15 @@ function setup() {
 
 
 function draw() {
-    drawBackground();
-    level.scoreboard();
-    level.showBricks();
-    gameLogic.ballLoop();
-    gameLogic.ends();
-    gameLogic.demo();
-    player.move();
-    player.show();
-    gameLoop(draw);
+     drawBackground();
+     level.scoreboard();
+     level.showBricks();
+     gameLogic.ballLoop();
+     gameLogic.ends();
+     gameLogic.demo();
+     player.move();
+     player.show();
+     gameLoop(draw);
 
 
 }
