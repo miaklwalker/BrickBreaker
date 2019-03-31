@@ -349,7 +349,7 @@
    *
    * @method createA
    * @param  {String} href       url of page to link to
-   * @param  {String} html       inner html of link element to display
+   * @param  {String} html       inner html of link element to displayed
    * @param  {String} [target]   target where new link should open,
    *                             could be _blank, _self, _parent, _top.
    * @return {Object|p5.Element} pointer to p5.Element holding created node
@@ -371,7 +371,7 @@
 
   /**
    * Creates a slider &lt;input&gt;&lt;/input&gt; element in the DOM.
-   * Use .size() to set the display length of the slider.
+   * Use .size() to set the displayed length of the slider.
    * Appends to the container node if one is specified, otherwise
    * appends to body.
    *
@@ -428,7 +428,7 @@
 
   /**
    * Creates a &lt;button&gt;&lt;/button&gt; element in the DOM.
-   * Use .size() to set the display size of the button.
+   * Use .size() to set the displayed size of the button.
    * Use .mousePressed() to specify behavior on press.
    * Appends to the container node if one is specified, otherwise
    * appends to body.
@@ -774,7 +774,7 @@
 
   /**
    * Creates an &lt;input&gt;&lt;/input&gt; element in the DOM for text input.
-   * Use .size() to set the display length of the box.
+   * Use .size() to set the displayed length of the box.
    * Appends to the container node if one is specified, otherwise
    * appends to body.
    *
@@ -1327,7 +1327,7 @@
       this.position(x, hOffset / 2);
     }
 
-    this.style('display', style);
+    this.style('displayed', style);
 
     if (hidden) this.hide();
 
@@ -1687,15 +1687,15 @@
 
   /**
    *
-   * Shows the current element. Essentially, setting display:block for the style.
+   * Shows the current element. Essentially, setting displayed:block for the style.
    *
    * @method show
    * @return {Object|p5.Element}
    * @example
    * <div class='norender'><code>
    * var div = createDiv('div');
-   * div.style('display', 'none');
-   * div.show(); // turns display to block
+   * div.style('displayed', 'none');
+   * div.show(); // turns displayed to block
    * </code></div>
    */
   p5.Element.prototype.show = function() {
@@ -1704,7 +1704,7 @@
   };
 
   /**
-   * Hides the current element. Essentially, setting display:none for the style.
+   * Hides the current element. Essentially, setting displayed:none for the style.
    *
    * @method hide
    * @return {Object|p5.Element}

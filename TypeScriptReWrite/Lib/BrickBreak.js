@@ -1,6 +1,7 @@
 "use strict";
 // Global Variables
-let canvas, ctx, ball, brick, player, clicked, keyPressed, ai, keyRel, PaddleSpeed = 6, hit = false, title;
+let canvas, ctx, ball, brick, player, clicked, keyPressed, ai, keyRel, PaddleSpeed = 6, hit = false, title, color = 0, iterator = 0, chosenPowerUp, displayed;
+const modernColors = [[218, 247, 166], [255, 195, 0], [255, 87, 51], [199, 0, 57], [133, 193, 233], [46, 204, 113]];
 let clickHandler = () => canvas.addEventListener("click", () => true, false);
 // Classes
 /**
@@ -107,7 +108,7 @@ class Ball {
                 this.position.x > paddle.position.x - this.radius &&
                 this.position.x < paddle.position.x + paddle.width + this.radius) {
                 if (this.velocity.y > 0) {
-                    let ballMap = (this.position.x - paddle.position.x) / ((paddle.position.x + paddle.width) - paddle.position.x) * (1 - (-1)) - 1;
+                    let ballMap = (this.position.x - paddle.position.x) / ((paddle.position.x + paddle.width) - paddle.position.x) * (2 - (-2)) - 2;
                     this.acceleration.x += ballMap;
                     this.velocity.y *= -1;
                 }
@@ -267,7 +268,7 @@ function makeCanvas(name, width, height) {
 function getPowers() {
     let Random = (Math.floor(Math.random() * 100));
     let powerUpList = Object.keys(PowerUps);
-    let chosenPowerUp = powerUpList[Random % powerUpList.length];
+    chosenPowerUp = powerUpList[Random % powerUpList.length];
     if (game.powerActive) {
         PowerUps[chosenPowerUp].effect();
     }
@@ -366,7 +367,10 @@ const level = {
         span[3].innerHTML = `Lives : ${game.lives}`;
         span[4].innerHTML = `balls : ${level.balls.length}`;
         ctx.font = `24px 'Press Start 2P'`;
-        ctx.fillStyle = "black";
+        console.log(iterator++);
+        if (iterator % 5 === 0)
+            color++;
+        ctx.fillStyle = `rgb(${modernColors[color % 6][0]},${modernColors[color % 6][1]},${modernColors[color % 6][2]})`;
         if (!game.active) {
             ctx.fillText(`Welcome To Level ${level.levelNum}`, canvas.width / 2 - 100, canvas.height / 2);
             ctx.fillText(`Press Enter To Begin `, canvas.width / 2 - 100, canvas.height / 2 + 24);
@@ -374,6 +378,14 @@ const level = {
         if (ai.control) {
             ctx.fillText("Start Game", canvas.width / 2 - 100, canvas.height / 2);
             ctx.fillText("Click Anywhere!", canvas.width / 2 - 100, canvas.height / 2 + 24);
+        }
+        else {
+            if (game.powerActive) {
+                if (!displayed) {
+                    ctx.fillText(`${chosenPowerUp}`, canvas.width / 2 - 100, canvas.height / 2);
+                    setTimeout(() => displayed = true, 2000);
+                }
+            }
         }
         if (hit) {
             function hitAnimate() {
@@ -642,9 +654,9 @@ function setup() {
 }
 function draw() {
     drawBackground();
-    level.scoreboard();
     level.showBricks();
     gameLogic.ballLoop();
+    level.scoreboard();
     gameLogic.ends();
     gameLogic.demo();
     player.move();

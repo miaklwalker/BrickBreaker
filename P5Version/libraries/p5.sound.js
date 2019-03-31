@@ -2850,7 +2850,7 @@
 //      *  // get the centroid
 //      *  spectralCentroid = fft.getCentroid();
 //      *
-//      *  // the mean_freq_index calculation is for the display.
+//      *  // the mean_freq_index calculation is for the displayed.
 //      *  var mean_freq_index = spectralCentroid/(nyquist/spectrum.length);
 //      *
 //      *  centroidplot = map(log(mean_freq_index), 0, log(spectrum.length), 0, width);

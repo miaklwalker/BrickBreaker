@@ -1165,7 +1165,7 @@ module.exports={
             "requires": [
                 "core"
             ],
-            "description": "<p>Creates a new p5.Image. A p5.Image is a canvas backed representation of an\nimage.\n<br><br>\np5 can display .gif, .jpg and .png images. Images may be displayed\nin 2D and 3D space. Before an image is used, it must be loaded with the\nloadImage() function. The p5.Image class contains fields for the width and\nheight of the image, as well as an array called pixels[] that contains the\nvalues for every pixel in the image.\n<br><br>\nThe methods described below allow easy access to the image&#39;s pixels and\nalpha channel and simplify the process of compositing.\n<br><br>\nBefore using the pixels[] array, be sure to use the loadPixels() method on\nthe image to make sure that the pixel data is properly loaded.</p>\n"
+            "description": "<p>Creates a new p5.Image. A p5.Image is a canvas backed representation of an\nimage.\n<br><br>\np5 can displayed .gif, .jpg and .png images. Images may be displayed\nin 2D and 3D space. Before an image is used, it must be loaded with the\nloadImage() function. The p5.Image class contains fields for the width and\nheight of the image, as well as an array called pixels[] that contains the\nvalues for every pixel in the image.\n<br><br>\nThe methods described below allow easy access to the image&#39;s pixels and\nalpha channel and simplify the process of compositing.\n<br><br>\nBefore using the pixels[] array, be sure to use the loadPixels() method on\nthe image to make sure that the pixel data is properly loaded.</p>\n"
         },
         "Loading & Displaying": {
             "name": "Loading & Displaying",
@@ -1434,7 +1434,7 @@ module.exports={
             "namespace": "",
             "file": "src/typography/p5.Font.js",
             "line": 21,
-            "description": "<p>This module defines the p5.Font class and functions for\ndrawing text to the display canvas.</p>\n",
+            "description": "<p>This module defines the p5.Font class and functions for\ndrawing text to the displayed canvas.</p>\n",
             "requires": [
                 "core",
                 "constants"
@@ -1932,7 +1932,7 @@ module.exports={
             "namespace": "",
             "file": "src/image/p5.Image.js",
             "line": 23,
-            "description": "<p>Creates a new p5.Image. A p5.Image is a canvas backed representation of an\nimage.\n<br><br>\np5 can display .gif, .jpg and .png images. Images may be displayed\nin 2D and 3D space. Before an image is used, it must be loaded with the\nloadImage() function. The p5.Image class contains fields for the width and\nheight of the image, as well as an array called pixels[] that contains the\nvalues for every pixel in the image.\n<br><br>\nThe methods described below allow easy access to the image&#39;s pixels and\nalpha channel and simplify the process of compositing.\n<br><br>\nBefore using the pixels[] array, be sure to use the loadPixels() method on\nthe image to make sure that the pixel data is properly loaded.</p>\n",
+            "description": "<p>Creates a new p5.Image. A p5.Image is a canvas backed representation of an\nimage.\n<br><br>\np5 can displayed .gif, .jpg and .png images. Images may be displayed\nin 2D and 3D space. Before an image is used, it must be loaded with the\nloadImage() function. The p5.Image class contains fields for the width and\nheight of the image, as well as an array called pixels[] that contains the\nvalues for every pixel in the image.\n<br><br>\nThe methods described below allow easy access to the image&#39;s pixels and\nalpha channel and simplify the process of compositing.\n<br><br>\nBefore using the pixels[] array, be sure to use the loadPixels() method on\nthe image to make sure that the pixel data is properly loaded.</p>\n",
             "example": [
                 "\n<div><code>\nfunction setup() {\n  var img = createImage(100, 100); // same as new p5.Image(100, 100);\n  img.loadPixels();\n  createCanvas(100, 100);\n  background(0);\n\n  // helper for writing color to array\n  function writeColor(image, x, y, red, green, blue, alpha) {\n    var index = (x + y * width) * 4;\n    image.pixels[index] = red;\n    image.pixels[index + 1] = green;\n    image.pixels[index + 2] = blue;\n    image.pixels[index + 3] = alpha;\n  }\n\n  var x, y;\n  // fill with random colors\n  for (y = 0; y < img.height; y++) {\n    for (x = 0; x < img.width; x++) {\n      var red = random(255);\n      var green = random(255);\n      var blue = random(255);\n      var alpha = 255;\n      writeColor(img, x, y, red, green, blue, alpha);\n    }\n  }\n\n  // draw a red line\n  y = 0;\n  for (x = 0; x < img.width; x++) {\n    writeColor(img, x, y, 255, 0, 0, 255);\n  }\n\n  // draw a green line\n  y = img.height - 1;\n  for (x = 0; x < img.width; x++) {\n    writeColor(img, x, y, 0, 255, 0, 255);\n  }\n\n  img.updatePixels();\n  image(img, 0, 0);\n}\n</code></div>"
             ],
@@ -3844,7 +3844,7 @@ module.exports={
         {
             "file": "src/color/setting.js",
             "line": 15,
-            "description": "<p>The background() function sets the color used for the background of the\np5.js canvas. The default background is light gray. This function is\ntypically used within draw() to clear the display window at the beginning\nof each frame, but it can be used inside setup() to set the background on\nthe first frame of animation or if the background need only be set once.\n<br><br>\nThe color is either specified in terms of the RGB, HSB, or HSL color\ndepending on the current colorMode. (The default color space is RGB, with\neach value in the range from 0 to 255). The alpha range by default is also 0 to 255.\n<br><br>\nIf a single string argument is provided, RGB, RGBA and Hex CSS color strings\nand all named color strings are supported. In this case, an alpha number\nvalue as a second argument is not supported, the RGBA form should be used.\n<br><br>\nA p5.Color object can also be provided to set the background color.\n<br><br>\nA p5.Image can also be provided to set the background iamge.</p>\n",
+            "description": "<p>The background() function sets the color used for the background of the\np5.js canvas. The default background is light gray. This function is\ntypically used within draw() to clear the displayed window at the beginning\nof each frame, but it can be used inside setup() to set the background on\nthe first frame of animation or if the background need only be set once.\n<br><br>\nThe color is either specified in terms of the RGB, HSB, or HSL color\ndepending on the current colorMode. (The default color space is RGB, with\neach value in the range from 0 to 255). The alpha range by default is also 0 to 255.\n<br><br>\nIf a single string argument is provided, RGB, RGBA and Hex CSS color strings\nand all named color strings are supported. In this case, an alpha number\nvalue as a second argument is not supported, the RGBA form should be used.\n<br><br>\nA p5.Color object can also be provided to set the background color.\n<br><br>\nA p5.Image can also be provided to set the background iamge.</p>\n",
             "itemtype": "method",
             "name": "background",
             "chainable": 1,
@@ -3961,7 +3961,7 @@ module.exports={
         {
             "file": "src/color/setting.js",
             "line": 185,
-            "description": "<p>Clears the pixels within a buffer. This function only works on p5.Canvas\nobjects created with the createCanvas() function; it won&#39;t work with the\nmain display window. Unlike the main graphics context, pixels in\nadditional graphics areas created with createGraphics() can be entirely\nor partially transparent. This function clears everything to make all of\nthe pixels 100% transparent.</p>\n",
+            "description": "<p>Clears the pixels within a buffer. This function only works on p5.Canvas\nobjects created with the createCanvas() function; it won&#39;t work with the\nmain displayed window. Unlike the main graphics context, pixels in\nadditional graphics areas created with createGraphics() can be entirely\nor partially transparent. This function clears everything to make all of\nthe pixels 100% transparent.</p>\n",
             "itemtype": "method",
             "name": "clear",
             "chainable": 1,
@@ -5874,7 +5874,7 @@ module.exports={
         {
             "file": "src/core/curves.js",
             "line": 92,
-            "description": "<p>Sets the resolution at which Beziers display.</p>\n<p>The default value is 20.</p>\n",
+            "description": "<p>Sets the resolution at which Beziers displayed.</p>\n<p>The default value is 20.</p>\n",
             "itemtype": "method",
             "name": "bezierDetail",
             "params": [
@@ -6115,7 +6115,7 @@ module.exports={
         {
             "file": "src/core/curves.js",
             "line": 344,
-            "description": "<p>Sets the resolution at which curves display.</p>\n<p>The default value is 20.</p>\n",
+            "description": "<p>Sets the resolution at which curves displayed.</p>\n<p>The default value is 20.</p>\n",
             "itemtype": "method",
             "name": "curveDetail",
             "params": [
@@ -6384,7 +6384,7 @@ module.exports={
         {
             "file": "src/core/environment.js",
             "line": 293,
-            "description": "<p>System variable that stores the width of the entire screen display. This\nis used to run a full-screen program on any display size.</p>\n",
+            "description": "<p>System variable that stores the width of the entire screen displayed. This\nis used to run a full-screen program on any displayed size.</p>\n",
             "itemtype": "property",
             "name": "displayWidth",
             "type": "Number",
@@ -6400,7 +6400,7 @@ module.exports={
         {
             "file": "src/core/environment.js",
             "line": 310,
-            "description": "<p>System variable that stores the height of the entire screen display. This\nis used to run a full-screen program on any display size.</p>\n",
+            "description": "<p>System variable that stores the height of the entire screen displayed. This\nis used to run a full-screen program on any displayed size.</p>\n",
             "itemtype": "property",
             "name": "displayHeight",
             "type": "Number",
@@ -6408,7 +6408,7 @@ module.exports={
             "example": [
                 "\n<div class=\"norender\"><code>\ncreateCanvas(displayWidth, displayHeight);\n</code></div>"
             ],
-            "alt": "no display.",
+            "alt": "no displayed.",
             "class": "p5",
             "module": "Environment",
             "submodule": "Environment"
@@ -6424,7 +6424,7 @@ module.exports={
             "example": [
                 "\n<div class=\"norender\"><code>\ncreateCanvas(windowWidth, windowHeight);\n</code></div>"
             ],
-            "alt": "no display.",
+            "alt": "no displayed.",
             "class": "p5",
             "module": "Environment",
             "submodule": "Environment"
@@ -6440,7 +6440,7 @@ module.exports={
             "example": [
                 "\n<div class=\"norender\"><code>\ncreateCanvas(windowWidth, windowHeight);\n</code></div>"
             ],
-            "alt": "no display.",
+            "alt": "no displayed.",
             "class": "p5",
             "module": "Environment",
             "submodule": "Environment"
@@ -6454,7 +6454,7 @@ module.exports={
             "example": [
                 "\n<div class=\"norender\"><code>\nfunction setup() {\n  createCanvas(windowWidth, windowHeight);\n}\n\nfunction draw() {\n  background(0, 100, 200);\n}\n\nfunction windowResized() {\n  resizeCanvas(windowWidth, windowHeight);\n}\n</code></div>"
             ],
-            "alt": "no display.",
+            "alt": "no displayed.",
             "class": "p5",
             "module": "Environment",
             "submodule": "Environment"
@@ -6504,7 +6504,7 @@ module.exports={
             "example": [
                 "\n<div>\n<code>\n// Clicking in the box toggles fullscreen on and off.\nfunction setup() {\n  background(200);\n}\nfunction mousePressed() {\n  if (mouseX > 0 && mouseX < 100 && mouseY > 0 && mouseY < 100) {\n    var fs = fullscreen();\n    fullscreen(!fs);\n  }\n}\n</code>\n</div>"
             ],
-            "alt": "no display.",
+            "alt": "no displayed.",
             "class": "p5",
             "module": "Environment",
             "submodule": "Environment"
@@ -6512,7 +6512,7 @@ module.exports={
         {
             "file": "src/core/environment.js",
             "line": 488,
-            "description": "<p>Sets the pixel scaling for high pixel density displays. By default\npixel density is set to match display density, call pixelDensity(1)\nto turn this off. Calling pixelDensity() with no arguments returns\nthe current pixel density of the sketch.</p>\n",
+            "description": "<p>Sets the pixel scaling for high pixel density displays. By default\npixel density is set to match displayed density, call pixelDensity(1)\nto turn this off. Calling pixelDensity() with no arguments returns\nthe current pixel density of the sketch.</p>\n",
             "itemtype": "method",
             "name": "pixelDensity",
             "params": [
@@ -6538,11 +6538,11 @@ module.exports={
         {
             "file": "src/core/environment.js",
             "line": 534,
-            "description": "<p>Returns the pixel density of the current display the sketch is running on.</p>\n",
+            "description": "<p>Returns the pixel density of the current displayed the sketch is running on.</p>\n",
             "itemtype": "method",
             "name": "displayDensity",
             "return": {
-                "description": "current pixel density of the display",
+                "description": "current pixel density of the displayed",
                 "type": "Number"
             },
             "example": [
@@ -6584,7 +6584,7 @@ module.exports={
             "example": [
                 "\n<div class='norender'><code>\nfunction setup() {\n  var urlPath = getURLPath();\n  for (var i = 0; i < urlPath.length; i++) {\n    text(urlPath[i], 10, i * 20 + 20);\n  }\n}\n</code></div>"
             ],
-            "alt": "no display",
+            "alt": "no displayed",
             "class": "p5",
             "module": "Environment",
             "submodule": "Environment"
@@ -6602,7 +6602,7 @@ module.exports={
             "example": [
                 "\n<div class='norender'>\n<code>\n// Example: http://p5js.org?year=2014&month=May&day=15\n\nfunction setup() {\n  var params = getURLParams();\n  text(params.day, 10, 20);\n  text(params.month, 10, 40);\n  text(params.year, 10, 60);\n}\n</code>\n</div>"
             ],
-            "alt": "no display.",
+            "alt": "no displayed.",
             "class": "p5",
             "module": "Environment",
             "submodule": "Environment"
@@ -6654,7 +6654,7 @@ module.exports={
             "example": [
                 "\n <div class=\"norender\"><code>\n // in the html file:\n // &lt;div id=\"myContainer\">&lt;/div>\n// in the js file:\n var cnv = createCanvas(100, 100);\n cnv.parent('myContainer');\n </code></div>\n <div class='norender'><code>\n var div0 = createDiv('this is the parent');\n var div1 = createDiv('this is the child');\n div1.parent(div0); // use p5.Element\n </code></div>\n <div class='norender'><code>\n var div0 = createDiv('this is the parent');\n div0.id('apples');\n var div1 = createDiv('this is the child');\n div1.parent('apples'); // use id\n </code></div>\n <div class='norender'><code>\n var elt = document.getElementById('myParentDiv');\n var div1 = createDiv('this is the child');\n div1.parent(elt); // use element from page\n </code></div>"
             ],
-            "alt": "no display.",
+            "alt": "no displayed.",
             "class": "p5.Element",
             "module": "DOM",
             "submodule": "DOM",
@@ -6690,7 +6690,7 @@ module.exports={
             "example": [
                 "\n <div class='norender'><code>\n function setup() {\n   var cnv = createCanvas(100, 100);\n   // Assigns a CSS selector ID to\n   // the canvas element.\n   cnv.id('mycanvas');\n }\n </code></div>"
             ],
-            "alt": "no display.",
+            "alt": "no displayed.",
             "class": "p5.Element",
             "module": "DOM",
             "submodule": "DOM",
@@ -6726,7 +6726,7 @@ module.exports={
             "example": [
                 "\n <div class='norender'><code>\n function setup() {\n   var cnv = createCanvas(100, 100);\n   // Assigns a CSS selector class 'small'\n   // to the canvas element.\n   cnv.class('small');\n }\n </code></div>"
             ],
-            "alt": "no display.",
+            "alt": "no displayed.",
             "class": "p5.Element",
             "module": "DOM",
             "submodule": "DOM",
@@ -6769,7 +6769,7 @@ module.exports={
             "example": [
                 "\n<div class='norender'><code>\nvar cnv;\nvar d;\nvar g;\nfunction setup() {\n  cnv = createCanvas(100, 100);\n  cnv.mousePressed(changeGray); // attach listener for\n  // canvas click only\n  d = 10;\n  g = 100;\n}\n\nfunction draw() {\n  background(g);\n  ellipse(width / 2, height / 2, d, d);\n}\n\n// this function fires with any click anywhere\nfunction mousePressed() {\n  d = d + 10;\n}\n\n// this function fires only when cnv is clicked\nfunction changeGray() {\n  g = random(0, 255);\n}\n</code></div>"
             ],
-            "alt": "no display.",
+            "alt": "no displayed.",
             "class": "p5.Element",
             "module": "DOM",
             "submodule": "DOM"
@@ -6794,7 +6794,7 @@ module.exports={
             "example": [
                 "\n<div class='norender'><code>\nvar cnv;\nvar d;\nvar g;\nfunction setup() {\n  cnv = createCanvas(100, 100);\n  cnv.doubleClicked(changeGray); // attach listener for\n  // canvas double click only\n  d = 10;\n  g = 100;\n}\n\nfunction draw() {\n  background(g);\n  ellipse(width / 2, height / 2, d, d);\n}\n\n// this function fires with any double click anywhere\nfunction doubleClicked() {\n  d = d + 10;\n}\n\n// this function fires only when cnv is double clicked\nfunction changeGray() {\n  g = random(0, 255);\n}\n</code></div>"
             ],
-            "alt": "no display.",
+            "alt": "no displayed.",
             "class": "p5.Element",
             "module": "DOM",
             "submodule": "DOM"
@@ -6816,7 +6816,7 @@ module.exports={
             "example": [
                 "\n<div class='norender'><code>\nvar cnv;\nvar d;\nvar g;\nfunction setup() {\n  cnv = createCanvas(100, 100);\n  cnv.mouseWheel(changeSize); // attach listener for\n  // activity on canvas only\n  d = 10;\n  g = 100;\n}\n\nfunction draw() {\n  background(g);\n  ellipse(width / 2, height / 2, d, d);\n}\n\n// this function fires with mousewheel movement\n// anywhere on screen\nfunction mouseWheel() {\n  g = g + 10;\n}\n\n// this function fires with mousewheel movement\n// over canvas only\nfunction changeSize(event) {\n  if (event.deltaY > 0) {\n    d = d + 10;\n  } else {\n    d = d - 10;\n  }\n}\n</code></div>"
             ],
-            "alt": "no display.",
+            "alt": "no displayed.",
             "class": "p5.Element",
             "module": "DOM",
             "submodule": "DOM"
@@ -6838,7 +6838,7 @@ module.exports={
             "example": [
                 "\n<div class='norender'><code>\nvar cnv;\nvar d;\nvar g;\nfunction setup() {\n  cnv = createCanvas(100, 100);\n  cnv.mouseReleased(changeGray); // attach listener for\n  // activity on canvas only\n  d = 10;\n  g = 100;\n}\n\nfunction draw() {\n  background(g);\n  ellipse(width / 2, height / 2, d, d);\n}\n\n// this function fires after the mouse has been\n// released\nfunction mouseReleased() {\n  d = d + 10;\n}\n\n// this function fires after the mouse has been\n// released while on canvas\nfunction changeGray() {\n  g = random(0, 255);\n}\n</code></div>"
             ],
-            "alt": "no display.",
+            "alt": "no displayed.",
             "class": "p5.Element",
             "module": "DOM",
             "submodule": "DOM"
@@ -6860,7 +6860,7 @@ module.exports={
             "example": [
                 "\n<div class=\"norender\">\n<code>\nvar cnv;\nvar d;\nvar g;\n\nfunction setup() {\n  cnv = createCanvas(100, 100);\n  cnv.mouseClicked(changeGray); // attach listener for\n  // activity on canvas only\n  d = 10;\n  g = 100;\n}\n\nfunction draw() {\n  background(g);\n  ellipse(width / 2, height / 2, d, d);\n}\n\n// this function fires after the mouse has been\n// clicked anywhere\nfunction mouseClicked() {\n  d = d + 10;\n}\n\n// this function fires after the mouse has been\n// clicked on canvas\nfunction changeGray() {\n  g = random(0, 255);\n}\n</code>\n</div>"
             ],
-            "alt": "no display.",
+            "alt": "no displayed.",
             "class": "p5.Element",
             "module": "DOM",
             "submodule": "DOM"
@@ -6882,7 +6882,7 @@ module.exports={
             "example": [
                 "\n<div class='norender'><code>\nvar cnv;\nvar d = 30;\nvar g;\nfunction setup() {\n  cnv = createCanvas(100, 100);\n  cnv.mouseMoved(changeSize); // attach listener for\n  // activity on canvas only\n  d = 10;\n  g = 100;\n}\n\nfunction draw() {\n  background(g);\n  fill(200);\n  ellipse(width / 2, height / 2, d, d);\n}\n\n// this function fires when mouse moves anywhere on\n// page\nfunction mouseMoved() {\n  g = g + 5;\n  if (g > 255) {\n    g = 0;\n  }\n}\n\n// this function fires when mouse moves over canvas\nfunction changeSize() {\n  d = d + 2;\n  if (d > 100) {\n    d = 0;\n  }\n}\n</code></div>"
             ],
-            "alt": "no display.",
+            "alt": "no displayed.",
             "class": "p5.Element",
             "module": "DOM",
             "submodule": "DOM"
@@ -6904,7 +6904,7 @@ module.exports={
             "example": [
                 "\n<div class='norender'><code>\nvar cnv;\nvar d;\nfunction setup() {\n  cnv = createCanvas(100, 100);\n  cnv.mouseOver(changeGray);\n  d = 10;\n}\n\nfunction draw() {\n  ellipse(width / 2, height / 2, d, d);\n}\n\nfunction changeGray() {\n  d = d + 10;\n  if (d > 100) {\n    d = 0;\n  }\n}\n</code></div>"
             ],
-            "alt": "no display.",
+            "alt": "no displayed.",
             "class": "p5.Element",
             "module": "DOM",
             "submodule": "DOM"
@@ -6948,7 +6948,7 @@ module.exports={
             "example": [
                 "\n<div class='norender'><code>\n// Open your console to see the output\nfunction setup() {\n  var inp = createInput('');\n  inp.input(myInputEvent);\n}\n\nfunction myInputEvent() {\n  console.log('you are typing: ', this.value());\n}\n</code></div>"
             ],
-            "alt": "no display.",
+            "alt": "no displayed.",
             "class": "p5.Element",
             "module": "DOM",
             "submodule": "DOM"
@@ -6970,7 +6970,7 @@ module.exports={
             "example": [
                 "\n<div class='norender'><code>\nvar cnv;\nvar d;\nfunction setup() {\n  cnv = createCanvas(100, 100);\n  cnv.mouseOut(changeGray);\n  d = 10;\n}\n\nfunction draw() {\n  ellipse(width / 2, height / 2, d, d);\n}\n\nfunction changeGray() {\n  d = d + 10;\n  if (d > 100) {\n    d = 0;\n  }\n}\n</code></div>"
             ],
-            "alt": "no display.",
+            "alt": "no displayed.",
             "class": "p5.Element",
             "module": "DOM",
             "submodule": "DOM"
@@ -6992,7 +6992,7 @@ module.exports={
             "example": [
                 "\n<div class='norender'><code>\nvar cnv;\nvar d;\nvar g;\nfunction setup() {\n  cnv = createCanvas(100, 100);\n  cnv.touchStarted(changeGray); // attach listener for\n  // canvas click only\n  d = 10;\n  g = 100;\n}\n\nfunction draw() {\n  background(g);\n  ellipse(width / 2, height / 2, d, d);\n}\n\n// this function fires with any touch anywhere\nfunction touchStarted() {\n  d = d + 10;\n}\n\n// this function fires only when cnv is clicked\nfunction changeGray() {\n  g = random(0, 255);\n}\n</code></div>"
             ],
-            "alt": "no display.",
+            "alt": "no displayed.",
             "class": "p5.Element",
             "module": "DOM",
             "submodule": "DOM"
@@ -7014,7 +7014,7 @@ module.exports={
             "example": [
                 "\n<div class='norender'><code>\nvar cnv;\nvar g;\nfunction setup() {\n  cnv = createCanvas(100, 100);\n  cnv.touchMoved(changeGray); // attach listener for\n  // canvas click only\n  g = 100;\n}\n\nfunction draw() {\n  background(g);\n}\n\n// this function fires only when cnv is clicked\nfunction changeGray() {\n  g = random(0, 255);\n}\n</code></div>"
             ],
-            "alt": "no display.",
+            "alt": "no displayed.",
             "class": "p5.Element",
             "module": "DOM",
             "submodule": "DOM"
@@ -7036,7 +7036,7 @@ module.exports={
             "example": [
                 "\n<div class='norender'><code>\nvar cnv;\nvar d;\nvar g;\nfunction setup() {\n  cnv = createCanvas(100, 100);\n  cnv.touchEnded(changeGray); // attach listener for\n  // canvas click only\n  d = 10;\n  g = 100;\n}\n\nfunction draw() {\n  background(g);\n  ellipse(width / 2, height / 2, d, d);\n}\n\n// this function fires with any touch anywhere\nfunction touchEnded() {\n  d = d + 10;\n}\n\n// this function fires only when cnv is clicked\nfunction changeGray() {\n  g = random(0, 255);\n}\n</code></div>"
             ],
-            "alt": "no display.",
+            "alt": "no displayed.",
             "class": "p5.Element",
             "module": "DOM",
             "submodule": "DOM"
@@ -7289,7 +7289,7 @@ module.exports={
         {
             "file": "src/core/rendering.js",
             "line": 231,
-            "description": "<p>Blends the pixels in the display window according to the defined mode.\nThere is a choice of the following modes to blend the source pixels (A)\nwith the ones of pixels already in the display window (B):</p>\n<ul>\n<li><code>BLEND</code> - linear interpolation of colours: C =\nA<em>factor + B. This is the default blending mode.</li>\n<li><code>ADD</code> - sum of A and B</li>\n<li><code>DARKEST</code> - only the darkest colour succeeds: C =\nmin(A</em>factor, B).</li>\n<li><code>LIGHTEST</code> - only the lightest colour succeeds: C =\nmax(A*factor, B).</li>\n<li><code>DIFFERENCE</code> - subtract colors from underlying image.</li>\n<li><code>EXCLUSION</code> - similar to <code>DIFFERENCE</code>, but less\nextreme.</li>\n<li><code>MULTIPLY</code> - multiply the colors, result will always be\ndarker.</li>\n<li><code>SCREEN</code> - opposite multiply, uses inverse values of the\ncolors.</li>\n<li><code>REPLACE</code> - the pixels entirely replace the others and\ndon&#39;t utilize alpha (transparency) values.</li>\n<li><code>OVERLAY</code> - mix of <code>MULTIPLY</code> and <code>SCREEN\n</code>. Multiplies dark values, and screens light values.</li>\n<li><code>HARD_LIGHT</code> - <code>SCREEN</code> when greater than 50%\ngray, <code>MULTIPLY</code> when lower.</li>\n<li><code>SOFT_LIGHT</code> - mix of <code>DARKEST</code> and\n<code>LIGHTEST</code>. Works like <code>OVERLAY</code>, but not as harsh.\n</li>\n<li><code>DODGE</code> - lightens light tones and increases contrast,\nignores darks.</li>\n<li><code>BURN</code> - darker areas are applied, increasing contrast,\nignores lights.</li>\n</ul>",
+            "description": "<p>Blends the pixels in the displayed window according to the defined mode.\nThere is a choice of the following modes to blend the source pixels (A)\nwith the ones of pixels already in the displayed window (B):</p>\n<ul>\n<li><code>BLEND</code> - linear interpolation of colours: C =\nA<em>factor + B. This is the default blending mode.</li>\n<li><code>ADD</code> - sum of A and B</li>\n<li><code>DARKEST</code> - only the darkest colour succeeds: C =\nmin(A</em>factor, B).</li>\n<li><code>LIGHTEST</code> - only the lightest colour succeeds: C =\nmax(A*factor, B).</li>\n<li><code>DIFFERENCE</code> - subtract colors from underlying image.</li>\n<li><code>EXCLUSION</code> - similar to <code>DIFFERENCE</code>, but less\nextreme.</li>\n<li><code>MULTIPLY</code> - multiply the colors, result will always be\ndarker.</li>\n<li><code>SCREEN</code> - opposite multiply, uses inverse values of the\ncolors.</li>\n<li><code>REPLACE</code> - the pixels entirely replace the others and\ndon&#39;t utilize alpha (transparency) values.</li>\n<li><code>OVERLAY</code> - mix of <code>MULTIPLY</code> and <code>SCREEN\n</code>. Multiplies dark values, and screens light values.</li>\n<li><code>HARD_LIGHT</code> - <code>SCREEN</code> when greater than 50%\ngray, <code>MULTIPLY</code> when lower.</li>\n<li><code>SOFT_LIGHT</code> - mix of <code>DARKEST</code> and\n<code>LIGHTEST</code>. Works like <code>OVERLAY</code>, but not as harsh.\n</li>\n<li><code>DODGE</code> - lightens light tones and increases contrast,\nignores darks.</li>\n<li><code>BURN</code> - darker areas are applied, increasing contrast,\nignores lights.</li>\n</ul>",
             "itemtype": "method",
             "name": "blendMode",
             "params": [
@@ -7373,7 +7373,7 @@ module.exports={
         {
             "file": "src/core/structure.js",
             "line": 282,
-            "description": "<p>Executes the code within draw() one time. This functions allows the\n program to update the display window only when necessary, for example\n when an event registered by mousePressed() or keyPressed() occurs.\n <br><br>\n In structuring a program, it only makes sense to call redraw() within\n events such as mousePressed(). This is because redraw() does not run\n draw() immediately (it only sets a flag that indicates an update is\n needed).\n <br><br>\n The redraw() function does not work properly when called inside draw().\n To enable/disable animations, use loop() and noLoop().\n <br><br>\n In addition you can set the number of redraws per method call. Just\n add an integer as single parameter for the number of redraws.</p>\n",
+            "description": "<p>Executes the code within draw() one time. This functions allows the\n program to update the displayed window only when necessary, for example\n when an event registered by mousePressed() or keyPressed() occurs.\n <br><br>\n In structuring a program, it only makes sense to call redraw() within\n events such as mousePressed(). This is because redraw() does not run\n draw() immediately (it only sets a flag that indicates an update is\n needed).\n <br><br>\n The redraw() function does not work properly when called inside draw().\n To enable/disable animations, use loop() and noLoop().\n <br><br>\n In addition you can set the number of redraws per method call. Just\n add an integer as single parameter for the number of redraws.</p>\n",
             "itemtype": "method",
             "name": "redraw",
             "params": [
@@ -7646,7 +7646,7 @@ module.exports={
         {
             "file": "src/core/transform.js",
             "line": 463,
-            "description": "<p>Specifies an amount to displace objects within the display window.\nThe x parameter specifies left/right translation, the y parameter\nspecifies up/down translation.\n<br><br>\nTransformations are cumulative and apply to everything that happens after\nand subsequent calls to the function accumulates the effect. For example,\ncalling translate(50, 0) and then translate(20, 0) is the same as\ntranslate(70, 0). If translate() is called within draw(), the\ntransformation is reset when the loop begins again. This function can be\nfurther controlled by using push() and pop().</p>\n",
+            "description": "<p>Specifies an amount to displace objects within the displayed window.\nThe x parameter specifies left/right translation, the y parameter\nspecifies up/down translation.\n<br><br>\nTransformations are cumulative and apply to everything that happens after\nand subsequent calls to the function accumulates the effect. For example,\ncalling translate(50, 0) and then translate(20, 0) is the same as\ntranslate(70, 0). If translate() is called within draw(), the\ntransformation is reset when the loop begins again. This function can be\nfurther controlled by using push() and pop().</p>\n",
             "itemtype": "method",
             "name": "translate",
             "params": [
@@ -8536,7 +8536,7 @@ module.exports={
             "example": [
                 "\n<div class='norender'>\n<code>\n// A simple if statement looking at whether\n// rotationX - pRotationX < 0 is true or not will be\n// sufficient for determining the rotate direction\n// in most cases.\n\n// Some extra logic is needed to account for cases where\n// the angles wrap around.\nvar rotateDirection = 'clockwise';\n\n// Simple range conversion to make things simpler.\n// This is not absolutely necessary but the logic\n// will be different in that case.\n\nvar rX = rotationX + 180;\nvar pRX = pRotationX + 180;\n\nif ((rX - pRX > 0 && rX - pRX < 270) || rX - pRX < -270) {\n  rotateDirection = 'clockwise';\n} else if (rX - pRX < 0 || rX - pRX > 270) {\n  rotateDirection = 'counter-clockwise';\n}\n\nprint(rotateDirection);\n</code>\n</div>"
             ],
-            "alt": "no image to display.",
+            "alt": "no image to displayed.",
             "itemtype": "property",
             "name": "pRotationX",
             "type": "Number",
@@ -8552,7 +8552,7 @@ module.exports={
             "example": [
                 "\n<div class='norender'>\n<code>\n// A simple if statement looking at whether\n// rotationY - pRotationY < 0 is true or not will be\n// sufficient for determining the rotate direction\n// in most cases.\n\n// Some extra logic is needed to account for cases where\n// the angles wrap around.\nvar rotateDirection = 'clockwise';\n\n// Simple range conversion to make things simpler.\n// This is not absolutely necessary but the logic\n// will be different in that case.\n\nvar rY = rotationY + 180;\nvar pRY = pRotationY + 180;\n\nif ((rY - pRY > 0 && rY - pRY < 270) || rY - pRY < -270) {\n  rotateDirection = 'clockwise';\n} else if (rY - pRY < 0 || rY - pRY > 270) {\n  rotateDirection = 'counter-clockwise';\n}\nprint(rotateDirection);\n</code>\n</div>"
             ],
-            "alt": "no image to display.",
+            "alt": "no image to displayed.",
             "itemtype": "property",
             "name": "pRotationY",
             "type": "Number",
@@ -8568,7 +8568,7 @@ module.exports={
             "example": [
                 "\n<div class='norender'>\n<code>\n// A simple if statement looking at whether\n// rotationZ - pRotationZ < 0 is true or not will be\n// sufficient for determining the rotate direction\n// in most cases.\n\n// Some extra logic is needed to account for cases where\n// the angles wrap around.\nvar rotateDirection = 'clockwise';\n\nif (\n  (rotationZ - pRotationZ > 0 && rotationZ - pRotationZ < 270) ||\n  rotationZ - pRotationZ < -270\n) {\n  rotateDirection = 'clockwise';\n} else if (rotationZ - pRotationZ < 0 || rotationZ - pRotationZ > 270) {\n  rotateDirection = 'counter-clockwise';\n}\nprint(rotateDirection);\n</code>\n</div>"
             ],
-            "alt": "no image to display.",
+            "alt": "no image to displayed.",
             "itemtype": "property",
             "name": "pRotationZ",
             "type": "Number",
@@ -8689,7 +8689,7 @@ module.exports={
             "type": "String",
             "readonly": "",
             "example": [
-                "\n<div><code>\n// Click any key to display it!\n// (Not Guaranteed to be Case Sensitive)\nfunction setup() {\n  fill(245, 123, 158);\n  textSize(50);\n}\n\nfunction draw() {\n  background(200);\n  text(key, 33, 65); // Display last key pressed.\n}\n</code></div>"
+                "\n<div><code>\n// Click any key to displayed it!\n// (Not Guaranteed to be Case Sensitive)\nfunction setup() {\n  fill(245, 123, 158);\n  textSize(50);\n}\n\nfunction draw() {\n  background(200);\n  text(key, 33, 65); // Display last key pressed.\n}\n</code></div>"
             ],
             "alt": "canvas displays any key value that is pressed in pink font.",
             "class": "p5",
@@ -9109,7 +9109,7 @@ module.exports={
         {
             "file": "src/image/image.js",
             "line": 8,
-            "description": "<p>This module defines the p5 methods for the p5.Image class\nfor drawing images to the main display canvas.</p>\n",
+            "description": "<p>This module defines the p5 methods for the p5.Image class\nfor drawing images to the main displayed canvas.</p>\n",
             "class": "p5",
             "module": "Image",
             "submodule": "Image"
@@ -9117,7 +9117,7 @@ module.exports={
         {
             "file": "src/image/image.js",
             "line": 18,
-            "description": "<p>Creates a new p5.Image (the datatype for storing images). This provides a\nfresh buffer of pixels to play with. Set the size of the buffer with the\nwidth and height parameters.\n<br><br>\n.pixels gives access to an array containing the values for all the pixels\nin the display window.\nThese values are numbers. This array is the size (including an appropriate\nfactor for the pixelDensity) of the display window x4,\nrepresenting the R, G, B, A values in order for each pixel, moving from\nleft to right across each row, then down each column. See .pixels for\nmore info. It may also be simpler to use set() or get().\n<br><br>\nBefore accessing the pixels of an image, the data must loaded with the\nloadPixels() function. After the array data has been modified, the\nupdatePixels() function must be run to update the changes.</p>\n",
+            "description": "<p>Creates a new p5.Image (the datatype for storing images). This provides a\nfresh buffer of pixels to play with. Set the size of the buffer with the\nwidth and height parameters.\n<br><br>\n.pixels gives access to an array containing the values for all the pixels\nin the displayed window.\nThese values are numbers. This array is the size (including an appropriate\nfactor for the pixelDensity) of the displayed window x4,\nrepresenting the R, G, B, A values in order for each pixel, moving from\nleft to right across each row, then down each column. See .pixels for\nmore info. It may also be simpler to use set() or get().\n<br><br>\nBefore accessing the pixels of an image, the data must loaded with the\nloadPixels() function. After the array data has been modified, the\nupdatePixels() function must be run to update the changes.</p>\n",
             "itemtype": "method",
             "name": "createImage",
             "params": [
@@ -9271,7 +9271,7 @@ module.exports={
                 "type": "p5.Image"
             },
             "example": [
-                "\n<div>\n<code>\nvar img;\nfunction preload() {\n  img = loadImage('assets/laDefense.jpg');\n}\nfunction setup() {\n  image(img, 0, 0);\n}\n</code>\n</div>\n<div>\n<code>\nfunction setup() {\n  // here we use a callback to display the image after loading\n  loadImage('assets/laDefense.jpg', function(img) {\n    image(img, 0, 0);\n  });\n}\n</code>\n</div>"
+                "\n<div>\n<code>\nvar img;\nfunction preload() {\n  img = loadImage('assets/laDefense.jpg');\n}\nfunction setup() {\n  image(img, 0, 0);\n}\n</code>\n</div>\n<div>\n<code>\nfunction setup() {\n  // here we use a callback to displayed the image after loading\n  loadImage('assets/laDefense.jpg', function(img) {\n    image(img, 0, 0);\n  });\n}\n</code>\n</div>"
             ],
             "alt": "image of the underside of a white umbrella and grided ceililng above\nimage of the underside of a white umbrella and grided ceililng above",
             "class": "p5",
@@ -9281,11 +9281,11 @@ module.exports={
         {
             "file": "src/image/loading_displaying.js",
             "line": 125,
-            "description": "<p>Draw an image to the p5.js canvas.</p>\n<p>This function can be used with different numbers of parameters. The\nsimplest use requires only three parameters: img, x, and y—where (x, y) is\nthe position of the image. Two more parameters can optionally be added to\nspecify the width and height of the image.</p>\n<p>This function can also be used with all eight Number parameters. To\ndifferentiate between all these parameters, p5.js uses the language of\n&quot;destination rectangle&quot; (which corresponds to &quot;dx&quot;, &quot;dy&quot;, etc.) and &quot;source\nimage&quot; (which corresponds to &quot;sx&quot;, &quot;sy&quot;, etc.) below. Specifying the\n&quot;source image&quot; dimensions can be useful when you want to display a\nsubsection of the source image instead of the whole thing. Here&#39;s a diagram\nto explain further:\n<img src=\"assets/drawImage.png\"></img></p>\n",
+            "description": "<p>Draw an image to the p5.js canvas.</p>\n<p>This function can be used with different numbers of parameters. The\nsimplest use requires only three parameters: img, x, and y—where (x, y) is\nthe position of the image. Two more parameters can optionally be added to\nspecify the width and height of the image.</p>\n<p>This function can also be used with all eight Number parameters. To\ndifferentiate between all these parameters, p5.js uses the language of\n&quot;destination rectangle&quot; (which corresponds to &quot;dx&quot;, &quot;dy&quot;, etc.) and &quot;source\nimage&quot; (which corresponds to &quot;sx&quot;, &quot;sy&quot;, etc.) below. Specifying the\n&quot;source image&quot; dimensions can be useful when you want to displayed a\nsubsection of the source image instead of the whole thing. Here&#39;s a diagram\nto explain further:\n<img src=\"assets/drawImage.png\"></img></p>\n",
             "itemtype": "method",
             "name": "image",
             "example": [
-                "\n<div>\n<code>\nvar img;\nfunction preload() {\n  img = loadImage('assets/laDefense.jpg');\n}\nfunction setup() {\n  // Top-left corner of the img is at (0, 0)\n  // Width and height are the img's original width and height\n  image(img, 0, 0);\n}\n</code>\n</div>\n<div>\n<code>\nvar img;\nfunction preload() {\n  img = loadImage('assets/laDefense.jpg');\n}\nfunction setup() {\n  background(50);\n  // Top-left corner of the img is at (10, 10)\n  // Width and height are 50 x 50\n  image(img, 10, 10, 50, 50);\n}\n</code>\n</div>\n<div>\n<code>\nfunction setup() {\n  // Here, we use a callback to display the image after loading\n  loadImage('assets/laDefense.jpg', function(img) {\n    image(img, 0, 0);\n  });\n}\n</code>\n</div>\n<div>\n<code>\nvar img;\nfunction preload() {\n  img = loadImage('assets/gradient.png');\n}\nfunction setup() {\n  // 1. Background image\n  // Top-left corner of the img is at (0, 0)\n  // Width and height are the img's original width and height, 100 x 100\n  image(img, 0, 0);\n  // 2. Top right image\n  // Top-left corner of destination rectangle is at (50, 0)\n  // Destination rectangle width and height are 40 x 20\n  // The next parameters are relative to the source image:\n  // - Starting at position (50, 50) on the source image, capture a 50 x 50\n  // subsection\n  // - Draw this subsection to fill the dimensions of the destination rectangle\n  image(img, 50, 0, 40, 20, 50, 50, 50, 50);\n}\n</code>\n</div>"
+                "\n<div>\n<code>\nvar img;\nfunction preload() {\n  img = loadImage('assets/laDefense.jpg');\n}\nfunction setup() {\n  // Top-left corner of the img is at (0, 0)\n  // Width and height are the img's original width and height\n  image(img, 0, 0);\n}\n</code>\n</div>\n<div>\n<code>\nvar img;\nfunction preload() {\n  img = loadImage('assets/laDefense.jpg');\n}\nfunction setup() {\n  background(50);\n  // Top-left corner of the img is at (10, 10)\n  // Width and height are 50 x 50\n  image(img, 10, 10, 50, 50);\n}\n</code>\n</div>\n<div>\n<code>\nfunction setup() {\n  // Here, we use a callback to displayed the image after loading\n  loadImage('assets/laDefense.jpg', function(img) {\n    image(img, 0, 0);\n  });\n}\n</code>\n</div>\n<div>\n<code>\nvar img;\nfunction preload() {\n  img = loadImage('assets/gradient.png');\n}\nfunction setup() {\n  // 1. Background image\n  // Top-left corner of the img is at (0, 0)\n  // Width and height are the img's original width and height, 100 x 100\n  image(img, 0, 0);\n  // 2. Top right image\n  // Top-left corner of destination rectangle is at (50, 0)\n  // Destination rectangle width and height are 40 x 20\n  // The next parameters are relative to the source image:\n  // - Starting at position (50, 50) on the source image, capture a 50 x 50\n  // subsection\n  // - Draw this subsection to fill the dimensions of the destination rectangle\n  image(img, 50, 0, 40, 20, 50, 50, 50, 50);\n}\n</code>\n</div>"
             ],
             "alt": "image of the underside of a white umbrella and gridded ceiling above\nimage of the underside of a white umbrella and gridded ceiling above",
             "class": "p5",
@@ -9297,7 +9297,7 @@ module.exports={
                     "params": [
                         {
                             "name": "img",
-                            "description": "<p>the image to display</p>\n",
+                            "description": "<p>the image to displayed</p>\n",
                             "type": "p5.Image|p5.Element"
                         },
                         {
@@ -9494,7 +9494,7 @@ module.exports={
         {
             "file": "src/image/p5.Image.js",
             "line": 9,
-            "description": "<p>This module defines the p5.Image class and P5 methods for\ndrawing images to the main display canvas.</p>\n",
+            "description": "<p>This module defines the p5.Image class and P5 methods for\ndrawing images to the main displayed canvas.</p>\n",
             "class": "p5.Image",
             "module": "Image",
             "submodule": "Image"
@@ -9534,7 +9534,7 @@ module.exports={
         {
             "file": "src/image/p5.Image.js",
             "line": 152,
-            "description": "<p>Array containing the values for all the pixels in the display window.\nThese values are numbers. This array is the size (include an appropriate\nfactor for pixelDensity) of the display window x4,\nrepresenting the R, G, B, A values in order for each pixel, moving from\nleft to right across each row, then down each column. Retina and other\nhigh denisty displays may have more pixels[] (by a factor of\npixelDensity^2).\nFor example, if the image is 100x100 pixels, there will be 40,000. With\npixelDensity = 2, there will be 160,000. The first four values\n(indices 0-3) in the array will be the R, G, B, A values of the pixel at\n(0, 0). The second four values (indices 4-7) will contain the R, G, B, A\nvalues of the pixel at (1, 0). More generally, to set values for a pixel\nat (x, y):</p>\n<pre><code class=\"lang-javascript\">var d = pixelDensity();\nfor (var i = 0; i &lt; d; i++) {\n  for (var j = 0; j &lt; d; j++) {\n    // loop over\n    idx = 4 * ((y * d + j) * width * d + (x * d + i));\n    pixels[idx] = r;\n    pixels[idx+1] = g;\n    pixels[idx+2] = b;\n    pixels[idx+3] = a;\n  }\n}\n</code></pre>\n<p><br><br>\nBefore accessing this array, the data must loaded with the loadPixels()\nfunction. After the array data has been modified, the updatePixels()\nfunction must be run to update the changes.</p>\n",
+            "description": "<p>Array containing the values for all the pixels in the displayed window.\nThese values are numbers. This array is the size (include an appropriate\nfactor for pixelDensity) of the displayed window x4,\nrepresenting the R, G, B, A values in order for each pixel, moving from\nleft to right across each row, then down each column. Retina and other\nhigh denisty displays may have more pixels[] (by a factor of\npixelDensity^2).\nFor example, if the image is 100x100 pixels, there will be 40,000. With\npixelDensity = 2, there will be 160,000. The first four values\n(indices 0-3) in the array will be the R, G, B, A values of the pixel at\n(0, 0). The second four values (indices 4-7) will contain the R, G, B, A\nvalues of the pixel at (1, 0). More generally, to set values for a pixel\nat (x, y):</p>\n<pre><code class=\"lang-javascript\">var d = pixelDensity();\nfor (var i = 0; i &lt; d; i++) {\n  for (var j = 0; j &lt; d; j++) {\n    // loop over\n    idx = 4 * ((y * d + j) * width * d + (x * d + i));\n    pixels[idx] = r;\n    pixels[idx+1] = g;\n    pixels[idx+2] = b;\n    pixels[idx+3] = a;\n  }\n}\n</code></pre>\n<p><br><br>\nBefore accessing this array, the data must loaded with the loadPixels()\nfunction. After the array data has been modified, the updatePixels()\nfunction must be run to update the changes.</p>\n",
             "itemtype": "property",
             "name": "pixels",
             "type": "Number[]",
@@ -10023,7 +10023,7 @@ module.exports={
         {
             "file": "src/image/pixels.js",
             "line": 14,
-            "description": "<p><a href='https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference\n/Global_Objects/Uint8ClampedArray' target='_blank'>Uint8ClampedArray</a>\ncontaining the values for all the pixels in the display window.\nThese values are numbers. This array is the size (include an appropriate\nfactor for pixelDensity) of the display window x4,\nrepresenting the R, G, B, A values in order for each pixel, moving from\nleft to right across each row, then down each column. Retina and other\nhigh density displays will have more pixels[] (by a factor of\npixelDensity^2).\nFor example, if the image is 100x100 pixels, there will be 40,000. On a\nretina display, there will be 160,000.\n<br><br>\nThe first four values (indices 0-3) in the array will be the R, G, B, A\nvalues of the pixel at (0, 0). The second four values (indices 4-7) will\ncontain the R, G, B, A values of the pixel at (1, 0). More generally, to\nset values for a pixel at (x, y):</p>\n<pre><code class=\"lang-javascript\">var d = pixelDensity();\nfor (var i = 0; i &lt; d; i++) {\n  for (var j = 0; j &lt; d; j++) {\n    // loop over\n    idx = 4 * ((y * d + j) * width * d + (x * d + i));\n    pixels[idx] = r;\n    pixels[idx+1] = g;\n    pixels[idx+2] = b;\n    pixels[idx+3] = a;\n  }\n}\n</code></pre>\n<p>While the above method is complex, it is flexible enough to work with\nany pixelDensity. Note that set() will automatically take care of\nsetting all the appropriate values in pixels[] for a given (x, y) at\nany pixelDensity, but the performance may not be as fast when lots of\nmodifications are made to the pixel array.\n<br><br>\nBefore accessing this array, the data must loaded with the loadPixels()\nfunction. After the array data has been modified, the updatePixels()\nfunction must be run to update the changes.\n<br><br>\nNote that this is not a standard javascript array.  This means that\nstandard javascript functions such as <code>slice()</code> or\n<code>arrayCopy()</code> do not\nwork.</p>",
+            "description": "<p><a href='https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference\n/Global_Objects/Uint8ClampedArray' target='_blank'>Uint8ClampedArray</a>\ncontaining the values for all the pixels in the displayed window.\nThese values are numbers. This array is the size (include an appropriate\nfactor for pixelDensity) of the displayed window x4,\nrepresenting the R, G, B, A values in order for each pixel, moving from\nleft to right across each row, then down each column. Retina and other\nhigh density displays will have more pixels[] (by a factor of\npixelDensity^2).\nFor example, if the image is 100x100 pixels, there will be 40,000. On a\nretina displayed, there will be 160,000.\n<br><br>\nThe first four values (indices 0-3) in the array will be the R, G, B, A\nvalues of the pixel at (0, 0). The second four values (indices 4-7) will\ncontain the R, G, B, A values of the pixel at (1, 0). More generally, to\nset values for a pixel at (x, y):</p>\n<pre><code class=\"lang-javascript\">var d = pixelDensity();\nfor (var i = 0; i &lt; d; i++) {\n  for (var j = 0; j &lt; d; j++) {\n    // loop over\n    idx = 4 * ((y * d + j) * width * d + (x * d + i));\n    pixels[idx] = r;\n    pixels[idx+1] = g;\n    pixels[idx+2] = b;\n    pixels[idx+3] = a;\n  }\n}\n</code></pre>\n<p>While the above method is complex, it is flexible enough to work with\nany pixelDensity. Note that set() will automatically take care of\nsetting all the appropriate values in pixels[] for a given (x, y) at\nany pixelDensity, but the performance may not be as fast when lots of\nmodifications are made to the pixel array.\n<br><br>\nBefore accessing this array, the data must loaded with the loadPixels()\nfunction. After the array data has been modified, the updatePixels()\nfunction must be run to update the changes.\n<br><br>\nNote that this is not a standard javascript array.  This means that\nstandard javascript functions such as <code>slice()</code> or\n<code>arrayCopy()</code> do not\nwork.</p>",
             "itemtype": "property",
             "name": "pixels",
             "type": "Number[]",
@@ -10297,7 +10297,7 @@ module.exports={
         {
             "file": "src/image/pixels.js",
             "line": 413,
-            "description": "<p>Returns an array of [R,G,B,A] values for any pixel or grabs a section of\nan image. If no parameters are specified, the entire image is returned.\nUse the x and y parameters to get the value of one pixel. Get a section of\nthe display window by specifying additional w and h parameters. When\ngetting an image, the x and y parameters define the coordinates for the\nupper-left corner of the image, regardless of the current imageMode().\n<br><br>\nIf the pixel requested is outside of the image window, [0,0,0,255] is\nreturned. To get the numbers scaled according to the current color ranges\nand taking into account colorMode, use getColor instead of get.\n<br><br>\nGetting the color of a single pixel with get(x, y) is easy, but not as fast\nas grabbing the data directly from pixels[]. The equivalent statement to\nget(x, y) using pixels[] with pixel density d is\n<code>\nvar x, y, d; // set these to the coordinates\nvar off = (y <em> width + x) </em> d * 4;\nvar components = [\n  pixels[off],\n  pixels[off + 1],\n  pixels[off + 2],\n  pixels[off + 3]\n];\nprint(components);\n</code>\n<br><br>\nSee the reference for pixels[] for more information.</p>\n",
+            "description": "<p>Returns an array of [R,G,B,A] values for any pixel or grabs a section of\nan image. If no parameters are specified, the entire image is returned.\nUse the x and y parameters to get the value of one pixel. Get a section of\nthe displayed window by specifying additional w and h parameters. When\ngetting an image, the x and y parameters define the coordinates for the\nupper-left corner of the image, regardless of the current imageMode().\n<br><br>\nIf the pixel requested is outside of the image window, [0,0,0,255] is\nreturned. To get the numbers scaled according to the current color ranges\nand taking into account colorMode, use getColor instead of get.\n<br><br>\nGetting the color of a single pixel with get(x, y) is easy, but not as fast\nas grabbing the data directly from pixels[]. The equivalent statement to\nget(x, y) using pixels[] with pixel density d is\n<code>\nvar x, y, d; // set these to the coordinates\nvar off = (y <em> width + x) </em> d * 4;\nvar components = [\n  pixels[off],\n  pixels[off + 1],\n  pixels[off + 2],\n  pixels[off + 3]\n];\nprint(components);\n</code>\n<br><br>\nSee the reference for pixels[] for more information.</p>\n",
             "itemtype": "method",
             "name": "get",
             "params": [
@@ -10341,7 +10341,7 @@ module.exports={
         {
             "file": "src/image/pixels.js",
             "line": 489,
-            "description": "<p>Loads the pixel data for the display window into the pixels[] array. This\nfunction must always be called before reading from or writing to pixels[].\nNote that only changes made with set() or direct manipulation of pixels[]\nwill occur.</p>\n",
+            "description": "<p>Loads the pixel data for the displayed window into the pixels[] array. This\nfunction must always be called before reading from or writing to pixels[].\nNote that only changes made with set() or direct manipulation of pixels[]\nwill occur.</p>\n",
             "itemtype": "method",
             "name": "loadPixels",
             "example": [
@@ -10355,7 +10355,7 @@ module.exports={
         {
             "file": "src/image/pixels.js",
             "line": 525,
-            "description": "<p>Changes the color of any pixel, or writes an image directly to the\ndisplay window.</p>\n<p>The x and y parameters specify the pixel to change and the c parameter\nspecifies the color value. This can be a p5.Color object, or [R, G, B, A]\npixel array. It can also be a single grayscale value.\nWhen setting an image, the x and y parameters define the coordinates for\nthe upper-left corner of the image, regardless of the current imageMode().\n</p>\n<p>\nAfter using set(), you must call updatePixels() for your changes to appear.\nThis should be called once all pixels have been set, and must be called before\ncalling .get() or drawing the image.\n</p>\n<p>Setting the color of a single pixel with set(x, y) is easy, but not as\nfast as putting the data directly into pixels[]. Setting the pixels[]\nvalues directly may be complicated when working with a retina display,\nbut will perform better when lots of pixels need to be set directly on\nevery loop.</p>\n<p>See the reference for pixels[] for more information.</p>",
+            "description": "<p>Changes the color of any pixel, or writes an image directly to the\ndisplayed window.</p>\n<p>The x and y parameters specify the pixel to change and the c parameter\nspecifies the color value. This can be a p5.Color object, or [R, G, B, A]\npixel array. It can also be a single grayscale value.\nWhen setting an image, the x and y parameters define the coordinates for\nthe upper-left corner of the image, regardless of the current imageMode().\n</p>\n<p>\nAfter using set(), you must call updatePixels() for your changes to appear.\nThis should be called once all pixels have been set, and must be called before\ncalling .get() or drawing the image.\n</p>\n<p>Setting the color of a single pixel with set(x, y) is easy, but not as\nfast as putting the data directly into pixels[]. Setting the pixels[]\nvalues directly may be complicated when working with a retina displayed,\nbut will perform better when lots of pixels need to be set directly on\nevery loop.</p>\n<p>See the reference for pixels[] for more information.</p>",
             "itemtype": "method",
             "name": "set",
             "params": [
@@ -10386,7 +10386,7 @@ module.exports={
         {
             "file": "src/image/pixels.js",
             "line": 599,
-            "description": "<p>Updates the display window with the data in the pixels[] array.\nUse in conjunction with loadPixels(). If you&#39;re only reading pixels from\nthe array, there&#39;s no need to call updatePixels() — updating is only\nnecessary to apply changes. updatePixels() should be called anytime the\npixels array is manipulated or set() is called, and only changes made with\nset() or direct changes to pixels[] will occur.</p>\n",
+            "description": "<p>Updates the displayed window with the data in the pixels[] array.\nUse in conjunction with loadPixels(). If you&#39;re only reading pixels from\nthe array, there&#39;s no need to call updatePixels() — updating is only\nnecessary to apply changes. updatePixels() should be called anytime the\npixels array is manipulated or set() is called, and only changes made with\nset() or direct changes to pixels[] will occur.</p>\n",
             "itemtype": "method",
             "name": "updatePixels",
             "params": [
@@ -14401,7 +14401,7 @@ module.exports={
             "name": "textLeading",
             "chainable": 1,
             "example": [
-                "\n<div>\n<code>\n// Text to display. The \"\\n\" is a \"new line\" character\nvar lines = 'L1\\nL2\\nL3';\ntextSize(12);\n\ntextLeading(10); // Set leading to 10\ntext(lines, 10, 25);\n\ntextLeading(20); // Set leading to 20\ntext(lines, 40, 25);\n\ntextLeading(30); // Set leading to 30\ntext(lines, 70, 25);\n</code>\n</div>"
+                "\n<div>\n<code>\n// Text to displayed. The \"\\n\" is a \"new line\" character\nvar lines = 'L1\\nL2\\nL3';\ntextSize(12);\n\ntextLeading(10); // Set leading to 10\ntext(lines, 10, 25);\n\ntextLeading(20); // Set leading to 20\ntext(lines, 40, 25);\n\ntextLeading(30); // Set leading to 30\ntext(lines, 70, 25);\n</code>\n</div>"
             ],
             "alt": "set L1 L2 & L3 displayed vertically 3 times. spacing increases for each set",
             "class": "p5",
@@ -14608,7 +14608,7 @@ module.exports={
         {
             "file": "src/typography/loading_displaying.js",
             "line": 142,
-            "description": "<p>Draws text to the screen. Displays the information specified in the first\nparameter on the screen in the position specified by the additional\nparameters. A default font will be used unless a font is set with the\ntextFont() function and a default size will be used unless a font is set\nwith textSize(). Change the color of the text with the fill() function.\nChange the outline of the text with the stroke() and strokeWeight()\nfunctions.\n<br><br>\nThe text displays in relation to the textAlign() function, which gives the\noption to draw to the left, right, and center of the coordinates.\n<br><br>\nThe x2 and y2 parameters define a rectangular area to display within and\nmay only be used with string data. When these parameters are specified,\nthey are interpreted based on the current rectMode() setting. Text that\ndoes not fit completely within the rectangle specified will not be drawn\nto the screen.</p>\n",
+            "description": "<p>Draws text to the screen. Displays the information specified in the first\nparameter on the screen in the position specified by the additional\nparameters. A default font will be used unless a font is set with the\ntextFont() function and a default size will be used unless a font is set\nwith textSize(). Change the color of the text with the fill() function.\nChange the outline of the text with the stroke() and strokeWeight()\nfunctions.\n<br><br>\nThe text displays in relation to the textAlign() function, which gives the\noption to draw to the left, right, and center of the coordinates.\n<br><br>\nThe x2 and y2 parameters define a rectangular area to displayed within and\nmay only be used with string data. When these parameters are specified,\nthey are interpreted based on the current rectMode() setting. Text that\ndoes not fit completely within the rectangle specified will not be drawn\nto the screen.</p>\n",
             "itemtype": "method",
             "name": "text",
             "params": [
@@ -17000,7 +17000,7 @@ module.exports={
         {
             "file": "src/webgl/p5.RendererGL.js",
             "line": 199,
-            "description": "<p>Set attributes for the WebGL Drawing context.\nThis is a way of adjusting ways that the WebGL\nrenderer works to fine-tune the display and performance.\nThis should be put in setup().\nThe available attributes are:\n<br>\nalpha - indicates if the canvas contains an alpha buffer\ndefault is true\n<br><br>\ndepth - indicates whether the drawing buffer has a depth buffer\nof at least 16 bits - default is true\n<br><br>\nstencil - indicates whether the drawing buffer has a stencil buffer\nof at least 8 bits\n<br><br>\nantialias - indicates whether or not to perform anti-aliasing\ndefault is false\n<br><br>\npremultipliedAlpha - indicates that the page compositor will assume\nthe drawing buffer contains colors with pre-multiplied alpha\ndefault is false\n<br><br>\npreserveDrawingBuffer - if true the buffers will not be cleared and\nand will preserve their values until cleared or overwritten by author\n(note that p5 clears automatically on draw loop)\ndefault is true\n<br><br>\nperPixelLighting - if true, per-pixel lighting will be used in the\nlighting shader.\ndefault is false\n<br><br></p>\n",
+            "description": "<p>Set attributes for the WebGL Drawing context.\nThis is a way of adjusting ways that the WebGL\nrenderer works to fine-tune the displayed and performance.\nThis should be put in setup().\nThe available attributes are:\n<br>\nalpha - indicates if the canvas contains an alpha buffer\ndefault is true\n<br><br>\ndepth - indicates whether the drawing buffer has a depth buffer\nof at least 16 bits - default is true\n<br><br>\nstencil - indicates whether the drawing buffer has a stencil buffer\nof at least 8 bits\n<br><br>\nantialias - indicates whether or not to perform anti-aliasing\ndefault is false\n<br><br>\npremultipliedAlpha - indicates that the page compositor will assume\nthe drawing buffer contains colors with pre-multiplied alpha\ndefault is false\n<br><br>\npreserveDrawingBuffer - if true the buffers will not be cleared and\nand will preserve their values until cleared or overwritten by author\n(note that p5 clears automatically on draw loop)\ndefault is true\n<br><br>\nperPixelLighting - if true, per-pixel lighting will be used in the\nlighting shader.\ndefault is false\n<br><br></p>\n",
             "itemtype": "method",
             "name": "setAttributes",
             "example": [
@@ -17109,7 +17109,7 @@ module.exports={
         {
             "file": "src/webgl/p5.RendererGL.js",
             "line": 573,
-            "description": "<p>Returns an array of [R,G,B,A] values for any pixel or grabs a section of\nan image. If no parameters are specified, the entire image is returned.\nUse the x and y parameters to get the value of one pixel. Get a section of\nthe display window by specifying additional w and h parameters. When\ngetting an image, the x and y parameters define the coordinates for the\nupper-left corner of the image, regardless of the current imageMode().\n<br><br>\nIf the pixel requested is outside of the image window, [0,0,0,255] is\nreturned.\n<br><br>\nGetting the color of a single pixel with get(x, y) is easy, but not as fast\nas grabbing the data directly from pixels[]. The equivalent statement to\nget(x, y) is using pixels[] with pixel density d</p>\n",
+            "description": "<p>Returns an array of [R,G,B,A] values for any pixel or grabs a section of\nan image. If no parameters are specified, the entire image is returned.\nUse the x and y parameters to get the value of one pixel. Get a section of\nthe displayed window by specifying additional w and h parameters. When\ngetting an image, the x and y parameters define the coordinates for the\nupper-left corner of the image, regardless of the current imageMode().\n<br><br>\nIf the pixel requested is outside of the image window, [0,0,0,255] is\nreturned.\n<br><br>\nGetting the color of a single pixel with get(x, y) is easy, but not as fast\nas grabbing the data directly from pixels[]. The equivalent statement to\nget(x, y) is using pixels[] with pixel density d</p>\n",
             "itemtype": "method",
             "name": "get",
             "params": [
@@ -17734,7 +17734,7 @@ module.exports={
                 },
                 {
                     "name": "html",
-                    "description": "<p>inner html of link element to display</p>\n",
+                    "description": "<p>inner html of link element to displayed</p>\n",
                     "type": "String"
                 },
                 {
@@ -17765,7 +17765,7 @@ module.exports={
         {
             "file": "lib/addons/p5.dom.js",
             "line": 372,
-            "description": "<p>Creates a slider &lt;input&gt;&lt;/input&gt; element in the DOM.\nUse .size() to set the display length of the slider.\nAppends to the container node if one is specified, otherwise\nappends to body.</p>\n",
+            "description": "<p>Creates a slider &lt;input&gt;&lt;/input&gt; element in the DOM.\nUse .size() to set the displayed length of the slider.\nAppends to the container node if one is specified, otherwise\nappends to body.</p>\n",
             "itemtype": "method",
             "name": "createSlider",
             "params": [
@@ -17806,7 +17806,7 @@ module.exports={
         {
             "file": "lib/addons/p5.dom.js",
             "line": 429,
-            "description": "<p>Creates a &lt;button&gt;&lt;/button&gt; element in the DOM.\nUse .size() to set the display size of the button.\nUse .mousePressed() to specify behavior on press.\nAppends to the container node if one is specified, otherwise\nappends to body.</p>\n",
+            "description": "<p>Creates a &lt;button&gt;&lt;/button&gt; element in the DOM.\nUse .size() to set the displayed size of the button.\nUse .mousePressed() to specify behavior on press.\nAppends to the container node if one is specified, otherwise\nappends to body.</p>\n",
             "itemtype": "method",
             "name": "createButton",
             "params": [
@@ -17940,7 +17940,7 @@ module.exports={
         {
             "file": "lib/addons/p5.dom.js",
             "line": 775,
-            "description": "<p>Creates an &lt;input&gt;&lt;/input&gt; element in the DOM for text input.\nUse .size() to set the display length of the box.\nAppends to the container node if one is specified, otherwise\nappends to body.</p>\n",
+            "description": "<p>Creates an &lt;input&gt;&lt;/input&gt; element in the DOM for text input.\nUse .size() to set the displayed length of the box.\nAppends to the container node if one is specified, otherwise\nappends to body.</p>\n",
             "itemtype": "method",
             "name": "createInput",
             "params": [
@@ -18421,7 +18421,7 @@ module.exports={
         {
             "file": "lib/addons/p5.dom.js",
             "line": 1688,
-            "description": "<p>Shows the current element. Essentially, setting display:block for the style.</p>\n",
+            "description": "<p>Shows the current element. Essentially, setting displayed:block for the style.</p>\n",
             "itemtype": "method",
             "name": "show",
             "return": {
@@ -18429,7 +18429,7 @@ module.exports={
                 "type": "Object|p5.Element"
             },
             "example": [
-                "\n <div class='norender'><code>\n var div = createDiv('div');\n div.style('display', 'none');\n div.show(); // turns display to block\n </code></div>"
+                "\n <div class='norender'><code>\n var div = createDiv('div');\n div.style('displayed', 'none');\n div.show(); // turns displayed to block\n </code></div>"
             ],
             "class": "p5.Element",
             "module": "p5.dom",
@@ -18438,7 +18438,7 @@ module.exports={
         {
             "file": "lib/addons/p5.dom.js",
             "line": 1706,
-            "description": "<p>Hides the current element. Essentially, setting display:none for the style.</p>\n",
+            "description": "<p>Hides the current element. Essentially, setting displayed:none for the style.</p>\n",
             "itemtype": "method",
             "name": "hide",
             "return": {
@@ -20009,7 +20009,7 @@ module.exports={
                 "type": "Number"
             },
             "example": [
-                "\n<div><code>\n\n\nfunction setup(){\ncnv = createCanvas(800,400);\nsound = new p5.AudioIn();\nsound.start();\nfft = new p5.FFT();\nsound.connect(fft);\n}\n\n\nfunction draw(){\n\nvar centroidplot = 0.0;\nvar spectralCentroid = 0;\n\n\nbackground(0);\nstroke(0,255,0);\nvar spectrum = fft.analyze();\nfill(0,255,0); // spectrum is green\n\n//draw the spectrum\n\nfor (var i = 0; i< spectrum.length; i++){\n  var x = map(log(i), 0, log(spectrum.length), 0, width);\n  var h = map(spectrum[i], 0, 255, 0, height);\n  var rectangle_width = (log(i+1)-log(i))*(width/log(spectrum.length));\n  rect(x, height, rectangle_width, -h )\n}\n\nvar nyquist = 22050;\n\n// get the centroid\nspectralCentroid = fft.getCentroid();\n\n// the mean_freq_index calculation is for the display.\nvar mean_freq_index = spectralCentroid/(nyquist/spectrum.length);\n\ncentroidplot = map(log(mean_freq_index), 0, log(spectrum.length), 0, width);\n\n\nstroke(255,0,0); // the line showing where the centroid is will be red\n\nrect(centroidplot, 0, width / spectrum.length, height)\nnoStroke();\nfill(255,255,255);  // text is white\ntextSize(40);\ntext(\"centroid: \"+round(spectralCentroid)+\" Hz\", 10, 40);\n}\n </code></div>"
+                "\n<div><code>\n\n\nfunction setup(){\ncnv = createCanvas(800,400);\nsound = new p5.AudioIn();\nsound.start();\nfft = new p5.FFT();\nsound.connect(fft);\n}\n\n\nfunction draw(){\n\nvar centroidplot = 0.0;\nvar spectralCentroid = 0;\n\n\nbackground(0);\nstroke(0,255,0);\nvar spectrum = fft.analyze();\nfill(0,255,0); // spectrum is green\n\n//draw the spectrum\n\nfor (var i = 0; i< spectrum.length; i++){\n  var x = map(log(i), 0, log(spectrum.length), 0, width);\n  var h = map(spectrum[i], 0, 255, 0, height);\n  var rectangle_width = (log(i+1)-log(i))*(width/log(spectrum.length));\n  rect(x, height, rectangle_width, -h )\n}\n\nvar nyquist = 22050;\n\n// get the centroid\nspectralCentroid = fft.getCentroid();\n\n// the mean_freq_index calculation is for the displayed.\nvar mean_freq_index = spectralCentroid/(nyquist/spectrum.length);\n\ncentroidplot = map(log(mean_freq_index), 0, log(spectrum.length), 0, width);\n\n\nstroke(255,0,0); // the line showing where the centroid is will be red\n\nrect(centroidplot, 0, width / spectrum.length, height)\nnoStroke();\nfill(255,255,255);  // text is white\ntextSize(40);\ntext(\"centroid: \"+round(spectralCentroid)+\" Hz\", 10, 40);\n}\n </code></div>"
             ],
             "class": "p5.FFT",
             "module": "p5.sound",
@@ -25276,7 +25276,7 @@ module.exports={
             "line": " src/image/filters.js:367"
         },
         {
-            "message": "Missing item type\nThis module defines the p5 methods for the p5.Image class\nfor drawing images to the main display canvas.",
+            "message": "Missing item type\nThis module defines the p5 methods for the p5.Image class\nfor drawing images to the main displayed canvas.",
             "line": " src/image/image.js:8"
         },
         {
@@ -25288,7 +25288,7 @@ module.exports={
             "line": " src/image/loading_displaying.js:420"
         },
         {
-            "message": "Missing item type\nThis module defines the p5.Image class and P5 methods for\ndrawing images to the main display canvas.",
+            "message": "Missing item type\nThis module defines the p5.Image class and P5 methods for\ndrawing images to the main displayed canvas.",
             "line": " src/image/p5.Image.js:9"
         },
         {
@@ -43815,7 +43815,7 @@ _dereq_('./p5.Color');
 /**
  * The background() function sets the color used for the background of the
  * p5.js canvas. The default background is light gray. This function is
- * typically used within draw() to clear the display window at the beginning
+ * typically used within draw() to clear the displayed window at the beginning
  * of each frame, but it can be used inside setup() to set the background on
  * the first frame of animation or if the background need only be set once.
  * <br><br>
@@ -43985,7 +43985,7 @@ p5.prototype.background = function() {
 /**
  * Clears the pixels within a buffer. This function only works on p5.Canvas
  * objects created with the createCanvas() function; it won't work with the
- * main display window. Unlike the main graphics context, pixels in
+ * main displayed window. Unlike the main graphics context, pixels in
  * additional graphics areas created with createGraphics() can be entirely
  * or partially transparent. This function clears everything to make all of
  * the pixels 100% transparent.
@@ -46671,7 +46671,7 @@ p5.prototype.bezier = function() {
 };
 
 /**
- * Sets the resolution at which Beziers display.
+ * Sets the resolution at which Beziers displayed.
  *
  * The default value is 20.
  *
@@ -46923,7 +46923,7 @@ p5.prototype.curve = function() {
 };
 
 /**
- * Sets the resolution at which curves display.
+ * Sets the resolution at which curves displayed.
  *
  * The default value is 20.
  *
@@ -47386,8 +47386,8 @@ p5.prototype.noCursor = function() {
 };
 
 /**
- * System variable that stores the width of the entire screen display. This
- * is used to run a full-screen program on any display size.
+ * System variable that stores the width of the entire screen displayed. This
+ * is used to run a full-screen program on any displayed size.
  *
  * @property {Number} displayWidth
  * @readOnly
@@ -47403,8 +47403,8 @@ p5.prototype.noCursor = function() {
 p5.prototype.displayWidth = screen.width;
 
 /**
- * System variable that stores the height of the entire screen display. This
- * is used to run a full-screen program on any display size.
+ * System variable that stores the height of the entire screen displayed. This
+ * is used to run a full-screen program on any displayed size.
  *
  * @property {Number} displayHeight
  * @readOnly
@@ -47414,7 +47414,7 @@ p5.prototype.displayWidth = screen.width;
  * </code></div>
  *
  * @alt
- * no display.
+ * no displayed.
  *
  */
 p5.prototype.displayHeight = screen.height;
@@ -47431,7 +47431,7 @@ p5.prototype.displayHeight = screen.height;
  * </code></div>
  *
  * @alt
- * no display.
+ * no displayed.
  *
  */
 p5.prototype.windowWidth = getWindowWidth();
@@ -47446,7 +47446,7 @@ p5.prototype.windowWidth = getWindowWidth();
  * createCanvas(windowWidth, windowHeight);
  * </code></div>
  *@alt
- * no display.
+ * no displayed.
  *
  */
 p5.prototype.windowHeight = getWindowHeight();
@@ -47472,7 +47472,7 @@ p5.prototype.windowHeight = getWindowHeight();
  * }
  * </code></div>
  * @alt
- * no display.
+ * no displayed.
  */
 p5.prototype._onresize = function(e) {
   this._setProperty('windowWidth', getWindowWidth());
@@ -47557,7 +47557,7 @@ p5.prototype.height = 0;
  * </div>
  *
  * @alt
- * no display.
+ * no displayed.
  *
  */
 p5.prototype.fullscreen = function(val) {
@@ -47582,7 +47582,7 @@ p5.prototype.fullscreen = function(val) {
 
 /**
  * Sets the pixel scaling for high pixel density displays. By default
- * pixel density is set to match display density, call pixelDensity(1)
+ * pixel density is set to match displayed density, call pixelDensity(1)
  * to turn this off. Calling pixelDensity() with no arguments returns
  * the current pixel density of the sketch.
  *
@@ -47627,10 +47627,10 @@ p5.prototype.pixelDensity = function(val) {
 };
 
 /**
- * Returns the pixel density of the current display the sketch is running on.
+ * Returns the pixel density of the current displayed the sketch is running on.
  *
  * @method displayDensity
- * @returns {Number} current pixel density of the display
+ * @returns {Number} current pixel density of the displayed
  * @example
  * <div>
  * <code>
@@ -47729,7 +47729,7 @@ p5.prototype.getURL = function() {
  * </code></div>
  *
  * @alt
- *no display
+ *no displayed
  *
  */
 p5.prototype.getURLPath = function() {
@@ -47755,7 +47755,7 @@ p5.prototype.getURLPath = function() {
  * </code>
  * </div>
  * @alt
- * no display.
+ * no displayed.
  *
  */
 p5.prototype.getURLParams = function() {
@@ -48507,7 +48507,7 @@ p5.Element = function(elt, pInst) {
  * </code></div>
  *
  * @alt
- * no display.
+ * no displayed.
  */
 /**
  * @method parent
@@ -48551,7 +48551,7 @@ p5.Element.prototype.parent = function(p) {
  * </code></div>
  *
  * @alt
- * no display.
+ * no displayed.
  */
 /**
  * @method id
@@ -48588,7 +48588,7 @@ p5.Element.prototype.id = function(id) {
  * </code></div>
  *
  * @alt
- * no display.
+ * no displayed.
  */
 /**
  * @method class
@@ -48644,7 +48644,7 @@ p5.Element.prototype.class = function(c) {
  * </code></div>
  *
  * @alt
- * no display.
+ * no displayed.
  *
  */
 p5.Element.prototype.mousePressed = function(fxn) {
@@ -48694,7 +48694,7 @@ p5.Element.prototype.mousePressed = function(fxn) {
  * </code></div>
  *
  * @alt
- * no display.
+ * no displayed.
  *
  */
 p5.Element.prototype.doubleClicked = function(fxn) {
@@ -48760,7 +48760,7 @@ p5.Element.prototype.doubleClicked = function(fxn) {
  *
  *
  * @alt
- * no display.
+ * no displayed.
  *
  */
 p5.Element.prototype.mouseWheel = function(fxn) {
@@ -48812,7 +48812,7 @@ p5.Element.prototype.mouseWheel = function(fxn) {
  *
  *
  * @alt
- * no display.
+ * no displayed.
  *
  */
 p5.Element.prototype.mouseReleased = function(fxn) {
@@ -48867,7 +48867,7 @@ p5.Element.prototype.mouseReleased = function(fxn) {
  * </div>
  *
  * @alt
- * no display.
+ * no displayed.
  *
  */
 p5.Element.prototype.mouseClicked = function(fxn) {
@@ -48925,7 +48925,7 @@ p5.Element.prototype.mouseClicked = function(fxn) {
  *
  *
  * @alt
- * no display.
+ * no displayed.
  *
  */
 p5.Element.prototype.mouseMoved = function(fxn) {
@@ -48969,7 +48969,7 @@ p5.Element.prototype.mouseMoved = function(fxn) {
  *
  *
  * @alt
- * no display.
+ * no displayed.
  *
  */
 p5.Element.prototype.mouseOver = function(fxn) {
@@ -49071,7 +49071,7 @@ p5.Element.prototype.changed = function(fxn) {
  * </code></div>
  *
  * @alt
- * no display.
+ * no displayed.
  *
  */
 p5.Element.prototype.input = function(fxn) {
@@ -49113,7 +49113,7 @@ p5.Element.prototype.input = function(fxn) {
  * </code></div>
  *
  * @alt
- * no display.
+ * no displayed.
  *
  */
 p5.Element.prototype.mouseOut = function(fxn) {
@@ -49161,7 +49161,7 @@ p5.Element.prototype.mouseOut = function(fxn) {
  * </code></div>
  *
  * @alt
- * no display.
+ * no displayed.
  *
  */
 p5.Element.prototype.touchStarted = function(fxn) {
@@ -49202,7 +49202,7 @@ p5.Element.prototype.touchStarted = function(fxn) {
  * </code></div>
  *
  * @alt
- * no display.
+ * no displayed.
  *
  */
 p5.Element.prototype.touchMoved = function(fxn) {
@@ -49252,7 +49252,7 @@ p5.Element.prototype.touchMoved = function(fxn) {
  *
  *
  * @alt
- * no display.
+ * no displayed.
  *
  */
 p5.Element.prototype.touchEnded = function(fxn) {
@@ -51401,9 +51401,9 @@ p5.prototype.createGraphics = function(w, h, renderer) {
 };
 
 /**
- * Blends the pixels in the display window according to the defined mode.
+ * Blends the pixels in the displayed window according to the defined mode.
  * There is a choice of the following modes to blend the source pixels (A)
- * with the ones of pixels already in the display window (B):
+ * with the ones of pixels already in the displayed window (B):
  * <ul>
  * <li><code>BLEND</code> - linear interpolation of colours: C =
  * A*factor + B. This is the default blending mode.</li>
@@ -51869,7 +51869,7 @@ p5.prototype.popStyle = function() {
 /**
  *
  * Executes the code within draw() one time. This functions allows the
- * program to update the display window only when necessary, for example
+ * program to update the displayed window only when necessary, for example
  * when an event registered by mousePressed() or keyPressed() occurs.
  * <br><br>
  * In structuring a program, it only makes sense to call redraw() within
@@ -52431,7 +52431,7 @@ p5.prototype.shearY = function(angle) {
 };
 
 /**
- * Specifies an amount to displace objects within the display window.
+ * Specifies an amount to displace objects within the displayed window.
  * The x parameter specifies left/right translation, the y parameter
  * specifies up/down translation.
  * <br><br>
@@ -54042,7 +54042,7 @@ p5.prototype.rotationZ = 0;
  * </div>
  *
  * @alt
- * no image to display.
+ * no image to displayed.
  *
  *
  * @property {Number} pRotationX
@@ -54086,7 +54086,7 @@ p5.prototype.pRotationX = 0;
  * </div>
  *
  * @alt
- * no image to display.
+ * no image to displayed.
  *
  *
  * @property {Number} pRotationY
@@ -54126,7 +54126,7 @@ p5.prototype.pRotationY = 0;
  * </div>
  *
  * @alt
- * no image to display.
+ * no image to displayed.
  *
  *
  * @property {Number} pRotationZ
@@ -54484,7 +54484,7 @@ p5.prototype.keyIsPressed = false; // khan
  * @readOnly
  * @example
  * <div><code>
- * // Click any key to display it!
+ * // Click any key to displayed it!
  * // (Not Guaranteed to be Case Sensitive)
  * function setup() {
  *   fill(245, 123, 158);
@@ -56523,7 +56523,7 @@ module.exports = Filters;
 
 /**
  * This module defines the p5 methods for the p5.Image class
- * for drawing images to the main display canvas.
+ * for drawing images to the main displayed canvas.
  */
 'use strict';
 
@@ -56537,9 +56537,9 @@ var p5 = _dereq_('../core/core'); // This is not global, but JSHint is not aware
  * width and height parameters.
  * <br><br>
  * .pixels gives access to an array containing the values for all the pixels
- * in the display window.
+ * in the displayed window.
  * These values are numbers. This array is the size (including an appropriate
- * factor for the pixelDensity) of the display window x4,
+ * factor for the pixelDensity) of the displayed window x4,
  * representing the R, G, B, A values in order for each pixel, moving from
  * left to right across each row, then down each column. See .pixels for
  * more info. It may also be simpler to use set() or get().
@@ -56857,7 +56857,7 @@ _dereq_('../core/error_helpers');
  * <div>
  * <code>
  * function setup() {
- *   // here we use a callback to display the image after loading
+ *   // here we use a callback to displayed the image after loading
  *   loadImage('assets/laDefense.jpg', function(img) {
  *     image(img, 0, 0);
  *   });
@@ -56941,13 +56941,13 @@ function _sAssign(sVal, iVal) {
  * differentiate between all these parameters, p5.js uses the language of
  * "destination rectangle" (which corresponds to "dx", "dy", etc.) and "source
  * image" (which corresponds to "sx", "sy", etc.) below. Specifying the
- * "source image" dimensions can be useful when you want to display a
+ * "source image" dimensions can be useful when you want to displayed a
  * subsection of the source image instead of the whole thing. Here's a diagram
  * to explain further:
  * <img src="assets/drawImage.png"></img>
  *
  * @method image
- * @param  {p5.Image|p5.Element} img    the image to display
+ * @param  {p5.Image|p5.Element} img    the image to displayed
  * @param  {Number}   x     the x-coordinate of the top-left corner of the image
  * @param  {Number}   y     the y-coordinate of the top-left corner of the image
  * @param  {Number}   [width]  the width to draw the image
@@ -56983,7 +56983,7 @@ function _sAssign(sVal, iVal) {
  * <div>
  * <code>
  * function setup() {
- *   // Here, we use a callback to display the image after loading
+ *   // Here, we use a callback to displayed the image after loading
  *   loadImage('assets/laDefense.jpg', function(img) {
  *     image(img, 0, 0);
  *   });
@@ -57350,7 +57350,7 @@ module.exports = p5;
 
 /**
  * This module defines the p5.Image class and P5 methods for
- * drawing images to the main display canvas.
+ * drawing images to the main displayed canvas.
  */
 
 'use strict';
@@ -57366,7 +57366,7 @@ var Filters = _dereq_('./filters');
  * Creates a new p5.Image. A p5.Image is a canvas backed representation of an
  * image.
  * <br><br>
- * p5 can display .gif, .jpg and .png images. Images may be displayed
+ * p5 can displayed .gif, .jpg and .png images. Images may be displayed
  * in 2D and 3D space. Before an image is used, it must be loaded with the
  * loadImage() function. The p5.Image class contains fields for the width and
  * height of the image, as well as an array called pixels[] that contains the
@@ -57492,9 +57492,9 @@ p5.Image = function(width, height) {
   //used for webgl texturing only
   this._modified = false;
   /**
-   * Array containing the values for all the pixels in the display window.
+   * Array containing the values for all the pixels in the displayed window.
    * These values are numbers. This array is the size (include an appropriate
-   * factor for pixelDensity) of the display window x4,
+   * factor for pixelDensity) of the displayed window x4,
    * representing the R, G, B, A values in order for each pixel, moving from
    * left to right across each row, then down each column. Retina and other
    * high denisty displays may have more pixels[] (by a factor of
@@ -58177,15 +58177,15 @@ _dereq_('../color/p5.Color');
 /**
  * <a href='https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference
  * /Global_Objects/Uint8ClampedArray' target='_blank'>Uint8ClampedArray</a>
- * containing the values for all the pixels in the display window.
+ * containing the values for all the pixels in the displayed window.
  * These values are numbers. This array is the size (include an appropriate
- * factor for pixelDensity) of the display window x4,
+ * factor for pixelDensity) of the displayed window x4,
  * representing the R, G, B, A values in order for each pixel, moving from
  * left to right across each row, then down each column. Retina and other
  * high density displays will have more pixels[] (by a factor of
  * pixelDensity^2).
  * For example, if the image is 100x100 pixels, there will be 40,000. On a
- * retina display, there will be 160,000.
+ * retina displayed, there will be 160,000.
  * <br><br>
  * The first four values (indices 0-3) in the array will be the R, G, B, A
  * values of the pixel at (0, 0). The second four values (indices 4-7) will
@@ -58577,7 +58577,7 @@ p5.prototype.filter = function(operation, value) {
  * Returns an array of [R,G,B,A] values for any pixel or grabs a section of
  * an image. If no parameters are specified, the entire image is returned.
  * Use the x and y parameters to get the value of one pixel. Get a section of
- * the display window by specifying additional w and h parameters. When
+ * the displayed window by specifying additional w and h parameters. When
  * getting an image, the x and y parameters define the coordinates for the
  * upper-left corner of the image, regardless of the current imageMode().
  * <br><br>
@@ -58650,7 +58650,7 @@ p5.prototype.get = function(x, y, w, h) {
 };
 
 /**
- * Loads the pixel data for the display window into the pixels[] array. This
+ * Loads the pixel data for the displayed window into the pixels[] array. This
  * function must always be called before reading from or writing to pixels[].
  * Note that only changes made with set() or direct manipulation of pixels[]
  * will occur.
@@ -58687,7 +58687,7 @@ p5.prototype.loadPixels = function() {
 
 /**
  * <p>Changes the color of any pixel, or writes an image directly to the
- * display window.</p>
+ * displayed window.</p>
  * <p>The x and y parameters specify the pixel to change and the c parameter
  * specifies the color value. This can be a p5.Color object, or [R, G, B, A]
  * pixel array. It can also be a single grayscale value.
@@ -58701,7 +58701,7 @@ p5.prototype.loadPixels = function() {
  * </p>
  * <p>Setting the color of a single pixel with set(x, y) is easy, but not as
  * fast as putting the data directly into pixels[]. Setting the pixels[]
- * values directly may be complicated when working with a retina display,
+ * values directly may be complicated when working with a retina displayed,
  * but will perform better when lots of pixels need to be set directly on
  * every loop.</p>
  * <p>See the reference for pixels[] for more information.</p>
@@ -58760,7 +58760,7 @@ p5.prototype.set = function(x, y, imgOrCol) {
   this._renderer.set(x, y, imgOrCol);
 };
 /**
- * Updates the display window with the data in the pixels[] array.
+ * Updates the displayed window with the data in the pixels[] array.
  * Use in conjunction with loadPixels(). If you're only reading pixels from
  * the array, there's no need to call updatePixels() — updating is only
  * necessary to apply changes. updatePixels() should be called anytime the
@@ -65702,7 +65702,7 @@ p5.prototype.textAlign = function(horizAlign, vertAlign) {
  * @example
  * <div>
  * <code>
- * // Text to display. The "\n" is a "new line" character
+ * // Text to displayed. The "\n" is a "new line" character
  * var lines = 'L1\nL2\nL3';
  * textSize(12);
  *
@@ -66046,7 +66046,7 @@ p5.prototype.loadFont = function(path, onSuccess, onError) {
  * The text displays in relation to the textAlign() function, which gives the
  * option to draw to the left, right, and center of the coordinates.
  * <br><br>
- * The x2 and y2 parameters define a rectangular area to display within and
+ * The x2 and y2 parameters define a rectangular area to displayed within and
  * may only be used with string data. When these parameters are specified,
  * they are interpreted based on the current rectMode() setting. Text that
  * does not fit completely within the rectangle specified will not be drawn
@@ -66169,7 +66169,7 @@ module.exports = p5;
 },{"../core/constants":21,"../core/core":22,"../core/error_helpers":25,"opentype.js":10}],59:[function(_dereq_,module,exports){
 /**
  * This module defines the p5.Font class and functions for
- * drawing text to the display canvas.
+ * drawing text to the displayed canvas.
  * @module Typography
  * @submodule Font
  * @requires core
@@ -71935,7 +71935,7 @@ p5.RendererGL.prototype._resetContext = function(attr, options, callback) {
 /**
  * Set attributes for the WebGL Drawing context.
  * This is a way of adjusting ways that the WebGL
- * renderer works to fine-tune the display and performance.
+ * renderer works to fine-tune the displayed and performance.
  * This should be put in setup().
  * The available attributes are:
  * <br>
@@ -72310,7 +72310,7 @@ p5.RendererGL.prototype.strokeWeight = function(w) {
  * Returns an array of [R,G,B,A] values for any pixel or grabs a section of
  * an image. If no parameters are specified, the entire image is returned.
  * Use the x and y parameters to get the value of one pixel. Get a section of
- * the display window by specifying additional w and h parameters. When
+ * the displayed window by specifying additional w and h parameters. When
  * getting an image, the x and y parameters define the coordinates for the
  * upper-left corner of the image, regardless of the current imageMode().
  * <br><br>
