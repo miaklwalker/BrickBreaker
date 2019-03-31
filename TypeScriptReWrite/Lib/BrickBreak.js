@@ -1,9 +1,14 @@
 "use strict";
 // Global Variables
-let canvas, ctx, ball, brick, player, clicked, keyPressed, ai, keyRel, PaddleSpeed = 6, hit = false, title, color = 0, iterator = 0, chosenPowerUp, displayed;
-let styleSelect = document.getElementById("colorSelect");
-const RetroColor = [[255, 255, 255], [0, 0, 0], [255, 255, 255], [0, 0, 0], [255, 255, 255], [0, 0, 0]];
-const modernColors = [[218, 247, 166], [255, 195, 0], [255, 87, 51], [199, 0, 57], [133, 193, 233], [46, 204, 113]];
+let canvas, ctx, ball, brick, player, clicked, keyPressed, ai, keyRel, PaddleSpeed = 6, hit = false, title, color = 0, iterator = 0, chosenPowerUp, displayed, modernColors, brickStyle;
+modernColors = [
+    [218, 247, 166],
+    [255, 195, 0],
+    [255, 87, 51],
+    [199, 0, 57],
+    [133, 193, 233],
+    [46, 204, 113]
+];
 let clickHandler = () => canvas.addEventListener("click", () => true, false);
 // Classes
 /**
@@ -73,8 +78,8 @@ class Brick {
     show() {
         if (this.effect) {
             let myGradient = ctx.createLinearGradient(this.position.x, this.position.y, this.position.x, this.position.y + this.height);
-            myGradient.addColorStop(0, "white");
-            myGradient.addColorStop(.6, `rgb(${this.health * 85},50,50`);
+            myGradient.addColorStop(0, `white`);
+            myGradient.addColorStop(.6, `rgb(${this.health * 85},55,55`);
             myGradient.addColorStop(1, `rgb(${this.health * 85},50,50`);
             ctx.fillStyle = myGradient;
             ctx.fillRect(this.position.x, this.position.y, this.width, this.height);

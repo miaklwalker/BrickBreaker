@@ -14,12 +14,17 @@ let canvas: HTMLCanvasElement,
     color:number = 0,
     iterator:number = 0,
     chosenPowerUp:string,
-    displayed:boolean
+    displayed:boolean,
+    modernColors:number[][],
+    brickStyle: any[] | string[]
  ;
- let styleSelect = <HTMLSelectElement>document.getElementById("colorSelect")
-
-const RetroColor:number[][]=   [[255, 255, 255], [0, 0, 0], [255, 255, 255], [0, 0, 0], [255, 255, 255], [0, 0, 0]]
-const modernColors: number[][]=[[218, 247, 166],[255, 195, 0 ],[255, 87, 51 ],[199, 0, 57],[133, 193, 233],[46, 204, 113]];
+modernColors = [
+    [218, 247, 166],
+    [255, 195, 0],
+    [255, 87, 51],
+    [199, 0, 57],
+    [133, 193, 233],
+    [46, 204, 113]];
 let clickHandler = () => canvas.addEventListener("click", () => true, false);
 
 // Classes
@@ -102,8 +107,8 @@ class Brick {
     show() {
         if (this.effect) {
             let myGradient = ctx.createLinearGradient(this.position.x, this.position.y, this.position.x, this.position.y + this.height);
-            myGradient.addColorStop(0, "white");
-            myGradient.addColorStop(.6, `rgb(${this.health * 85},50,50`);
+            myGradient.addColorStop(0,`white`);
+            myGradient.addColorStop(.6, `rgb(${this.health * 85},55,55`);
             myGradient.addColorStop(1, `rgb(${this.health * 85},50,50`);
             ctx.fillStyle = myGradient;
             ctx.fillRect(this.position.x, this.position.y, this.width, this.height);
@@ -289,7 +294,6 @@ class Ai {
 }
 
 // Functions
-
 /**
  * 
  * @param name   - This Value Becomes The id for the Canvas.
@@ -400,8 +404,6 @@ function drawBackground() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 }
-// Objects
-
 interface keyBoard {
     [index: string]: boolean;
     ArrowLeft: boolean;
@@ -747,6 +749,7 @@ const PowerUps: PowerUps = {
 (() => {
     makeCanvas("canvas");
     window.onload = function () {
+        
         document.addEventListener("keydown", (event) => {
                 keyPressed = event.key;
                 if (keyPressed === "ArrowLeft") keyBoard.ArrowLeft = true;
@@ -786,6 +789,7 @@ const PowerUps: PowerUps = {
 })();
 
 function setup() {
+
     ai = new Ai();
     ball = new Ball(240, 240);
     player = new Paddle(canvas.width / 2, canvas.height - canvas.height * .2);
