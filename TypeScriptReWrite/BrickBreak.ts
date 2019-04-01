@@ -300,8 +300,8 @@ class Ai {
  * @param height - The height of the Canvas as a string "480" 
  */
 function makeCanvas(name: string, width ? : string, height ? : string) {
-    let w = width || window.innerWidth*.75;
-    let h = height || 3*window.innerHeight/4;
+    let w:string = width || (window.innerWidth*.75).toString();
+    let h:string = height || (3*window.innerHeight/4).toString();
     canvas = < HTMLCanvasElement > document.getElementById("canvas");
     ctx = < CanvasRenderingContext2D > canvas.getContext("2d");
     canvas.setAttribute("id", name);
@@ -440,7 +440,7 @@ let styles = <styleList>{
             set2:[[255,255,255],[50,50,85],[50,50,85]]
                },
         ball: ["white","red"],
-        text: [`36px 'PacFont'`],
+        text: [`36px 'Eternal Knight Laser Itallic'`],
         color:  [
                 [218, 247, 166],
                 [255, 195, 0],
@@ -448,7 +448,7 @@ let styles = <styleList>{
                 [199, 0, 57],
                 [133, 193, 233],
                 [46, 204, 113]],
-        font: ['PacFont'],
+        font: ['Eternal Knight Laser Itallic','30px'],
         paddle:["lightgrey","black","black"],
     },
     Retro: <styles>{
@@ -465,7 +465,7 @@ let styles = <styleList>{
                 [0, 0, 0],
                 [0, 0, 0],
                 [255, 255, 255]],
-        font: ["'Press Start 2P'"],
+        font: ["'Press Start 2P'","15px"],
         paddle:["black","black","black"]
     },
     Classic: <styles>{
@@ -482,7 +482,7 @@ let styles = <styleList>{
                 [120 ,213 ,215],
                 [99 ,210 ,255],
                 [255, 255, 255]],
-        font: ['SNES'],
+        font: ['SNES','45px'],
         paddle:["blue","blue","blue"]
     }
 }
@@ -538,7 +538,8 @@ const level: level = {
     scoreboard() {
         let ScoreBoard = < HTMLDivElement > document.getElementById("ScoreBoard");
         let span = ScoreBoard.children;
-        ScoreBoard.style.fontFamily = `${fontStyle}`
+        ScoreBoard.style.fontFamily = `${fontStyle[0]}`
+        ScoreBoard.style.fontSize   = `${fontStyle[1]}`
         span[0].innerHTML = `score : ${level.score}  `;
         span[1].innerHTML = `Level : ${level.levelNum}`;
         span[2].innerHTML = `----BRICK BREAKER!----`;

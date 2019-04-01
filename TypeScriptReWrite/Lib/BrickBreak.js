@@ -248,8 +248,8 @@ class Ai {
  * @param height - The height of the Canvas as a string "480"
  */
 function makeCanvas(name, width, height) {
-    let w = width || window.innerWidth * .75;
-    let h = height || 3 * window.innerHeight / 4;
+    let w = width || (window.innerWidth * .75).toString();
+    let h = height || (3 * window.innerHeight / 4).toString();
     canvas = document.getElementById("canvas");
     ctx = canvas.getContext("2d");
     canvas.setAttribute("id", name);
@@ -362,7 +362,7 @@ let styles = {
             set2: [[255, 255, 255], [50, 50, 85], [50, 50, 85]]
         },
         ball: ["white", "red"],
-        text: [`36px 'PacFont'`],
+        text: [`36px 'Eternal Knight Laser Itallic'`],
         color: [
             [218, 247, 166],
             [255, 195, 0],
@@ -371,7 +371,7 @@ let styles = {
             [133, 193, 233],
             [46, 204, 113]
         ],
-        font: ['PacFont'],
+        font: ['Eternal Knight Laser Itallic', '30px'],
         paddle: ["lightgrey", "black", "black"],
     },
     Retro: {
@@ -389,7 +389,7 @@ let styles = {
             [0, 0, 0],
             [255, 255, 255]
         ],
-        font: ["'Press Start 2P'"],
+        font: ["'Press Start 2P'", "15px"],
         paddle: ["black", "black", "black"]
     },
     Classic: {
@@ -407,7 +407,7 @@ let styles = {
             [99, 210, 255],
             [255, 255, 255]
         ],
-        font: ['SNES'],
+        font: ['SNES', '45px'],
         paddle: ["blue", "blue", "blue"]
     }
 };
@@ -427,7 +427,8 @@ const level = {
     scoreboard() {
         let ScoreBoard = document.getElementById("ScoreBoard");
         let span = ScoreBoard.children;
-        ScoreBoard.style.fontFamily = `${fontStyle}`;
+        ScoreBoard.style.fontFamily = `${fontStyle[0]}`;
+        ScoreBoard.style.fontSize = `${fontStyle[1]}`;
         span[0].innerHTML = `score : ${level.score}  `;
         span[1].innerHTML = `Level : ${level.levelNum}`;
         span[2].innerHTML = `----BRICK BREAKER!----`;

@@ -1,40 +1,24 @@
 
 div {
-    color: Blue;
     margin-left: auto;
     margin-right: auto;
 }
-span {
-  display: grid;
-  grid-template-columns: auto auto 20% auto auto;
-  grid-template-rows: 20fr 80fr;
-  grid-template-areas:
-  "span span span span span"
-  "canvas canvas canvas canvas canvas";
-  grid-column-gap: 20px;
-  grid-row-gap: 20px;
-  justify-items: stretch;
-  align-items: start; 
-    color: black;
+.container {
+display: grid;
+    font-size: 45px;
+grid-template-columns: 2.5fr 1.8fr 4fr 2fr 2fr 4fr;
+grid-template-rows: 20fr;    
 }
+/*Retro 15px classic 45px pacMan 45px modern */
+/* Themes Pacman, Western*/
 #score {
-  grid-column-start:0;
     color: black;
 }
 #gameName{
   grid-column-start: 3;
   animation: color 2s infinite; 
 }
-#lives{
-  grid-column-start: 1;
-}
-#level{
-  grid-column-start: 4;
-}
-#balls{
-  grid-column-start: 5;
 
-}
   @keyframes color {
     0% {
       color: #ea2222;
@@ -73,7 +57,18 @@ span {
     }
   }
   
-
+@font-face {
+    font-family: 'Eternal Knight Laser Itallic';
+    src: url('EternalKnightLaserItalic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Rio Grande Striped';
+    src: url('RioGrandeStriped-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
 @font-face {
     font-family: 'Press Start 2P';
     src: local('Press Start 2P Regular'), local('PressStart2P-Regular'),
