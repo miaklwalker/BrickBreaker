@@ -16,15 +16,14 @@ let canvas: HTMLCanvasElement,
     chosenPowerUp:string,
     displayed:boolean,
     modernColors:number[][],
-    brickStyle: any[] | string[]
+    brickStyle: { [x: string]: number[][]; set1: number[][]; set2: number[][]; },
+    paddleStyle: string[],
+    textStyle:string[],
+    ballStyle:string[],
+    fontStyle:string[]
  ;
-modernColors = [
-    [218, 247, 166],
-    [255, 195, 0],
-    [255, 87, 51],
-    [199, 0, 57],
-    [133, 193, 233],
-    [46, 204, 113]];
+
+
 let clickHandler = () => canvas.addEventListener("click", () => true, false);
 
 // Classes
@@ -104,19 +103,19 @@ class Brick {
         this.health -= 1;
         return true;
     }
-    show() {
+    show() {                               
         if (this.effect) {
             let myGradient = ctx.createLinearGradient(this.position.x, this.position.y, this.position.x, this.position.y + this.height);
-            myGradient.addColorStop(0,`white`);
-            myGradient.addColorStop(.6, `rgb(${this.health * 85},55,55`);
-            myGradient.addColorStop(1, `rgb(${this.health * 85},50,50`);
+            myGradient.addColorStop(0,  `rgb(${brickStyle['set1'][0][0]},${brickStyle['set1'][0][1]},${brickStyle['set1'][0][2]}`);
+            myGradient.addColorStop(.6, `rgb(${this.health * brickStyle['set1'][1][0]},${brickStyle['set1'][1][1]},${brickStyle['set1'][1][2]}`);
+            myGradient.addColorStop(1,  `rgb(${this.health * brickStyle['set1'][2][0]},${brickStyle['set1'][2][1]},${brickStyle['set1'][2][2]}`);
             ctx.fillStyle = myGradient;
             ctx.fillRect(this.position.x, this.position.y, this.width, this.height);
         } else {
             let myGradient = ctx.createLinearGradient(this.position.x, this.position.y, this.position.x, this.position.y + this.height);
-            myGradient.addColorStop(0, "white");
-            myGradient.addColorStop(.6, `rgb(50, 50,${this.health * 85}`);
-            myGradient.addColorStop(1, `rgb(50, 50,${this.health*85}`);
+            myGradient.addColorStop(0,  `rgb(${brickStyle["set2"][0][0]},${brickStyle["set2"][0][1]},${brickStyle["set2"][0][2]}`)
+            myGradient.addColorStop(.6, `rgb(${brickStyle["set2"][1][0]},${brickStyle["set2"][1][1]},${this.health *brickStyle["set2"][1][2]}`);
+            myGradient.addColorStop(1,  `rgb(${brickStyle["set2"][2][0]},${brickStyle["set2"][2][1]},${this.health *brickStyle["set2"][2][2]}`);
             ctx.fillStyle = myGradient;
             ctx.fillRect(this.position.x, this.position.y, this.width, this.height);
         }
@@ -180,8 +179,8 @@ class Ball {
     }
     show() {
         let myGradient = ctx.createRadialGradient(this.position.x, this.position.y, this.radius * .14, this.position.x, this.position.y, this.radius);
-        myGradient.addColorStop(0, "white");
-        myGradient.addColorStop(1, "red");
+        myGradient.addColorStop(0, `${ballStyle[0]}`);
+        myGradient.addColorStop(1,`${ballStyle[1]}` );
         ctx.fillStyle = myGradient;
         ctx.beginPath();
         ctx.arc(this.position.x, this.position.y, this.radius, 0, Math.PI * 2);
@@ -210,9 +209,9 @@ class Paddle {
     }
     show() {
         let myGradient = ctx.createLinearGradient(this.position.x, this.position.y, this.position.x, this.position.y + this.height);
-        myGradient.addColorStop(0, "lightgrey");
-        myGradient.addColorStop(.6, "black");
-        myGradient.addColorStop(1, "black");
+        myGradient.addColorStop(0, `${paddleStyle[0]}`);
+        myGradient.addColorStop(.6, `${paddleStyle[1]}`);
+        myGradient.addColorStop(1, `${paddleStyle[2]}`);
         ctx.fillStyle = myGradient;
         ctx.fillRect(this.position.x, this.position.y, this.width, this.height);
     }
@@ -301,8 +300,8 @@ class Ai {
  * @param height - The height of the Canvas as a string "480" 
  */
 function makeCanvas(name: string, width ? : string, height ? : string) {
-    let w = width || window.innerWidth.toString();
-    let h = height || window.innerHeight.toString();
+    let w = width || window.innerWidth*.75;
+    let h = height || 3*window.innerHeight/4;
     canvas = < HTMLCanvasElement > document.getElementById("canvas");
     ctx = < CanvasRenderingContext2D > canvas.getContext("2d");
     canvas.setAttribute("id", name);
@@ -404,6 +403,90 @@ function drawBackground() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 }
+
+function styler() {
+    let styleSelect = <HTMLSelectElement>document.getElementById("colorSelect")
+    let selectedStyle = styleSelect.selectedIndex;
+    modernColors = styles[index[selectedStyle]].color
+    brickStyle = styles[index[selectedStyle]].brick
+    textStyle = styles[index[selectedStyle]].text
+    ballStyle = styles[index[selectedStyle]].ball
+    paddleStyle = styles[index[selectedStyle]].paddle
+    fontStyle = styles[index[selectedStyle]].font
+
+}
+
+// Objects
+interface styles {
+    brick:{
+        set1:number[][],
+        set2:number[][],
+    }
+    ball: string[],
+    text: string[],
+    color: number[][]
+    paddle:string[];
+    font:string[]
+}
+interface styleList {
+    [index: string]: styles
+}
+
+let index = ['Retro', 'Retro', 'Classic', 'Modern'];
+let styles = <styleList>{
+    Modern: <styles>{
+        brick: {
+            set1:[[255,255,255],[85,0,0],[85,55,55]],
+            set2:[[255,255,255],[50,50,85],[50,50,85]]
+               },
+        ball: ["white","red"],
+        text: [`36px 'PacFont'`],
+        color:  [
+                [218, 247, 166],
+                [255, 195, 0],
+                [255, 87, 51],
+                [199, 0, 57],
+                [133, 193, 233],
+                [46, 204, 113]],
+        font: ['PacFont'],
+        paddle:["lightgrey","black","black"],
+    },
+    Retro: <styles>{
+        brick: {
+            set1:[[47,79,79],[47,79,79],[47,79,79]],
+            set2:[[0,0,0],[0,0,0],[0,0,0]]
+        },
+        ball: ["grey","grey"],
+        text: [`24px 'Press Start 2P'`],
+        color:  [
+                [255, 255, 255],
+                [255, 255, 255],
+                [0, 0, 0],
+                [0, 0, 0],
+                [0, 0, 0],
+                [255, 255, 255]],
+        font: ["'Press Start 2P'"],
+        paddle:["black","black","black"]
+    },
+    Classic: <styles>{
+        brick: {
+            set1:[[83,89,154],[83,89,154],[83,89,154]],
+            set2:[[128,222,217],[128,222,217],[128,222,217]]
+        },
+        ball: ["orange","orange"],
+        text: [`48px 'SNES'`],
+        color:  [
+                [247, 249, 249],
+                [34, 101, 226],
+                [190 ,216 ,212],
+                [120 ,213 ,215],
+                [99 ,210 ,255],
+                [255, 255, 255]],
+        font: ['SNES'],
+        paddle:["blue","blue","blue"]
+    }
+}
+
 interface keyBoard {
     [index: string]: boolean;
     ArrowLeft: boolean;
@@ -455,23 +538,24 @@ const level: level = {
     scoreboard() {
         let ScoreBoard = < HTMLDivElement > document.getElementById("ScoreBoard");
         let span = ScoreBoard.children;
+        ScoreBoard.style.fontFamily = `${fontStyle}`
         span[0].innerHTML = `score : ${level.score}  `;
         span[1].innerHTML = `Level : ${level.levelNum}`;
         span[2].innerHTML = `----BRICK BREAKER!----`;
         span[3].innerHTML = `Lives : ${game.lives}`;
         span[4].innerHTML = `balls : ${level.balls.length}`;
-           ctx.font =`24px 'Press Start 2P'`;
+           ctx.font =`${textStyle}`;
            iterator++
                if(iterator%5===0)color++;
                ctx.fillStyle = `rgb(${modernColors[color % 6][0]},${modernColors[color % 6][1]},${modernColors[color % 6][2]})`;
 
            if(!game.active) {
-               ctx.fillText(`Welcome To Level ${level.levelNum}`, canvas.width / 2 - 100, canvas.height / 2);
-               ctx.fillText(`Press Enter To Begin `, canvas.width / 2 - 100, canvas.height / 2+24);
+               ctx.fillText(`Welcome To Level ${level.levelNum}`, canvas.width / 2 - 150, canvas.height / 2);
+               ctx.fillText(`Press Enter To Begin `, canvas.width / 2 - 2000, canvas.height / 2+50);
            }
            if(ai.control) {
-               ctx.fillText("Start Game", canvas.width / 2-100, canvas.height / 2);
-               ctx.fillText("Click Anywhere!", canvas.width / 2-100, canvas.height / 2 + 24);
+               ctx.fillText("Start Game", canvas.width / 2-150, canvas.height / 2);
+               ctx.fillText("Click Anywhere!", canvas.width / 2-170, canvas.height / 2 + 50);
            }else {
                if (game.powerActive) {
                    if (!displayed) {
@@ -622,9 +706,7 @@ const gameLogic: gameLogic = {
         level.weakestBrick += 1;
         level.balls.forEach((ball: Ball) => {
             ball.position.x = canvas.width / 2;
-            ball.position.y = canvas.height / 2;
-            ai.control ? ball.velocity.x = 1 : ball.velocity.x = 0;
-            ai.control ? ball.velocity.y = 7 : ball.velocity.y = 0;
+            ball.position.y = canvas.height / 2;    
         });
         level.numOfPowers = level.levelNum;
         if (!ai.control) game.active = false;
@@ -802,6 +884,7 @@ function setup() {
 
 
 function draw() {
+    styler();
      drawBackground();
      level.showBricks();
      gameLogic.ballLoop();

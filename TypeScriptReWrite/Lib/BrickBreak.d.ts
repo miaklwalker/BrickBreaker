@@ -1,4 +1,8 @@
-declare let canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D, ball: Ball, brick: Brick, player: Paddle, clicked: number, keyPressed: string, ai: Ai, keyRel: string, PaddleSpeed: number, hit: boolean, title: HTMLSpanElement, color: number, iterator: number, chosenPowerUp: string, displayed: boolean, modernColors: number[][], brickStyle: any[] | string[];
+declare let canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D, ball: Ball, brick: Brick, player: Paddle, clicked: number, keyPressed: string, ai: Ai, keyRel: string, PaddleSpeed: number, hit: boolean, title: HTMLSpanElement, color: number, iterator: number, chosenPowerUp: string, displayed: boolean, modernColors: number[][], brickStyle: {
+    [x: string]: number[][];
+    set1: number[][];
+    set2: number[][];
+}, paddleStyle: string[], textStyle: string[], ballStyle: string[], fontStyle: string[];
 declare let clickHandler: () => void;
 /**
  * @class Vector
@@ -102,6 +106,23 @@ declare function collisionsDetect(tempBrick: Brick): void;
 declare function collisions(circle: Ball, rectangle: Brick): void;
 declare function gameLoop(name: FrameRequestCallback): void;
 declare function drawBackground(): void;
+declare function styler(): void;
+interface styles {
+    brick: {
+        set1: number[][];
+        set2: number[][];
+    };
+    ball: string[];
+    text: string[];
+    color: number[][];
+    paddle: string[];
+    font: string[];
+}
+interface styleList {
+    [index: string]: styles;
+}
+declare let index: string[];
+declare let styles: styleList;
 interface keyBoard {
     [index: string]: boolean;
     ArrowLeft: boolean;
