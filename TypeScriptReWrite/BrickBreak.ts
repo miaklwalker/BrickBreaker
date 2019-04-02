@@ -20,7 +20,8 @@ let canvas: HTMLCanvasElement,
     paddleStyle: string[],
     textStyle:string[],
     ballStyle:string[],
-    fontStyle:string[]
+    fontStyle:string[],
+    backgroundStyle:string
  ;
 
 
@@ -399,7 +400,7 @@ function gameLoop(name: FrameRequestCallback) {
 }
 
 function drawBackground() {
-    ctx.fillStyle = "darkGrey";
+    ctx.fillStyle = backgroundStyle;
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 }
@@ -413,6 +414,7 @@ function styler() {
     ballStyle = styles[index[selectedStyle]].ball
     paddleStyle = styles[index[selectedStyle]].paddle
     fontStyle = styles[index[selectedStyle]].font
+    backgroundStyle = styles[index[selectedStyle]].background
 
 }
 
@@ -422,22 +424,23 @@ interface styles {
         set1:number[][],
         set2:number[][],
     }
-    ball: string[],
-    text: string[],
-    color: number[][]
+    ball: string[];
+    text: string[];
+    color: number[][];
     paddle:string[];
-    font:string[]
+    font:string[];
+    background:string;
 }
 interface styleList {
     [index: string]: styles
 }
 
-let index = ['Retro', 'Retro', 'Classic', 'Modern'];
+let index = ['PacMan', 'Retro', 'Classic', 'Modern','PacMan'];
 let styles = <styleList>{
     Modern: <styles>{
         brick: {
             set1:[[255,255,255],[85,0,0],[85,55,55]],
-            set2:[[255,255,255],[50,50,85],[50,50,85]]
+            set2:[[255,255,255],[50,50,85],[50,50,85]],
                },
         ball: ["white","red"],
         text: [`36px 'Eternal Knight Laser Itallic'`],
@@ -454,7 +457,7 @@ let styles = <styleList>{
     Retro: <styles>{
         brick: {
             set1:[[47,79,79],[47,79,79],[47,79,79]],
-            set2:[[0,0,0],[0,0,0],[0,0,0]]
+            set2:[[0,0,0],[0,0,0],[0,0,0]],
         },
         ball: ["grey","grey"],
         text: [`24px 'Press Start 2P'`],
@@ -466,12 +469,13 @@ let styles = <styleList>{
                 [0, 0, 0],
                 [255, 255, 255]],
         font: ["'Press Start 2P'","15px"],
-        paddle:["black","black","black"]
+        paddle:["black","black","black"],
+        background: 'white'
     },
     Classic: <styles>{
         brick: {
-            set1:[[83,89,154],[83,89,154],[83,89,154]],
-            set2:[[128,222,217],[128,222,217],[128,222,217]]
+            set1: [[67, 176, 71], [67, 176, 71], [67, 176, 71]],
+            set2: [[229, 37, 33], [229, 37, 33], [229, 37, 33]],
         },
         ball: ["orange","orange"],
         text: [`48px 'SNES'`],
@@ -483,7 +487,26 @@ let styles = <styleList>{
                 [99 ,210 ,255],
                 [255, 255, 255]],
         font: ['SNES','45px'],
-        paddle:["blue","blue","blue"]
+        paddle:["blue","blue","blue"],
+        background:'rgb(44,176,26)'
+    },
+    PacMan: <styles>{
+        brick: {
+            set1: [[255, 184, 82], [255, 184, 82], [255, 184, 82]],
+            set2: [[25, 25, 166], [25, 25, 166], [25, 25, 166]],
+        },
+        ball: ["rgb(255,255,0)", "rgb(255,255,0)"],
+        text: [`48px 'PacFont'`],
+        color: [
+            [255, 0, 0],
+            [255, 184, 255],
+            [0, 255, 255],
+            [255, 184, 82],
+            [255, 255, 0],
+            [0,0,0]],
+        font: ['PacFont', '45px'],
+        paddle: ["rgb(33,33,222)", "rgb(33,33,222)", "rgb(33,33,222)"],
+        background:`rgb(0, 0,0)`
     }
 }
 
@@ -565,9 +588,6 @@ const level: level = {
                    }
                }
            }
-
-
-
         if (hit) {
             function hitAnimate() {
                 let title = < HTMLSpanElement > document.getElementById("gameName");
@@ -840,8 +860,6 @@ const PowerUps: PowerUps = {
                 if (keyPressed === "Enter" && !ai.control) {
                     if (!game.active) {
                         game.active = true
-                    } else {
-                        game.active = true;
                     }
                 }
                 if (["Space", "ArrowLeft", "ArrowUp", "ArrowRight", "ArrowDown"].indexOf(event.code) > -1) {

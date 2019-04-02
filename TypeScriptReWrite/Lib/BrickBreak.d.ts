@@ -2,7 +2,7 @@ declare let canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D, ball: Ball
     [x: string]: number[][];
     set1: number[][];
     set2: number[][];
-}, paddleStyle: string[], textStyle: string[], ballStyle: string[], fontStyle: string[];
+}, paddleStyle: string[], textStyle: string[], ballStyle: string[], fontStyle: string[], backgroundStyle: string;
 declare let clickHandler: () => void;
 /**
  * @class Vector
@@ -117,6 +117,7 @@ interface styles {
     color: number[][];
     paddle: string[];
     font: string[];
+    background: string;
 }
 interface styleList {
     [index: string]: styles;

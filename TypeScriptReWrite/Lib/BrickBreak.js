@@ -1,6 +1,6 @@
 "use strict";
 // Global Variables
-let canvas, ctx, ball, brick, player, clicked, keyPressed, ai, keyRel, PaddleSpeed = 6, hit = false, title, color = 0, iterator = 0, chosenPowerUp, displayed, modernColors, brickStyle, paddleStyle, textStyle, ballStyle, fontStyle;
+let canvas, ctx, ball, brick, player, clicked, keyPressed, ai, keyRel, PaddleSpeed = 6, hit = false, title, color = 0, iterator = 0, chosenPowerUp, displayed, modernColors, brickStyle, paddleStyle, textStyle, ballStyle, fontStyle, backgroundStyle;
 let clickHandler = () => canvas.addEventListener("click", () => true, false);
 // Classes
 /**
@@ -340,7 +340,7 @@ function gameLoop(name) {
     requestAnimationFrame(name);
 }
 function drawBackground() {
-    ctx.fillStyle = "darkGrey";
+    ctx.fillStyle = backgroundStyle;
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 }
@@ -353,8 +353,9 @@ function styler() {
     ballStyle = styles[index[selectedStyle]].ball;
     paddleStyle = styles[index[selectedStyle]].paddle;
     fontStyle = styles[index[selectedStyle]].font;
+    backgroundStyle = styles[index[selectedStyle]].background;
 }
-let index = ['Retro', 'Retro', 'Classic', 'Modern'];
+let index = ['PacMan', 'Retro', 'Classic', 'Modern', 'PacMan'];
 let styles = {
     Modern: {
         brick: {
@@ -390,12 +391,13 @@ let styles = {
             [255, 255, 255]
         ],
         font: ["'Press Start 2P'", "15px"],
-        paddle: ["black", "black", "black"]
+        paddle: ["black", "black", "black"],
+        background: 'white'
     },
     Classic: {
         brick: {
-            set1: [[83, 89, 154], [83, 89, 154], [83, 89, 154]],
-            set2: [[128, 222, 217], [128, 222, 217], [128, 222, 217]]
+            set1: [[67, 176, 71], [67, 176, 71], [67, 176, 71]],
+            set2: [[229, 37, 33], [229, 37, 33], [229, 37, 33]]
         },
         ball: ["orange", "orange"],
         text: [`48px 'SNES'`],
@@ -408,7 +410,27 @@ let styles = {
             [255, 255, 255]
         ],
         font: ['SNES', '45px'],
-        paddle: ["blue", "blue", "blue"]
+        paddle: ["blue", "blue", "blue"],
+        background: 'rgb(44,176,26)'
+    },
+    PacMan: {
+        brick: {
+            set1: [[255, 184, 82], [255, 184, 82], [255, 184, 82]],
+            set2: [[25, 25, 166], [25, 25, 166], [25, 25, 166]]
+        },
+        ball: ["rgb(255,255,0)", "rgb(255,255,0)"],
+        text: [`48px 'PacFont'`],
+        color: [
+            [255, 0, 0],
+            [255, 184, 255],
+            [0, 255, 255],
+            [255, 184, 82],
+            [255, 255, 0],
+            [0, 0, 0]
+        ],
+        font: ['PacFont', '45px'],
+        paddle: ["rgb(33,33,222)", "rgb(33,33,222)", "rgb(33,33,222)"],
+        background: `rgb(0, 0,0)`
     }
 };
 const keyBoard = {
