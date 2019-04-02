@@ -16,6 +16,11 @@ Learn by making a simple game like brick breaker!
  - sticky-paddle
  - slow-ball
  - strong-ball
+ # NEW FEATURES!!
+ -----------------
+ - Custom Themes / still a work in Progress
+ - Cool New Text Animation!
+ - All in Vanilla Javascript and type Script!
  # Known issues or issues in progress
  - ( fixed ) game over does not reset game
  - ( fixed ) paddle can grow infinitly
