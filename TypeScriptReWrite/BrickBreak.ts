@@ -917,9 +917,7 @@ const PowerUps: PowerUps = {
                 if (keyPressed === "ArrowLeft") keyBoard.ArrowLeft = true;
                 if (keyPressed === "ArrowRight") keyBoard.ArrowRight = true;
                 if (keyPressed === "Enter" && !ai.control) {
-                    if (!game.active) {
                         game.active = true
-                    }
                 }
                 if (["Space", "ArrowLeft", "ArrowUp", "ArrowRight", "ArrowDown"].indexOf(event.code) > -1) {
                     event.preventDefault();
