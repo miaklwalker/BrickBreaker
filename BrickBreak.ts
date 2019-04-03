@@ -319,13 +319,13 @@ class Ai {
         let offset = 0;
         switch (choice) {
             case "left":
-                for (offset; offset >= -30; offset -= .1) {
+                for (offset; offset >= -30; offset -= 1) {
                     this.position.x += ball.position.x + offset
                 }
                 break;
 
             case "right":
-                for (offset; offset <= 30; offset += .1) {
+                for (offset; offset <= 30; offset += 1) {
                     this.position.x += ball.position.x + offset
                 }
                 break;
@@ -512,6 +512,7 @@ let styles = <styleList>{
                 [46, 204, 113]],
         font: ['Eternal Knight Laser Itallic','30px'],
         paddle:["lightgrey","black","black"],
+        background: 'lightgrey',
     },
     Retro: <styles>{
         brick: {
@@ -600,13 +601,47 @@ interface level {
     bricks: Array < Brick > ;
     balls: Array < Ball > ;
     fortifier: number;
-    scoreboard: () => any;
+    GameText: () => any;
     makeEffect: () => any;
     fortifyBricks: () => any;
     makeBricks: () => any;
     showBricks: () => any;
     reset: () => any;
 
+}
+class scoreBoard{
+    scoreboard:HTMLDivElement;
+    span: HTMLCollection;
+    drawn: boolean;
+    constructor(){
+        this.scoreboard = <HTMLDivElement>document.getElementById("ScoreBoard");
+        this.span = this.scoreboard.children;
+        this.drawn = false;
+    }
+    drawScoreBoard(){
+        this.scoreboard.style.fontFamily = `${fontStyle[0]}`
+        this.scoreboard.style.fontSize = `${fontStyle[1]}`
+        this.span[0].innerHTML = `score : ${level.score}  `;
+        this.span[1].innerHTML = `Level : ${level.levelNum}`;
+        this.span[2].innerHTML = `----BRICK BREAKER!----`;
+        this.span[3].innerHTML = `Lives : ${game.lives}`;
+        this.span[4].innerHTML = `balls : ${level.balls.length}`;
+    }
+    drawScore(){
+        this.span[0].innerHTML = `score : ${level.score}  `;
+    }
+    drawLevelNum() {
+        this.span[1].innerHTML = `Level : ${level.levelNum}`;
+    }
+    drawGameName() {
+        this.span[2].innerHTML = `----BRICK BREAKER!----`;
+    }
+    drawLives(){
+        this.span[3].innerHTML = `Lives : ${game.lives}`;
+    }
+    drawBalls(){
+        this.span[4].innerHTML = `balls : ${level.balls.length}`;
+    }
 }
 const level: level = {
     levelNum: < number > 1,
@@ -617,24 +652,20 @@ const level: level = {
     bricks: < Brick[] > [],
     balls: < Ball[] > [],
     fortifier: < number > 0,
-    scoreboard() {
-        let ScoreBoard = < HTMLDivElement > document.getElementById("ScoreBoard");
-        let span = ScoreBoard.children;
-        ScoreBoard.style.fontFamily = `${fontStyle[0]}`
-        ScoreBoard.style.fontSize   = `${fontStyle[1]}`
-        span[0].innerHTML = `score : ${level.score}  `;
-        span[1].innerHTML = `Level : ${level.levelNum}`;
-        span[2].innerHTML = `----BRICK BREAKER!----`;
-        span[3].innerHTML = `Lives : ${game.lives}`;
-        span[4].innerHTML = `balls : ${level.balls.length}`;
-           ctx.font =`${textStyle}`;
-           iterator++
+    GameText() {
+           let _scoreBoard = new scoreBoard();
+           if(!_scoreBoard.drawn){
+           _scoreBoard.drawScoreBoard();
+           }
+           _scoreBoard.drawGameName 
+               iterator++         
+               ctx.font =`${textStyle}`;
                if(iterator%5===0)color++;
                ctx.fillStyle = `rgb(${modernColors[color % 6][0]},${modernColors[color % 6][1]},${modernColors[color % 6][2]})`;
 
            if(!game.active) {
                ctx.fillText(`Welcome To Level ${level.levelNum}`, canvas.width / 2 - 150, canvas.height / 2);
-               ctx.fillText(`Press Enter To Begin `, canvas.width / 2 - 2000, canvas.height / 2+50);
+               ctx.fillText(`Press Enter To Begin `, canvas.width / 2 - 200, canvas.height / 2+50);
            }
            if(ai.control) {
                ctx.fillText("Start Game", canvas.width / 2-150, canvas.height / 2);
@@ -658,7 +689,7 @@ const level: level = {
             function reload() {
                 let title = < HTMLSpanElement > document.getElementById("gameName");
                 let child = < HTMLSpanElement > title.cloneNode(false);
-                ScoreBoard.replaceChild(child, title);
+                _scoreBoard.scoreboard.replaceChild(child, title);
                 child.style.animation = "color 2s infinite";
                 hit = false;
             }
@@ -964,7 +995,7 @@ function draw() {
      drawBackground();
      level.showBricks();
      gameLogic.ballLoop();
-     level.scoreboard();
+     level.GameText();
      gameLogic.ends();
      gameLogic.demo();
      player.move();

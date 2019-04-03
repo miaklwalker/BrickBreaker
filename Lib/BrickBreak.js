@@ -271,12 +271,12 @@ class Ai {
         let offset = 0;
         switch (choice) {
             case "left":
-                for (offset; offset >= -30; offset -= .1) {
+                for (offset; offset >= -30; offset -= 1) {
                     this.position.x += ball.position.x + offset;
                 }
                 break;
             case "right":
-                for (offset; offset <= 30; offset += .1) {
+                for (offset; offset <= 30; offset += 1) {
                     this.position.x += ball.position.x + offset;
                 }
                 break;
@@ -391,7 +391,7 @@ function collisions(circle, rectangle) {
 }
 /**
  * Sets up Loop Call Backs
- * @param name
+ * @param name - is the name of the call back function you want to use!
  */
 function gameLoop(name) {
     requestAnimationFrame(name);
@@ -440,6 +440,7 @@ let styles = {
         ],
         font: ['Eternal Knight Laser Itallic', '30px'],
         paddle: ["lightgrey", "black", "black"],
+        background: 'lightgrey',
     },
     Retro: {
         brick: {
@@ -503,6 +504,37 @@ const keyBoard = {
     ArrowLeft: false,
     ArrowRight: false,
 };
+class scoreBoard {
+    constructor() {
+        this.scoreboard = document.getElementById("ScoreBoard");
+        this.span = this.scoreboard.children;
+        this.drawn = false;
+    }
+    drawScoreBoard() {
+        this.scoreboard.style.fontFamily = `${fontStyle[0]}`;
+        this.scoreboard.style.fontSize = `${fontStyle[1]}`;
+        this.span[0].innerHTML = `score : ${level.score}  `;
+        this.span[1].innerHTML = `Level : ${level.levelNum}`;
+        this.span[2].innerHTML = `----BRICK BREAKER!----`;
+        this.span[3].innerHTML = `Lives : ${game.lives}`;
+        this.span[4].innerHTML = `balls : ${level.balls.length}`;
+    }
+    drawScore() {
+        this.span[0].innerHTML = `score : ${level.score}  `;
+    }
+    drawLevelNum() {
+        this.span[1].innerHTML = `Level : ${level.levelNum}`;
+    }
+    drawGameName() {
+        this.span[2].innerHTML = `----BRICK BREAKER!----`;
+    }
+    drawLives() {
+        this.span[3].innerHTML = `Lives : ${game.lives}`;
+    }
+    drawBalls() {
+        this.span[4].innerHTML = `balls : ${level.balls.length}`;
+    }
+}
 const level = {
     levelNum: 1,
     numOfPowers: 1,
@@ -512,24 +544,20 @@ const level = {
     bricks: [],
     balls: [],
     fortifier: 0,
-    scoreboard() {
-        let ScoreBoard = document.getElementById("ScoreBoard");
-        let span = ScoreBoard.children;
-        ScoreBoard.style.fontFamily = `${fontStyle[0]}`;
-        ScoreBoard.style.fontSize = `${fontStyle[1]}`;
-        span[0].innerHTML = `score : ${level.score}  `;
-        span[1].innerHTML = `Level : ${level.levelNum}`;
-        span[2].innerHTML = `----BRICK BREAKER!----`;
-        span[3].innerHTML = `Lives : ${game.lives}`;
-        span[4].innerHTML = `balls : ${level.balls.length}`;
-        ctx.font = `${textStyle}`;
+    GameText() {
+        let _scoreBoard = new scoreBoard();
+        if (!_scoreBoard.drawn) {
+            _scoreBoard.drawScoreBoard();
+        }
+        _scoreBoard.drawGameName;
         iterator++;
+        ctx.font = `${textStyle}`;
         if (iterator % 5 === 0)
             color++;
         ctx.fillStyle = `rgb(${modernColors[color % 6][0]},${modernColors[color % 6][1]},${modernColors[color % 6][2]})`;
         if (!game.active) {
             ctx.fillText(`Welcome To Level ${level.levelNum}`, canvas.width / 2 - 150, canvas.height / 2);
-            ctx.fillText(`Press Enter To Begin `, canvas.width / 2 - 2000, canvas.height / 2 + 50);
+            ctx.fillText(`Press Enter To Begin `, canvas.width / 2 - 200, canvas.height / 2 + 50);
         }
         if (ai.control) {
             ctx.fillText("Start Game", canvas.width / 2 - 150, canvas.height / 2);
@@ -553,7 +581,7 @@ const level = {
             function reload() {
                 let title = document.getElementById("gameName");
                 let child = title.cloneNode(false);
-                ScoreBoard.replaceChild(child, title);
+                _scoreBoard.scoreboard.replaceChild(child, title);
                 child.style.animation = "color 2s infinite";
                 hit = false;
             }
@@ -808,7 +836,7 @@ function draw() {
     drawBackground();
     level.showBricks();
     gameLogic.ballLoop();
-    level.scoreboard();
+    level.GameText();
     gameLogic.ends();
     gameLogic.demo();
     player.move();

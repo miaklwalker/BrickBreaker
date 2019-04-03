@@ -156,7 +156,7 @@ declare function collisionsDetect(tempBrick: Brick): void;
 declare function collisions(circle: Ball, rectangle: Brick): void;
 /**
  * Sets up Loop Call Backs
- * @param name
+ * @param name - is the name of the call back function you want to use!
  */
 declare function gameLoop(name: FrameRequestCallback): void;
 /**
@@ -214,12 +214,24 @@ interface level {
     bricks: Array<Brick>;
     balls: Array<Ball>;
     fortifier: number;
-    scoreboard: () => any;
+    GameText: () => any;
     makeEffect: () => any;
     fortifyBricks: () => any;
     makeBricks: () => any;
     showBricks: () => any;
     reset: () => any;
+}
+declare class scoreBoard {
+    scoreboard: HTMLDivElement;
+    span: HTMLCollection;
+    drawn: boolean;
+    constructor();
+    drawScoreBoard(): void;
+    drawScore(): void;
+    drawLevelNum(): void;
+    drawGameName(): void;
+    drawLives(): void;
+    drawBalls(): void;
 }
 declare const level: level;
 interface game {
