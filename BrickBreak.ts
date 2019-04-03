@@ -445,7 +445,7 @@ function collisions(circle: Ball, rectangle: Brick) {
 }
 /**
  * Sets up Loop Call Backs
- * @param name 
+ * @param name - is the name of the call back function you want to use!
  */
 function gameLoop(name: FrameRequestCallback) {
     requestAnimationFrame(name);
