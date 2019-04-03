@@ -8,6 +8,10 @@ declare let clickHandler: () => void;
  * @class Vector
  * @param x - Contains the x Value for the vector
  * @param y - Contains the y Value for the Vector
+ * @method add - Adds Two Vectors Together X+X Y+Y
+ * @method mult - Multiplies Either Two Vecors (X * X , Y * Y) or by a scala (X * S , Y * S)
+ * @method div - The inverse of Mult Divides Either by a Vector or a Scala!
+ * @method limit -Forces the Magnatude of the vector to a specified number if it is greater
  */
 declare class Vector {
     x: number;
@@ -33,7 +37,13 @@ declare class Brick {
     startingHealth: number;
     effect: boolean;
     constructor(x: number, y: number, health: number);
+    /**
+     * @method hit -Decrements The Brick Objects Health When Hit.
+     */
     hit(): boolean;
+    /**
+     * @method show -Shows the Brick object based on the Current Style
+     */
     show(): void;
 }
 /**
@@ -50,13 +60,27 @@ declare class Ball {
     speedLimit: number;
     ballLost: boolean;
     constructor(x: number, y: number);
+    /**
+     * @method contact -controls the Balls actions upon hitting the paddle
+     * @param paddle
+     */
     contact(paddle: Paddle): void;
+    /**
+     * @method move - Controls how the Ball moves every animation frame
+     */
     move(): void;
+    /**
+     * @method hitWall - controls the Ball's actions up hitting the wall of the game area
+     *
+     */
     hitWall(): void;
+    /**
+     * @method show -Shows the Brick object based on the currently Selected Style!
+     */
     show(): void;
 }
 /**
- * @class Ball
+ * @class Paddle
  * @classdesc Creates a Paddle Object{} That has a position
  * @param x - number - Represents position on the X axis
  * @param y - number - Represents position on the Y axis
@@ -67,8 +91,18 @@ declare class Paddle {
     position: Vector;
     velocity: Vector;
     constructor(x: number, y: number);
+    /**
+     * @method show -Shows the Paddle object based on the currently selected Style!
+     */
     show(): void;
+    /**
+     * @method move -Allows the user to use the Left & Right Arrow keys to control the paddle!
+     */
     move(): void;
+    /**
+     * @method demo -When the first loads this lets the computer control the game while the player watches and picks themes
+     * @param ai
+     */
     demo(ai: Ai): void;
 }
 /**
@@ -80,7 +114,16 @@ declare class Ai {
     control: boolean;
     offset: number;
     constructor();
+    /**
+     * @method logic - a very simple AI implementation , Checks what side of the screen has the most bricks and tries to angle the paddle so it hits the ball to that side
+     * it also follows the balls x-position
+     * @param ball - Pass a ball to the logic so it can track the x position
+     */
     logic(ball: Ball): void;
+    /**
+     * @method choice -This is the function that decides how the paddles angles to hit the bricks on the side with the most bricks
+     * @param choice
+     */
     choose(choice: string): void;
 }
 /**
@@ -99,13 +142,33 @@ declare function makeCanvas(name: string, width?: string, height?: string): HTML
  */
 declare function getPowers(): void;
 /**
- *
+ *@function collisionDetect
  * @param tempBrick
+ * @desc Hands The Collision Function Each Ball Object and tests Each Brick for collision;
  */
 declare function collisionsDetect(tempBrick: Brick): void;
+/**
+ * @function Collision
+ * @param circle
+ * @param rectangle
+ * @description - Accepts a Ball and a Brick as Arguements then tests if a collision occurs for either
+ */
 declare function collisions(circle: Ball, rectangle: Brick): void;
+/**
+ * Sets up Loop Call Backs
+ * @param name
+ */
 declare function gameLoop(name: FrameRequestCallback): void;
+/**
+ * @function drawBackground
+ * @description - Draws The Background of the level using the Theme selected By the Player
+ */
 declare function drawBackground(): void;
+/**
+ * @function styler
+ * @description - gets the players choice of theme and then passes that arguement to the style sheet
+ * which returns values for Ball , Brick , Fonts , TextSize, Paddle and Background Styles
+ */
 declare function styler(): void;
 interface styles {
     brick: {

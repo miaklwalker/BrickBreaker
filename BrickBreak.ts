@@ -917,7 +917,7 @@ const PowerUps: PowerUps = {
                 if (keyPressed === "ArrowLeft") keyBoard.ArrowLeft = true;
                 if (keyPressed === "ArrowRight") keyBoard.ArrowRight = true;
                 if (keyPressed === "Enter" && !ai.control) {
-                        game.active = true
+                       if(!game.active){game.active = true}
                 }
                 if (["Space", "ArrowLeft", "ArrowUp", "ArrowRight", "ArrowDown"].indexOf(event.code) > -1) {
                     event.preventDefault();
@@ -949,7 +949,7 @@ const PowerUps: PowerUps = {
 function setup() {
 
     ai = new Ai();
-    ball = new Ball(240, 240);
+    ball = new Ball(canvas.width/2, canvas.height/2);
     player = new Paddle(canvas.width / 2, canvas.height - canvas.height * .2);
     level.makeBricks();
     level.balls.push(ball);

@@ -1,12 +1,19 @@
 "use strict";
 // Global Variables
+// Contains All Varibles that occupy the global scope of the project
+// these are used to pass information to other parts of the program!
 let canvas, ctx, ball, brick, player, clicked, keyPressed, ai, keyRel, PaddleSpeed = 6, hit = false, title, color = 0, iterator = 0, chosenPowerUp, displayed, modernColors, brickStyle, paddleStyle, textStyle, ballStyle, fontStyle, backgroundStyle;
+// Registers an Event if user click the canvas
 let clickHandler = () => canvas.addEventListener("click", () => true, false);
 // Classes
 /**
  * @class Vector
  * @param x - Contains the x Value for the vector
  * @param y - Contains the y Value for the Vector
+ * @method add - Adds Two Vectors Together X+X Y+Y
+ * @method mult - Multiplies Either Two Vecors (X * X , Y * Y) or by a scala (X * S , Y * S)
+ * @method div - The inverse of Mult Divides Either by a Vector or a Scala!
+ * @method limit -Forces the Magnatude of the vector to a specified number if it is greater
  */
 class Vector {
     constructor(x = 0, y = 0) {
@@ -63,10 +70,16 @@ class Brick {
         this.startingHealth = health;
         this.effect = false;
     }
+    /**
+     * @method hit -Decrements The Brick Objects Health When Hit.
+     */
     hit() {
         this.health -= 1;
         return true;
     }
+    /**
+     * @method show -Shows the Brick object based on the Current Style
+     */
     show() {
         if (this.effect) {
             let myGradient = ctx.createLinearGradient(this.position.x, this.position.y, this.position.x, this.position.y + this.height);
@@ -101,6 +114,10 @@ class Ball {
         this.speedLimit = 6;
         this.ballLost = false;
     }
+    /**
+     * @method contact -controls the Balls actions upon hitting the paddle
+     * @param paddle
+     */
     contact(paddle) {
         if (!(this.position.y > paddle.position.y + paddle.height)) {
             if (this.position.y > paddle.position.y - this.radius &&
@@ -114,6 +131,9 @@ class Ball {
             }
         }
     }
+    /**
+     * @method move - Controls how the Ball moves every animation frame
+     */
     move() {
         if (game.active) {
             this.velocity.add(this.acceleration);
@@ -122,6 +142,10 @@ class Ball {
             this.acceleration.mult(0);
         }
     }
+    /**
+     * @method hitWall - controls the Ball's actions up hitting the wall of the game area
+     *
+     */
     hitWall() {
         if (this.position.y >= canvas.height - this.radius) {
             this.ballLost = true;
@@ -133,6 +157,9 @@ class Ball {
             this.velocity.x *= -1;
         }
     }
+    /**
+     * @method show -Shows the Brick object based on the currently Selected Style!
+     */
     show() {
         let myGradient = ctx.createRadialGradient(this.position.x, this.position.y, this.radius * .14, this.position.x, this.position.y, this.radius);
         myGradient.addColorStop(0, `${ballStyle[0]}`);
@@ -144,7 +171,7 @@ class Ball {
     }
 }
 /**
- * @class Ball
+ * @class Paddle
  * @classdesc Creates a Paddle Object{} That has a position
  * @param x - number - Represents position on the X axis
  * @param y - number - Represents position on the Y axis
@@ -156,6 +183,9 @@ class Paddle {
         this.position = new Vector(x, y);
         this.velocity = new Vector(0, 0);
     }
+    /**
+     * @method show -Shows the Paddle object based on the currently selected Style!
+     */
     show() {
         let myGradient = ctx.createLinearGradient(this.position.x, this.position.y, this.position.x, this.position.y + this.height);
         myGradient.addColorStop(0, `${paddleStyle[0]}`);
@@ -164,6 +194,9 @@ class Paddle {
         ctx.fillStyle = myGradient;
         ctx.fillRect(this.position.x, this.position.y, this.width, this.height);
     }
+    /**
+     * @method move -Allows the user to use the Left & Right Arrow keys to control the paddle!
+     */
     move() {
         if (!ai.control) {
             if (keyBoard.ArrowLeft) {
@@ -188,6 +221,10 @@ class Paddle {
             this.demo(ai);
         }
     }
+    /**
+     * @method demo -When the first loads this lets the computer control the game while the player watches and picks themes
+     * @param ai
+     */
     demo(ai) {
         this.position.x = ai.position.x - this.width / 2;
         if (this.position.x <= 0)
@@ -206,6 +243,11 @@ class Ai {
         this.control = true;
         this.offset = 0;
     }
+    /**
+     * @method logic - a very simple AI implementation , Checks what side of the screen has the most bricks and tries to angle the paddle so it hits the ball to that side
+     * it also follows the balls x-position
+     * @param ball - Pass a ball to the logic so it can track the x position
+     */
     logic(ball) {
         let right = 0;
         let left = 0;
@@ -221,6 +263,10 @@ class Ai {
         }
         this.position.x = ball.position.x;
     }
+    /**
+     * @method choice -This is the function that decides how the paddles angles to hit the bricks on the side with the most bricks
+     * @param choice
+     */
     choose(choice) {
         let offset = 0;
         switch (choice) {
@@ -276,12 +322,19 @@ function getPowers() {
     }
 }
 /**
- *
+ *@function collisionDetect
  * @param tempBrick
+ * @desc Hands The Collision Function Each Ball Object and tests Each Brick for collision;
  */
 function collisionsDetect(tempBrick) {
     level.balls.forEach((orb) => collisions(orb, tempBrick));
 }
+/**
+ * @function Collision
+ * @param circle
+ * @param rectangle
+ * @description - Accepts a Ball and a Brick as Arguements then tests if a collision occurs for either
+ */
 function collisions(circle, rectangle) {
     let circleX = circle.position.x;
     let circleY = circle.position.y;
@@ -336,14 +389,27 @@ function collisions(circle, rectangle) {
         }
     }
 }
+/**
+ * Sets up Loop Call Backs
+ * @param name
+ */
 function gameLoop(name) {
     requestAnimationFrame(name);
 }
+/**
+ * @function drawBackground
+ * @description - Draws The Background of the level using the Theme selected By the Player
+ */
 function drawBackground() {
     ctx.fillStyle = backgroundStyle;
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 }
+/**
+ * @function styler
+ * @description - gets the players choice of theme and then passes that arguement to the style sheet
+ * which returns values for Ball , Brick , Fonts , TextSize, Paddle and Background Styles
+ */
 function styler() {
     let styleSelect = document.getElementById("colorSelect");
     let selectedStyle = styleSelect.selectedIndex;
@@ -360,7 +426,7 @@ let styles = {
     Modern: {
         brick: {
             set1: [[255, 255, 255], [85, 0, 0], [85, 55, 55]],
-            set2: [[255, 255, 255], [50, 50, 85], [50, 50, 85]]
+            set2: [[255, 255, 255], [50, 50, 85], [50, 50, 85]],
         },
         ball: ["white", "red"],
         text: [`36px 'Eternal Knight Laser Itallic'`],
@@ -378,7 +444,7 @@ let styles = {
     Retro: {
         brick: {
             set1: [[47, 79, 79], [47, 79, 79], [47, 79, 79]],
-            set2: [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
+            set2: [[0, 0, 0], [0, 0, 0], [0, 0, 0]],
         },
         ball: ["grey", "grey"],
         text: [`24px 'Press Start 2P'`],
@@ -397,7 +463,7 @@ let styles = {
     Classic: {
         brick: {
             set1: [[67, 176, 71], [67, 176, 71], [67, 176, 71]],
-            set2: [[229, 37, 33], [229, 37, 33], [229, 37, 33]]
+            set2: [[229, 37, 33], [229, 37, 33], [229, 37, 33]],
         },
         ball: ["orange", "orange"],
         text: [`48px 'SNES'`],
@@ -416,7 +482,7 @@ let styles = {
     PacMan: {
         brick: {
             set1: [[255, 184, 82], [255, 184, 82], [255, 184, 82]],
-            set2: [[25, 25, 166], [25, 25, 166], [25, 25, 166]]
+            set2: [[25, 25, 166], [25, 25, 166], [25, 25, 166]],
         },
         ball: ["rgb(255,255,0)", "rgb(255,255,0)"],
         text: [`48px 'PacFont'`],
@@ -729,7 +795,7 @@ const PowerUps = {
 })();
 function setup() {
     ai = new Ai();
-    ball = new Ball(240, 240);
+    ball = new Ball(canvas.width / 2, canvas.height / 2);
     player = new Paddle(canvas.width / 2, canvas.height - canvas.height * .2);
     level.makeBricks();
     level.balls.push(ball);
