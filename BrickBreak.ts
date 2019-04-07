@@ -1,30 +1,29 @@
 // Global Variables
 // Contains All Varibles that occupy the global scope of the project
 // these are used to pass information to other parts of the program!
-let canvas: HTMLCanvasElement,
-    ctx: CanvasRenderingContext2D,
-    ball: Ball,
-    brick: Brick,
-    player: Paddle,
-    clicked: number,
-    keyPressed: string,
-    ai: Ai,
-    keyRel: string,
-    PaddleSpeed: number = 6,
-    hit: boolean = false,
-    title: HTMLSpanElement,
-    color:number = 0,
-    iterator:number = 0,
-    chosenPowerUp:string,
-    displayed:boolean,
-    modernColors:number[][],
-    brickStyle: { [x: string]: number[][]; set1: number[][]; set2: number[][]; },
-    paddleStyle: string[],
-    textStyle:string[],
-    ballStyle:string[],
-    fontStyle:string[],
-    backgroundStyle:string
- ;
+let canvas: HTMLCanvasElement;
+let ctx: CanvasRenderingContext2D;
+let ball: Ball;
+let brick: Brick;
+let player: Paddle;
+let clicked: number;
+let keyPressed: string;
+let ai: Ai;
+let keyRel: string;
+let PaddleSpeed: number = 6;
+let hit: boolean = false;
+let title: HTMLSpanElement;
+let color:number = 0;
+let iterator:number = 0;
+let chosenPowerUp:string;
+let displayed:boolean;
+let modernColors:number[][];
+let brickStyle: { [x: string]: number[][]; set1: number[][]; set2: number[][]; };
+let paddleStyle: string[];
+let textStyle:string[];
+let ballStyle:string[];
+let fontStyle:string[];
+let backgroundStyle:string;
 
 // Registers an Event if user click the canvas
 let clickHandler = () => canvas.addEventListener("click", () => true, false);
@@ -441,7 +440,6 @@ function collisions(circle: Ball, rectangle: Brick) {
             }
         }
     }
-
 }
 /**
  * Sets up Loop Call Backs

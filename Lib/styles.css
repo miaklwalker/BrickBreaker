@@ -59,33 +59,33 @@ grid-template-rows: 20fr;
   
 @font-face {
     font-family: 'Eternal Knight Laser Itallic';
-    src: url('EternalKnightLaserItalic.ttf') format('truetype');
+    src: url('./fonts/EternalKnightLaserItalic.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
 @font-face {
     font-family: 'Rio Grande Striped';
-    src: url('RioGrandeStriped-Bold.ttf') format('truetype');
+    src: url('./fonts/RioGrandeStriped-Bold.ttf') format('truetype');
     font-weight: bold;
     font-style: normal;
 }
 @font-face {
     font-family: 'Press Start 2P';
     src: local('Press Start 2P Regular'), local('PressStart2P-Regular'),
-    url('hinted-PressStart2P-Regular.ttf') format('truetype');
+    url('./fonts/hinted-PressStart2P-Regular.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
 @font-face {
   font-family: 'PacFont';
-  src: url('PacFont.ttf') format('truetype');
+  src: url('./fonts/PacFont.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'SNES';
-  src: url('SNES-Italic.ttf') format('truetype');
+  src: url('./fonts/SNES-Italic.ttf') format('truetype');
   font-weight: normal;
   font-style: italic;
 }

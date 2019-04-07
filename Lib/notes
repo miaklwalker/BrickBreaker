@@ -1,0 +1,16 @@
+let url = "style.json"
+fetch(url)
+.then( response => response.json())
+.then( json => {
+//drawBackground(json.Modern.background)
+MakeASquare(json[selectedStyle].brick["set1"], 40, 120)
+    })
+function makeCanvas(Size){
+    canvas = document.getElementById('canvas');
+    canvas.width = Size;
+    canvas.height = Size;
+    ctx = canvas.getContext('2d');
+}
+styles =["Retro","Classic","Modern","PacMan"];
+
+
