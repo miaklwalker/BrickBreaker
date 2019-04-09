@@ -1,0 +1,65 @@
+{
+  "bundle": {
+    "commonSourceDirectory": "/Users/michaelwalker/Desktop/Brick Breaker Game/src/",
+    "sourceFiles": [
+      "/Users/michaelwalker/Desktop/Brick Breaker Game/src/AI.ts",
+      "/Users/michaelwalker/Desktop/Brick Breaker Game/src/Ball.ts",
+      "/Users/michaelwalker/Desktop/Brick Breaker Game/src/Brick.ts",
+      "/Users/michaelwalker/Desktop/Brick Breaker Game/src/Collisions.ts",
+      "/Users/michaelwalker/Desktop/Brick Breaker Game/src/GameLogic.ts",
+      "/Users/michaelwalker/Desktop/Brick Breaker Game/src/Interfaces.ts",
+      "/Users/michaelwalker/Desktop/Brick Breaker Game/src/Level.ts",
+      "/Users/michaelwalker/Desktop/Brick Breaker Game/src/Paddle.ts",
+      "/Users/michaelwalker/Desktop/Brick Breaker Game/src/PowerUps.ts",
+      "/Users/michaelwalker/Desktop/Brick Breaker Game/src/ScoreBoard.ts",
+      "/Users/michaelwalker/Desktop/Brick Breaker Game/src/Styler.ts",
+      "/Users/michaelwalker/Desktop/Brick Breaker Game/src/Vector.ts",
+      "/Users/michaelwalker/Desktop/Brick Breaker Game/src/functions.ts",
+      "/Users/michaelwalker/Desktop/Brick Breaker Game/src/main.ts"
+    ],
+    "js": {
+      "sections": [
+        {
+          "pos": 0,
+          "end": 13,
+          "kind": "prologue",
+          "data": "use strict"
+        },
+        {
+          "pos": 14,
+          "end": 26922,
+          "kind": "text"
+        }
+      ],
+      "sources": {
+        "prologues": [
+          {
+            "file": 0,
+            "text": "",
+            "directives": [
+              {
+                "pos": -1,
+                "end": -1,
+                "expression": {
+                  "pos": -1,
+                  "end": -1,
+                  "text": "use strict"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "dts": {
+      "sections": [
+        {
+          "pos": 0,
+          "end": 8770,
+          "kind": "text"
+        }
+      ]
+    }
+  },
+  "version": "3.4.2"
+}
