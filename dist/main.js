@@ -154,44 +154,22 @@ class Brick {
         let setTwo = brickStyle.set2[this.health];
         if (this.effect) {
             let myGradient = ctx.createLinearGradient(this.position.x, this.position.y, this.position.x, this.position.y + this.height);
-            myGradient.addColorStop(0, `${setOne[0]}`);
-            myGradient.addColorStop(.6, `${setOne[1]}`);
-            myGradient.addColorStop(1, `${setOne[2]}`);
+            myGradient.addColorStop(0, `${setOne[0][0]}`);
+            myGradient.addColorStop(.6, `${setOne[1][0]}`);
+            myGradient.addColorStop(1, `${setOne[2][0]}`);
             ctx.fillStyle = myGradient;
             ctx.fillRect(this.position.x, this.position.y, this.width, this.height);
         }
         else {
             let myGradient = ctx.createLinearGradient(this.position.x, this.position.y, this.position.x, this.position.y + this.height);
-            myGradient.addColorStop(0, `${setTwo[0]}`);
-            myGradient.addColorStop(.6, `${setTwo[1]}`);
-            myGradient.addColorStop(1, `${setTwo[2]}`);
+            myGradient.addColorStop(0, `${setTwo[0][0]}`);
+            myGradient.addColorStop(.6, `${setTwo[1][0]}`);
+            myGradient.addColorStop(1, `${setTwo[2][0]}`);
             ctx.fillStyle = myGradient;
             ctx.fillRect(this.position.x, this.position.y, this.width, this.height);
         }
     }
 }
-/*
-Bricks have Max 5 Health
-2 sets of 5 colors
-brickStyle
-effect              setOne[1],setOne[2],setOne[3]
-set1
-health
-    1 (1,2,3)
-    2 (1,2,3)
-    3 (1,2,3)
-    4 (1,2,3)
-    5 (1,2,3)
-    noeffect
-set 2
-health
-    1 (1,2,3)
-    2 (1,2,3)
-    3 (1,2,3)
-    4 (1,2,3)
-    5 (1,2,3)
-
-*/
 /**
  *@function collisionDetect
  * @param tempBrick
@@ -325,9 +303,6 @@ const gameLogic = {
         // While demo is running controls demo elements
         // allows players to start game
         if (ai.control) {
-            //ctx.fillStyle = "black";
-            //ctx.fillText("Start Game", canvas.width / 2, canvas.height / 2);
-            //ctx.fillText("Click Anywhere!", canvas.width / 2, canvas.height / 2 + 24)
             game.active = true;
             player.demo(ai);
         }
@@ -347,7 +322,7 @@ const level = {
     levelNum: 1,
     numOfPowers: 1,
     numOfRows: 3,
-    weakestBrick: 0,
+    weakestBrick: 1,
     score: 0,
     bricks: [],
     balls: [],
@@ -603,7 +578,7 @@ class scoreBoard {
         this.div[8].innerHTML = `${level.balls.length}`;
     }
 }
-let index = ['Retro', 'Retro', 'Classic', 'Modern', 'PacMan'];
+let index = ['Modern', 'Retro', 'Classic', 'Modern', 'PacMan'];
 let styleSelect = document.getElementById("colorSelect");
 let selectedStyle = styleSelect.selectedIndex;
 let selectionWatcher = document.querySelector('.styleSelector');
@@ -761,7 +736,7 @@ async function GetJson() {
 }
 GetJson()
     .then(Json => stylesJson = Json)
-    .then(style => styler(stylesJson));
+    .then(() => styler(stylesJson));
 const keyBoard = {
     ArrowLeft: false,
     ArrowRight: false,
@@ -778,7 +753,7 @@ const game = {
     over: false,
 };
 // Anonymous IIFE to load Everything!
-(function initiate() {
+(() => {
     makeCanvas("canvas");
     window.onload = function () {
         document.addEventListener("keydown", (event) => {

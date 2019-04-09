@@ -17,9 +17,9 @@ let color: number = 0;
 let iterator: number = 0;
 let chosenPowerUp: string;
 let displayed: boolean;
-let stylesJson: JSON;
+let stylesJson: BrickBreaker;
 let modernColors: number[][];
-let brickStyle: { [x: string]: number[][]; set1: number[][]; set2: number[][]; };
+let brickStyle:brickStyle
 let paddleStyle: string[];
 let textStyle: string[];
 let ballStyle: string[];
@@ -29,11 +29,12 @@ let backgroundStyle: string;
 async function GetJson(){
     let response = await fetch("../lib/JSON/BrickBreaker.json")
     let styleSheet = await response.json();
-    return styleSheet as Promise<JSON>
+    return styleSheet as Promise<BrickBreaker>
 }
 GetJson()
 .then(Json => stylesJson = Json )
-.then(style => styler(stylesJson))
+.then(()=> styler(stylesJson))
+
 
 
 
@@ -56,7 +57,7 @@ const game: game = {
 
 
 // Anonymous IIFE to load Everything!
- (function initiate (){
+ (()=>{
     makeCanvas("canvas");
     window.onload = function () {
 

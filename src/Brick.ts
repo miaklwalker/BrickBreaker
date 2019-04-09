@@ -36,41 +36,18 @@ class Brick {
         let setTwo= brickStyle.set2[this.health];
         if (this.effect) {
             let myGradient = ctx.createLinearGradient(this.position.x, this.position.y, this.position.x, this.position.y + this.height);
-            myGradient.addColorStop( 0, `${setOne[0]}`);
-            myGradient.addColorStop(.6, `${setOne[1]}`);
-            myGradient.addColorStop( 1, `${setOne[2]}`);
+            myGradient.addColorStop( 0, `${setOne[0][0]}`);
+            myGradient.addColorStop(.6, `${setOne[1][0]}`);
+            myGradient.addColorStop( 1, `${setOne[2][0]}`);
             ctx.fillStyle = myGradient;
             ctx.fillRect(this.position.x, this.position.y, this.width, this.height);
         } else {
             let myGradient = ctx.createLinearGradient(this.position.x, this.position.y, this.position.x, this.position.y + this.height);
-            myGradient.addColorStop( 0, `${setTwo[0]}`);
-            myGradient.addColorStop(.6, `${setTwo[1]}`);
-            myGradient.addColorStop( 1, `${setTwo[2]}`);
+             myGradient.addColorStop( 0, `${setTwo[0][0]}`);
+             myGradient.addColorStop(.6, `${setTwo[1][0]}`);
+             myGradient.addColorStop( 1, `${setTwo[2][0]}`);
             ctx.fillStyle = myGradient;
             ctx.fillRect(this.position.x, this.position.y, this.width, this.height);
         }
     }
 }
-
-/*
-Bricks have Max 5 Health
-2 sets of 5 colors
-brickStyle
-effect              setOne[1],setOne[2],setOne[3]
-set1
-health
-    1 (1,2,3)
-    2 (1,2,3)
-    3 (1,2,3) 
-    4 (1,2,3)
-    5 (1,2,3)
-    noeffect
-set 2 
-health
-    1 (1,2,3)
-    2 (1,2,3)
-    3 (1,2,3)
-    4 (1,2,3)
-    5 (1,2,3)
-
-*/

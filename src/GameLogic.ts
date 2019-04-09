@@ -17,6 +17,7 @@ const gameLogic: gameLogic = {
         })
     },
     ends() {
+
         if (level.bricks.length === 0) {
             this.win();
         }
@@ -62,9 +63,6 @@ const gameLogic: gameLogic = {
         // While demo is running controls demo elements
         // allows players to start game
         if (ai.control) {
-            //ctx.fillStyle = "black";
-            //ctx.fillText("Start Game", canvas.width / 2, canvas.height / 2);
-            //ctx.fillText("Click Anywhere!", canvas.width / 2, canvas.height / 2 + 24)
             game.active = true;
             player.demo(ai)
         } else {

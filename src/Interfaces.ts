@@ -13,8 +13,8 @@ interface level {
     numOfRows: number;
     weakestBrick: number;
     score: number;
-    bricks: Array<Brick>;
-    balls: Array<Ball>;
+    bricks: Array < Brick > ;
+    balls: Array < Ball > ;
     fortifier: number;
     GameText: () => any;
     makeEffect: () => any;
@@ -64,3 +64,43 @@ interface game {
     powerActive: boolean;
     over: boolean;
 }
+
+interface brickStyle {
+      set1:string[][][];
+      set2:string[][][];
+    }
+
+interface style{
+    brick:brickStyle,
+    ball: {},
+    text: [],
+    textLocation: [],
+    color: [],
+    font: [],
+    paddle: [],
+    background: string
+}
+interface gameStyle{
+    Modern:style,
+    Retro:style,
+    Classic:style,
+    PacMan:style,
+}
+interface BrickBreaker {
+    Credits: Credits;
+    Classes: Classes;
+    Styles: gameStyle;
+}
+
+interface Credits {
+    GameTitle: string;
+    LeadCoder: string;
+    OriginalIdea: string;
+    thisProject: string;
+}
+interface Classes {
+    Ball: string;
+    Paddle: string;
+    Brick: string;
+    Ai: string;
+  }

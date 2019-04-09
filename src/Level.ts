@@ -3,7 +3,7 @@ const level: level = {
     levelNum: <number>1,
     numOfPowers: <number>1,
     numOfRows: <number>3,
-    weakestBrick: <number>0,
+    weakestBrick: <number>1,
     score: <number>0,
     bricks: <Brick[]>[],
     balls: <Ball[]>[],
@@ -61,6 +61,7 @@ const level: level = {
     makeBricks() {
         // Sets a Health Limit for Bricks
         const LIMIT = 5;
+        
         // The Varible that is passed as health if health is higher than 5
         let limitBricks = level.weakestBrick >  LIMIT ? LIMIT : level.weakestBrick as number;
         // at level 5 it makes each Brick harder to kill
@@ -73,6 +74,7 @@ const level: level = {
         for (rowPosition; rowPosition > canvas.height / 20; rowPosition -= canvas.height / 20) {
             for (let i = 10 - 1; i > -1; i--) {
                 if (this.makeEffect()) {
+                    
                     brick = new Brick(i * canvas.width / 10, rowPosition, limitBricks);
                     level.numOfPowers--;
                     brick.effect = true;

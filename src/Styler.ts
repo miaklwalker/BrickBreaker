@@ -1,4 +1,4 @@
-let index = ['Retro', 'Retro', 'Classic', 'Modern', 'PacMan'];
+let index = ['Modern', 'Retro', 'Classic', 'Modern', 'PacMan'];
 let styleSelect = <HTMLSelectElement>document.getElementById("colorSelect")
 let selectedStyle = styleSelect.selectedIndex;
 let selectionWatcher = document.querySelector('.styleSelector') as HTMLSelectElement;

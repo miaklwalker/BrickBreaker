@@ -1,21 +1,21 @@
 {
   "bundle": {
-    "commonSourceDirectory": "/Users/michaelwalker/Desktop/Brick Breaker Game/src/",
+    "commonSourceDirectory": "C:/Users/ouisi/iCloudDrive/Documents/MasterCodeFolder/github/brickbreaker/src/",
     "sourceFiles": [
-      "/Users/michaelwalker/Desktop/Brick Breaker Game/src/AI.ts",
-      "/Users/michaelwalker/Desktop/Brick Breaker Game/src/Ball.ts",
-      "/Users/michaelwalker/Desktop/Brick Breaker Game/src/Brick.ts",
-      "/Users/michaelwalker/Desktop/Brick Breaker Game/src/Collisions.ts",
-      "/Users/michaelwalker/Desktop/Brick Breaker Game/src/GameLogic.ts",
-      "/Users/michaelwalker/Desktop/Brick Breaker Game/src/Interfaces.ts",
-      "/Users/michaelwalker/Desktop/Brick Breaker Game/src/Level.ts",
-      "/Users/michaelwalker/Desktop/Brick Breaker Game/src/Paddle.ts",
-      "/Users/michaelwalker/Desktop/Brick Breaker Game/src/PowerUps.ts",
-      "/Users/michaelwalker/Desktop/Brick Breaker Game/src/ScoreBoard.ts",
-      "/Users/michaelwalker/Desktop/Brick Breaker Game/src/Styler.ts",
-      "/Users/michaelwalker/Desktop/Brick Breaker Game/src/Vector.ts",
-      "/Users/michaelwalker/Desktop/Brick Breaker Game/src/functions.ts",
-      "/Users/michaelwalker/Desktop/Brick Breaker Game/src/main.ts"
+      "C:/Users/ouisi/iCloudDrive/Documents/MasterCodeFolder/github/brickbreaker/src/AI.ts",
+      "C:/Users/ouisi/iCloudDrive/Documents/MasterCodeFolder/github/brickbreaker/src/Ball.ts",
+      "C:/Users/ouisi/iCloudDrive/Documents/MasterCodeFolder/github/brickbreaker/src/Brick.ts",
+      "C:/Users/ouisi/iCloudDrive/Documents/MasterCodeFolder/github/brickbreaker/src/Collisions.ts",
+      "C:/Users/ouisi/iCloudDrive/Documents/MasterCodeFolder/github/brickbreaker/src/GameLogic.ts",
+      "C:/Users/ouisi/iCloudDrive/Documents/MasterCodeFolder/github/brickbreaker/src/Interfaces.ts",
+      "C:/Users/ouisi/iCloudDrive/Documents/MasterCodeFolder/github/brickbreaker/src/Level.ts",
+      "C:/Users/ouisi/iCloudDrive/Documents/MasterCodeFolder/github/brickbreaker/src/Paddle.ts",
+      "C:/Users/ouisi/iCloudDrive/Documents/MasterCodeFolder/github/brickbreaker/src/PowerUps.ts",
+      "C:/Users/ouisi/iCloudDrive/Documents/MasterCodeFolder/github/brickbreaker/src/ScoreBoard.ts",
+      "C:/Users/ouisi/iCloudDrive/Documents/MasterCodeFolder/github/brickbreaker/src/Styler.ts",
+      "C:/Users/ouisi/iCloudDrive/Documents/MasterCodeFolder/github/brickbreaker/src/Vector.ts",
+      "C:/Users/ouisi/iCloudDrive/Documents/MasterCodeFolder/github/brickbreaker/src/functions.ts",
+      "C:/Users/ouisi/iCloudDrive/Documents/MasterCodeFolder/github/brickbreaker/src/main.ts"
     ],
     "js": {
       "sections": [
@@ -26,8 +26,8 @@
           "data": "use strict"
         },
         {
-          "pos": 14,
-          "end": 26922,
+          "pos": 15,
+          "end": 27241,
           "kind": "text"
         }
       ],
@@ -55,11 +55,11 @@
       "sections": [
         {
           "pos": 0,
-          "end": 8770,
+          "end": 9692,
           "kind": "text"
         }
       ]
     }
   },
-  "version": "3.4.2"
+  "version": "3.4.1"
 }

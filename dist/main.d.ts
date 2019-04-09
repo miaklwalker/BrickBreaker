@@ -153,6 +153,43 @@ interface game {
     powerActive: boolean;
     over: boolean;
 }
+interface brickStyle {
+    set1: string[][][];
+    set2: string[][][];
+}
+interface style {
+    brick: brickStyle;
+    ball: {};
+    text: [];
+    textLocation: [];
+    color: [];
+    font: [];
+    paddle: [];
+    background: string;
+}
+interface gameStyle {
+    Modern: style;
+    Retro: style;
+    Classic: style;
+    PacMan: style;
+}
+interface BrickBreaker {
+    Credits: Credits;
+    Classes: Classes;
+    Styles: gameStyle;
+}
+interface Credits {
+    GameTitle: string;
+    LeadCoder: string;
+    OriginalIdea: string;
+    thisProject: string;
+}
+interface Classes {
+    Ball: string;
+    Paddle: string;
+    Brick: string;
+    Ai: string;
+}
 declare const level: level;
 /**
  * @class Paddle
@@ -273,19 +310,15 @@ declare let color: number;
 declare let iterator: number;
 declare let chosenPowerUp: string;
 declare let displayed: boolean;
-declare let stylesJson: JSON;
+declare let stylesJson: BrickBreaker;
 declare let modernColors: number[][];
-declare let brickStyle: {
-    [x: string]: number[][];
-    set1: number[][];
-    set2: number[][];
-};
+declare let brickStyle: brickStyle;
 declare let paddleStyle: string[];
 declare let textStyle: string[];
 declare let ballStyle: string[];
 declare let fontStyle: string[];
 declare let backgroundStyle: string;
-declare function GetJson(): Promise<JSON>;
+declare function GetJson(): Promise<BrickBreaker>;
 declare const keyBoard: keyBoard;
 /**
  * @name game

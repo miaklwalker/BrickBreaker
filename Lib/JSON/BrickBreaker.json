@@ -1,171 +1,209 @@
 {
-"Credits":{
-    "Game Title": "Brick Break",
-    "Lead Coder": "Michael Walker",
-    "Original Idea": "Steve Wozniak",
-    "This project": "is FREE to anyone"
-     },
-"Classes": {
-    "Ball": "Methods",
-    "Paddle": "Methods",
-    "Brick": "Methods",
-    "Ai": "methods"
+    "Credits": {
+        "Game Title": "Brick Break",
+        "Lead Coder": "Michael Walker",
+        "Original Idea": "Steve Wozniak",
+        "This project": "is FREE to anyone"
     },
-"Styles": {
-    "Modern": {
-        "brick": {
-            "set1": [
-                [255, 255, 255],
-                [85, 0, 0],
-                [85, 55, 55]
+    "Classes": {
+        "Ball": "Methods",
+        "Paddle": "Methods",
+        "Brick": "Methods",
+        "Ai": "methods"
+    },
+    "Styles": {
+
+        "Modern": {
+            "brick": {
+                "set1": [
+                    [
+                        ["white"],
+                        ["black"],
+                        ["black"]
                     ],
-            "set2": [
-                [255, 255, 255],
-                [50, 50, 85],
-                [50, 50, 85]
+                    [
+                        ["white"],
+                        ["dimGray"],
+                        ["dimGray"]
+                    ],
+                    [
+                       ["white"],
+                        ["gray"],
+                        ["gray"]
+                    ],
+                    [
+                        ["white"],
+                        ["darkGray"],
+                        ["darkGray"]
+                    ],
+                    [
+                        ["white"],
+                        ["lightGray"],
+                        ["lightGray"]
                     ]
-            },
-        "ball": ["white", "red"],
-        "text": ["`36px 'Eternal Knight Laser Itallic'`"],
-        "textLocation":[],
-        "color": [
-            [218, 247, 166],
-            [255, 195, 0],
-            [255, 87, 51],
-            [199, 0, 57],
-            [133, 193, 233],
-            [46, 204, 113]
-            ],
-        "font": ["'Eternal Knight Laser Itallic', '30px'"],
-        "paddle": ["lightgrey", "black", "black"],
-        "background": "lightgrey"
-            },
-    "Retro": {
-        "brick": {
-            "set1": [
-                [
-                    ["black"], 
-                    ["black"],
-                    ["black"]
                 ],
 
-                [
-                    ["dimGray"],
-                    ["dimGray"],
-                    ["dimGray"]
-                ],
-
-                [
-                    ["gray"],
-                    ["gray"],
-                    ["gray"]
-                ],
-
-                [
-                    ["darkGray"],
-                    ["darkGray"],
-                    ["darkGray"]
-                ],
-
-                [
-                    ["lightGray"],
-                    ["lightGray"],
-                    ["lightGray"]
+                "set2": [
+                    [
+                        ["white"],
+                        ["#312e30"],
+                        ["#312e30"]
+                    ],
+                    [
+                        ["white"],
+                        ["#2A292B"],
+                        ["#2A292B"]
+                    ],
+                    [
+                        ["white"],
+                        ["#151511"],
+                        ["#151511"]
+                    ],
+                    [
+                        ["white"],
+                        ["#4F4F50"],
+                        ["#4F4F50"]
+                    ],
+                    [
+                        ["white"],
+                        ["#000000"],
+                        ["#000000"]
+                    ]
                 ]
+            },
+            "ball": ["white", "red"],
+            "text": ["`36px 'Eternal Knight Laser Itallic'`"],
+            "textLocation": [],
+            "color": [
+                [218, 247, 166],
+                [255, 195, 0],
+                [255, 87, 51],
+                [199, 0, 57],
+                [133, 193, 233],
+                [46, 204, 113]
             ],
-            "set2":[
-                [
-                    ["#312E30"],
-                    ["#312e30"],
-                    ["#312e30"]
+            "font": ["'Eternal Knight Laser Itallic', '30px'"],
+            "paddle": ["lightgrey", "black", "black"],
+            "background": "lightgrey"
+        },
+        "Retro": {
+            "brick": {
+                "set1": [
+                    [
+                        ["black"],
+                        ["black"],
+                        ["black"]
+                    ],
+                    [
+                        ["dimGray"],
+                        ["dimGray"],
+                        ["dimGray"]
+                    ],
+                    [
+                        ["gray"],
+                        ["gray"],
+                        ["gray"]
+                    ],
+                    [
+                        ["darkGray"],
+                        ["darkGray"],
+                        ["darkGray"]
+                    ],
+                    [
+                        ["lightGray"],
+                        ["lightGray"],
+                        ["lightGray"]
+                    ]
                 ],
 
-                [
-                    ["#2A292B"],
-                    ["#2A292B"],
-                    ["#2A292B"]
-                ],
-
-                [
-                    ["#151511"],
-                    ["#151511"],
-                    ["#151511"]
-                ],
-
-                [
-                    ["#4F4F50"],
-                    ["#4F4F50"],
-                    ["#4F4F50"]
-                ],
-
-                [
-                    ["#000000"],
-                    ["#000000"],
-                    ["#000000"]
+                "set2": [
+                    [
+                        ["#312E30"],
+                        ["#312e30"],
+                        ["#312e30"]
+                    ],
+                    [
+                        ["#2A292B"],
+                        ["#2A292B"],
+                        ["#2A292B"]
+                    ],
+                    [
+                        ["#151511"],
+                        ["#151511"],
+                        ["#151511"]
+                    ],
+                    [
+                        ["#4F4F50"],
+                        ["#4F4F50"],
+                        ["#4F4F50"]
+                    ],
+                    [
+                        ["#000000"],
+                        ["#000000"],
+                        ["#000000"]
+                    ]
                 ]
-            ]
-
+            },
+            "ball": ["grey", "grey"],
+            "text": ["24px 'Press Start 2P'"],
+            "textLocation": [],
+            "color": [
+                [255, 255, 255],
+                [255, 255, 255],
+                [0, 0, 0],
+                [0, 0, 0],
+                [0, 0, 0],
+                [255, 255, 255]
+            ],
+            "font": ["'Press Start 2P'", "15px"],
+            "paddle": ["black", "black", "black"],
+            "background": "white"
         },
-        "ball": ["grey", "grey"],
-        "text": ["24px 'Press Start 2P'"],
-        "textLocation": [],
-        "color": [
-            [255, 255, 255],
-            [255, 255, 255],
-            [0, 0, 0],
-            [0, 0, 0],
-            [0, 0, 0],
-            [255, 255, 255]
+        "Classic": {
+            "brick": {
+                "set1": [
+                    [67, 176, 71],
+                    [67, 176, 71],
+                    [67, 176, 71]
                 ],
-        "font": ["'Press Start 2P'", "15px"],
-        "paddle": ["black", "black", "black"],
-        "background": "white"
+                "set2": [
+                    [229, 37, 33],
+                    [229, 37, 33],
+                    [229, 37, 33]
+                ]
+            },
+            "ball": ["orange", "orange"],
+            "text": ["`48px 'SNES'`"],
+            "textLocation": [],
+            "color": [
+                [247, 249, 249],
+                [34, 101, 226],
+                [190, 216, 212],
+                [120, 213, 215],
+                [99, 210, 255],
+                [255, 255, 255]
+            ],
+            "font": ["'SNES'", "'45px'"],
+            "paddle": ["blue", "blue", "blue"],
+            "background": "rgb(44,176,26)"
         },
-    "Classic": {
-        "brick": {
-            "set1": [
-                [67, 176, 71],
-                [67, 176, 71],
-                [67, 176, 71]
-                    ],
-            "set2": [
-                [229, 37, 33],
-                [229, 37, 33],
-                [229, 37, 33]
-                    ]
-                },
-        "ball": ["orange", "orange"],
-        "text": ["`48px 'SNES'`"],
-        "textLocation": [],
-        "color": [
-            [247, 249, 249],
-            [34, 101, 226],
-            [190, 216, 212],
-            [120, 213, 215],
-            [99, 210, 255],
-            [255, 255, 255]
-                    ],
-        "font": ["'SNES'", "'45px'"],
-        "paddle": ["blue", "blue", "blue"],
-        "background": "rgb(44,176,26)"
-        },
-    "PacMan": {
-        "brick": {
-            "set1": [
-                [255, 184, 82],
-                [255, 184, 82],
-                [255, 184, 82]
-                    ],
-            "set2": [
-                [25, 25, 166],
-                [25, 25, 166],
-                [25, 25, 166]
-                    ]
-                },
-        "ball": ["rgb(255,255,0)", "rgb(255,255,0)"],
-        "text": ["40px PacFont"],
-        "textLocation": [],
-        "color": [
+        "PacMan": {
+            "brick": {
+                "set1": [
+                    [255, 184, 82],
+                    [255, 184, 82],
+                    [255, 184, 82]
+                ],
+                "set2": [
+                    [25, 25, 166],
+                    [25, 25, 166],
+                    [25, 25, 166]
+                ]
+            },
+            "ball": ["rgb(255,255,0)", "rgb(255,255,0)"],
+            "text": ["40px PacFont"],
+            "textLocation": [],
+            "color": [
                 [255, 0, 0],
                 [255, 184, 255],
                 [0, 255, 255],
@@ -173,11 +211,9 @@
                 [255, 255, 0],
                 [0, 0, 0]
             ],
-        "font": ["PacFont", "40px"],
-        "paddle": ["rgb(33,33,222)", "rgb(33,33,222)", "rgb(33,33,222)"],
-        "background": "rgb(0, 0,0)"
+            "font": ["PacFont", "40px"],
+            "paddle": ["rgb(33,33,222)", "rgb(33,33,222)", "rgb(33,33,222)"],
+            "background": "rgb(0, 0,0)"
         }
     }
 }
-
-
