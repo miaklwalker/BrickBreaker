@@ -18,10 +18,9 @@ I've been using this game / library to teach myself coding!
 - Full Library Documentation on every function in the library as well as examples!
 - Some tips on language specfic features for people just starting to learn.
 Learn by making a simple game like brick breaker!
----------
+--------------
 --Game Rules--
----------
-----
+--------------
  - You start the game with 3 lives.
  - If the ball reaches the bottom of the screen you lose a life. :(
  - Special colored bricks give power ups!
@@ -35,16 +34,16 @@ Learn by making a simple game like brick breaker!
  - Strong-Ball
  # NEW FEATURES!!
 
-  ---------------------Old------------------------
+  ---------------------Old--------------------------
 
-  -------------
+  --------------------------------------------------
  - Custom Themes / still a work in Progress
  - Cool New Text Animation!
  - All in Vanilla Javascript and type Script!
   
- - ----------------
+ - -------------------------------------------------
   ------------------- 4/9/19------------------------
- - ----------------
+ - -------------------------------------------------
  - ANIMATED BACKGROUNDS! ("On Zelda Theme")
  - Custom Styles and Selector !
  - Every Theme has Custom Colors!-
@@ -52,7 +51,7 @@ Learn by making a simple game like brick breaker!
  - Every Class is back into its own file for better readability!-
  - CSS Animations on Game Name when a brick is hit!-
  - Jdocs on almost every function-
- - ----------------
+ - ------------------------------------------------
  # Known issues or issues in progress
  - ( fixed ) game over does not reset game
  - ( fixed ) paddle can grow infinitly
