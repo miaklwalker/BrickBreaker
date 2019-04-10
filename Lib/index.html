@@ -11,23 +11,28 @@
 </head>
 
 <body>
-<div></div>
-    <div id="ScoreBoard" class="container"    >
-        <span id="score" class="item1"    ></span>
-        <span id="level" class="item2"    ></span>
-        <span id="gameName"class="item3"  ></span>
-        <span id="lives"class="item4"     ></span>
-        <span id="balls"class="item5"     ></span>
-        <select id="colorSelect" class="dropdown">
-            <option value="">Choose a style</option>
-            <option value="Retro">Retro</option>
-            <option value="Classic">Classic</option>
-            <option value="Modern">Modern</option>
-            <option value="PacMan">PacMan</option>
-        </select>
+    <div class="grid-container">
+        <div class="canvas"><canvas id="canvas" class="canvas"></canvas></div>
+        <div id="ScoreBoard" class="scoreboard">
+            <div id="scoreText" class="ScoreText">Score:</div>
+            <div id="score" class="Score"></div>
+            <div id="levelText" class="levelText">Level:</div>
+            <div id="level" class="level"></div>
+            <div id="gameName" class="gameName"></div>
+            <div id="livesText" class="liveText">Lives:</div>
+            <div id="lives" class="Lives"></div>
+            <div id="ballsText" class="ballsText">balls:</div>
+            <div id="balls" class="balls"></div>
+            <select id="colorSelect" class="styleSelector" onchange="GetJson()">
+                <option value="">Choose a style</option>
+                <option value="Retro">Retro</option>
+                <option value="Zelda">Zelda</option>
+                <option value="Modern">Modern</option>
+                <option value="PacMan">PacMan</option>
+            </select>
+            <script src="../dist/main.js"></script>
+        </div>
     </div>
-    <canvas id="canvas" class="item7"></canvas>
-    <script src="BrickBreak.js"></script>
 </body>
 
 </html>
