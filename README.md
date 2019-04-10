@@ -34,8 +34,9 @@ Learn by making a simple game like brick breaker!
  - Strong-Ball
  # NEW FEATURES!!
 
+  --------------------------------------------------
   ---------------------Old--------------------------
-
+  
   --------------------------------------------------
  - Custom Themes / still a work in Progress
  - Cool New Text Animation!
