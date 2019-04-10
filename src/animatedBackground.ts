@@ -24,6 +24,3 @@ class animatedBackground{
        return this.sprites[this.frame%this.numberOfSprites]
     }
 }
-
-
-
