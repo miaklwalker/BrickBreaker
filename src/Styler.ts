@@ -1,4 +1,4 @@
-let index = ['Modern', 'Retro', 'Classic', 'Modern', 'PacMan'];
+let index = ['PacMan', 'Retro', 'Classic', 'Modern', 'PacMan'];
 let styleSelect = <HTMLSelectElement>document.getElementById("colorSelect")
 let selectedStyle = styleSelect.selectedIndex;
 let selectionWatcher = document.querySelector('.styleSelector') as HTMLSelectElement;
@@ -19,5 +19,6 @@ function styler(styleSheet:any) {
     paddleStyle     = styleSheet.Styles[index[selectedStyle]].paddle
     fontStyle       = styleSheet.Styles[index[selectedStyle]].font
     backgroundStyle = styleSheet.Styles[index[selectedStyle]].background
+    textLocation    = styleSheet.Styles[index[selectedStyle]].textLocation
 }
 

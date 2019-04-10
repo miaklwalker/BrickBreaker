@@ -268,6 +268,17 @@ declare class Vector {
     div(divisor: Vector | number): void;
     limit(max: number): this;
 }
+declare class animatedBackground {
+    frame: number;
+    counter: number;
+    sprites: HTMLImageElement[];
+    numberOfSprites: number;
+    constructor(numberOfSprites: number);
+    addSprites(url: string, format: string): void;
+    Sprite(): HTMLImageElement;
+}
+declare let frame: number;
+declare let counter: number;
 /**
  *
  * @param name   - This Value Becomes The id for the Canvas.
@@ -284,6 +295,7 @@ declare let clickHandler: () => void;
  * method.
  */
 declare function getPowers(): void;
+declare let zelda: animatedBackground;
 /**
  * Sets up Loop Call Backs
  * @param name - is the name of the call back function you want to use!
@@ -311,13 +323,14 @@ declare let iterator: number;
 declare let chosenPowerUp: string;
 declare let displayed: boolean;
 declare let stylesJson: BrickBreaker;
+declare let textLocation: number[];
 declare let modernColors: number[][];
 declare let brickStyle: brickStyle;
 declare let paddleStyle: string[];
 declare let textStyle: string[];
 declare let ballStyle: string[];
 declare let fontStyle: string[];
-declare let backgroundStyle: string;
+declare let backgroundStyle: [string, boolean];
 declare function GetJson(): Promise<BrickBreaker>;
 declare const keyBoard: keyBoard;
 /**

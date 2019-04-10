@@ -1,5 +1,5 @@
-
-
+let frame = 0
+let counter = 0
 
 // Functions
 /**
@@ -8,15 +8,16 @@
  * @param width  - The Width of the Canvas as a string "480" 
  * @param height - The height of the Canvas as a string "480" 
  */
-function makeCanvas(name: string, width?: string, height?: string) {
+function makeCanvas(name: string, width ? : string, height ? : string) {
     let w: string = width || (window.innerWidth * .75).toString();
     let h: string = height || (3 * window.innerHeight / 4).toString();
-    canvas = <HTMLCanvasElement>document.getElementById("canvas");
-    ctx = <CanvasRenderingContext2D>canvas.getContext("2d");
+    canvas = < HTMLCanvasElement > document.getElementById("canvas");
+    ctx = < CanvasRenderingContext2D > canvas.getContext("2d");
     canvas.setAttribute("id", name);
     canvas.setAttribute("width", w);
     canvas.setAttribute("height", h);
     return canvas;
+
 }
 
 // Registers an Event if user click the canvas
@@ -39,6 +40,8 @@ function getPowers() {
         PowerUps.doubler.loseEffect();
     }
 }
+let zelda = new animatedBackground(31)
+zelda.addSprites("../docs/tile",".jpg");
 /**
  * Sets up Loop Call Backs
  * @param name - is the name of the call back function you want to use!
@@ -51,8 +54,13 @@ function gameLoop(name: FrameRequestCallback) {
  * @description - Draws The Background of the level using the Theme selected By the Player
  */
 function drawBackground() {
-    ctx.fillStyle = backgroundStyle;
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    if (backgroundStyle[1] === false) {
+        ctx.fillStyle = backgroundStyle[0];
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+    }else{
+        let img = zelda.Sprite();
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.drawImage(img,0,0,canvas.width,canvas.height);
+    }
 }
-

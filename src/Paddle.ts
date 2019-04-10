@@ -22,7 +22,7 @@ class Paddle {
     show() {
         let myGradient = ctx.createLinearGradient(this.position.x, this.position.y, this.position.x, this.position.y + this.height);
         myGradient.addColorStop(0, `${paddleStyle[0]}`);
-        myGradient.addColorStop(.6, `${paddleStyle[1]}`);
+        myGradient.addColorStop(.45, `${paddleStyle[1]}`);
         myGradient.addColorStop(1, `${paddleStyle[2]}`);
         ctx.fillStyle = myGradient;
         ctx.fillRect(this.position.x, this.position.y, this.width, this.height);

@@ -20,12 +20,12 @@ const level: level = {
         ctx.fillStyle = `rgb(${modernColors[color % 6][0]},${modernColors[color % 6][1]},${modernColors[color % 6][2]})`;
 
         if (!game.active) {
-            ctx.fillText(`Welcome To Level ${level.levelNum}`, canvas.width / 2 - 150, canvas.height / 2);
-            ctx.fillText(`Press Enter To Begin `, canvas.width / 2 - 200, canvas.height / 2 + 50);
+            ctx.fillText(`Welcome To Level ${level.levelNum}`, canvas.width / 2 - textLocation[0], canvas.height / 2);
+            ctx.fillText(`Press Enter To Begin `, canvas.width / 2 - textLocation[0], canvas.height / 2 + textLocation[1]);
         }
         if (ai.control) {
-            ctx.fillText("Start Game", canvas.width / 2 - 150, canvas.height / 2);
-            ctx.fillText("Click Anywhere!", canvas.width / 2 - 170, canvas.height / 2 + 50);
+            ctx.fillText("Start Game", canvas.width / 2 - textLocation[0], canvas.height / 2);
+            ctx.fillText("Click Anywhere!", canvas.width / 2 - textLocation[0], canvas.height / 2  + textLocation[1]);
         } else {
             if (game.powerActive) {
                 if (!displayed) {
@@ -61,20 +61,15 @@ const level: level = {
     makeBricks() {
         // Sets a Health Limit for Bricks
         const LIMIT = 5;
-        
-        // The Varible that is passed as health if health is higher than 5
         let limitBricks = level.weakestBrick >  LIMIT ? LIMIT : level.weakestBrick as number;
-        // at level 5 it makes each Brick harder to kill
         this.fortifyBricks();
         // Sets up the row the bricks are drawn on
         let rowPosition: number = (level.numOfRows * canvas.height / 20 + canvas.height / 20);
-        // if level is 5 ,10 , 15 ... the Bricks health permanantly increase
         level.weakestBrick = 1 + this.fortifier;
-
         for (rowPosition; rowPosition > canvas.height / 20; rowPosition -= canvas.height / 20) {
+            let limitBricks = level.weakestBrick >  LIMIT ? LIMIT : level.weakestBrick as number;
             for (let i = 10 - 1; i > -1; i--) {
                 if (this.makeEffect()) {
-                    
                     brick = new Brick(i * canvas.width / 10, rowPosition, limitBricks);
                     level.numOfPowers--;
                     brick.effect = true;
@@ -83,7 +78,9 @@ const level: level = {
                     level.bricks.push(new Brick(i * canvas.width / 10, rowPosition, limitBricks));
                 }
             }
+
             level.weakestBrick++
+
         }
     },
 

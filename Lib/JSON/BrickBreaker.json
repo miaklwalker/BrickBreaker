@@ -12,68 +12,67 @@
         "Ai": "methods"
     },
     "Styles": {
-
         "Modern": {
             "brick": {
                 "set1": [
                     [
                         ["white"],
-                        ["black"],
-                        ["black"]
+                        ["indigo"],
+                        ["indigo"]
                     ],
                     [
                         ["white"],
-                        ["dimGray"],
-                        ["dimGray"]
+                        ["purple"],
+                        ["purple"]
                     ],
                     [
                        ["white"],
-                        ["gray"],
-                        ["gray"]
+                        ["blueViolet"],
+                        ["blueviolet"]
                     ],
                     [
                         ["white"],
-                        ["darkGray"],
-                        ["darkGray"]
+                        ["mediumOrchid"],
+                        ["mediumOrchid"]
                     ],
                     [
                         ["white"],
-                        ["lightGray"],
-                        ["lightGray"]
+                        ["orchid"],
+                        ["orchid"]
                     ]
                 ],
 
                 "set2": [
                     [
                         ["white"],
-                        ["#312e30"],
-                        ["#312e30"]
+                        ["navy"],
+                        ["navy"]
                     ],
                     [
                         ["white"],
-                        ["#2A292B"],
-                        ["#2A292B"]
+                        ["blue"],
+                        ["blue"]
                     ],
                     [
                         ["white"],
-                        ["#151511"],
-                        ["#151511"]
+                        ["deepSkyBlue"],
+                        ["dodgerBlue"]
                     ],
                     [
                         ["white"],
-                        ["#4F4F50"],
-                        ["#4F4F50"]
+                        ["lightBlue"],
+                        ["skyBlue"]
                     ],
                     [
                         ["white"],
-                        ["#000000"],
-                        ["#000000"]
+                        ["lightCyan"],
+                        ["lightCyan"]
                     ]
                 ]
             },
             "ball": ["white", "red"],
-            "text": ["`36px 'Eternal Knight Laser Itallic'`"],
-            "textLocation": [],
+            "text": ["36px 'Eternal Knight Laser Itallic'"],
+            "textLocation": [200,50],
             "color": [
                 [218, 247, 166],
                 [255, 195, 0],
@@ -82,13 +81,41 @@
                 [133, 193, 233],
                 [46, 204, 113]
             ],
-            "font": ["'Eternal Knight Laser Itallic', '30px'"],
-            "paddle": ["lightgrey", "black", "black"],
-            "background": "lightgrey"
+            "font": ["'Eternal Knight Laser Itallic'", "30px"],
+            "paddle": ["snow","dimGray", "black"],
+            "background": ["lightgrey",false]
         },
         "Retro": {
             "brick": {
                 "set1": [
+                    [
+                        ["dimGray"],
+                        ["dimGray"],
+                        ["dimGray"]
+                    ],
+                    [
+                        ["gray"],
+                        ["gray"],
+                        ["gray"]
+                    ],
+                    [
+                        ["darkGray"],
+                        ["darkGray"],
+                        ["darkGray"]
+                    ],
+                    [
+                        ["lightGray"],
+                        ["lightGray"],
+                        ["lightGray"]
+                    ],
+                    [
+                        ["white"],
+                        ["white"],
+                        ["white"]
+                    ]
+                ],
+
+                "set2": [
                     [
                         ["black"],
                         ["black"],
@@ -114,39 +141,11 @@
                         ["lightGray"],
                         ["lightGray"]
                     ]
-                ],
-
-                "set2": [
-                    [
-                        ["#312E30"],
-                        ["#312e30"],
-                        ["#312e30"]
-                    ],
-                    [
-                        ["#2A292B"],
-                        ["#2A292B"],
-                        ["#2A292B"]
-                    ],
-                    [
-                        ["#151511"],
-                        ["#151511"],
-                        ["#151511"]
-                    ],
-                    [
-                        ["#4F4F50"],
-                        ["#4F4F50"],
-                        ["#4F4F50"]
-                    ],
-                    [
-                        ["#000000"],
-                        ["#000000"],
-                        ["#000000"]
-                    ]
                 ]
             },
             "ball": ["grey", "grey"],
             "text": ["24px 'Press Start 2P'"],
-            "textLocation": [],
+            "textLocation": [150,50],
             "color": [
                 [255, 255, 255],
                 [255, 255, 255],
@@ -157,24 +156,69 @@
             ],
             "font": ["'Press Start 2P'", "15px"],
             "paddle": ["black", "black", "black"],
-            "background": "white"
+            "background": ["white",false]
         },
         "Classic": {
             "brick": {
                 "set1": [
-                    [67, 176, 71],
-                    [67, 176, 71],
-                    [67, 176, 71]
+                    [
+                        ["white"],
+                        ["indigo"],
+                        ["indigo"]
+                    ],
+                    [
+                        ["white"],
+                        ["purple"],
+                        ["purple"]
+                    ],
+                    [
+                       ["white"],
+                        ["blueViolet"],
+                        ["blueviolet"]
+                    ],
+                    [
+                        ["white"],
+                        ["mediumOrchid"],
+                        ["mediumOrchid"]
+                    ],
+                    [
+                        ["white"],
+                        ["orchid"],
+                        ["orchid"]
+                    ]
                 ],
+
                 "set2": [
-                    [229, 37, 33],
-                    [229, 37, 33],
-                    [229, 37, 33]
+                    [
+                        ["khaki"],
+                        ["gold"],
+                        ["gold"]
+                    ],
+                    [
+                        ["lightYellow"],
+                        ["yellow"],
+                        ["gold"]
+                    ],
+                    [
+                        ["silver"],
+                        ["gainsboro"],
+                        ["silver"]
+                    ],
+                    [
+                        ["royalBlue"],
+                        ["mediumblue"],
+                        ["navy"]
+                    ],
+                    [
+                        ["yellow"],
+                        ["gold"],
+                        ["gold"]
+                    ]
                 ]
             },
-            "ball": ["orange", "orange"],
-            "text": ["`48px 'SNES'`"],
-            "textLocation": [],
+            "ball": ["powderBlue", "royalBlue"],
+            "text": ["48px 'Triforce'"],
+            "textLocation": [100,50],
             "color": [
                 [247, 249, 249],
                 [34, 101, 226],
@@ -183,26 +227,71 @@
                 [99, 210, 255],
                 [255, 255, 255]
             ],
-            "font": ["'SNES'", "'45px'"],
-            "paddle": ["blue", "blue", "blue"],
-            "background": "rgb(44,176,26)"
+            "font": ["Triforce", "34px"],
+            "paddle": ["blue", "mediumBlue", "darkBlue"],
+            "background": ["rgb(44,176,26)",true]
         },
         "PacMan": {
             "brick": {
                 "set1": [
-                    [255, 184, 82],
-                    [255, 184, 82],
-                    [255, 184, 82]
+                    [
+                        ["navy"],
+                        ["blue"],
+                        ["navy"]
+                    ],
+                    [
+                        ["navy"],
+                        ["blue"],
+                        ["navy"]
+                    ],
+                    [
+                        ["navy"],
+                        ["blue"],
+                        ["navy"]
+                    ],
+                    [
+                        ["navy"],
+                        ["blue"],
+                        ["navy"]
+                    ],
+                    [
+                        ["navy"],
+                        ["blue"],
+                        ["navy"]
+                    ]
                 ],
+
                 "set2": [
-                    [25, 25, 166],
-                    [25, 25, 166],
-                    [25, 25, 166]
+                    [
+                        ["darkRed"],
+                        ["red"],
+                        ["darkRed"]
+                    ],
+                    [
+                        ["#FF1493"],
+                        ["#ffb8ff"],
+                        ["#FF1493"]
+                    ],
+                    [
+                        ["dodgerBlue"],
+                        ["#00ffff"],
+                        ["dodgerBlue"]
+                    ],
+                    [
+                        ["darkOrange"],
+                        ["FFB852"],
+                        ["darkOrange"]
+                    ],
+                    [
+                        ["gold"],
+                        ["yellow"],
+                        ["gold"]
+                    ]
                 ]
             },
             "ball": ["rgb(255,255,0)", "rgb(255,255,0)"],
-            "text": ["40px PacFont"],
-            "textLocation": [],
+            "text": ["35px PacFont"],
+            "textLocation": [200,50],
             "color": [
                 [255, 0, 0],
                 [255, 184, 255],
@@ -211,9 +300,9 @@
                 [255, 255, 0],
                 [0, 0, 0]
             ],
-            "font": ["PacFont", "40px"],
+            "font": ["PacFont", "25px"],
             "paddle": ["rgb(33,33,222)", "rgb(33,33,222)", "rgb(33,33,222)"],
-            "background": "rgb(0, 0,0)"
+            "background": ["rgb(0, 0,0)",false]
         }
     }
 }

@@ -18,13 +18,14 @@ let iterator: number = 0;
 let chosenPowerUp: string;
 let displayed: boolean;
 let stylesJson: BrickBreaker;
+let textLocation:number[]
 let modernColors: number[][];
 let brickStyle:brickStyle
 let paddleStyle: string[];
 let textStyle: string[];
 let ballStyle: string[];
 let fontStyle: string[];
-let backgroundStyle: string;
+let backgroundStyle: [string,boolean];
 
 async function GetJson(){
     let response = await fetch("../lib/JSON/BrickBreaker.json")

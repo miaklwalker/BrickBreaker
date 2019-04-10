@@ -150,8 +150,8 @@ class Brick {
      * @method show -Shows the Brick object based on the Current Style
      */
     show() {
-        let setOne = brickStyle.set1[this.health];
-        let setTwo = brickStyle.set2[this.health];
+        let setOne = brickStyle.set1[this.health - 1];
+        let setTwo = brickStyle.set2[this.health - 1];
         if (this.effect) {
             let myGradient = ctx.createLinearGradient(this.position.x, this.position.y, this.position.x, this.position.y + this.height);
             myGradient.addColorStop(0, `${setOne[0][0]}`);
@@ -339,12 +339,12 @@ const level = {
             color++;
         ctx.fillStyle = `rgb(${modernColors[color % 6][0]},${modernColors[color % 6][1]},${modernColors[color % 6][2]})`;
         if (!game.active) {
-            ctx.fillText(`Welcome To Level ${level.levelNum}`, canvas.width / 2 - 150, canvas.height / 2);
-            ctx.fillText(`Press Enter To Begin `, canvas.width / 2 - 200, canvas.height / 2 + 50);
+            ctx.fillText(`Welcome To Level ${level.levelNum}`, canvas.width / 2 - textLocation[0], canvas.height / 2);
+            ctx.fillText(`Press Enter To Begin `, canvas.width / 2 - textLocation[0], canvas.height / 2 + textLocation[1]);
         }
         if (ai.control) {
-            ctx.fillText("Start Game", canvas.width / 2 - 150, canvas.height / 2);
-            ctx.fillText("Click Anywhere!", canvas.width / 2 - 170, canvas.height / 2 + 50);
+            ctx.fillText("Start Game", canvas.width / 2 - textLocation[0], canvas.height / 2);
+            ctx.fillText("Click Anywhere!", canvas.width / 2 - textLocation[0], canvas.height / 2 + textLocation[1]);
         }
         else {
             if (game.powerActive) {
@@ -380,15 +380,13 @@ const level = {
     makeBricks() {
         // Sets a Health Limit for Bricks
         const LIMIT = 5;
-        // The Varible that is passed as health if health is higher than 5
         let limitBricks = level.weakestBrick > LIMIT ? LIMIT : level.weakestBrick;
-        // at level 5 it makes each Brick harder to kill
         this.fortifyBricks();
         // Sets up the row the bricks are drawn on
         let rowPosition = (level.numOfRows * canvas.height / 20 + canvas.height / 20);
-        // if level is 5 ,10 , 15 ... the Bricks health permanantly increase
         level.weakestBrick = 1 + this.fortifier;
         for (rowPosition; rowPosition > canvas.height / 20; rowPosition -= canvas.height / 20) {
+            let limitBricks = level.weakestBrick > LIMIT ? LIMIT : level.weakestBrick;
             for (let i = 10 - 1; i > -1; i--) {
                 if (this.makeEffect()) {
                     brick = new Brick(i * canvas.width / 10, rowPosition, limitBricks);
@@ -451,7 +449,7 @@ class Paddle {
     show() {
         let myGradient = ctx.createLinearGradient(this.position.x, this.position.y, this.position.x, this.position.y + this.height);
         myGradient.addColorStop(0, `${paddleStyle[0]}`);
-        myGradient.addColorStop(.6, `${paddleStyle[1]}`);
+        myGradient.addColorStop(.45, `${paddleStyle[1]}`);
         myGradient.addColorStop(1, `${paddleStyle[2]}`);
         ctx.fillStyle = myGradient;
         ctx.fillRect(this.position.x, this.position.y, this.width, this.height);
@@ -578,7 +576,7 @@ class scoreBoard {
         this.div[8].innerHTML = `${level.balls.length}`;
     }
 }
-let index = ['Modern', 'Retro', 'Classic', 'Modern', 'PacMan'];
+let index = ['PacMan', 'Retro', 'Classic', 'Modern', 'PacMan'];
 let styleSelect = document.getElementById("colorSelect");
 let selectedStyle = styleSelect.selectedIndex;
 let selectionWatcher = document.querySelector('.styleSelector');
@@ -599,6 +597,7 @@ function styler(styleSheet) {
     paddleStyle = styleSheet.Styles[index[selectedStyle]].paddle;
     fontStyle = styleSheet.Styles[index[selectedStyle]].font;
     backgroundStyle = styleSheet.Styles[index[selectedStyle]].background;
+    textLocation = styleSheet.Styles[index[selectedStyle]].textLocation;
 }
 // Classes
 /**
@@ -649,6 +648,30 @@ class Vector {
         return this;
     }
 }
+class animatedBackground {
+    constructor(numberOfSprites) {
+        this.frame = 0;
+        this.counter = 0;
+        this.sprites = [];
+        this.numberOfSprites = numberOfSprites;
+    }
+    addSprites(url, format) {
+        for (let i = 0; i < this.numberOfSprites; i++) {
+            let img = new Image();
+            img.src = `${url}${i}${format}`;
+            this.sprites.push(img);
+        }
+    }
+    Sprite() {
+        this.counter++;
+        if (this.counter % 10 === 0) {
+            this.frame++;
+        }
+        return this.sprites[this.frame % this.numberOfSprites];
+    }
+}
+let frame = 0;
+let counter = 0;
 // Functions
 /**
  *
@@ -686,6 +709,8 @@ function getPowers() {
         PowerUps.doubler.loseEffect();
     }
 }
+let zelda = new animatedBackground(31);
+zelda.addSprites("../docs/tile", ".jpg");
 /**
  * Sets up Loop Call Backs
  * @param name - is the name of the call back function you want to use!
@@ -698,9 +723,16 @@ function gameLoop(name) {
  * @description - Draws The Background of the level using the Theme selected By the Player
  */
 function drawBackground() {
-    ctx.fillStyle = backgroundStyle;
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    if (backgroundStyle[1] === false) {
+        ctx.fillStyle = backgroundStyle[0];
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+    }
+    else {
+        let img = zelda.Sprite();
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+    }
 }
 // Global Variables
 // Contains All Varibles that occupy the global scope of the project
@@ -722,6 +754,7 @@ let iterator = 0;
 let chosenPowerUp;
 let displayed;
 let stylesJson;
+let textLocation;
 let modernColors;
 let brickStyle;
 let paddleStyle;

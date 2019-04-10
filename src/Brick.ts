@@ -32,8 +32,8 @@ class Brick {
      * @method show -Shows the Brick object based on the Current Style
      */
     show() {
-        let setOne= brickStyle.set1[this.health];
-        let setTwo= brickStyle.set2[this.health];
+        let setOne= brickStyle.set1[this.health-1];
+        let setTwo= brickStyle.set2[this.health-1];
         if (this.effect) {
             let myGradient = ctx.createLinearGradient(this.position.x, this.position.y, this.position.x, this.position.y + this.height);
             myGradient.addColorStop( 0, `${setOne[0][0]}`);
