@@ -17,7 +17,6 @@ function makeCanvas(name: string, width ? : string, height ? : string) {
     canvas.setAttribute("width", w);
     canvas.setAttribute("height", h);
     return canvas;
-
 }
 
 // Registers an Event if user click the canvas

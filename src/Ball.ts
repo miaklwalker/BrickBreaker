@@ -30,7 +30,7 @@ class Ball {
                 this.position.x < paddle.position.x + paddle.width + this.radius) {
                 if (this.velocity.y > 0) {
                     let ballMap: number = (this.position.x - paddle.position.x) / ((paddle.position.x + paddle.width) - paddle.position.x) * (2 - (-2)) - 2;
-                    this.acceleration.x += ballMap;
+                    this.acceleration.x += ballMap*1.5;
                     this.velocity.y *= -1
                 }
             }
@@ -59,7 +59,7 @@ class Ball {
         if (this.position.y <= this.radius) {
             this.velocity.y *= -1;
         }
-        if (this.position.x >= canvas.width - this.radius || this.position.x <= this.radius) {
+        if (this.position.x >= canvas.width - (this.radius+this.radius*.01) || this.position.x <= (this.radius+this.radius*.01)) {
             this.velocity.x *= -1;
         }
     }

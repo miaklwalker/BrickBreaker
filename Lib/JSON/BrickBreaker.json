@@ -158,7 +158,7 @@
             "paddle": ["black", "black", "black"],
             "background": ["white",false]
         },
-        "Classic": {
+        "Zelda": {
             "brick": {
                 "set1": [
                     [
