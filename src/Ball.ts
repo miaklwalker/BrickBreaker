@@ -53,14 +53,23 @@ class Ball {
      * 
      */
     hitWall() {
+        
         if (this.position.y >= canvas.height - this.radius) {
             this.ballLost = true;
         }
+        // * if ball hits top of the canvas reverse direction
         if (this.position.y <= this.radius) {
             this.velocity.y *= -1;
         }
-        if (this.position.x >= canvas.width - (this.radius+this.radius*.01) || this.position.x <= (this.radius+this.radius*.01)) {
+        // * if ball hits the right side of the canvas reverse direction
+        if (this.position.x >= canvas.width - (this.radius+this.radius*.01)){
             this.velocity.x *= -1;
+            this.position.x - 2
+        }
+        //  * if ball hits the left side of the canvas reverse direction
+        if(this.position.x <= (this.radius+this.radius*.01)) {
+            this.velocity.x *= -1;
+            this.position.x + 2
         }
     }
     /**

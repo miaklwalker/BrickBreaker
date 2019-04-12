@@ -70,6 +70,7 @@ const level: level = {
             for (let i = 10 - 1; i > -1; i--) {
                 if (this.makeEffect()) {
                     brick = new Brick(i * canvas.width / 10, rowPosition, limitBricks);
+                    
                     level.numOfPowers--;
                     brick.effect = true;
                     level.bricks.push(brick);
@@ -86,6 +87,8 @@ const level: level = {
             level.bricks[i].show();
             collisionsDetect(level.bricks[i]);
             if (level.bricks[i].health <= 0) {
+                let img = cracks.Sprite(5)
+                ctx.drawImage(img,level.bricks[i].position.x,level.bricks[i].position.y,level.bricks[i].width,level.bricks[i].height)
                 let broke: Array < Brick > = level.bricks.splice(i, 1);
                 if (broke[0].effect) {
                     game.powerActive = true;

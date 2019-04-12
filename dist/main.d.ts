@@ -66,11 +66,12 @@ declare class Brick {
     health: number;
     startingHealth: number;
     effect: boolean;
+    cracked: boolean;
     constructor(x: number, y: number, health: number);
     /**
      * @method hit -Decrements The Brick Objects Health When Hit.
      */
-    hit(): boolean;
+    hit(): void;
     /**
      * @method show -Shows the Brick object based on the Current Style
      */
@@ -275,7 +276,8 @@ declare class animatedBackground {
     numberOfSprites: number;
     constructor(numberOfSprites: number);
     addSprites(url: string, format: string): void;
-    Sprite(): HTMLImageElement;
+    Sprite(fr: number): HTMLImageElement;
+    staticSprite(index: number): HTMLImageElement;
 }
 declare let frame: number;
 declare let counter: number;
@@ -331,6 +333,7 @@ declare let textStyle: string[];
 declare let ballStyle: string[];
 declare let fontStyle: string[];
 declare let backgroundStyle: [string, boolean];
+declare let cracks: animatedBackground;
 declare function GetJson(): Promise<BrickBreaker>;
 declare const keyBoard: keyBoard;
 /**

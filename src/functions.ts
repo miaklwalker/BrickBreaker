@@ -40,7 +40,7 @@ function getPowers() {
     }
 }
 let zelda = new animatedBackground(31)
-zelda.addSprites("../docs/tile",".jpg");
+zelda.addSprites("../docs/zelda/tile",".jpg");
 /**
  * Sets up Loop Call Backs
  * @param name - is the name of the call back function you want to use!
@@ -58,7 +58,7 @@ function drawBackground() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.fillRect(0, 0, canvas.width, canvas.height);
     }else{
-        let img = zelda.Sprite();
+        let img = zelda.Sprite(8);
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.drawImage(img,0,0,canvas.width,canvas.height);
     }

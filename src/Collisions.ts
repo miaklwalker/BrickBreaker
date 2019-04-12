@@ -48,7 +48,7 @@ function collisions(circle: Ball, rectangle: Brick) {
     let distX: number = circleX - testX;
     let distY: number = circleY - testY;
     let distance = Math.sqrt((distX * distX) + (distY * distY));
-    if (distance <= radius / 2 + .4) {
+    if (distance <= (radius / 2)+radius*.6) {
         if (topBottom && leftRight) {
             circle.velocity.x *= -1;
             circle.velocity.y *= -1;

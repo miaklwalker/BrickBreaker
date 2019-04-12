@@ -26,7 +26,8 @@ let textStyle: string[];
 let ballStyle: string[];
 let fontStyle: string[];
 let backgroundStyle: [string,boolean];
-
+let cracks = new animatedBackground(5);
+cracks.addSprites("../docs/cracks/crack0",".png");
 async function GetJson(){
     let response = await fetch("../lib/JSON/BrickBreaker.json")
     let styleSheet = await response.json();

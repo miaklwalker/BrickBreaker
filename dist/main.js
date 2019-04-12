@@ -103,11 +103,19 @@ class Ball {
         if (this.position.y >= canvas.height - this.radius) {
             this.ballLost = true;
         }
+        // * if ball hits top of the canvas reverse direction
         if (this.position.y <= this.radius) {
             this.velocity.y *= -1;
         }
-        if (this.position.x >= canvas.width - (this.radius + this.radius * .01) || this.position.x <= (this.radius + this.radius * .01)) {
+        // * if ball hits the right side of the canvas reverse direction
+        if (this.position.x >= canvas.width - (this.radius + this.radius * .01)) {
             this.velocity.x *= -1;
+            this.position.x - 2;
+        }
+        //  * if ball hits the left side of the canvas reverse direction
+        if (this.position.x <= (this.radius + this.radius * .01)) {
+            this.velocity.x *= -1;
+            this.position.x + 2;
         }
     }
     /**
@@ -138,18 +146,20 @@ class Brick {
         this.health = health;
         this.startingHealth = health;
         this.effect = false;
+        this.cracked = false;
     }
     /**
      * @method hit -Decrements The Brick Objects Health When Hit.
      */
     hit() {
         this.health -= 1;
-        return true;
+        this.cracked = true;
     }
     /**
      * @method show -Shows the Brick object based on the Current Style
      */
     show() {
+        let crack = cracks.staticSprite(this.health);
         let setOne = brickStyle.set1[this.health - 1];
         let setTwo = brickStyle.set2[this.health - 1];
         if (this.effect) {
@@ -167,6 +177,9 @@ class Brick {
             myGradient.addColorStop(1, `${setTwo[2][0]}`);
             ctx.fillStyle = myGradient;
             ctx.fillRect(this.position.x, this.position.y, this.width, this.height);
+        }
+        if (this.cracked === true) {
+            ctx.drawImage(crack, this.position.x, this.position.y, this.width, this.height);
         }
     }
 }
@@ -217,7 +230,7 @@ function collisions(circle, rectangle) {
     let distX = circleX - testX;
     let distY = circleY - testY;
     let distance = Math.sqrt((distX * distX) + (distY * distY));
-    if (distance <= radius / 2 + .4) {
+    if (distance <= (radius / 2) + radius * .6) {
         if (topBottom && leftRight) {
             circle.velocity.x *= -1;
             circle.velocity.y *= -1;
@@ -406,6 +419,8 @@ const level = {
             level.bricks[i].show();
             collisionsDetect(level.bricks[i]);
             if (level.bricks[i].health <= 0) {
+                let img = cracks.Sprite(5);
+                ctx.drawImage(img, level.bricks[i].position.x, level.bricks[i].position.y, level.bricks[i].width, level.bricks[i].height);
                 let broke = level.bricks.splice(i, 1);
                 if (broke[0].effect) {
                     game.powerActive = true;
@@ -576,7 +591,7 @@ class scoreBoard {
         this.div[8].innerHTML = `${level.balls.length}`;
     }
 }
-let index = ['Retro', 'Retro', 'Zelda', 'Modern', 'PacMan'];
+let index = ['Zelda', 'Retro', 'Zelda', 'Modern', 'PacMan'];
 let styleSelect = document.getElementById("colorSelect");
 let selectedStyle = styleSelect.selectedIndex;
 let selectionWatcher = document.querySelector('.styleSelector');
@@ -662,12 +677,15 @@ class animatedBackground {
             this.sprites.push(img);
         }
     }
-    Sprite() {
+    Sprite(fr) {
         this.counter++;
-        if (this.counter % 10 === 0) {
+        if (this.counter % fr === 0) {
             this.frame++;
         }
         return this.sprites[this.frame % this.numberOfSprites];
+    }
+    staticSprite(index) {
+        return this.sprites[index];
     }
 }
 let frame = 0;
@@ -710,7 +728,7 @@ function getPowers() {
     }
 }
 let zelda = new animatedBackground(31);
-zelda.addSprites("../docs/tile", ".jpg");
+zelda.addSprites("../docs/zelda/tile", ".jpg");
 /**
  * Sets up Loop Call Backs
  * @param name - is the name of the call back function you want to use!
@@ -729,7 +747,7 @@ function drawBackground() {
         ctx.fillRect(0, 0, canvas.width, canvas.height);
     }
     else {
-        let img = zelda.Sprite();
+        let img = zelda.Sprite(8);
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
     }
@@ -762,6 +780,8 @@ let textStyle;
 let ballStyle;
 let fontStyle;
 let backgroundStyle;
+let cracks = new animatedBackground(5);
+cracks.addSprites("../docs/cracks/crack0", ".png");
 async function GetJson() {
     let response = await fetch("../lib/JSON/BrickBreaker.json");
     let styleSheet = await response.json();

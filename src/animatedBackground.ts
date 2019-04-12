@@ -16,11 +16,15 @@ class animatedBackground{
             this.sprites.push(img)
         }
     }
-    Sprite(){
+    Sprite(fr:number){
        this.counter++
-       if(this.counter%10 === 0 ){
+       if(this.counter%fr === 0 ){
            this.frame++
        }
        return this.sprites[this.frame%this.numberOfSprites]
     }
+    staticSprite(index:number){
+        return this.sprites[index]
+    }
+
 }
