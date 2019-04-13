@@ -663,7 +663,7 @@ class Vector {
         return this;
     }
 }
-class animatedBackground {
+class animatedSprites {
     constructor(numberOfSprites) {
         this.frame = 0;
         this.counter = 0;
@@ -727,7 +727,7 @@ function getPowers() {
         PowerUps.doubler.loseEffect();
     }
 }
-let zelda = new animatedBackground(31);
+let zelda = new animatedSprites(31);
 zelda.addSprites("../docs/zelda/tile", ".jpg");
 /**
  * Sets up Loop Call Backs
@@ -780,7 +780,7 @@ let textStyle;
 let ballStyle;
 let fontStyle;
 let backgroundStyle;
-let cracks = new animatedBackground(5);
+let cracks = new animatedSprites(5);
 cracks.addSprites("../docs/cracks/crack0", ".png");
 async function GetJson() {
     let response = await fetch("../lib/JSON/BrickBreaker.json");

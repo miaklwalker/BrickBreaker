@@ -39,7 +39,7 @@ function getPowers() {
         PowerUps.doubler.loseEffect();
     }
 }
-let zelda = new animatedBackground(31)
+let zelda = new animatedSprites(31)
 zelda.addSprites("../docs/zelda/tile",".jpg");
 /**
  * Sets up Loop Call Backs
