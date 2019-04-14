@@ -11,8 +11,6 @@ class Ball {
     radius: number;
     speedLimit: number;
     ballLost: boolean;
-    ballVelocityStore:Vector;
-    paddleHit:boolean;
     constructor(x: number, y: number) {
         this.position = new Vector(x, y);
         this.velocity = new Vector(0, 0);
@@ -20,8 +18,6 @@ class Ball {
         this.radius = (canvas.width / 1.3 * canvas.height) * .00003443;
         this.speedLimit = 6;
         this.ballLost = false;
-        this.ballVelocityStore = new Vector();
-        this.paddleHit = false;
     }
     /**
      * @method contact -controls the Balls actions upon hitting the paddle
@@ -33,18 +29,9 @@ class Ball {
                 this.position.x > paddle.position.x - this.radius &&
                 this.position.x < paddle.position.x + paddle.width + this.radius) {
                 if (this.velocity.y > 0) {
-                    this.paddleHit = true;
-                        if(game.activePowerup === "stickyPaddle"){
-                            ball.stop();
-                            let ballXlocation = this.position.x - player.position.x;
-                            this.position.x = player.position.x + ballXlocation;
-                            
-                        }
                     let ballMap: number = (this.position.x - paddle.position.x) / ((paddle.position.x + paddle.width) - paddle.position.x) * (2 - (-2)) - 2;
                     this.acceleration.x += ballMap*1.5;
                     this.velocity.y *= -1
-                }else{
-                    this.paddleHit=false;
                 }
             }
 
@@ -54,9 +41,6 @@ class Ball {
      * @method move - Controls how the Ball moves every animation frame
      */
     move() {
-        if(game.activePowerup === "StickyPaddle"){
-
-        }
         if (game.active) {
             this.velocity.add(this.acceleration);
             this.position.add(this.velocity);
@@ -99,16 +83,5 @@ class Ball {
         ctx.beginPath();
         ctx.arc(this.position.x, this.position.y, this.radius, 0, Math.PI * 2);
         ctx.fill();
-    }
-
-    stop(){
-        this.ballVelocityStore = this.velocity;
-        this.velocity.mult(0);
-        game.active = false;
-        if(keyBoard.Enter){
-            this.velocity.add(this.ballVelocityStore);
-            this.ballVelocityStore.mult(0);
-            game.active
-        }
     }
 }

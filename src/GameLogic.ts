@@ -1,18 +1,3 @@
-
-/**
- * @name game
- * @description - Game contains the information regarding the player as opposed to the level itself!
- */
-const game: game = {
-    lives: 3,
-    balls: 1,
-    active: false,
-    powerActive: false,
-    over: false,
-    activePowerup:"",
-};
-
-
 /**
  * @name gameLogic
  * @description - Contains the logic for various conditions such as GameOver(),LoseLife();
