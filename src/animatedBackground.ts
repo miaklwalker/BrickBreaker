@@ -1,4 +1,4 @@
-class animatedSprites{
+class animatedBackground{
     frame:number
     counter:number
     sprites:HTMLImageElement[]

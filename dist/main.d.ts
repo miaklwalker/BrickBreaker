@@ -269,7 +269,7 @@ declare class Vector {
     div(divisor: Vector | number): void;
     limit(max: number): this;
 }
-declare class animatedSprites {
+declare class animatedBackground {
     frame: number;
     counter: number;
     sprites: HTMLImageElement[];
@@ -297,7 +297,7 @@ declare let clickHandler: () => void;
  * method.
  */
 declare function getPowers(): void;
-declare let zelda: animatedSprites;
+declare let zelda: animatedBackground;
 /**
  * Sets up Loop Call Backs
  * @param name - is the name of the call back function you want to use!
@@ -333,7 +333,7 @@ declare let textStyle: string[];
 declare let ballStyle: string[];
 declare let fontStyle: string[];
 declare let backgroundStyle: [string, boolean];
-declare let cracks: animatedSprites;
+declare let cracks: animatedBackground;
 declare function GetJson(): Promise<BrickBreaker>;
 declare const keyBoard: keyBoard;
 /**
