@@ -35,6 +35,7 @@ interface PowerUps {
     doubler: doubler;
     multiBall: multiBall;
     extraLife: extraLife;
+    stickyPaddle:stickyPaddle;
 }
 
 interface multiBall {
@@ -56,6 +57,7 @@ interface extraLife {
     effect: () => any;
     loseEffect: () => any;
 }
+interface stickyPaddle extends extraLife{}
 
 interface game {
     lives: number;
@@ -63,6 +65,7 @@ interface game {
     active: boolean;
     powerActive: boolean;
     over: boolean;
+    activePowerup:string;
 }
 
 interface brickStyle {
