@@ -1,9 +1,15 @@
+import { Ball } from "./Ball.js";
+import { clickHandler, getPowers , canvas} from "./functions.js";
+import { level } from "./Level.js";
+import { player, ai, game } from "./main.js";
+import {GameLogic} from "./Interfaces.js"
+
 /**
  * @name gameLogic
  * @description - Contains the logic for various conditions such as GameOver(),LoseLife();
  */
 
-const gameLogic: gameLogic = {
+export const gameLogic: GameLogic = {
     ballLoop() {
         level.balls.forEach((orb: Ball) => {
             orb.show();

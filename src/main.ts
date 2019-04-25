@@ -1,46 +1,37 @@
+import { Ball } from "./Ball.js";
+import { Brick } from "./Brick.js";
+import { Ai } from "./AI.js";
+import { BrickBreaker ,BrickStyle, KeyBoard, Game} from "./Interfaces.js";
+import { animatedBackground } from "./animatedBackground.js";
+import { makeCanvas, drawBackground, gameLoop,canvas } from "./functions.js";
+import { level } from "./Level.js";
+import { gameLogic } from "./GameLogic.js";
+import { Paddle } from "./Paddle.js";
+import { styles } from "./styles.js";
+
 // Global Variables
 // Contains All Varibles that occupy the global scope of the project
 // these are used to pass information to other parts of the program!
-let canvas: HTMLCanvasElement;
-let ctx: CanvasRenderingContext2D;
-let ball: Ball;
-let brick: Brick;
-let player: Paddle;
-let clicked: number;
-let keyPressed: string;
-let ai: Ai;
-let keyRel: string;
-let PaddleSpeed: number = 6;
-let hit: boolean = false;
-let title: HTMLSpanElement;
-let color: number = 0;
-let iterator: number = 0;
-let chosenPowerUp: string;
-let displayed: boolean;
-let stylesJson: BrickBreaker;
-let textLocation:number[]
-let modernColors: number[][];
-let brickStyle:brickStyle
-let paddleStyle: string[];
-let textStyle: string[];
-let ballStyle: string[];
-let fontStyle: string[];
-let backgroundStyle: [string,boolean];
-let cracks = new animatedBackground(5);
+
+export let ball: Ball;
+export let brick: Brick;
+export let player: Paddle;
+export let clicked: number;
+export let keyPressed: string;
+export let ai: Ai;
+export let keyRel: string;
+export let PaddleSpeed: number = 6;
+export let title: HTMLSpanElement;
+
+
+export let cracks = new animatedBackground(5);
 cracks.addSprites("../docs/cracks/crack0",".png");
-async function GetJson(){
-    let response = await fetch("../lib/JSON/BrickBreaker.json")
-    let styleSheet = await response.json();
-    return styleSheet as Promise<BrickBreaker>
-}
-GetJson()
-.then(Json => stylesJson = Json )
-.then(()=> styler(stylesJson))
 
 
 
 
-const keyBoard: keyBoard = {
+
+export const keyBoard: KeyBoard = {
     ArrowLeft: false,
     ArrowRight: false,
 };
@@ -49,7 +40,7 @@ const keyBoard: keyBoard = {
  * @name game
  * @description - Game contains the information regarding the player as opposed to the level itself!
  */
-const game: game = {
+export const game: Game = {
     lives: 3,
     balls: 1,
     active: false,
@@ -60,7 +51,9 @@ const game: game = {
 
 // Anonymous IIFE to load Everything!
  (()=>{
-    makeCanvas("canvas");
+    makeCanvas();
+    console.log(styles);
+    console.log(styles.Styles)
     window.onload = function () {
 
         document.addEventListener("keydown", (event) => {

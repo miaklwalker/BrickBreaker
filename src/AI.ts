@@ -1,9 +1,15 @@
+import { Brick } from "./Brick.js";
+import { Ball } from "./Ball.js";
+import { level } from "./Level.js";
+import { Vector } from "./Vector.js";
+import { canvas } from "./functions.js";
+import { ball } from "./main.js";
 
 /**
  * @class Ai
  * @classdesc Controls the Paddle for the Game Demo Screen
  */
-class Ai {
+export class Ai {
     position: Vector;
     control: boolean;
     offset: number;

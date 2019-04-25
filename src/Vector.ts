@@ -8,7 +8,7 @@
  * @method div - The inverse of Mult Divides Either by a Vector or a Scala!
  * @method limit -Forces the Magnatude of the vector to a specified number if it is greater
  */
-class Vector {
+export class Vector {
     x: number;
     y: number;
     constructor(x: number = 0, y: number = 0) {

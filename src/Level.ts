@@ -1,4 +1,18 @@
-const level: level = {
+import { Brick } from "./Brick.js";
+import { Ball } from "./Ball.js";
+import { collisionsDetect, hit } from "./Collisions.js";
+import { getPowers, ctx, canvas, chosenPowerUp } from "./functions.js";
+import { Level } from "./Interfaces.js";
+import { scoreBoard } from "./ScoreBoard.js";
+import {  game,  ai,  brick, cracks, player } from "./main.js";
+import { textStyle, modernColors, textLocation } from "./Styler.js";
+
+
+export let color: number = 0;
+export let iterator: number = 0;
+export let displayed: boolean;
+
+export const level: Level = {
     levelNum: < number > 1,
     numOfPowers: < number > 1,
     numOfRows: < number > 3,
@@ -7,6 +21,7 @@ const level: level = {
     bricks: < Brick[] > [],
     balls: < Ball[] > [],
     fortifier: < number > 0,
+    
     GameText() {
         let _scoreBoard = new scoreBoard();
         if (!_scoreBoard.drawn) {
@@ -46,7 +61,7 @@ const level: level = {
                 let child = < HTMLDivElement > title.cloneNode(false);
                 _scoreBoard.scoreboard.replaceChild(child, title);
                 child.style.animation = "color 2s infinite";
-                hit = false;
+                console.log(hit)
             }
 
         }
@@ -60,7 +75,6 @@ const level: level = {
     makeBricks() {
         // Sets a Health Limit for Bricks
         const LIMIT = 5;
-        let limitBricks = level.weakestBrick > LIMIT ? LIMIT : level.weakestBrick as number;
         this.fortifyBricks();
         // Sets up the row the bricks are drawn on
         let rowPosition: number = (level.numOfRows * canvas.height / 20 + canvas.height / 20);
@@ -69,7 +83,7 @@ const level: level = {
             let limitBricks = level.weakestBrick > LIMIT ? LIMIT : level.weakestBrick as number;
             for (let i = 10 - 1; i > -1; i--) {
                 if (this.makeEffect()) {
-                    brick = new Brick(i * canvas.width / 10, rowPosition, limitBricks);
+                    let brick = new Brick(i * canvas.width / 10, rowPosition, limitBricks);
                     
                     level.numOfPowers--;
                     brick.effect = true;

@@ -1,4 +1,8 @@
-interface gameLogic {
+import { Brick } from "./Brick.js";
+
+import { Ball } from "./Ball.js";
+
+export interface GameLogic {
     ballLoop: () => any;
     ends: () => any;
     win: () => any;
@@ -7,7 +11,7 @@ interface gameLogic {
     loseLife: () => any;
 }
 
-interface level {
+export interface Level {
     levelNum: number;
     numOfPowers: number;
     numOfRows: number;
@@ -24,20 +28,20 @@ interface level {
     reset: () => any;
 }
 
-interface keyBoard {
+export interface KeyBoard {
     [index: string]: boolean;
     ArrowLeft: boolean;
     ArrowRight: boolean;
 }
 
-interface PowerUps {
+export interface powerUps {
     [index: string]: any;
     doubler: doubler;
     multiBall: multiBall;
     extraLife: extraLife;
 }
 
-interface multiBall {
+export interface multiBall {
     [index: string]: any;
     counter: number;
     maxBall: number;
@@ -45,19 +49,19 @@ interface multiBall {
     loseEffect: () => any;
 }
 
-interface doubler {
+export interface doubler {
     [index: string]: any;
     effect: () => any;
     loseEffect: () => any;
 }
 
-interface extraLife {
+export interface extraLife {
     [index: string]: any;
     effect: () => any;
     loseEffect: () => any;
 }
 
-interface game {
+export interface Game {
     lives: number;
     balls: number;
     active: boolean;
@@ -65,40 +69,41 @@ interface game {
     over: boolean;
 }
 
-interface brickStyle {
+export interface BrickStyle {
       set1:string[][][];
       set2:string[][][];
     }
 
-interface style{
-    brick:brickStyle,
+export interface style{
+    brick:BrickStyle,
     ball: {},
-    text: [],
-    textLocation: [],
-    color: [],
-    font: [],
-    paddle: [],
-    background: string
+    text: string[],
+    textLocation: number[],
+    color: number[][],
+    font: string[],
+    paddle: string[],
+    background: [string,boolean]
 }
-interface gameStyle{
+export interface gameStyle{
     Modern:style,
     Retro:style,
-    Classic:style,
+    Zelda:style,
     PacMan:style,
 }
-interface BrickBreaker {
+export interface BrickBreaker {
+    [index:string]:any
     Credits: Credits;
     Classes: Classes;
     Styles: gameStyle;
 }
 
-interface Credits {
+export interface Credits {
     GameTitle: string;
     LeadCoder: string;
     OriginalIdea: string;
     thisProject: string;
 }
-interface Classes {
+export interface Classes {
     Ball: string;
     Paddle: string;
     Brick: string;

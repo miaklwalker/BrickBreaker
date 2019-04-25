@@ -1,38 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet" type="text/css">
-    <link href="styles.css" rel="stylesheet">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Press+Start+2P"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link href="styles.css" rel="stylesheet" />
     <title>Brick Breaker</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="grid-container">
-        <div class="canvas"><canvas id="canvas" class="canvas"></canvas></div>
-        <div id="ScoreBoard" class="scoreboard">
-            <div id="scoreText" class="ScoreText">Score:</div>
-            <div id="score" class="Score"></div>
-            <div id="levelText" class="levelText">Level:</div>
-            <div id="level" class="level"></div>
-            <div id="gameName" class="gameName"></div>
-            <div id="livesText" class="liveText">Lives:</div>
-            <div id="lives" class="Lives"></div>
-            <div id="ballsText" class="ballsText">balls:</div>
-            <div id="balls" class="balls"></div>
-            <select id="colorSelect" class="styleSelector" onchange="GetJson()">
-                <option value="">Choose a style</option>
-                <option value="Retro">Retro</option>
-                <option value="Zelda">Zelda</option>
-                <option value="Modern">Modern</option>
-                <option value="PacMan">PacMan</option>
-            </select>
-            <script src="../dist/main.js"></script>
-        </div>
-    </div>
-</body>
+      <div class="canvas"><canvas id="canvas" class="canvas"></canvas></div>
+      <div id="ScoreBoard" class="scoreboard">
+        <div id="scoreText" class="ScoreText">Score:</div>
+        <div id="score" class="Score"></div>
+        <div id="levelText" class="levelText">Level:</div>
+        <div id="level" class="level"></div>
+        <div id="gameName" class="gameName"></div>
+        <div id="livesText" class="liveText">Lives:</div>
+        <div id="lives" class="Lives"></div>
+        <div id="ballsText" class="ballsText">balls:</div>
+        <div id="balls" class="balls"></div>
+        <select id="colorSelect" class="styleSelector" >
+          <option value="">Choose a style</option>
+          <option value="Retro">Retro</option>
+          <option value="Zelda">Zelda</option>
+          <option value="Modern">Modern</option>
+          <option value="PacMan">PacMan</option>
+        </select>
 
+        <script src="../dist/AI.js" type="module"></script>
+        <script src="../dist/animatedBackground.js" type="module"></script>
+        <script src="../dist/Ball.js" type="module"></script>
+        <script src="../dist/Brick.js" type="module"></script>
+        <script src="../dist/Collisions.js" type="module"></script>
+        <script src="../dist/functions.js" type="module"></script>
+        <script src="../dist/GameLogic.js" type="module"></script>
+        <script src="../dist/Interfaces.js" type="module"></script>
+        <script src="../dist/Level.js" type="module"></script>
+        <script src="../dist/Paddle.js" type="module"></script>
+        <script src="../dist/PowerUps.js" type="module"></script>
+        <script src="../dist/ScoreBoard.js" type="module"></script>
+        <script src="../dist/styles.js" type="module"></script>
+        <script src="../dist/Vector.js" type="module"></script>
+        <script src="../dist/Styler.js" type="module"></script>
+        <script src="../dist/main.js" type="module"></script>
+      </div>
+    </div>
+  </body>
 </html>

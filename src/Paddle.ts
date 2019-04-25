@@ -1,10 +1,16 @@
+import { ai, PaddleSpeed, keyBoard } from "./main.js";
+import { canvas, ctx } from "./functions.js";
+import { Ai } from "./AI.js";
+import { Vector } from "./Vector.js";
+import { paddleStyle } from "./Styler.js";
+
 /**
  * @class Paddle
  * @classdesc Creates a Paddle Object{} That has a position
  * @param x - number - Represents position on the X axis
  * @param y - number - Represents position on the Y axis
  */
-class Paddle {
+export class Paddle {
     width: number;
     height: number;
     position: Vector;

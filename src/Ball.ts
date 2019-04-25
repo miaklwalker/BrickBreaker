@@ -1,10 +1,16 @@
+import { Vector } from "./Vector.js";
+import { game} from "./main.js";
+import { Paddle } from "./Paddle.js";
+import { ballStyle } from "./Styler.js";
+import { canvas, ctx } from "./functions.js";
+
 /**
  * @class Ball
  * @classdesc Creates a ball Object{} That has a position and a speed
  * @param x - number - Represents position on the X axis
  * @param y - number - Represents position on the Y axis
  */
-class Ball {
+export class Ball {
     position: Vector;
     velocity: Vector;
     acceleration: Vector;

@@ -1,9 +1,15 @@
+import { Brick } from "./Brick.js";
+import { Ball } from "./Ball.js";
+import { level } from "./Level.js";
+export let hit: boolean;
+hit = false;
+
 /**
  *@function collisionDetect
  * @param tempBrick
  * @desc Hands The Collision Function Each Ball Object and tests Each Brick for collision;
  */
-function collisionsDetect(tempBrick: Brick) {
+export function collisionsDetect(tempBrick: Brick) {
     level.balls.forEach((orb: Ball) => collisions(orb, tempBrick));
 }
 /**
@@ -12,7 +18,7 @@ function collisionsDetect(tempBrick: Brick) {
  * @param rectangle 
  * @description - Accepts a Ball and a Brick as Arguements then tests if a collision occurs for either
  */
-function collisions(circle: Ball, rectangle: Brick) {
+export function collisions(circle: Ball, rectangle: Brick) {
     let circleX: number = circle.position.x;
     let circleY: number = circle.position.y;
     let radius: number = circle.radius;

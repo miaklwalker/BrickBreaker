@@ -1,4 +1,4 @@
-class animatedBackground{
+export class animatedBackground{
     frame:number
     counter:number
     sprites:HTMLImageElement[]

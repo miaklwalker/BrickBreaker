@@ -1,3 +1,12 @@
+import { animatedBackground } from "./animatedBackground.js";
+import { game } from "./main.js";
+import { PowerUps } from "./PowerUps.js";
+import { backgroundStyle } from "./Styler.js";
+
+
+export let canvas: HTMLCanvasElement = makeCanvas();
+export let ctx: CanvasRenderingContext2D =  <CanvasRenderingContext2D>canvas.getContext("2d");
+export let chosenPowerUp: string;
 let frame = 0
 let counter = 0
 
@@ -8,19 +17,17 @@ let counter = 0
  * @param width  - The Width of the Canvas as a string "480" 
  * @param height - The height of the Canvas as a string "480" 
  */
-function makeCanvas(name: string, width ? : string, height ? : string) {
+export function makeCanvas(width ? : string, height ? : string) {
     let w: string = width || (window.innerWidth * .75).toString();
     let h: string = height || (3 * window.innerHeight / 4).toString();
-    canvas = < HTMLCanvasElement > document.getElementById("canvas");
-    ctx = < CanvasRenderingContext2D > canvas.getContext("2d");
-    canvas.setAttribute("id", name);
+    let canvas = < HTMLCanvasElement > document.getElementById("canvas");
     canvas.setAttribute("width", w);
     canvas.setAttribute("height", h);
-    return canvas;
+    return canvas
 }
 
 // Registers an Event if user click the canvas
-let clickHandler = () => canvas.addEventListener("click", () => true, false);
+export let clickHandler = () => canvas.addEventListener("click", () => true, false);
 
 /**
  * @function getPowers
@@ -29,7 +36,7 @@ let clickHandler = () => canvas.addEventListener("click", () => true, false);
  * the PowerUps list.length , we are left with a index, that index is then used to call the powerUps "Effect()"
  * method.
  */
-function getPowers() {
+export function getPowers() {
     let Random: number = (Math.floor(Math.random() * 100));
     let powerUpList: string[] = Object.keys(PowerUps);
     chosenPowerUp = powerUpList[Random % powerUpList.length];
@@ -45,14 +52,14 @@ zelda.addSprites("../docs/zelda/tile",".jpg");
  * Sets up Loop Call Backs
  * @param name - is the name of the call back function you want to use!
  */
-function gameLoop(name: FrameRequestCallback) {
+export function gameLoop(name: FrameRequestCallback) {
     requestAnimationFrame(name);
 }
 /**
  * @function drawBackground
  * @description - Draws The Background of the level using the Theme selected By the Player
  */
-function drawBackground() {
+export function drawBackground() {
     if (backgroundStyle[1] === false) {
         ctx.fillStyle = backgroundStyle[0];
         ctx.clearRect(0, 0, canvas.width, canvas.height);

@@ -1,3 +1,9 @@
+import { powerUps,doubler, multiBall, extraLife } from "./Interfaces.js";
+import { Paddle } from "./Paddle.js";
+import { player,  game } from "./main.js";
+import { level } from "./Level.js";
+import { Ball } from "./Ball.js";
+import { canvas } from "./functions.js";
 
 // Power-Ups 
 
@@ -12,7 +18,7 @@
  * 
  */
 
-const PowerUps: PowerUps = {
+export const PowerUps: powerUps = {
     doubler: <doubler>{
         effect(paddle: Paddle = player) {
             if (paddle.width < canvas.width / 4) {

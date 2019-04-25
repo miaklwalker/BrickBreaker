@@ -1,4 +1,8 @@
-class scoreBoard {
+import { game } from "./main.js";
+import { level } from "./Level.js";
+import { fontStyle } from "./Styler.js";
+
+export class scoreBoard {
     scoreboard: HTMLDivElement;
     div: HTMLCollection;
     drawn: boolean;
