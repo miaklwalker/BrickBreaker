@@ -67,6 +67,7 @@ export interface Game {
     active: boolean;
     powerActive: boolean;
     over: boolean;
+    hit:boolean;
 }
 
 export interface BrickStyle {

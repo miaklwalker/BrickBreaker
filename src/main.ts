@@ -46,6 +46,7 @@ export const game: Game = {
     active: false,
     powerActive: false,
     over: false,
+    hit:false;
 };
 
 

@@ -1,5 +1,5 @@
 import { Brick } from "./Brick.js";
-import { collisionsDetect, hit } from "./Collisions.js";
+import { collisionsDetect } from "./Collisions.js";
 import { getPowers, ctx, canvas, chosenPowerUp } from "./functions.js";
 import { scoreBoard } from "./ScoreBoard.js";
 import { game, ai, cracks, player } from "./main.js";
@@ -43,7 +43,7 @@ export const level = {
                 }
             }
         }
-        if (hit) {
+        if (game.hit) {
             function hitAnimate() {
                 let title = document.getElementById("gameName");
                 title.style.animation = "brickHit .3s 5";
@@ -55,7 +55,7 @@ export const level = {
                 let child = title.cloneNode(false);
                 _scoreBoard.scoreboard.replaceChild(child, title);
                 child.style.animation = "color 2s infinite";
-                console.log(hit);
+                game.hit = false;
             }
         }
     },

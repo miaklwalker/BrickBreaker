@@ -33,6 +33,7 @@ export const game = {
     active: false,
     powerActive: false,
     over: false,
+    hit: false
 };
 // Anonymous IIFE to load Everything!
 (() => {

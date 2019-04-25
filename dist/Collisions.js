@@ -1,6 +1,5 @@
 import { level } from "./Level.js";
-export let hit;
-hit = false;
+import { game } from "./main.js";
 /**
  *@function collisionDetect
  * @param tempBrick
@@ -53,17 +52,17 @@ export function collisions(circle, rectangle) {
             circle.velocity.x *= -1;
             circle.velocity.y *= -1;
             rectangle.hit();
-            hit = true;
+            game.hit = true;
         }
         else {
             if (topBottom) {
                 rectangle.hit();
-                hit = true;
+                game.hit = true;
                 circle.velocity.y *= -1;
             }
             if (leftRight) {
                 rectangle.hit();
-                hit = true;
+                game.hit = true;
                 circle.velocity.x *= -1;
             }
         }

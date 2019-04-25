@@ -1,6 +1,5 @@
 import { Brick } from "./Brick.js";
 import { Ball } from "./Ball.js";
-export declare let hit: boolean;
 /**
  *@function collisionDetect
  * @param tempBrick

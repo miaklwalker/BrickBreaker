@@ -154,8 +154,8 @@
         "signature": "8d3969e7d51ea774f3003ebd8e8f06344b51f1d9763ab290d91a1662e5664129"
       },
       "/users/michaelwalker/desktop/brickbreaker/src/interfaces.ts": {
-        "version": "3821c71bef7ddf7205ac19bff054483713e89e0ae2ed509e6b9e7f5b56181ab4",
-        "signature": "035084dfc7a1bcf1361f5c14ad9bba34e8e4845d1e6b474ac4a9cbc0641c6e8c"
+        "version": "73bff2cb3312d8e6d5881f9f03d552028018c64ad44c63ccf900872be952d835",
+        "signature": "5af240666ee59e1eabd0c1471d7707c765e354bded5ceca2420f5481dbb7eae8"
       },
       "/users/michaelwalker/desktop/brickbreaker/src/styles.ts": {
         "version": "7a8d2f299e0a9c090b68586a61ff5ae2c8002c140e03b4ac9194badc409fec58",
@@ -174,15 +174,15 @@
         "signature": "d6d2951ac19a4e78bb6c518081517952ff4c49f0212a6b72d22d0b95f281c90e"
       },
       "/users/michaelwalker/desktop/brickbreaker/src/collisions.ts": {
-        "version": "ef630a3b91a5528c6f94808ba34aec32e3b8341187d269a7b58c9bab53627807",
-        "signature": "d755530ec38bc92416762eef701d126b81d8286a4fb4b0bcbd583d212df5c880"
+        "version": "a1520adf4a423d0326108bdcfec19d3c000f6074f1a70251f9fe28caf8572757",
+        "signature": "12bbff23972817db4a53c0c1c68904b0e66ff773614a30c02528221f14d5fa8b"
       },
       "/users/michaelwalker/desktop/brickbreaker/src/scoreboard.ts": {
         "version": "7e5f3c57aeacbb4a7bfb38e87b982c7ae643d487f696e0708e20e6555b3f5d31",
         "signature": "1cfc21078fd8c5299fb92e663a77c455e82e2ddd33e8c3223cb52781f60fe99e"
       },
       "/users/michaelwalker/desktop/brickbreaker/src/level.ts": {
-        "version": "52e87cf0b791eb40ba56703b1cbd053652dfe3a043f863a1993708f37e8d1ef5",
+        "version": "4941e6fb91993499dbc6d3a4db2ea865c4d7c74d517bd6929b089670e64d94b0",
         "signature": "f0e31860c6c5c9cc81b9afc12c5be4a36f61f8cc39fbec389f268678f2e4ff9a"
       },
       "/users/michaelwalker/desktop/brickbreaker/src/gamelogic.ts": {
@@ -190,8 +190,8 @@
         "signature": "83d303056e087b303e630ef179fe472ae66f47385a43c8fec0c22d85ec280319"
       },
       "/users/michaelwalker/desktop/brickbreaker/src/main.ts": {
-        "version": "15065cf1c252e3bc383fa671a7f1259b6af34111296f2abecd82977ae534ea24",
-        "signature": "511cd1f0a6ee633c2f6f0486139716b3c265750246d3737d045e06b0daea4348"
+        "version": "fed104dc5fe1f4a4f145415f5bbf985f519bcee0da95a104b2cdce524ae02263",
+        "signature": "e638e314c5797796bb021a1244725fa2d1fba1c115297ec9fdceff45c9eaf68b"
       },
       "/users/michaelwalker/desktop/brickbreaker/src/powerups.ts": {
         "version": "6caa5d6dc5535b4c477c96b7a282fc789d5024ddc52c2261c64cdd10c0feb1b3",
@@ -218,7 +218,6 @@
       "outDir": "/Users/michaelwalker/Desktop/BrickBreaker/dist",
       "composite": true,
       "strict": true,
-      "watch": true,
       "configFilePath": "/Users/michaelwalker/Desktop/BrickBreaker/src/tsconfig.json"
     },
     "referencedMap": {
@@ -250,7 +249,8 @@
       "/users/michaelwalker/desktop/brickbreaker/src/collisions.ts": [
         "/users/michaelwalker/desktop/brickbreaker/src/brick.ts",
         "/users/michaelwalker/desktop/brickbreaker/src/ball.ts",
-        "/users/michaelwalker/desktop/brickbreaker/src/level.ts"
+        "/users/michaelwalker/desktop/brickbreaker/src/level.ts",
+        "/users/michaelwalker/desktop/brickbreaker/src/main.ts"
       ],
       "/users/michaelwalker/desktop/brickbreaker/src/scoreboard.ts": [
         "/users/michaelwalker/desktop/brickbreaker/src/main.ts",
@@ -401,21 +401,7 @@
       "/usr/local/lib/node_modules/typescript/lib/lib.esnext.bigint.d.ts",
       "/usr/local/lib/node_modules/typescript/lib/lib.esnext.full.d.ts",
       "/users/michaelwalker/desktop/brickbreaker/src/vector.ts",
-      "/users/michaelwalker/desktop/brickbreaker/src/animatedbackground.ts",
-      "/users/michaelwalker/desktop/brickbreaker/src/interfaces.ts",
-      "/users/michaelwalker/desktop/brickbreaker/src/styles.ts",
-      "/users/michaelwalker/desktop/brickbreaker/src/styler.ts",
-      "/users/michaelwalker/desktop/brickbreaker/src/paddle.ts",
-      "/users/michaelwalker/desktop/brickbreaker/src/collisions.ts",
-      "/users/michaelwalker/desktop/brickbreaker/src/scoreboard.ts",
-      "/users/michaelwalker/desktop/brickbreaker/src/level.ts",
-      "/users/michaelwalker/desktop/brickbreaker/src/gamelogic.ts",
-      "/users/michaelwalker/desktop/brickbreaker/src/main.ts",
-      "/users/michaelwalker/desktop/brickbreaker/src/powerups.ts",
-      "/users/michaelwalker/desktop/brickbreaker/src/functions.ts",
-      "/users/michaelwalker/desktop/brickbreaker/src/brick.ts",
-      "/users/michaelwalker/desktop/brickbreaker/src/ai.ts",
-      "/users/michaelwalker/desktop/brickbreaker/src/ball.ts"
+      "/users/michaelwalker/desktop/brickbreaker/src/animatedbackground.ts"
     ]
   },
   "version": "3.4.3"
