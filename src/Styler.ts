@@ -11,8 +11,6 @@ export let backgroundStyle: [string,boolean];
 let index = ['Zelda', 'Retro', 'Zelda', 'Modern', 'PacMan'];
 let styleSelect = <HTMLSelectElement>document.getElementById("colorSelect")
 let selectedStyle = styleSelect.selectedIndex;
-console.log(index);
-console.log(styles.Styles[index[selectedStyle]].background)
 styler(styles);
 let selectionWatcher = document.querySelector('.styleSelector') as HTMLSelectElement;
 selectionWatcher.addEventListener('change',(event:any) =>{

@@ -91,7 +91,6 @@ export interface gameStyle{
     PacMan:style,
 }
 export interface BrickBreaker {
-    [index:string]:any
     Credits: Credits;
     Classes: Classes;
     Styles: gameStyle;

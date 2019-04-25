@@ -5,7 +5,6 @@ import { makeCanvas, drawBackground, gameLoop, canvas } from "./functions.js";
 import { level } from "./Level.js";
 import { gameLogic } from "./GameLogic.js";
 import { Paddle } from "./Paddle.js";
-import { styles } from "./styles.js";
 // Global Variables
 // Contains All Varibles that occupy the global scope of the project
 // these are used to pass information to other parts of the program!
@@ -38,8 +37,6 @@ export const game = {
 // Anonymous IIFE to load Everything!
 (() => {
     makeCanvas();
-    console.log(styles);
-    console.log(styles.Styles);
     window.onload = function () {
         document.addEventListener("keydown", (event) => {
             keyPressed = event.key;

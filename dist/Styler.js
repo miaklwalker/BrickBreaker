@@ -10,8 +10,6 @@ export let backgroundStyle;
 let index = ['Zelda', 'Retro', 'Zelda', 'Modern', 'PacMan'];
 let styleSelect = document.getElementById("colorSelect");
 let selectedStyle = styleSelect.selectedIndex;
-console.log(index);
-console.log(styles.Styles[index[selectedStyle]].background);
 styler(styles);
 let selectionWatcher = document.querySelector('.styleSelector');
 selectionWatcher.addEventListener('change', (event) => {

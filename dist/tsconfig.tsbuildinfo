@@ -154,16 +154,16 @@
         "signature": "8d3969e7d51ea774f3003ebd8e8f06344b51f1d9763ab290d91a1662e5664129"
       },
       "/users/michaelwalker/desktop/brickbreaker/src/interfaces.ts": {
-        "version": "744bde51648bb5f5318ebb0501529913e79a827a1b331c6e7417a3ebae9c6ac9",
-        "signature": "a801f3c707a3e9040275b36d2f755efb14a56e6bffab0cdd7a8c479a88b5d4f3"
+        "version": "3821c71bef7ddf7205ac19bff054483713e89e0ae2ed509e6b9e7f5b56181ab4",
+        "signature": "035084dfc7a1bcf1361f5c14ad9bba34e8e4845d1e6b474ac4a9cbc0641c6e8c"
       },
       "/users/michaelwalker/desktop/brickbreaker/src/styles.ts": {
         "version": "7a8d2f299e0a9c090b68586a61ff5ae2c8002c140e03b4ac9194badc409fec58",
         "signature": "a410405580ee8dab6f153f64d1eeda7274d410aa8035a6de25e0fe8aa9732f83"
       },
       "/users/michaelwalker/desktop/brickbreaker/src/styler.ts": {
-        "version": "1d67981fbf15c7997845a428449b38f35e3915a161cbfe0ad65d2b4b242cb44c",
-        "signature": "3d342bb417c4d021c0cb9020251cc6cc3f2d03bfa45d185a43ae80a2173689b0"
+        "version": "2dcbe66a3f2c43464cae921b0ccf5d9b78c46dd6a81d73d49025a2009237d4bf",
+        "signature": "f1e2a3c00b311cc2b1562389ed887f9ae3b9b02e139208b634ff01751a56cfd4"
       },
       "/users/michaelwalker/desktop/brickbreaker/src/paddle.ts": {
         "version": "38174244f1c5545fe0d5895d1c73488c75c09e28b51c93f3d06dd3fc454fd880",
@@ -190,7 +190,7 @@
         "signature": "83d303056e087b303e630ef179fe472ae66f47385a43c8fec0c22d85ec280319"
       },
       "/users/michaelwalker/desktop/brickbreaker/src/main.ts": {
-        "version": "b4b7af50970452fdf9885d52304e46d81d943a3afa0e70568066795aacdea583",
+        "version": "15065cf1c252e3bc383fa671a7f1259b6af34111296f2abecd82977ae534ea24",
         "signature": "511cd1f0a6ee633c2f6f0486139716b3c265750246d3737d045e06b0daea4348"
       },
       "/users/michaelwalker/desktop/brickbreaker/src/powerups.ts": {
@@ -404,6 +404,7 @@
       "/users/michaelwalker/desktop/brickbreaker/src/animatedbackground.ts",
       "/users/michaelwalker/desktop/brickbreaker/src/interfaces.ts",
       "/users/michaelwalker/desktop/brickbreaker/src/styles.ts",
+      "/users/michaelwalker/desktop/brickbreaker/src/styler.ts",
       "/users/michaelwalker/desktop/brickbreaker/src/paddle.ts",
       "/users/michaelwalker/desktop/brickbreaker/src/ball.ts",
       "/users/michaelwalker/desktop/brickbreaker/src/collisions.ts",
@@ -414,20 +415,7 @@
       "/users/michaelwalker/desktop/brickbreaker/src/powerups.ts",
       "/users/michaelwalker/desktop/brickbreaker/src/functions.ts",
       "/users/michaelwalker/desktop/brickbreaker/src/brick.ts",
-      "/users/michaelwalker/desktop/brickbreaker/src/ai.ts",
-      [
-        "/users/michaelwalker/desktop/brickbreaker/src/styler.ts",
-        [
-          {
-            "file": "/users/michaelwalker/desktop/brickbreaker/src/styler.ts",
-            "start": 590,
-            "length": 35,
-            "messageText": "Element implicitly has an 'any' type because type 'gameStyle' has no index signature.",
-            "category": 1,
-            "code": 7017
-          }
-        ]
-      ]
+      "/users/michaelwalker/desktop/brickbreaker/src/ai.ts"
     ]
   },
   "version": "3.4.3"
