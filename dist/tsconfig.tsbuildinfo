@@ -170,8 +170,8 @@
         "signature": "90b6b8c45e0caf4eab260fb5a269ce73eb4c95621d0fa24e4e4bd67173454333"
       },
       "/users/michaelwalker/desktop/brickbreaker/src/ball.ts": {
-        "version": "6ad50c03957353b6630b1c15444a8569120c54bc5d777d59850c55b789a3eb40",
-        "signature": "a5a48de63912833ee630d6924fbfe5aea7beeb3382fae81e378c6929dfcf54c3"
+        "version": "5ef37c40eb88ba74ad7aef69968c80fbff90e4056e2109ec6fc2350e9c171d8e",
+        "signature": "d6d2951ac19a4e78bb6c518081517952ff4c49f0212a6b72d22d0b95f281c90e"
       },
       "/users/michaelwalker/desktop/brickbreaker/src/collisions.ts": {
         "version": "ef630a3b91a5528c6f94808ba34aec32e3b8341187d269a7b58c9bab53627807",
@@ -406,7 +406,6 @@
       "/users/michaelwalker/desktop/brickbreaker/src/styles.ts",
       "/users/michaelwalker/desktop/brickbreaker/src/styler.ts",
       "/users/michaelwalker/desktop/brickbreaker/src/paddle.ts",
-      "/users/michaelwalker/desktop/brickbreaker/src/ball.ts",
       "/users/michaelwalker/desktop/brickbreaker/src/collisions.ts",
       "/users/michaelwalker/desktop/brickbreaker/src/scoreboard.ts",
       "/users/michaelwalker/desktop/brickbreaker/src/level.ts",
@@ -415,7 +414,8 @@
       "/users/michaelwalker/desktop/brickbreaker/src/powerups.ts",
       "/users/michaelwalker/desktop/brickbreaker/src/functions.ts",
       "/users/michaelwalker/desktop/brickbreaker/src/brick.ts",
-      "/users/michaelwalker/desktop/brickbreaker/src/ai.ts"
+      "/users/michaelwalker/desktop/brickbreaker/src/ai.ts",
+      "/users/michaelwalker/desktop/brickbreaker/src/ball.ts"
     ]
   },
   "version": "3.4.3"

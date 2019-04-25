@@ -36,7 +36,7 @@ export class Ball {
                 this.position.x < paddle.position.x + paddle.width + this.radius) {
                 if (this.velocity.y > 0) {
                     let ballMap: number = (this.position.x - paddle.position.x) / ((paddle.position.x + paddle.width) - paddle.position.x) * (2 - (-2)) - 2;
-                    this.acceleration.x += ballMap*1.5;
+                    this.acceleration.x += ballMap*1.7;
                     this.velocity.y *= -1
                 }
             }
@@ -49,8 +49,9 @@ export class Ball {
     move() {
         if (game.active) {
             this.velocity.add(this.acceleration);
-            this.position.add(this.velocity);
+            this.velocity.mult(6)
             this.velocity.limit(6);
+            this.position.add(this.velocity);
             this.acceleration.mult(0);
         }
     }
