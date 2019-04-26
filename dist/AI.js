@@ -40,12 +40,12 @@ export class Ai {
         let offset = 0;
         switch (choice) {
             case "left":
-                for (offset; offset >= -30; offset -= 1) {
+                for (offset; offset >= -50; offset -= 1) {
                     this.position.x += ball.position.x + offset;
                 }
                 break;
             case "right":
-                for (offset; offset <= 30; offset += 1) {
+                for (offset; offset <= 50; offset += 1) {
                     this.position.x += ball.position.x + offset;
                 }
                 break;
