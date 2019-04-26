@@ -11,6 +11,8 @@ import { game } from "./main.js";
 export function collisionsDetect(tempBrick: Brick) {
     level.balls.forEach((orb: Ball) => collisions(orb, tempBrick));
 }
+
+
 /**
  * @function Collision
  * @param circle 

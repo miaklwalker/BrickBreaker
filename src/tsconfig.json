@@ -11,7 +11,7 @@
       "strict": true                           /* Enable all strict type-checking options. */
   },
       "include":[
-        "./"
+        "./", "../webpack.config.js"
       ],
       "exclude":[
         "../lib"

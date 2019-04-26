@@ -7,7 +7,7 @@ import { makeCanvas, drawBackground, gameLoop,canvas } from "./functions.js";
 import { level } from "./Level.js";
 import { gameLogic } from "./GameLogic.js";
 import { Paddle } from "./Paddle.js";
-import { styles } from "./styles.js";
+
 
 // Global Variables
 // Contains All Varibles that occupy the global scope of the project
@@ -46,7 +46,7 @@ export const game: Game = {
     active: false,
     powerActive: false,
     over: false,
-    hit:false;
+    hit:false,
 };
 
 
