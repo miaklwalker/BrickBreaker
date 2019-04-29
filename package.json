@@ -2,7 +2,7 @@
   "name": "brickbreaklibrary",
   "version": "0.0.1",
   "description": "A typescript library file",
-  "main": "brickbreak.js",
+  "main": "index.html",
   "dependencies": {},
   "devDependencies": {
     "typescript": "^3.4.1",
