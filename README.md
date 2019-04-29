@@ -7,6 +7,9 @@ Welcome!
 You have stumbled across my first full scale project!
 I've been using this game / library to teach myself coding!
 
+NOTE:
+ALL CODE COMMENTED OUT WITH "//!" IS FOR ANIMATIONS , That WILL BE COMING SOON! 
+
 [Languages Used in this Project]
 - JavaScript
 - HTML5

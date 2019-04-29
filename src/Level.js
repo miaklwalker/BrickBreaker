@@ -91,8 +91,8 @@ const level = {
             level.bricks[i].show();
             collisionsDetect(level.bricks[i]);
             if (level.bricks[i].health <= 0) {
-                let img = cracks.Sprite(5)
-                ctx.drawImage(img,level.bricks[i].position.x,level.bricks[i].position.y,level.bricks[i].width,level.bricks[i].height)
+                //! let img = cracks.Sprite(5)
+               //! ctx.drawImage(img,level.bricks[i].position.x,level.bricks[i].position.y,level.bricks[i].width,level.bricks[i].height)
                 let broke = level.bricks.splice(i, 1);
                 if (broke[0].effect) {
                     game.powerActive = true;

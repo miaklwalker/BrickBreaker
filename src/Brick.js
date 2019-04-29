@@ -29,7 +29,7 @@ class Brick {
      * @method show -Shows the Brick object based on the Current Style
      */
     show() {
-        let crack = cracks.staticSprite(this.health)
+        //! let crack = cracks.staticSprite(this.health)
         let setOne= brickStyle.set1[this.health-1];
         let setTwo= brickStyle.set2[this.health-1];
         if (this.effect) {
@@ -47,6 +47,6 @@ class Brick {
             ctx.fillStyle = myGradient;
             ctx.fillRect(this.position.x, this.position.y, this.width, this.height);
         }
-        if(this.cracked===true){ctx.drawImage(crack,this.position.x,this.position.y,this.width,this.height)}
+       //! if(this.cracked===true){ctx.drawImage(crack,this.position.x,this.position.y,this.width,this.height)}
     }
 }

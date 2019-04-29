@@ -42,8 +42,8 @@ let counter = 0
         PowerUps.doubler.loseEffect();
     }
 }
-let zelda = new animatedBackground(31)
-zelda.addSprites("../docs/zelda/tile",".jpg");
+//! let zelda = new animatedBackground(31)
+//! zelda.addSprites("../docs/zelda/tile",".jpg");
 /**
  * Sets up Loop Call Backs
  * @param name - is the name of the call back function you want to use!
@@ -56,13 +56,13 @@ zelda.addSprites("../docs/zelda/tile",".jpg");
  * @description - Draws The Background of the level using the Theme selected By the Player
  */
  function drawBackground() {
-    if (backgroundStyle[1] === false) {
+    //! if (backgroundStyle[1] === false) {
         ctx.fillStyle = backgroundStyle[0];
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.fillRect(0, 0, canvas.width, canvas.height);
-    }else{
-        let img = zelda.Sprite(8);
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.drawImage(img,0,0,canvas.width,canvas.height);
-    }
+    //! }else{
+    //!     let img = zelda.Sprite(8);
+    //!     ctx.clearRect(0, 0, canvas.width, canvas.height);
+    //!     ctx.drawImage(img,0,0,canvas.width,canvas.height);
+    //! }
 }

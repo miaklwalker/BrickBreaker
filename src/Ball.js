@@ -22,7 +22,7 @@
      */
     contact(paddle) {
         if (!(this.position.y > paddle.position.y + paddle.height)) {
-            if (this.position.y > paddle.position.y - this.radius &&
+            if (this.position.y > paddle.position.y - this.radius*1.2 &&
                 this.position.x > paddle.position.x - this.radius &&
                 this.position.x < paddle.position.x + paddle.width + this.radius) {
                 if (this.velocity.y > 0) {
