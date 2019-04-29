@@ -16,7 +16,6 @@ let title;
 
 
 let cracks = new animatedBackground(5);
-document.addEventListener("load")
 cracks.addSprites("../docs/cracks/crack0",".png");
 
 
