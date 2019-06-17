@@ -15,8 +15,8 @@ let PaddleSpeed = 6;
 let title;
 
 
-//! let cracks = new animatedBackground(5);
-//! cracks.addSprites("../docs/cracks/crack0",".png");
+ let cracks = new animatedBackground(5);
+ cracks.addSprites("https://raw.githubusercontent.com/miaklwalker/BrickBreaker/master/docs/cracks/crack0",".png");
 
 
 

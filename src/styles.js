@@ -229,7 +229,7 @@
               [99, 210, 255],
               [255, 255, 255]
           ],
-          "font": ["Triforce", "34px"],
+          "font": ["Triforce", "18px"],
           "paddle": ["blue", "mediumBlue", "darkBlue"],
           "background": ["rgb(44,176,26)",true]
       },

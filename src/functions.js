@@ -13,9 +13,9 @@ let counter = 0
  * @param width  - The Width of the Canvas as a string "480" 
  * @param height - The height of the Canvas as a string "480" 
  */
- function makeCanvas(width, height) {
-    let w = width || (window.innerWidth * .75).toString();
-    let h = height || (3 * window.innerHeight / 4).toString();
+ function makeCanvas(width=(window.innerWidth /1).toString(), height=(3 * window.innerHeight/3.2).toString()) {
+    let w = width 
+    let h = height;
     let canvas =document.getElementById("canvas");
     canvas.setAttribute("width", w);
     canvas.setAttribute("height", h);
@@ -42,8 +42,8 @@ let counter = 0
         PowerUps.doubler.loseEffect();
     }
 }
-//! let zelda = new animatedBackground(31)
-//! zelda.addSprites("../docs/zelda/tile",".jpg");
+ let zelda = new animatedBackground(31)
+ zelda.addSprites("https://raw.githubusercontent.com/miaklwalker/BrickBreaker/master/docs/zelda/tile",".jpg");
 /**
  * Sets up Loop Call Backs
  * @param name - is the name of the call back function you want to use!
@@ -56,13 +56,13 @@ let counter = 0
  * @description - Draws The Background of the level using the Theme selected By the Player
  */
  function drawBackground() {
-    //! if (backgroundStyle[1] === false) {
+     if (backgroundStyle[1] === false) {
         ctx.fillStyle = backgroundStyle[0];
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.fillRect(0, 0, canvas.width, canvas.height);
-    //! }else{
-    //!     let img = zelda.Sprite(8);
-    //!     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    //!     ctx.drawImage(img,0,0,canvas.width,canvas.height);
-    //! }
+     }else{
+         let img = zelda.Sprite(8);
+         ctx.clearRect(0, 0, canvas.width, canvas.height);
+         ctx.drawImage(img,0,0,canvas.width,canvas.height);
+     }
 }
