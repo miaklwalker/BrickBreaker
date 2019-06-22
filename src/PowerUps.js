@@ -1,5 +1,9 @@
+import { game } from "./main.js";
+import { player } from "./main.js";
+import Ball from "./Ball.js";
+import {level} from "./Level.js"
 
-// Power-Ups 
+// Power-Ups
 
 /**
  * @name PowerUps
@@ -9,11 +13,11 @@
  * @description - Adds Multiple Balls to the GameScreen
  * @property extraLife
  * @description - Gives the player a extra life
- * 
+ *
  */
 
- const PowerUps = {
-    doubler:{
+export const PowerUps = {
+    doubler: {
         effect(paddle = player) {
             if (paddle.width < canvas.width / 4) {
                 paddle.width *= 2;
@@ -25,16 +29,26 @@
         },
         loseEffect(paddle = player) {
             paddle.width = canvas.width / 5;
-        }
+        },
     },
-    multiBall:{
+    multiBall: {
         counter: 0,
         maxBall: 10,
         effect(numOfBalls = 5) {
             this.maxBall = numOfBalls;
             for (this.counter; this.counter < this.maxBall; this.counter++) {
-                level.balls.push(new Ball(level.balls[0].position.x + this.counter * 3, level.balls[0].position.y));
-                level.balls.push(new Ball(level.balls[0].position.x - this.counter * 3, level.balls[0].position.y));
+                level.balls.push(
+                    new Ball(
+                        level.balls[0].position.x + this.counter * 3,
+                        level.balls[0].position.y,
+                    ),
+                );
+                level.balls.push(
+                    new Ball(
+                        level.balls[0].position.x - this.counter * 3,
+                        level.balls[0].position.y,
+                    ),
+                );
             }
             this.counter = 0;
         },
@@ -43,12 +57,12 @@
         },
     },
 
-    extraLife:{
+    extraLife: {
         effect() {
             game.lives += 1;
         },
         loseEffect() {
             game.powerActive = false;
         },
-    }
+    },
 };

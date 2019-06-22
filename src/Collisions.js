@@ -1,15 +1,17 @@
+import {level} from "./Level.js";
+import {game} from "./main.js";
 /**
  *@function collisionDetect
  * @param tempBrick
  * @desc Hands The Collision Function Each Ball Object and tests Each Brick for collision;
  */
- function collisionsDetect(tempBrick) {
-    level.balls.forEach((orb) => collisions(orb, tempBrick));
+function collisionsDetect(tempBrick) {
+    level.balls.forEach(orb => collisions(orb, tempBrick));
 }
 /**
  * @function Collision
- * @param circle 
- * @param rectangle 
+ * @param circle
+ * @param rectangle
  * @description - Accepts a Ball and a Brick as Arguements then tests if a collision occurs for either
  */
 function collisions(circle, rectangle) {
@@ -47,13 +49,13 @@ function collisions(circle, rectangle) {
     }
     let distX = circleX - testX;
     let distY = circleY - testY;
-    let distance = Math.sqrt((distX * distX) + (distY * distY));
-    if (distance <= (radius / 2)+radius*.6) {
+    let distance = Math.sqrt(distX * distX + distY * distY);
+    if (distance <= radius / 2 + radius * 0.6) {
         if (topBottom && leftRight) {
             circle.velocity.x *= -1;
             circle.velocity.y *= -1;
             rectangle.hit();
-            game.hit = true
+            game.hit = true;
         } else {
             if (topBottom) {
                 rectangle.hit();
@@ -68,3 +70,5 @@ function collisions(circle, rectangle) {
         }
     }
 }
+
+export default collisionsDetect;

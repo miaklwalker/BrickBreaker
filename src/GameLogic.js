@@ -1,13 +1,16 @@
-
+import { level } from "./Level.js";
+import { player,ai,game } from "./main.js";
+import Ball from "./Ball.js";
+import {getPowers,clickHandler} from './functions.js'
 
 /**
  * @name gameLogic
  * @description - Contains the logic for various conditions such as GameOver(),LoseLife();
  */
 
- const gameLogic = {
+export const gameLogic = {
     ballLoop() {
-        level.balls.forEach((orb) => {
+        level.balls.forEach(orb => {
             orb.show();
             orb.contact(player);
             orb.move();
@@ -16,10 +19,9 @@
             for (let i = level.balls.length; i > 0; i--) {
                 if (level.balls[i - 1].ballLost) level.balls.splice(i - 1, 1);
             }
-        })
+        });
     },
     ends() {
-
         if (level.bricks.length === 0) {
             this.win();
         }
@@ -36,7 +38,7 @@
         level.numOfPowers += 1;
         level.numOfRows += 1;
         level.weakestBrick += 1;
-        level.balls.forEach((ball) => {
+        level.balls.forEach(ball => {
             ball.position.x = canvas.width / 2;
             ball.position.y = canvas.height / 2;
         });
@@ -66,12 +68,13 @@
         // allows players to start game
         if (ai.control) {
             game.active = true;
-            player.demo(ai)
+            player.demo(ai);
         } else {
             player.move();
         }
     },
     loseLife() {
+        level.balls=[];
         level.balls.push(new Ball(canvas.width / 2, canvas.height / 2));
         game.lives--;
         game.powerActive = false;

@@ -1,5 +1,5 @@
-//todo To Be implemented at a later date
-class animatedBackground{
+
+export default class animatedBackground{
 
     constructor(numberOfSprites){
         this.frame   =  0;
@@ -25,8 +25,4 @@ class animatedBackground{
         return this.sprites[index]
     }
 
-}
-
-let urls = {
-    cracks:['https://raw.githubusercontent.com/miaklwalker/BrickBreaker/master/docs/cracks/crack00.png']
 }

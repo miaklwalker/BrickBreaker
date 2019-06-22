@@ -1,5 +1,8 @@
-
-
+import Vector from "./Vector.js"
+import {cracks} from "./main.js"
+import {brickStyle} from "./Styler.js"
+import {ctx} from './functions.js'
+import collisionsDetect from './Collisions.js'
 /**
  * @class Brick
  * @classdesc Creates a Brick Object{} That has a position and Health!
@@ -7,7 +10,7 @@
  * @param y - number - Represents position on the Y axis
  * @param health - The number of hits the brick can take.
  */
-class Brick {
+export default class Brick {
 
     constructor(x, y, health) {
         this.position = new Vector(x, y);

@@ -1,8 +1,11 @@
+import animatedBackground from "./animatedBackground.js";
+import {backgroundStyle} from "./styler.js"
+import {PowerUps} from "./PowerUps.js"
+import {game} from "./main.js";
 
-
- let canvas = makeCanvas();
- let ctx = canvas.getContext("2d");
- let chosenPowerUp;
+ export let canvas = makeCanvas();
+ export let ctx = canvas.getContext("2d");
+ export let chosenPowerUp;
 let frame = 0
 let counter = 0
 
@@ -13,7 +16,7 @@ let counter = 0
  * @param width  - The Width of the Canvas as a string "480" 
  * @param height - The height of the Canvas as a string "480" 
  */
- function makeCanvas(width=(window.innerWidth /1).toString(), height=(3 * window.innerHeight/3.2).toString()) {
+ export function makeCanvas(width=(window.innerWidth /1).toString(), height=(3 * window.innerHeight/3.2).toString()) {
     let w = width 
     let h = height;
     let canvas =document.getElementById("canvas");
@@ -23,7 +26,7 @@ let counter = 0
 }
 
 // Registers an Event if user click the canvas
- let clickHandler = () => canvas.addEventListener("click", () => true, false);
+ export let clickHandler = () => canvas.addEventListener("click", () => true, false);
 
 /**
  * @function getPowers
@@ -32,7 +35,7 @@ let counter = 0
  * the PowerUps list.length , we are left with a index, that index is then used to call the powerUps "Effect()"
  * method.
  */
- function getPowers() {
+ export function getPowers() {
     let Random = (Math.floor(Math.random() * 100));
     let powerUpList = Object.keys(PowerUps);
     chosenPowerUp = powerUpList[Random % powerUpList.length];
@@ -48,14 +51,14 @@ let counter = 0
  * Sets up Loop Call Backs
  * @param name - is the name of the call back function you want to use!
  */
- function gameLoop(name) {
+ export function gameLoop(name) {
     requestAnimationFrame(name);
 }
 /**
  * @function drawBackground
  * @description - Draws The Background of the level using the Theme selected By the Player
  */
- function drawBackground() {
+ export function drawBackground() {
      if (backgroundStyle[1] === false) {
         ctx.fillStyle = backgroundStyle[0];
         ctx.clearRect(0, 0, canvas.width, canvas.height);

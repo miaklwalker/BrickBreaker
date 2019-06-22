@@ -1,6 +1,6 @@
 
 
- let styles = {
+ export let styles = {
   "Credits": {
       "GameTitle": "Brick Break",
       "LeadCoder": "Michael Walker",

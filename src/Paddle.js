@@ -1,15 +1,18 @@
-
+import Vector from "./Vector.js";
+import { ai } from "./main.js";
+import { ctx } from "./functions.js";
+import { paddleStyle } from "./styler.js";
+import {keyBoard,PaddleSpeed} from "./main.js";
 /**
  * @class Paddle
  * @classdesc Creates a Paddle Object{} That has a position
  * @param x - number - Represents position on the X axis
  * @param y - number - Represents position on the Y axis
  */
-class Paddle {
-
+export default class Paddle {
     constructor(x, y) {
         this.width = canvas.width / 5;
-        this.height = canvas.height * .02474;
+        this.height = canvas.height * 0.02474;
         this.position = new Vector(x, y);
         this.velocity = new Vector(0, 0);
     }
@@ -17,9 +20,14 @@ class Paddle {
      * @method show -Shows the Paddle object based on the currently selected Style!
      */
     show() {
-        let myGradient = ctx.createLinearGradient(this.position.x, this.position.y, this.position.x, this.position.y + this.height);
+        let myGradient = ctx.createLinearGradient(
+            this.position.x,
+            this.position.y,
+            this.position.x,
+            this.position.y + this.height,
+        );
         myGradient.addColorStop(0, `${paddleStyle[0]}`);
-        myGradient.addColorStop(.45, `${paddleStyle[1]}`);
+        myGradient.addColorStop(0.45, `${paddleStyle[1]}`);
         myGradient.addColorStop(1, `${paddleStyle[2]}`);
         ctx.fillStyle = myGradient;
         ctx.fillRect(this.position.x, this.position.y, this.width, this.height);
@@ -32,7 +40,7 @@ class Paddle {
             if (keyBoard.ArrowLeft) {
                 this.velocity.x = -PaddleSpeed;
             } else if (keyBoard.ArrowRight) {
-                this.velocity.x = PaddleSpeed
+                this.velocity.x = PaddleSpeed;
             } else {
                 this.velocity.x = 0;
             }
@@ -49,12 +57,12 @@ class Paddle {
     }
     /**
      * @method demo -When the first loads this lets the computer control the game while the player watches and picks themes
-     * @param ai 
+     * @param ai
      */
     demo(ai) {
         this.position.x = ai.position.x - this.width / 2;
         if (this.position.x <= 0) this.position.x = 0;
-        else if (this.position.x + this.width >= canvas.width) this.position.x = canvas.width - this.width;
-
+        else if (this.position.x + this.width >= canvas.width)
+            this.position.x = canvas.width - this.width;
     }
 }

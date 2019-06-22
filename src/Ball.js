@@ -1,4 +1,7 @@
-
+import Vector from "./Vector.js";
+import {ctx} from "./functions.js";
+import {ballStyle} from './Styler.js';
+import {game} from './main.js'
 
 /**
  * @class Ball
@@ -6,7 +9,7 @@
  * @param x - number - Represents position on the X axis
  * @param y - number - Represents position on the Y axis
  */
- class Ball {
+ export default class Ball {
 
     constructor(x, y) {
         this.position = new Vector(x, y);

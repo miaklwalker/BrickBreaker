@@ -1,4 +1,4 @@
-
+import {styles} from  "./styles.js"
 let textLocation;
 let modernColors;
 let brickStyle
@@ -32,3 +32,4 @@ styler(styles);
     textLocation    = styleSheet.Styles[index[selectedStyle]].textLocation
 }
 
+export {textLocation,modernColors,brickStyle,paddleStyle,textStyle,ballStyle,fontStyle,backgroundStyle}

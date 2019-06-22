@@ -1,11 +1,12 @@
-
+import Vector from "./Vector.js";
+import { level } from "./Level.js";
+import {ball} from "./main.js"
 
 /**
  * @class Ai
  * @classdesc Controls the Paddle for the Game Demo Screen
  */
- class Ai {
-
+export default class Ai {
     constructor() {
         this.position = new Vector();
         this.control = true;
@@ -18,34 +19,36 @@
      */
 
     logic(ball) {
-        let right  = 0;
+        let right = 0;
         let left = 0;
-        level.bricks.forEach((brick) => brick.position.x > canvas.width / 2 ? right++ : left++);
-        if (right > left) {
-            this.choose("left")
-        } else if (left > right) {
-            this.choose("right")
+        level.bricks.forEach(brick =>{
+            brick.position.x > canvas.width / 2.4 ? right++ : left++;
+        });
+        if (right >= left) {
+            this.choose("right");
+        } else if (left >= right) {
+            this.choose("left");
         } else {
-            this.choose("middle")
+            this.choose("middle");
         }
         this.position.x = ball.position.x;
     }
     /**
      * @method choice -This is the function that decides how the paddles angles to hit the bricks on the side with the most bricks
-     * @param choice 
+     * @param choice
      */
     choose(choice) {
         let offset = 0;
         switch (choice) {
             case "left":
                 for (offset; offset >= -50; offset -= 1) {
-                    this.position.x += ball.position.x + offset
+                    this.position.x += ball.position.x + offset;
                 }
                 break;
 
             case "right":
                 for (offset; offset <= 50; offset += 1) {
-                    this.position.x += ball.position.x + offset
+                    this.position.x += ball.position.x + offset;
                 }
                 break;
             default:
