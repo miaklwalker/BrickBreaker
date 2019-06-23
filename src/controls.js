@@ -1,6 +1,12 @@
 let keyPressed;
 let keyRel;
-import {ai,game,keyBoard} from "./main.js";
+import {ai} from "./main.js";
+import {game} from './game.js'
+
+export const keyBoard = {
+    ArrowLeft: false,
+    ArrowRight: false,
+};
 
 export function addControls() {
     document.addEventListener(

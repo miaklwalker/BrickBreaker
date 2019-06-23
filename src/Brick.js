@@ -2,7 +2,6 @@ import Vector from "./Vector.js"
 import {cracks} from "./main.js"
 import {brickStyle} from "./Styler.js"
 import {ctx} from './functions.js'
-import collisionsDetect from './Collisions.js'
 /**
  * @class Brick
  * @classdesc Creates a Brick Object{} That has a position and Health!

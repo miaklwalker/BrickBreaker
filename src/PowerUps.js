@@ -1,4 +1,4 @@
-import { game } from "./main.js";
+import {game} from './game.js'
 import { player } from "./main.js";
 import Ball from "./Ball.js";
 import {level} from "./Level.js"

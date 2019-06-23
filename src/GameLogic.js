@@ -1,7 +1,9 @@
 import { level } from "./Level.js";
-import { player,ai,game } from "./main.js";
+import { player, ai} from "./main.js";
 import Ball from "./Ball.js";
-import {getPowers,clickHandler} from './functions.js'
+import { clickHandler } from "./functions.js";
+import { getPowers } from "./getPowers.js";
+import {game} from './game.js'
 
 /**
  * @name gameLogic
@@ -74,7 +76,7 @@ export const gameLogic = {
         }
     },
     loseLife() {
-        level.balls=[];
+        level.balls = [];
         level.balls.push(new Ball(canvas.width / 2, canvas.height / 2));
         game.lives--;
         game.powerActive = false;
