@@ -2,6 +2,7 @@ import Vector from "./Vector.js"
 import {cracks} from "./main.js"
 import {brickStyle} from "./Styler.js"
 import {ctx} from './functions.js'
+import uniqueid from "./CreateId.js";
 /**
  * @class Brick
  * @classdesc Creates a Brick Object{} That has a position and Health!
@@ -12,6 +13,7 @@ import {ctx} from './functions.js'
 export default class Brick {
 
     constructor(x, y, health) {
+        this.id= uniqueid();
         this.position = new Vector(x, y);
         this.width = (canvas.width / 10) - 2.5;
         this.height = (canvas.height / 20) - 4;
@@ -27,6 +29,7 @@ export default class Brick {
         this.health -= 1;
         this.cracked = true;
     }
+    onMessage(){}
     /**
      * @method show -Shows the Brick object based on the Current Style
      */

@@ -2,6 +2,7 @@ import Vector from "./Vector.js";
 import {ctx} from "./functions.js";
 import {ballStyle} from './Styler.js';
 import {game} from './game.js'
+import uniqueid from "./CreateId.js";
 
 /**
  * @class Ball
@@ -12,6 +13,7 @@ import {game} from './game.js'
  export default class Ball {
 
     constructor(x, y) {
+        this.id= uniqueid();
         this.position = new Vector(x, y);
         this.velocity = new Vector(0, 0);
         this.acceleration = new Vector(1, 7);
@@ -19,6 +21,7 @@ import {game} from './game.js'
         this.speedLimit = 6;
         this.ballLost = false;
     }
+    onMessage(){}
     /**
      * @method contact -controls the Balls actions upon hitting the paddle
      * @param paddle 
