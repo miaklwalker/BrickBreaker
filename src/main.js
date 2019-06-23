@@ -1,5 +1,4 @@
 import animatedBackground from "./animatedBackground.js";
-import { gameLoop } from "./functions.js";
 import { drawBackground } from "./drawBackground.js";
 import Ai from "./AI.js";
 import Ball from "./Ball.js";
@@ -8,8 +7,9 @@ import { level } from "./Level.js";
 import { gameLogic } from "./GameLogic.js";
 import { addControls } from "./controls.js";
 import gameDemo from "./gameDemo.js";
-import {game} from "./game.js"
 import canvasConfig from "./canvasConfig.js";
+import Game from "./Game.js";
+
 
 
 // Global Variables
@@ -19,7 +19,7 @@ import canvasConfig from "./canvasConfig.js";
 export let ball;
 export let player;
 export let ai;
-
+export let game = new Game()
 export let PaddleSpeed = 6;
 
 export let cracks = new animatedBackground(5);
@@ -54,5 +54,5 @@ function draw() {
     gameLogic.demo();
     player.move();
     player.show();
-    gameLoop(draw);
+    requestAnimationFrame(draw);
 }

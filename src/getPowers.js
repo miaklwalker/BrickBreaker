@@ -1,5 +1,5 @@
 import { PowerUps } from "./PowerUps.js";
-import { game } from './game.js';
+import { game } from './main.js';
 
 export let chosenPowerUp;
 /**

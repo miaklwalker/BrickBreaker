@@ -1,9 +1,9 @@
 import { level } from "./Level.js";
-import { player, ai} from "./main.js";
+import { player, ai,game} from "./main.js";
 import Ball from "./Ball.js";
 import { clickHandler } from "./functions.js";
 import { getPowers } from "./getPowers.js";
-import {game} from './game.js'
+
 
 /**
  * @name gameLogic
@@ -55,6 +55,7 @@ export const gameLogic = {
             game.over = true;
             if (clickHandler) {
                 level.numOfPowers = 1;
+                level.numOfRows=3;
                 level.bricks = [];
                 level.makeBricks();
                 level.score = 0;

@@ -1,3 +1,5 @@
+import {ai} from "./main.js"
+import {level} from "./Level.js"
 let gameDemo=()=>{
     canvas.addEventListener(
         "click",

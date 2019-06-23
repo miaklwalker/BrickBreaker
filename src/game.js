@@ -1,13 +1,10 @@
-/**
- * @name game
- * @description - Game contains the information regarding the player as opposed to the level itself!
- */
- export const game = {
-    lives: 3,
-    balls: 1,
-    active: false,
-    powerActive: false,
-    over: false,
-    hit: false,
-};
-
+export default class Game {
+    constructor() {
+        this.lives = 3;
+        this.balls = 1;
+        this.active = false;
+        this.powerActive = false;
+        this.over = false;
+        this.hit = false;
+    }
+}

@@ -13,10 +13,4 @@ zelda.addSprites(
     "https://raw.githubusercontent.com/miaklwalker/BrickBreaker/master/docs/zelda/tile",
     ".jpg",
 );
-/**
- * Sets up Loop Call Backs
- * @param name - is the name of the call back function you want to use!
- */
-export function gameLoop(name) {
-    requestAnimationFrame(name);
-}
+
