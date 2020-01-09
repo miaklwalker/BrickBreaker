@@ -7,10 +7,11 @@ import {ball} from "./main.js"
  * @classdesc Controls the Paddle for the Game Demo Screen
  */
 export default class Ai {
-    constructor() {
+    constructor(canvas) {
         this.position = new Vector();
         this.control = true;
         this.offset = 0;
+        this.canvas = canvas
     }
     /**
      * @method logic - a very simple AI implementation , Checks what side of the screen has the most bricks and tries to angle the paddle so it hits the ball to that side
@@ -22,7 +23,7 @@ export default class Ai {
         let right = 0;
         let left = 0;
         level.bricks.forEach(brick =>{
-            brick.position.x > canvas.width / 2.4 ? right++ : left++;
+            brick.position.x > this.canvas.width / 2.4 ? right++ : left++;
         });
         if (right >= left) {
             this.choose("right");

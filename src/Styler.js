@@ -8,14 +8,14 @@ let ballStyle;
 let fontStyle;
 let backgroundStyle;
 let index = ['Zelda', 'Retro', 'Zelda', 'Modern', 'PacMan'];
-let styleSelect = document.getElementById("colorSelect")
+let styleSelect = document.getElementById("colorSelect");
 let selectedStyle = styleSelect.selectedIndex;
 styler(styles);
 let selectionWatcher = document.querySelector('.styleSelector');
 selectionWatcher.addEventListener('change',(event) =>{
-   selectedStyle = event.target.selectedIndex
+   selectedStyle = event.target.selectedIndex;
 styler(styles);
-})
+});
 /**
  * @function styler
  * @description - gets the players choice of theme and then passes that arguement to the style sheet

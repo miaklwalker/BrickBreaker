@@ -35,10 +35,10 @@ function setup() {
     let canvas = canvasConfig();
     gameDemo();
     addControls();
-    ai = new Ai();
+    ai = new Ai(canvas);
     ball = new Ball(canvas.width / 2, canvas.height / 2);
     player = new Paddle(canvas.width / 2, canvas.height - canvas.height * 0.2);
-    level.makeBricks();
+    level.makeBricks(canvas);
     level.balls.push(ball);
     ai.control = true;
     game.active = false;

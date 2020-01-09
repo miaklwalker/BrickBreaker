@@ -46,7 +46,7 @@ import uniqueid from "./CreateId.js";
     move() {
         if (game.active) {
             this.velocity.add(this.acceleration);
-            this.velocity.mult(6)
+            this.velocity.mult(6);
             this.velocity.limit(6);
             this.position.add(this.velocity);
             this.acceleration.mult(0);

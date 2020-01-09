@@ -9,13 +9,13 @@ export default class animatedBackground{
     }
     addSprites(url,format){
         for(let i = 0 ; i < this.numberOfSprites ; i++){
-        let img = new Image()
-            img.src = `${url}${i}${format}`
+        let img = new Image();
+            img.src = `${url}${i}${format}`;
             this.sprites.push(img)
         }
     }
     Sprite(fr){
-       this.counter++
+       this.counter++;
        if(this.counter%fr === 0 ){
            this.frame++
        }

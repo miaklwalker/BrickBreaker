@@ -45,7 +45,6 @@ export default class Brick {
             myGradient.addColorStop(.6, `${set[1][0]}`);
             myGradient.addColorStop( 1, `${set[2][0]}`);
             ctx.fillStyle = myGradient;
-
             ctx.fillRect(position.x, position.y, width, height);
 
         if(this.cracked===true){ctx.drawImage(crack,x,y,width,height)}

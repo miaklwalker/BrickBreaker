@@ -281,7 +281,7 @@
                   ],
                   [
                       ["darkOrange"],
-                      ["FFB852"],
+                      ["#FFB852"],
                       ["darkOrange"]
                   ],
                   [
@@ -307,4 +307,4 @@
           "background": ["rgb(0, 0,0)",false]
       }
   }
-}
+};

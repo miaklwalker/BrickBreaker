@@ -13,5 +13,5 @@ let gameDemo=()=>{
             once: true,
         },
     );
-}
+};
 export default gameDemo
