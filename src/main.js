@@ -13,13 +13,13 @@ import Game from "./Game.js";
 
 
 // Global Variables
-// Contains All Varibles that occupy the global scope of the project
+// Contains All Variables that occupy the global scope of the project
 // these are used to pass information to other parts of the program!
 
 export let ball;
 export let player;
 export let ai;
-export let game = new Game()
+export let game = new Game();
 export let PaddleSpeed = 6;
 
 export let cracks = new animatedBackground(5);
@@ -32,7 +32,7 @@ cracks.addSprites(
 
 setup();
 function setup() {
-    canvasConfig();
+    let canvas = canvasConfig();
     gameDemo();
     addControls();
     ai = new Ai();

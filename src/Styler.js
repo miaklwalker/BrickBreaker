@@ -1,7 +1,7 @@
 import {styles} from  "./styles.js"
 let textLocation;
 let modernColors;
-let brickStyle
+let brickStyle;
 let paddleStyle;
 let textStyle;
 let ballStyle;
@@ -22,14 +22,15 @@ styler(styles);
  * which returns values for Ball , Brick , Fonts , TextSize, Paddle and Background Styles
  */
  function styler(styleSheet) {
-    modernColors    = styleSheet.Styles[index[selectedStyle]].color
-    brickStyle      = styleSheet.Styles[index[selectedStyle]].brick
-    textStyle       = styleSheet.Styles[index[selectedStyle]].text
-    ballStyle       = styleSheet.Styles[index[selectedStyle]].ball
-    paddleStyle     = styleSheet.Styles[index[selectedStyle]].paddle
-    fontStyle       = styleSheet.Styles[index[selectedStyle]].font
-    backgroundStyle = styleSheet.Styles[index[selectedStyle]].background
-    textLocation    = styleSheet.Styles[index[selectedStyle]].textLocation
+    const{color,brick,text,ball,paddle,font,background,textLocation:tl} = styleSheet.Styles[index[selectedStyle]];
+    modernColors    = color;
+    brickStyle      = brick;
+    textStyle       = text;
+    ballStyle       = ball;
+    paddleStyle     = paddle;
+    fontStyle       = font;
+    backgroundStyle = background;
+    textLocation    = tl;
 }
 
 export {textLocation,modernColors,brickStyle,paddleStyle,textStyle,ballStyle,fontStyle,backgroundStyle}

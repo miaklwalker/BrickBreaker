@@ -68,24 +68,25 @@ import uniqueid from "./CreateId.js";
         // * if ball hits the right side of the canvas reverse direction
         if (this.position.x >= canvas.width - (this.radius+this.radius*.01)){
             this.velocity.x *= -1;
-            this.position.x - 2
+            this.position.x -= 2
         }
         //  * if ball hits the left side of the canvas reverse direction
         if(this.position.x <= (this.radius+this.radius*.01)) {
             this.velocity.x *= -1;
-            this.position.x + 2
+            this.position.x += 2
         }
     }
     /**
      * @method show -Shows the Brick object based on the currently Selected Style!
      */
     show() {
-        let myGradient = ctx.createRadialGradient(this.position.x, this.position.y, this.radius * .14, this.position.x, this.position.y, this.radius);
+        const {x,y} = this.position;
+        let myGradient = ctx.createRadialGradient(x, y, this.radius * .14, x, y, this.radius);
         myGradient.addColorStop(0, `${ballStyle[0]}`);
         myGradient.addColorStop(1, `${ballStyle[1]}`);
         ctx.fillStyle = myGradient;
         ctx.beginPath();
-        ctx.arc(this.position.x, this.position.y, this.radius, 0, Math.PI * 2);
+        ctx.arc(x, y, this.radius, 0, Math.PI * 2);
         ctx.fill();
     }
 }

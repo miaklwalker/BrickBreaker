@@ -34,24 +34,20 @@ export default class Brick {
      * @method show -Shows the Brick object based on the Current Style
      */
     show() {
-         let crack = cracks.staticSprite(this.health)
-        let setOne= brickStyle.set1[this.health-1];
-        let setTwo= brickStyle.set2[this.health-1];
-        if (this.effect) {
-            let myGradient = ctx.createLinearGradient(this.position.x, this.position.y, this.position.x, this.position.y + this.height);
-            myGradient.addColorStop( 0, `${setOne[0][0]}`);
-            myGradient.addColorStop(.6, `${setOne[1][0]}`);
-            myGradient.addColorStop( 1, `${setOne[2][0]}`);
+        const{position,health,effect,height,width}=this;
+        const {x,y} = position;
+
+         let crack = cracks.staticSprite(health);
+         let set = effect ? brickStyle.set1[health-1]:brickStyle.set2[health-1];
+
+            let myGradient = ctx.createLinearGradient(x, y, x, y + height);
+            myGradient.addColorStop( 0, `${set[0][0]}`);
+            myGradient.addColorStop(.6, `${set[1][0]}`);
+            myGradient.addColorStop( 1, `${set[2][0]}`);
             ctx.fillStyle = myGradient;
-            ctx.fillRect(this.position.x, this.position.y, this.width, this.height);
-        } else {
-            let myGradient = ctx.createLinearGradient(this.position.x, this.position.y, this.position.x, this.position.y + this.height);
-             myGradient.addColorStop( 0, `${setTwo[0][0]}`);
-             myGradient.addColorStop(.6, `${setTwo[1][0]}`);
-             myGradient.addColorStop( 1, `${setTwo[2][0]}`);
-            ctx.fillStyle = myGradient;
-            ctx.fillRect(this.position.x, this.position.y, this.width, this.height);
-        }
-        if(this.cracked===true){ctx.drawImage(crack,this.position.x,this.position.y,this.width,this.height)}
+
+            ctx.fillRect(position.x, position.y, width, height);
+
+        if(this.cracked===true){ctx.drawImage(crack,x,y,width,height)}
     }
 }

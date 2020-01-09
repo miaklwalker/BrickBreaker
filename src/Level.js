@@ -27,7 +27,6 @@ export const level = {
         if (!_scoreBoard.drawn) {
             _scoreBoard.drawScoreBoard();
         }
-        _scoreBoard.drawGameName;
         iterator++;
         ctx.font = `${textStyle}`;
         if (iterator % 5 === 0) color++;
