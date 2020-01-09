@@ -1,6 +1,6 @@
 import Vector from "./Vector.js";
 import { level } from "./Level.js";
-import {ball} from "./main.js"
+import { ball  } from "./main.js"
 
 /**
  * @class Ai

@@ -1,5 +1,6 @@
-import { backgroundStyle } from "./styler.js";
+import {backgroundStyle} from "./Styler.js";
 import { ctx, canvas, zelda } from "./functions.js";
+
 /**
  * @function drawBackground
  * @description - Draws The Background of the level using the Theme selected By the Player
