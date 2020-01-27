@@ -19,19 +19,5 @@ export default class scoreBoard {
         this.div[6].innerHTML = `${game.lives}`;
         this.div[8].innerHTML = `${level.balls.length}`;
     }
-    drawScore() {
-        this.div[1].innerHTML = `${level.score}  `;
-    }
-    drawLevelNum() {
-        this.div[3].innerHTML = `${level.levelNum}`;
-    }
-    drawGameName() {
-        this.div[5].innerHTML = `----BRICK BREAKER!----`;
-    }
-    drawLives() {
-        this.div[6].innerHTML = `${game.lives}`;
-    }
-    drawBalls() {
-        this.div[8].innerHTML = `${level.balls.length}`;
-    }
+
 }

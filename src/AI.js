@@ -9,8 +9,6 @@ import { ball  } from "./main.js"
 export default class Ai {
     constructor(canvas) {
         this.position = new Vector();
-        this.control = true;
-        this.offset = 0;
         this.canvas = canvas
     }
     /**
@@ -53,7 +51,6 @@ export default class Ai {
                 }
                 break;
             default:
-                this.offset = 0;
                 this.position.x += ball.position.x + offset;
         }
     }

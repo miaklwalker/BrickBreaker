@@ -1,6 +1,7 @@
 import { player,game } from "./main.js";
 import Ball from "./Ball.js";
 import {level} from "./Level.js"
+import {canvas}from './functions.js'
 
 // Power-Ups
 

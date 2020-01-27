@@ -1,6 +1,6 @@
 import Vector from "./Vector.js";
 import { ai } from "./main.js";
-import { ctx } from "./functions.js";
+import { ctx , canvas} from "./functions.js";
 import { paddleStyle } from "./styler.js";
 import {PaddleSpeed} from "./main.js";
 import {keyBoard} from "./controls.js"

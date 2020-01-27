@@ -13,6 +13,7 @@ let selectedStyle = styleSelect.selectedIndex;
 styler(styles);
 let selectionWatcher = document.querySelector('.styleSelector');
 selectionWatcher.addEventListener('change',(event) =>{
+   // noinspection JSUnresolvedVariable
    selectedStyle = event.target.selectedIndex;
 styler(styles);
 });

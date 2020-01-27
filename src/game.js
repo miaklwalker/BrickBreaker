@@ -4,7 +4,6 @@ export default class Game {
         this.balls = 1;
         this.active = false;
         this.powerActive = false;
-        this.over = false;
         this.hit = false;
     }
 }

@@ -2,7 +2,7 @@ import Brick from "./Brick.js";
 import collisionsDetect from "./Collisions.js";
 import scoreBoard from "./ScoreBoard.js";
 import { textStyle, modernColors, textLocation } from "./styler.js";
-import { ctx } from "./functions.js";
+import { ctx,canvas } from "./functions.js";
 import { getPowers,chosenPowerUp } from "./getPowers.js";
 import { ai, cracks, player,game } from "./main.js";
 
