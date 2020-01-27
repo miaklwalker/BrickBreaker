@@ -1,14 +1,14 @@
-import animatedBackground from "./animatedBackground.js";
-import { drawBackground } from "./drawBackground.js";
-import Ai from "./AI.js";
-import Ball from "./Ball.js";
-import Paddle from "./Paddle.js";
-import { level } from "./Level.js";
-import { gameLogic } from "./GameLogic.js";
-import { addControls } from "./controls.js";
-import gameDemo from "./gameDemo.js";
-import canvasConfig from "./canvasConfig.js";
-import Game from "./Game.js";
+import animatedBackground from "./src/animatedBackground.js";
+import { drawBackground } from "./src/drawBackground.js";
+import Ai from "./src/AI.js";
+import Ball from "./src/Ball.js";
+import Paddle from "./src/Paddle.js";
+import { level } from "./src/Level.js";
+import { gameLogic } from "./src/GameLogic.js";
+import { addControls } from "./src/controls.js";
+import gameDemo from "./src/gameDemo.js";
+import canvasConfig from "./src/canvasConfig.js";
+import Game from "./src/game.js";
 
 
 

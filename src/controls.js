@@ -1,6 +1,6 @@
 let keyPressed;
 let keyRel;
-import {ai,game} from "./main.js";
+import {ai,game} from "../main.js";
 
 
 export const keyBoard = {

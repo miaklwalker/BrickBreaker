@@ -1,7 +1,7 @@
 import Vector from "./Vector.js";
 import {ctx} from "./functions.js";
 import {ballStyle} from './Styler.js';
-import {game} from './main.js'
+import {game} from '../main.js'
 import {canvas} from "./functions.js";
 
 /**

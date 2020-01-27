@@ -1,5 +1,5 @@
 import {fontStyle} from "./styler.js";
-import {game} from './main.js'
+import {game} from '../main.js'
 import {level} from "./Level.js";
 
 

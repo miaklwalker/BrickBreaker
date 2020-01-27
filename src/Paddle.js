@@ -1,8 +1,8 @@
 import Vector from "./Vector.js";
-import { ai } from "./main.js";
+import { ai } from "../main.js";
 import { ctx , canvas} from "./functions.js";
 import { paddleStyle } from "./styler.js";
-import {PaddleSpeed} from "./main.js";
+import {PaddleSpeed} from "../main.js";
 import {keyBoard} from "./controls.js"
 /**
  * @class Paddle

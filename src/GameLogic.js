@@ -1,5 +1,5 @@
 import { level } from "./Level.js";
-import { player, ai,game} from "./main.js";
+import { player, ai,game} from "../main.js";
 import Ball from "./Ball.js";
 import { clickHandler } from "./functions.js";
 import { getPowers } from "./getPowers.js";

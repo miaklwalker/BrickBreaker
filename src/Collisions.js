@@ -1,5 +1,5 @@
 import {level} from "./Level.js";
-import {game} from './main.js'
+import {game} from '../main.js'
 /**
  *@function collisionDetect
  * @param tempBrick
